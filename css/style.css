@@ -33,17 +33,17 @@ aside {
 
 @media (min-width: 768px) {
 header {
-font-size: 40px;
+font-size: 18px;
 }
   
 section { 		
 width: 70%;
 height: 1000px;
-font-size: 40px;
+font-size: 18px;
 } 	
 aside { 		
 width: 28%;
 height: 1000px;
-font-size: 40px;
+font-size: 18px;
 }
 }
