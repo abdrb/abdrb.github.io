@@ -54,14 +54,14 @@ body {
 /*tablet*/
 @media screen and (min-width: 400px) {
 body {
-	background-color: red;
+	background-color:#1ebbbb;
 	}
 }
 
 /*desktop*/
 @media screen and (min-width: 900px) { 
 body {
-		background-color: green; 
+		background-color:#1e6aff; 
 	}
 }
 
