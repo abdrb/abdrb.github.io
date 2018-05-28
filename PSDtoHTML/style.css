@@ -88,7 +88,6 @@ width: 49%;
 aside {     
 width: 49%;
 }
-}
 
 /*desktop*/
 @media screen and (min-width: 900px) { 
@@ -102,4 +101,4 @@ aside {
 width: 49%;
 }
 }
-
+}
