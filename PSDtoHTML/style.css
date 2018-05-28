@@ -1,5 +1,29 @@
 * {
 font-family: 'PT Serif', serif;
+font-size: 20px;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #aaaaaa;
+  color: black;
 }
 
 /*mobile-first*/
@@ -23,6 +47,7 @@ margin: 0 auto;
  height: 500px;   
  float: left;     
  margin-top: 15px;
+ padding: 10px;
  }
  
  aside {
@@ -30,6 +55,7 @@ margin: 0 auto;
  height: 500px;   
  float: right;  
  margin-top: 15px;
+ padding: 10px;
  }
 
 
