@@ -8,35 +8,30 @@ font-size: 17px;
 /*mobile-first*/
 body {
   background:#1e6ab8;
-  margin: 0 auto;
+
 }
 
-
-
-.container{
-width: 98%;
-margin: 0 auto;
-}
 
  header {
  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
  width: 100%; 		
- height: 100px;
+ height: 10px;
+ color: #000;
  }
  
  section {
  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
  width: 100%; 	
- height: 500px; 	
+ height: 100%; 	
  display: inline-block;
  background: #ffffff; 	
- margin-top: 15px;
+ margin-top: 10px;
  }
  
 
-@media (min-width: 768px) {
+@media (min-width: 400px) {
 section { 		
-width: 50%;
+width: 48%;
 } 	
 
 }
