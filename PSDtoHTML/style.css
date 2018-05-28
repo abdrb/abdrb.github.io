@@ -106,6 +106,7 @@ body {
 	background-color:#1e6ab8;
 	}
 section {
+margin: auto;
 display: inline-block;
 width: 40%;
 margin: 10px;
@@ -117,6 +118,7 @@ body {
 		background-color:#1e6ab8; 
 	}
 section {
+margin: auto;
 display: inline-block;
 width: 40%;
 margin:10px;
