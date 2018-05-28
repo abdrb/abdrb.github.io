@@ -31,7 +31,7 @@ box-sizing: border-box;
 /*mobile-first*/
 body {
    background:#1e6ab8;
-   
+   padding: 0;
 }
 
 
