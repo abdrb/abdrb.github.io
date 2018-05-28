@@ -6,26 +6,34 @@ font-family: 'PT Serif', serif;
 body {
    background:#1e6ab8;
 }
+
+.container{
+width: 100%;
+margin: 0 auto;
+}
+
 .paper-shadow {
-	position: relative;
+	/*position: relative;*/
+  margin: 10px auto;
   background: #fff;
-  width: 50%;
-  margin: 100px auto;
+  width: 100%;
+  padding: 0px;
   box-shadow: 0px 2px 38px rgba(0, 0, 0, 0.2);
   height: 400px;
 }
 .paper-shadow:after, .paper-shadow:before{
-  content: '';
-  position: absolute;
-  left: auto;
+  /* content: '';
+ position: absolute;*/
+
   background:none;
-  z-index: -1;
+
 }
 .paper-shadow:after{
   width: 90%;
   height: 10px;
-  top: 30px;
-  right:10px;
+  top: 5px;
+  right:5px;
+  left:5px;
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
   -o-transform: rotate(-3deg);
@@ -39,8 +47,9 @@ body {
 .paper-shadow:before{
   width: 10px;
   height: 95%;
-  top: 0px;
-  right:15px;
+  top: 5px;
+  right:5px;
+  left: 5px;
   -webkit-transform: rotate(3deg);
   -moz-transform: rotate(3deg);
   -o-transform: rotate(3deg);
@@ -56,6 +65,10 @@ body {
 body {
 	background-color:#1ebbbb;
 	}
+.paper-shadow {
+  width: 33%;
+  float: right;
+}
 }
 
 /*desktop*/
@@ -63,5 +76,10 @@ body {
 body {
 		background-color:#1e6aff; 
 	}
+.paper-shadow {
+  width: 33%;
+  float: left;
+}
+}
 }
 
