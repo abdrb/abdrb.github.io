@@ -23,7 +23,7 @@ body {
 
 .container {
   width: 90%;
-  margin: 0 auto;
+  margin: auto;
   margin-top: 30px;
   
 }
@@ -39,7 +39,7 @@ body {
 @media (min-width: 400px) {
 .paper-shadow { 
 
-width: 48%;
+width: 100%;
 } 	
 
 }
@@ -48,7 +48,7 @@ width: 48%;
 @media (min-width: 900px) {
 .paper-shadow { 
 
-width: 45%;
+width: 98%;
 } 	
 
 }
