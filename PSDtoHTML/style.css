@@ -39,7 +39,7 @@ body {
 @media (min-width: 400px) {
 .paper-shadow { 
 
-width: 100%;
+width: 40%;
 } 	
 
 }
@@ -48,7 +48,7 @@ width: 100%;
 @media (min-width: 900px) {
 .paper-shadow { 
 
-width: 98%;
+width: 40%;
 } 	
 
 }
