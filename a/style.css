@@ -141,12 +141,14 @@ background-color: #3d5a76;
 @media (min-width: 768px) {
 
 header {
+position: relative;
 
 width: 40%;
 
 }
 
 section {
+position: relative;
 
 text-align: left;
 
@@ -155,9 +157,10 @@ padding: 30px;
 width: 300px;
 
 height: 200px;
-
-
 } 	
 
+footer {
+position: relative;
+ 
 }
 

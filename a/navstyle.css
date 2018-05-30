@@ -1,6 +1,6 @@
 
 .navbar {
-  background-color: #fff;
+background-color:#1e6ab8;
   box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
   position: fixed;
   width: 100%;
@@ -47,7 +47,7 @@
 
 .navbar .menu-icon {
   cursor: pointer;
-  display: inline-block;
+  /*display: inline-block;*/
   float: left;
   padding: 10px 10px;
   position: relative;
@@ -118,6 +118,7 @@
 @media (min-width: 48em) {
   .navbar {
   /*position: relative;*/
+    background-color: #fff;
   display: inline-block;
   width: 140px;
   height: 100%;
@@ -132,7 +133,7 @@
   }
   .navbar .menu {
     clear: none;
-   /* display: inline-block;*/
+    display: inline-block;
     max-height: none;
   }
   .navbar .menu-icon {
