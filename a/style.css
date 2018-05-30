@@ -162,5 +162,9 @@ height: 200px;
 footer {
 position: relative;
 }
+  
+.main  {
+  position: relative;
+  }
 }
 
