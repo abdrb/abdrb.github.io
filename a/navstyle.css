@@ -122,4 +122,20 @@
   width: 150px;
   height: 100%;
 }
+/*  
+   .navbar li {
+    float: left;
+  }*/
+  .navbar li a {
+    padding: 10px 20px;
+  }
+  .navbar .menu {
+    clear: none;
+    display: inline-block;
+    max-height: none;
+  }
+  .navbar .menu-icon {
+    display: none;
+  }
+  
 }
