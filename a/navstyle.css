@@ -117,7 +117,7 @@
 
 @media (min-width: 48em) {
   .navbar {
-  position: static;
+  position: relative;
   width: 150px;
   height: 100%;
 }
