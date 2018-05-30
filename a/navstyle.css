@@ -60,7 +60,7 @@
   height: 2px;
   position: relative;
   transition: background .2s ease-out;
-  width: 14px;
+  width: 20px;
 }
 
 .navbar .menu-icon .navicon:before,
