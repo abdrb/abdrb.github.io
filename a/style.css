@@ -18,6 +18,11 @@ margin: auto;
 
 }
 
+.content {
+  width: 100%;
+  height: 100%:
+}
+
 .bookmarkRibbon{ 
 	position: absolute;
 	right: 0.25em;
