@@ -117,10 +117,11 @@
 
 @media (min-width: 48em) {
   .navbar {
-  /*position: relative;*/
+  position: static;
   display: inline-block;
   width: 140px;
   height: 100%;
+  top: 0:
 }
 /*  
    .navbar li {
