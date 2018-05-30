@@ -12,7 +12,10 @@ background-color:#1e6ab8;
   padding: 0;
   list-style: none;
   overflow: hidden;
-  background-color: #0ff;
+  background-color: #fff;
+  display: inline-block;
+  width: 140px;
+  height: 100%;
 }
 
 .navbar li a {
@@ -24,7 +27,7 @@ background-color:#1e6ab8;
 
 .navbar li a:hover,
 .navbar .menu-btn:hover {
-  background-color: #00ff00;
+  background-color: #ddd;
 }
 
 .navbar {
