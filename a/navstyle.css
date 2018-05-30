@@ -116,6 +116,11 @@
 /* 48em = 768px */
 
 @media (min-width: 48em) {
+  .navbar {
+  width: 200px;
+  height: 100%;
+}
+ 
   .navbar li {
     float: left;
   }
