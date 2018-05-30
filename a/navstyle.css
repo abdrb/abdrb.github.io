@@ -1,6 +1,6 @@
 
 .navbar {
-  background-color: #1e6ab8;
+  background-color: #fff;
   box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
   position: fixed;
   width: 100%;
@@ -60,7 +60,7 @@
   height: 2px;
   position: relative;
   transition: background .2s ease-out;
-  width: 18px;
+  width: 22px;
 }
 
 .navbar .menu-icon .navicon:before,
@@ -113,14 +113,14 @@
 
 @media (min-width: 48em) {
   .navbar li {
-    float: left;
+    float: right;
   }
   .navbar li a {
     padding: 20px 30px;
   }
   .navbar .menu {
     clear: none;
-    float: right;
+    float: left;
     max-height: none;
   }
   .navbar .menu-icon {
