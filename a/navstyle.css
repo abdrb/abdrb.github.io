@@ -117,9 +117,9 @@
 
 @media (min-width: 48em) {
   .navbar {
-  position: relative;
+  /*position: relative;*/
   display: inline-block;
-  width: 150px;
+  width: 140px;
   height: 100%;
 }
 /*  
@@ -131,7 +131,7 @@
   }
   .navbar .menu {
     clear: none;
-    display: inline-block;
+   /* display: inline-block;*/
     max-height: none;
   }
   .navbar .menu-icon {
