@@ -199,18 +199,18 @@ footer {
 		display: none;
 	}
   
-  #nav li {
+  navbar li {
     float: left;
   }
-  #nav li a {
+  navbar li a {
     padding: 20px 30px;
   }
-  #nav #menu {
+  navbar .menu {
     clear: none;
     float: right;
     max-height: none;
   }
-  #nav #menu-icon {
+  navbar .menu-icon {
     display: none;
   }
 }
