@@ -38,7 +38,6 @@ body {
   padding: 0;
   list-style: none;
   overflow: hidden;
-  background-color: #fff;
 }
 
 .header li a {
@@ -184,10 +183,11 @@ footer {
 		position: relative;
 	}
   .header li {
+    top: 0;
     float: left;
   }
   .header li a {
-    padding: 20px 30px;
+    padding:10px 15px;
   }
   .header .menu {
     clear: none;
