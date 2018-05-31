@@ -136,7 +136,7 @@ header {
 	display: inline-block;
 	width: 50%;
 	height: 100px;
-	color: #585858;
+	color: #000;
 }
 
 section {
@@ -157,7 +157,7 @@ footer {
 	margin-top: 20px;
 	width: 100%;
 	height: 100%;
-	color: #585858;
+	color: #fff;
 }
 
 @media (min-width: 768px) {
