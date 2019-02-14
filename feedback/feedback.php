@@ -6,7 +6,7 @@
 // sent to, eg
 //$mailto                = "youremailaddress@example.com" ;
 
-$mailto = 'fullstacktutor@gmail.com' ;
+$mailto = 'email@example' ;
 
 // $subject - set to the Subject line of the email, eg
 //$subject        = "Feedback Form" ;
