@@ -1,4 +1,4 @@
-﻿
+
 body {
 	background: #1e6ab8;
 	box-sizing: border-box;
@@ -138,7 +138,7 @@ navbar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
 header {
 	text-align: left;
 	margin-top: 30px;
-	padding: 10px;
+	padding: 0;
 	display: inline-block;
 	width: 50%;
 	height: 100px;
@@ -154,7 +154,7 @@ section {
 	position: relative;
 	text-align: left;
 	color: #585858;
-	padding: 30px;
+	padding: 0;
 	margin-top: 10px;
 	display: inline-block;
 	box-shadow: 0px 2px 38px rgba(0, 0, 0, 0.2), 0px 2px 38px rgba(0, 0, 0, 0.2);
