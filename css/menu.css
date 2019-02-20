@@ -87,7 +87,7 @@ navbar .menu-btn {
 }
 
 navbar .menu-btn:checked ~ .menu {
-  max-height: 240px;
+  max-height: 340px;
 }
 
 navbar .menu-btn:checked ~ .menu-icon .navicon {
@@ -125,5 +125,4 @@ navbar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     display: none;
   }
  }
-
 
