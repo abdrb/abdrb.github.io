@@ -3,7 +3,7 @@ var save2 = [];
 
 function myFunction () {
 if(document.getElementById("tag").value === "" || document.getElementById("att").value === "" || document.getElementById("val").value === ""){
-	alert("يجب تعبئة الحقول");
+	alert("Fields must be filled");
 	return "";
 }
 	var type = document.getElementById("type").value;
@@ -40,13 +40,13 @@ document.getElementById("cssBox").value = cssStyle;
 function func (){
 	var type = document.getElementById("type").value;
 if(type === "class"){
-	document.getElementById("slct").innerHTML = "أكتب اسم الفئة";
+	document.getElementById("slct").innerHTML = "Type the class name";
 }
 else if (type === "id"){
-	document.getElementById("slct").innerHTML = "أكتب اسم المعرف";
+	document.getElementById("slct").innerHTML = "Type the ID name";
 }
 else {
-	document.getElementById("slct").innerHTML = "أكتب اسم الوسم";
+	document.getElementById("slct").innerHTML = "Type the tag name";
 	}
 }
 
