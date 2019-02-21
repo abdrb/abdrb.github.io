@@ -21,7 +21,9 @@
 	border-bottom: 15px solid transparent;
 }
 
-
+.typing {
+	display: none;
+}
 
 
 
