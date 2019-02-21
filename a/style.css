@@ -1,4 +1,4 @@
-* {
+﻿* {
 	font-family: 'PT Serif', serif;
 }
 
@@ -109,7 +109,7 @@ body {
 }
 
 .navbar .menu-btn:checked~.menu {
-	max-height: 240px;
+	max-height: 340px;
 }
 
 .navbar .menu-btn:checked~.menu-icon .navicon {
