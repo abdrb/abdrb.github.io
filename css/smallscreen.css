@@ -1,5 +1,5 @@
 ﻿body {
-	background: #1e6ab8;
+	background: #15B9BD;
 	box-sizing: border-box;
 	margin: 0;
 }
@@ -8,17 +8,6 @@
 	background-color: #e1c653;
 	width: 60px;
 	height: 5px;
-}
-
-.bookmarkRibbon {
-	position: absolute;
-	right: 0.25em;
-	top: -0.25em;
-	width: 0px;
-	height: 50px;
-	border-right: 10px solid #e1c653;
-	border-left: 10px solid #e1c653;
-	border-bottom: 15px solid transparent;
 }
 
 .typing {
@@ -51,12 +40,15 @@ section {
 	box-shadow: 0px 2px 38px rgba(0, 0, 0, 0.2), 0px 2px 38px rgba(0, 0, 0, 0.2);
 	width: 80%;
 	height: 200px;
-	background: #f0f0f0;
+	
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	
 }
 
 footer {
 	text-align: center;
-	background-color: #3d5a76;
+	background-color: #4DBDBD;
 	margin-top: 20px;
 	width: 100%;
 	height: 100%;
