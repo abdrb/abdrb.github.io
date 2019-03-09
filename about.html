@@ -3,28 +3,32 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script src="js/links.js" type="text/javascript"></script>
       <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="a/style.css">
+      <script src="js/links.js" type="text/javascript"></script>
+      <link rel="stylesheet" type="text/css" href="css/menu.css">
+      <link rel="stylesheet" type="text/css" media="screen and (max-width: 767px)" href="css/smallscreen.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 768px)" href="css/widescreen.css">
       <title></title>
    </head>
    <body onload="funclinks()">
-      <navbar class="navbar">
+      <navbar>
          <input class="menu-btn" type="checkbox" id="menu-btn" />
          <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
          <ul class="menu" id="links">
          </ul>
       </navbar>
-      <center>
+      
          <header>
-             About<div class="golden_line"></div>
+             About
          </header>
+         <article>
          <section class="main">
             <h1>Tutor</h1>
             <div class="content">
                 Supporting students in the Full-Stack and Front-End Developer Track of 
                 <a href="http://www.arabcoders.ae">One Million Arab Coders </a>initiative.</div>
          </section>
+         </article>
          <footer>Copyright © 2019</footer>
       </center>
    </body>
