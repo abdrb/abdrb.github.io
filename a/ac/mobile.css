@@ -1,0 +1,13 @@
+* {
+text-align: center;
+}
+
+.p {
+display: none;
+}
+
+div {
+background-color: #ddaa20;
+width: 95%;
+margin: 20px;
+}
