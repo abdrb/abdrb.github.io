@@ -1,0 +1,318 @@
+  body
+{
+      margin: 0;
+      padding: 0;
+      height: 2000px;
+}
+.container
+{
+      width: 1150px;
+      margin: auto;
+}
+
+ .header
+{
+      width: 100%;
+      height: 350px;
+      background-color: blueviolet;
+ }
+    .header .heading
+    {
+      width: 50%;
+      float: left;
+      margin-top: 100px;
+      border-right: 1px solid #EEE;
+    }
+
+    .header .heading h2
+    {
+      width: 49%;
+      color: #fff;
+      line-height: 1.8;
+      font-size: 25px;
+      font-weight: normal;
+    }
+    .header .heading h2 span:hover
+    {
+        color: #00BC8A;
+        cursor: pointer;
+    }
+
+    .header .Lorem
+    {
+        width: 40%;
+        margin-left: 3%;
+        margin-top: 100px;
+        float: left;
+    }
+
+    .header .Lorem p
+    {
+      font-family: Tahoma;
+      color: darkgray;
+      line-height: 1.8;
+      font-weight: bold;
+
+    }
+    .header .Lorem button
+    {
+        border: 0;
+        background: none;
+        color: #fff;
+        font-size: 20px;
+        background: #00BC8A;
+        padding: 15px;
+        border-radius: 50px;
+        width: 200px;
+        text-transform: uppercase;
+        outline: 0;
+        cursor: pointer;
+    }
+
+      /* Magna */
+      .Magna
+      {
+      	width: 100%;
+      	height: 350px;
+      	padding-top: 100px;
+        float: right;
+        border-bottom: 2px solid #DDD;
+
+      }
+
+      .Magna .Learn
+      {
+        width: 50%;
+        float: left;
+        border-right: 2px solid #DDD;
+      }
+
+      .Magna .Learn h2
+      {
+        font-family:  Tahoma;
+        text-decoration:underline;
+        color: #777;
+      }
+
+      .Magna .Learn p
+      {
+        line-height: 1.9;
+        font-family: Tahoma;
+        color: #888;
+      }
+
+      .Magna .Learn button
+      {
+        border: 0;
+        background: #fff;
+        border: 1px solid #DDD;
+        padding: 15px;
+        border-radius: 30px;
+        width: 200px;
+        color: #888;
+        text-transform: uppercase;
+        cursor: pointer;
+        outline: 0;
+      }
+
+      .Ipsum
+      {
+        float: left;
+        width: 40%;
+        margin-left: 5%;
+        visibility: hidden;
+      }
+
+      .Ipsum p
+      {
+        line-height: 2;
+        font-family: Tahoma;
+        font-weight: bold;
+        color: #666;
+      }
+
+      .Ipsum i
+      {
+        padding-right: 25px;
+        color: #00BC8A;
+      }
+
+      /* pharetra */
+      .pharetra
+      {
+        width: 100%;
+        height: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        overflow: hidden;
+        background-color: #f2f2f2;
+      }
+
+      .pharetra .part img
+      {
+        float: left;
+        width: 40%;
+      }
+
+      .pharetra .part .he
+      {
+        width: 40%;
+        float: left;
+        padding-left: 70px;
+        padding-top: 50px;
+      }
+
+      .pharetra .part .he h2
+      {
+        color: #777;
+        font-family: Tahoma;
+        text-decoration: underline;
+      }
+
+      .pharetra .part .he p
+      {
+        color: #888;
+        font-family: Tahoma;
+        line-height: 2;
+        font-weight: bold;
+      }
+
+      .pharetra .part
+      {
+        padding-bottom: 50px;
+        height: 350px;
+      }
+
+
+      .pharetra .part .he button
+      {
+        background-color: none;
+        border: 1px solid #DDD;
+        width: 150px;
+        border-radius: 20px;
+        padding: 15px;
+        font-size: 20px;
+        color: #777;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .pharetra .part .he button:hover
+      {
+        background-color: #888;
+        color: #fff;
+      }
+
+      .clear { clear: both;}
+
+      /* form */
+
+     .form
+     {
+	      width: 100%;
+	      height: auto;
+	      overflow: hidden;
+	      padding-top: 50px;
+	      padding-bottom: 50px;
+     }
+
+    .form .inputs
+    {
+	     width: 50%;
+	     float: left;
+	     border-right: 2px solid #DDD;
+    }
+
+   .form .inputs h2
+    {
+	     font-family: Tahoma;
+    }
+
+    .form .inputs p
+    {
+	     line-height: 2;
+	     font-family: Tahoma;
+	     font-weight: bold;
+	     color: #888;
+   }
+
+   .form .inputs input[type=text] , input[type=email]
+   {
+	    width: 250px;
+	    height: 50px;
+	    padding-left: 20px;
+	    margin-bottom: 10px;
+	    outline: 0;
+      font-size: 20px;
+  }
+
+  .form .inputs textarea
+  {
+	   width: 505px;
+	   outline: 0;
+	   padding-left: 20px;
+	   font-size: 15px;
+  }
+
+  .form .inputs input[type=submit]
+  {
+	   width:150px;
+	   border-radius: 20px;
+	   border: 1px solid #DDD;
+	   padding: 15px;
+	   margin-top: 15px;
+	   cursor: pointer;
+	   background: #fff;
+	   text-transform: uppercase
+  }
+
+  .form .links
+  {
+     float: left;
+     padding-top: 50px;
+     padding-left: 50px;
+  }
+
+  .form .links p
+  {
+     line-height: 2.5
+  }
+
+.form .links p img
+  {
+	   padding-right: 25px;
+  }
+
+  .footer
+  {
+	   width: 100%;
+	   height 150px;
+	   border-top: 1px solid #DDD;
+  }
+
+.footer p
+  {
+     line-height: 150px;
+	   font-family: Tahoma;
+	   color: #777;
+     text-align: center;
+  }
+
+
+ /* footer */
+.footer
+{
+    width: 100%;
+    height: 150px;
+    border-top: 1px solid #DDD;
+    float: right;
+}
+
+.footer p
+{
+    text-align: center;
+    line-height: 150px;
+    font-family: Tahoma;
+    color: #777;
+    
+}
