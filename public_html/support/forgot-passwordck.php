@@ -24,7 +24,7 @@ $$key = $val;
 <title>مركز لندن لتكنولوجيا المعلومات واللغات</title>
 <meta name="GENERATOR" content="Arachnophilia 4.0">
 <meta name="FORMATTER" content="Arachnophilia 4.0">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta charset="utf-8">
 
 </head>
 
