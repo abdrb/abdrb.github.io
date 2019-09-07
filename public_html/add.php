@@ -8,7 +8,7 @@ require('login.php');
 
  if (!$send) { ?>
 <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+    <meta charset="utf-8">
     <meta http-equiv="no-cache" content>
     <meta http-equiv="Expires" content="-1">
     <meta http-equiv="Cache-Control" content="no-cache">

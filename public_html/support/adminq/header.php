@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Language" content="ar-sa">
 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta charset="utf-8">
 <title>لوحة تحكم</title>
 </head>
 
