@@ -2,7 +2,7 @@
 <html dir="rtl">
 
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
 <title>בזֹֽ Êֽßד</title>
 </head>
 
