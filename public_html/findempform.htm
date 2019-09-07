@@ -1,0 +1,408 @@
+<html dir="rtl">
+<head>
+<link rel="shortcut icon" href="/favicon.ico">
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<title>طلب موظف</title>
+<SCRIPT LANGUAGE="JavaScript" SRC="OptionTransfer.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+var opt = new OptionTransfer("list1","list2");
+opt.setAutoSort(false);
+opt.setDelimiter(",");
+opt.setStaticOptionRegex("^(Bill|Bob|Matt)$");
+opt.saveRemovedLeftOptions("removedLeft");
+opt.saveRemovedRightOptions("removedRight");
+opt.saveAddedLeftOptions("addedLeft");
+opt.saveAddedRightOptions("addedRight");
+opt.saveNewLeftOptions("newLeft");
+opt.saveNewRightOptions("newRight");
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+function openpricelist()
+{
+open("pricelist.htm", "win1", "width=180, height=250, directiries=no, location=no, menubar=no, scrollbars=no, status=no, toolbar=no, resizable=no ")
+}
+</SCRIPT>
+</head>
+
+<BODY BGCOLOR=#FFFFFF LINK="#00615F" VLINK="#00615F" ALINK="#00615F" onLoad="opt.init(document.forms[0])" background="images/lcitwebsite_19.gif">
+
+<form action="findemp.php" method="post">
+<div align="center">
+<table border="0" width="382" id="table1" style="color: #000080; font-family: Tahoma; font-size: 8pt" cellspacing="1">
+	<tr>
+		<td width="378" colspan="3">
+		<p align="center">طلب موظف مؤهل </td>
+	</tr>
+	<tr>
+		<td width="378" colspan="3">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="378" colspan="3"><span lang="ar-ye">خدمة توظيف الطلاب:</span></td>
+	</tr>
+	<tr>
+		<td width="185">&nbsp;</td>
+		<td width="190" colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="185"><span lang="ar-ye">اسمك أو اسم شركتك أو جهة العمل:</span></td>
+		<td width="190" colspan="2"><input type="text" name="name" size="25" /><font color="#FF0000">*</font></td>
+	</tr>
+	<tr>
+		<td width="185"><span lang="ar-sa">رقم تلفون شركتك أو جهة العمل:</span></td>
+		<td width="190" colspan="2"><input type="text" name="T1" size="17"><font color="#FF0000">*</font></td>
+	</tr>
+	<tr>
+		<td width="185"><span lang="ar-sa">رقم فاكس شركتك:</span></td>
+		<td width="190" colspan="2"><input type="text" name="T2" size="17"></td>
+	</tr>
+	<tr>
+		<td width="185"><span lang="ar-sa">رقم تلفونك الشخصي:</span></td>
+		<td width="190" colspan="2"><input type="text" name="T3" size="17"></td>
+	</tr>
+	<tr>
+		<td width="378" colspan="3"><span lang="ar-sa">المساقات 
+		المطلوب اجتيازها:</span></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+		<p align="right">أنقر نقراً مزدوجاً فوق 
+الدورة أو الدبلوم المطلوب:&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="185">
+	<SELECT size="6" name="list2"  onDblClick="opt.transferLeft()" style="color: #000080; font-family: Tahoma; font-size: 8pt" dir="rtl" >
+  <OPTION value=" دبلوم إدارة تقنية الحاسوب "> دبلوم إدارة تقنية الحاسوب</OPTION>
+  <OPTION value=" دبلوم سكرتارية آلية ">دبلوم سكرتارية آلية</OPTION>
+  <OPTION value=" دبلوم صيانة ">دبلوم صيانة</OPTION>
+  <OPTION value=" دبلوم برمجة ">دبلوم برمجة</OPTION>
+  <OPTION value=" دبلوم شبكات ">دبلوم شبكات</OPTION>
+  <OPTION value=" دبلوم لغة إنجليزية ">دبلوم لغة إنجليزية</OPTION>
+<OPTION value=" ويندوز "> كمبيوتر, ويندوز</OPTION>
+	<OPTION value=" وورد " 
+ > كمبيوتر, وورد</OPTION><OPTION value=" إكسل "> كمبيوتر, إكسل</OPTION>
+	<OPTION value=" أكسس " 
+ > كمبيوتر, أكسس</OPTION><OPTION value=" باوربوينت "> كمبيوتر, باوربوينت</OPTION>
+	<OPTION value=" فرونت بيج " 
+ > كمبيوتر, فرونت بيج</OPTION><OPTION value=" أوت لوك "> كمبيوتر, أوت لوك</OPTION>
+	<OPTION value=" إنترنت " 
+ > كمبيوتر, إنترنت</OPTION><OPTION value=" فوتوشوب "> كمبيوتر, فوتوشوب</OPTION>
+	<OPTION value=" فيجول بيسك " 
+ > كمبيوتر, فيجول بيسك</OPTION><OPTION value="  صيانة SW "> كمبيوتر, صيانة SW</OPTION>
+	<OPTION value=" صيانة HW "> 
+	كمبيوتر, صيانة HW</OPTION><OPTION value=" طباعة إنجليزي "> كمبيوتر, طباعة 
+	إنجليزي</OPTION>
+	<OPTION value=" طباعة عربي "> 
+	كمبيوتر, طباعة عربي</OPTION><OPTION value=" فلاش " 
+ > كمبيوتر, فلاش</OPTION><OPTION value=" ثري دي ماكس "> كمبيوتر, ثري دي ماكس</OPTION>
+	<OPTION value=" شبكات " 
+ > كمبيوتر, شبكات</OPTION><OPTION value=" أوراكل "> كمبيوتر, أوراكل</OPTION>
+	<OPTION value="كمبيوتر, دفلوبر" 
+ > كمبيوتر, دفلوبر</OPTION><OPTION value=" C++ "> كمبيوتر, C++</OPTION>
+	<OPTION value=" فيجول ++C " 
+ > كمبيوتر, فيجول ++C</OPTION><OPTION value=" فوكس برو "> كمبيوتر, فوكس برو</OPTION>
+	<OPTION value=" فيجول فوكس برو " 
+ > كمبيوتر, فيجول فوكس برو</OPTION><OPTION value=" جيز "> كمبيوتر, جيز</OPTION>
+	<OPTION value=" جافا " 
+ > كمبيوتر, جافا</OPTION><OPTION value=" جافا سكربت "> كمبيوتر, جافا سكربت</OPTION>
+	<OPTION value=" بي أتش بي " 
+ > كمبيوتر, بي أتش بي</OPTION><OPTION value=" أتش تي أم إل "> كمبيوتر, أتش تي أم 
+	إل</OPTION>
+	<OPTION value=" أيه إس بي "> 
+	كمبيوتر, أيه إس بي</OPTION><OPTION value=" باسكال " 
+ > كمبيوتر, باسكال</OPTION><OPTION value=" أوتو كاد "> كمبيوتر, أوتو كاد</OPTION>
+	<OPTION value=" ستاد برو " 
+ > كمبيوتر, ستاد برو</OPTION><OPTION value=" تحليل نظم "> كمبيوتر, تحليل نظم</OPTION>
+	<OPTION value=" نوفل " 
+ > كمبيوتر, نوفل</OPTION><OPTION value=" يونكس "> كمبيوتر, يونكس</OPTION>
+	<OPTION value=" ويندوز2000 " 
+ > كمبيوتر, ويندوز2000</OPTION><OPTION value=" ويندوز إن تي "> كمبيوتر, ويندوز 
+	إن تي</OPTION>
+	<OPTION value=" دوز"> 
+	كمبيوتر, دوز</OPTION><OPTION value=" كورلدرو " 
+ > كمبيوتر, كورلدرو</OPTION><OPTION value=" تمهيدي 1 " >لغة إنجليزية, تمهيدي 1</OPTION>
+	<OPTION value=" تمهيدي 2 " >لغة إنجليزية, تمهيدي 2</OPTION>
+	<OPTION value=" مبتدى 1 " 
+  >لغة إنجليزية, مبتدى 1</OPTION><OPTION value=" مبتدى 2 " >لغة إنجليزية, مبتدى 
+	2</OPTION>
+	<OPTION value=" مبتدى 3 " >
+	لغة إنجليزية, مبتدى 3</OPTION><OPTION value=" متوسط A 1 " 
+  >لغة إنجليزية, متوسط A 1</OPTION><OPTION value=" متوسط 1 B " >لغة إنجليزية, 
+	متوسط 1 B</OPTION>
+	<OPTION value=" متوسط 1 C " >
+	لغة إنجليزية, متوسط 1 C</OPTION>
+	<OPTION value=" متوسط 2 A " 
+  >لغة إنجليزية, متوسط 2 A</OPTION><OPTION value=" متوسط 2 B " >لغة إنجليزية, 
+	متوسط 2 B</OPTION>
+	<OPTION value=" متوسط 2 C " >
+	لغة إنجليزية, متوسط 2 C</OPTION>
+	<OPTION value=" متقدم 3 A " 
+  >لغة إنجليزية, متقدم 3 A</OPTION><OPTION value=" متقدم 3 B " >لغة إنجليزية, 
+	متقدم 3 B</OPTION>
+	<OPTION value=" متقدم 3 C " >
+	لغة إنجليزية, متقدم 3 C</OPTION>
+	<OPTION value=" متقدم عالي " 
+  >لغة إنجليزية, متقدم عالي</OPTION><OPTION value=" متقدم عالي " >
+	لغة إنجليزية, متقدم عالي</OPTION>
+	<OPTION value=" متقدم عالي " >
+	لغة إنجليزية, متقدم عالي</OPTION>
+	<OPTION value=" قواعد اللغة " 
+  >لغة إنجليزية, قواعد اللغة</OPTION><OPTION value=" محادثة " 
+  >لغة إنجليزية, محادثة</OPTION>
+  <OPTION value=" لغة إنجليزية ">مناهج دراسية، لغة إنجليزية</OPTION>
+  <OPTION value=" رياضيات ">مناهج دراسية، رياضيات</OPTION>
+  <OPTION value=" فيزياء ">مناهج دراسية، فيزياء</OPTION>
+  <OPTION value=" فرنسي ">لغات، فرنسي</OPTION>
+  <OPTION value=" الأحرف ألأبجدية ">لغات، الأحرف ألأبجدية</OPTION>
+  </SELECT></td>
+		<td width="190" colspan="2">
+	<p align="center">
+	<SELECT NAME="list1" MULTIPLE SIZE=6 onDblClick="opt.transferRight()" style="font-family: Tahoma; font-size: 8pt; color: #000080" dir="rtl">
+	</SELECT></td>
+	</tr>
+	<tr>
+		<td width="185" height="23">
+		<p align="center">
+		<INPUT TYPE="button" NAME="left" VALUE="أختر &gt;&gt;" ONCLICK="opt.transferLeft()" style="font-family: Tahoma; font-size: 8pt; color: #000080"></td>
+		<td width="190" height="23" colspan="2">
+		<p align="center">
+		<INPUT TYPE="button" NAME="right1" VALUE="&lt;&lt; إلغاء" ONCLICK="opt.transferRight()" style="font-family: Tahoma; font-size: 8pt; color: #000080">&nbsp; <INPUT TYPE="button" NAME="right" VALUE="&lt;&lt; إلغاء الكل" ONCLICK="opt.transferAllRight()" style="color: #000080; font-family: Tahoma; font-size: 8pt"></td>
+	</tr>
+	<tr>
+		<td width="378" colspan="3" height="15">
+
+المساقات المحددة هي:</td>
+	</tr>
+	<tr>
+		<td colspan="3" height="19">
+<INPUT TYPE="text" NAME="newLeft" VALUE="" SIZE=69 style="font-family: Tahoma; font-size: 8pt; color: #000080; border: 1px solid #000080; "></td>
+	</tr>
+	<tr>
+		<td width="185"><span lang="ar-ye">البلد المطلوب العمل به &quot;مقر الشركة&quot;</span>:</td>
+		<td width="190" colspan="2">
+	
+	<select name="L1" size="1" align="texttop" class="aTXT" dir="rtl" style="font-family: Tahoma; color: #000080; font-size: 8pt">
+						<option value="">-إختر-</option>
+						<option value="Yemen">اليمن</option>
+						<option value="Saudi Arabia">السـعودية</option>
+						<option value="Oman">عُمان</option>
+						<option value="United Arab Emirates">الامارات العربية 
+						المتحدة</option>
+						<option value="Kuwait">الكويت</option>
+						<option value="Bahrain">البحرين</option>
+						<option value="Qatar">قطر</option>
+						<option value="Egypt">مصر</option>
+						<option value="Algeria">الجزائر</option>
+						<option value="Djibouti">جيبوتي</option>
+						<option value="Ethiopia">أثيوبيا</option>
+						<option value="Eritrea">أريتريا</option>
+						<option value="Iran">إيران</option>
+						<option value="Iraq">العراق</option>
+						<option value="Jordan">الأردن</option>
+						<option value="Lebanon">لبنان</option>
+						<option value="Libya">ليبيا</option>
+						<option value="Mali">دولة مالي</option>
+						<option value="Mauritania">موريتانيا</option>
+						<option value="Morocco">المغرب</option>
+						<option value="Palestine">فلسطين</option>
+						<option value="Somalia">الصومال</option>
+						<option value="Sudan">السودان</option>
+						<option value="Syria">سوريا</option>
+						<option value="Tunisia">تونس</option>
+						<option value="">-------------------</option>
+						<option value="Afghanistan">Afghanistan</option>
+						<option value="Albania">Albania</option>
+						<option value="Anguilla">Anguilla</option>
+						<option value="Antigua">Antigua</option>
+						<option value="Argentina">Argentina</option>
+						<option value="Armenia">Armenia</option>
+						<option value="Aruba">Aruba</option>
+						<option value="Australia">Australia</option>
+						<option value="Austria">Austria</option>
+						<option value="Azerbaijan">Azerbaijan</option>
+						<option value="Bahamas">Bahamas</option>
+						<option value="Bangladesh">Bangladesh</option>
+						<option value="Barbados">Barbados</option>
+						<option value="Belarus">Belarus</option>
+						<option value="Belgium">Belgium</option>
+						<option value="Belize">Belize</option>
+						<option value="Bermuda">Bermuda</option>
+						<option value="Bolivia">Bolivia</option>
+						<option value="Bosnia">Bosnia</option>
+						<option value="Botswana">Botswana</option>
+						<option value="Brazil">Brazil</option>
+						<option value="British Virgin Islands">British Virgin 
+						Islands</option>
+						<option value="Brunei Darussalam">Brunei Darussalam</option>
+						<option value="Bulgaria">Bulgaria</option>
+						<option value="Cote d Ivoire">Cote d Ivoire</option>
+						<option value="Cambodia">Cambodia</option>
+						<option value="Cameroon">Cameroon</option>
+						<option value="Canada">Canada</option>
+						<option value="Cayman Islands,">Cayman Islands,</option>
+						<option value="Channel Islands">Channel Islands</option>
+						<option value="Chile">Chile</option>
+						<option value="China">China</option>
+						<option value="Colombia">Colombia</option>
+						<option value="Comoros">Comoros</option>
+						<option value="Cook Islands">Cook Islands</option>
+						<option value="Costa Rica">Costa Rica</option>
+						<option value="Croatia">Croatia</option>
+						<option value="Cyprus">Cyprus</option>
+						<option value="Czech Republic">Czech Republic</option>
+						<option value="Denmark">Denmark</option>
+						<option value="Dominican Republic">Dominican Republic</option>
+						<option value="Ecuador">Ecuador</option>
+						<option value="El Salvador">El Salvador</option>
+						<option value="Estonia">Estonia</option>
+						<option value="Finland">Finland</option>
+						<option value="France">France</option>
+						<option value="Gabon">Gabon</option>
+						<option value="Germany">Germany</option>
+						<option value="Ghana">Ghana</option>
+						<option value="Gibraltar">Gibraltar</option>
+						<option value="Greece">Greece</option>
+						<option value="Greenland">Greenland</option>
+						<option value="Guatemala">Guatemala</option>
+						<option value="Guinea">Guinea</option>
+						<option value="Guyana">Guyana</option>
+						<option value="Haiti">Haiti</option>
+						<option value="Honduras">Honduras</option>
+						<option value="Hong Kong">Hong Kong</option>
+						<option value="Hungary">Hungary</option>
+						<option value="Iceland">Iceland</option>
+						<option value="India">India</option>
+						<option value="Indonesia">Indonesia</option>
+						<option value="Ireland">Ireland</option>
+						<option value="Isle of Man">Isle of Man</option>
+						<option value="Italy">Italy</option>
+						<option value="Jamaica">Jamaica</option>
+						<option value="Japan">Japan</option>
+						<option value="Kenya">Kenya</option>
+						<option value="Kingdom of Swaziland">Kingdom of 
+						Swaziland</option>
+						<option value="Korea">Korea</option>
+						<option value="Laos">Laos</option>
+						<option value="Latvia">Latvia</option>
+						<option value="Liechtenstein">Liechtenstein</option>
+						<option value="Lithuania">Lithuania</option>
+						<option value="Luxembourg">Luxembourg</option>
+						<option value="Malaysia">Malaysia</option>
+						<option value="Malta">Malta</option>
+						<option value="Mauritius">Mauritius</option>
+						<option value="Mexico">Mexico</option>
+						<option value="Monaco">Monaco</option>
+						<option value="Mongolia">Mongolia</option>
+						<option value="Myanmar">Myanmar</option>
+						<option value="Nepal">Nepal</option>
+						<option value="The Netherlands">The Netherlands</option>
+						<option value="Netherlands Antilles">Netherlands 
+						Antilles</option>
+						<option value="New Zealand">New Zealand</option>
+						<option value="Nicaragua">Nicaragua</option>
+						<option value="Nigeria">Nigeria</option>
+						<option value="Northern Ireland">Northern Ireland</option>
+						<option value="Norway">Norway</option>
+						<option value="Pakistan">Pakistan</option>
+						<option value="Papua New Guinea">Papua New Guinea</option>
+						<option value="Paraguay">Paraguay</option>
+						<option value="Peru">Peru</option>
+						<option value="Poland">Poland</option>
+						<option value="Portugal">Portugal</option>
+						<option value="Panama">Panama</option>
+						<option value="Philippines">Philippines</option>
+						<option value="Puerto Rico">Puerto Rico</option>
+						<option value="Romania">Romania</option>
+						<option value="Russia">Russia</option>
+						<option value="Saint Kitts and Nevis">Saint Kitts and 
+						Nevis</option>
+						<option value="Saint Vincent/Grenadines">Saint 
+						Vincent/Grenadines</option>
+						<option value="Scotland">Scotland</option>
+						<option value="Senegal Republic">Senegal Republic</option>
+						<option value="Sierra Leone">Sierra Leone</option>
+						<option value="Singapore">Singapore</option>
+						<option value="Slovakia">Slovakia</option>
+						<option value="Slovenia">Slovenia</option>
+						<option value="South Africa">South Africa</option>
+						<option value="Spain">Spain</option>
+						<option value="Sri Lanka">Sri Lanka</option>
+						<option value="Sweden">Sweden</option>
+						<option value="Switzerland">Switzerland</option>
+						<option value="Taiwan">Taiwan</option>
+						<option value="Tajikistan">Tajikistan</option>
+						<option value="Tanzania">Tanzania</option>
+						<option value="Thailand">Thailand</option>
+						<option value="Trinidad and Tobago">Trinidad and Tobago</option>
+						<option value="Turkey">Turkey</option>
+						<option value="Turks Caicos Islands">Turks Caicos 
+						Islands</option>
+						<option value="Uganda">Uganda</option>
+						<option value="Ukraine">Ukraine</option>
+						<option value="United Kingdom">United Kingdom</option>
+						<option value="United States">United States</option>
+						<option value="Uruguay">Uruguay</option>
+						<option value="Uzbekistan">Uzbekistan</option>
+						<option value="Venezuela">Venezuela</option>
+						<option value="Vietnam">Vietnam</option>
+						<option value="Yugoslavia">Yugoslavia</option>
+						<option value="Zambia">Zambia</option>
+					</select></td>
+	</tr>
+	<tr>
+		<td width="185"><span lang="ar-ye">نوع الموظف المطلوب</span>:</td>
+		<td width="190" colspan="2">
+	<select size="1" name="L2" style="font-family: Tahoma; font-size: 8pt; color: #000080">
+	<option>ذكر</option>
+	<option>أنثى</option>
+	</select></td>
+	</tr>
+	<tr>
+	<td width="185"><span lang="ar-ye">المؤهل المطلوب</span>:</td>
+	<td width="190" colspan="2"><input type="text" name="email" size="23"></td>
+	</tr>
+	<tr>
+		<td width="185">
+&nbsp;</td>
+		<td width="190" colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="3">إذا كانت لديك <span lang="ar-ye">أية ملاحظات أو</span> شروط أكتبها ضمن
+		<span lang="ar-ye">الوصف</span>:</td>
+	</tr>
+	<tr>
+		<td colspan="3"><span lang="ar-sa">الوصف:</span><br />
+<textarea rows="5" cols="44" name="comments"></textarea>
+</td>
+	</tr>
+	<tr>
+<td align="center" width="185" valign="middle" height="34">
+<p align="left">أدخل الكود:</td>
+<td align="center" width="109" height="34">
+<p align="left">&gt;&gt;<iframe name="I1" width="63" height="23" src="lcitcodeno.php" scrolling="no" align="center" border="0" frameborder="0" marginwidth="5" marginheight="0" style="font-family: Tahoma; font-size: 12pt; color: #000080; ">مركز لندن لـ تكنولوجيا المعلومات - اليمن عدن ( مركز تدريب كمبيوتر و انترنت و لغات ) 
+دورات تدريبية في مجال تقنية المعلومات واللغات: برامج تطبيقية، لغات برمجة، شبكات، صيانة، لغة إنجليزية 
+</iframe>
+<a target="I1" title="تحديث الكود" href="lcitcodeno.php"><img border="0" src="images/refreshicon.jpg" width="16" height="16"></a>
+</td>
+<td align="center" width="78" height="34">
+<p align="right">
+<input name="txtcd" size="6" style="float: right"><font color="#FF0000">*</font></td>
+	</tr>
+	<tr>
+		<td colspan="3" style="padding: 6px">
+		<p align="center">
+<input type="submit" value="أطلب الآن" style="font-family: Tahoma; font-size: 8pt; color: #000080" /></td>
+	</tr>
+</table>
+</div>
+<INPUT TYPE="hidden" NAME="addedRight" VALUE="" SIZE=70>
+<INPUT TYPE="hidden" NAME="addedLeft" VALUE="" SIZE=70>
+<INPUT TYPE="hidden" NAME="removedRight" VALUE="" SIZE=70>
+<INPUT TYPE="hidden" NAME="removedLeft" VALUE="" SIZE=70>
+<INPUT TYPE="hidden" NAME="regex" SIZE="15" VALUE="^(Bill|Bob|Matt)$" onChange="opt.setStaticOptionRegex(this.value);opt.update()">
+<INPUT TYPE="hidden" NAME="delimiter" VALUE="," SIZE=6 MAXLENGTH=1 onChange="opt.setDelimiter(this.value);opt.update()">
+<INPUT TYPE="hidden" NAME="newRight" VALUE="" SIZE=70>&nbsp;<BR>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?php
+// „ «· ⁄œÌ· » «—ÌŒ 13 «»—Ì· 2004„
+// ana@abu3amer.com    »—„Ã… √»Ê⁄«„—
+//www.abu3amer.com
+//           ***** ”ﬂ—»  «·«Âœ«¡«  2.0 ******
+// „ «” Œœ«„ œ«·… ·⁄œ„ ﬁ»Ê· «ﬂÊ«œ «·Â „· ⁄‰œ «·⁄—÷
+// „  ⁄œÌ· «·”—⁄… »«·«÷«›… ⁄‰œ „—Ê— «·„«Ê” Ì Êﬁ› «·‘—Ìÿ
+//·„“Ìœ „‰ «·„⁄·Ê„«  Ì„ﬂ‰ﬂ „—«”· Ì ⁄»— «·»—Ìœ «·«·ﬂ —Ê‰Ì
+//«·—Ã«¡ ⁄œ„ «” Œœ«„ «·”ﬂ—»  ›Ì„« Ì€÷» «··Â , Ê⁄œ„ Õ–› «·ÕﬁÊﬁ „‰ «·”ﬂ—» 
+
+include"header.php";
+
+include"config.php";
+
+$id = $_GET['id'];
+if (!$id){
+echo"·„  ﬁ„ »«Œ Ì«— «·«Âœ«¡";
+}else{
+
+ $con=mysql_connect($host,$dbuser,$dbpass)
+ or die("CONNECTION FAILED");
+ mysql_select_db($dbname,$con)
+ or die("can't conect to DB");
+
+ $query =mysql_query("DELETE FROM abu3amer WHERE id=$id")
+  or die("can't delete the abu3amer");
+
+  if (!$query){
+  echo"<center>ÌÊÃœ „‘ﬂ·… ›Ì «·Õ–› ... Õ«Ê· „—… √Œ—Ï </a></center><META HTTP-EQUIV=\"Refresh\" Content=0;URL=\"admin_show.php\">";
+  }else{
+  echo"<center> „ «·Õ–› »‰Ã«Õ </a></center><META HTTP-EQUIV=\"Refresh\" Content=0;URL=\"admin_show.php\">";
+    }}
+     include"footer.php";
+ ?>

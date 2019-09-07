@@ -1,0 +1,4 @@
+[28-Jan-2009 15:04:52] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/londonci/public_html/admingb/admin_show.php on line 15
+[31-Jan-2009 12:21:39] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/londonci/public_html/admingb/admin_show.php on line 28
+[31-Jan-2009 12:22:50] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/londonci/public_html/admingb/admin_show.php on line 28
+[31-Jan-2009 12:27:14] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/londonci/public_html/admingb/admin_show.php on line 28
