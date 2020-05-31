@@ -13,19 +13,18 @@ input {
 
 div {
 	width: 100%;
-	//display: inline-block; 
 	text-align: left;
 	margin-top: 20px;
 }</style>
 <script type="text/javascript" id="script">
 function getid(){
-	 w = document.getElementById("mnrot");
-	 a = document.getElementById("rots");
-	 h = document.getElementById("earth");
-	 c = document.getElementById("ven");
-	 b = document.getElementById("mer");
-mars = document.getElementById("mars");
-jupit = document.getElementById("jupiter");
+	w = document.getElementById("mnrot");
+	a = document.getElementById("rots");
+	h = document.getElementById("earth");
+	c = document.getElementById("ven");
+	b = document.getElementById("mer");
+	mars = document.getElementById("mars");
+	jupit = document.getElementById("jupiter");
 
 speed = 1000; //8640000
 funcw();
@@ -57,38 +56,38 @@ function funca(){
 }
 
 function funch(){
-		var i = 0;
-		setInterval(function(){
-		i++
-		h.value = i;
-		if (i == 360) 
-		{
-		i = 1;
-		}
-		}, speed);
+	var i = 0;
+	setInterval(function(){
+	i++
+	h.value = i;
+	if (i == 360) 
+	{
+	i = 1;
+	}
+	}, speed);
 }
 
 function funcc(){
 /*var i = 0;
-		setInterval(function(){
-		i++
-		c.value = i;
-		if (i == 300) 
-		{
-		i = 1;
-		}
-		}, speed);*/
+	setInterval(function(){
+	i++
+	c.value = i;
+	if (i == 300) 
+	{
+	i = 1;
+	}
+	}, speed);*/
 		
 		
-		var j = 0;
-		setInterval(function(){
-		j++
-		c.value = j;
-		if (j == 360) 
-		{
-		j = 1;
-		}
-		}, speed - (speed * 0.2));
+	var j = 0;
+	setInterval(function(){
+	j++
+	c.value = j;
+	if (j == 360) 
+	{
+	j = 1;
+	}
+	}, speed - (speed * 0.2));
 }
 
 function funcb(){
