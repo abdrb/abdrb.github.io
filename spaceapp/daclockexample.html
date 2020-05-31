@@ -1,0 +1,180 @@
+<html dir="ltr"><head><style type="text/css" id="style">
+.dv {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+input {
+	width: 100%;
+	margin: 0;
+}
+
+div {
+	width: 100%;
+	//display: inline-block; 
+	text-align: left;
+	margin-top: 20px;
+}</style>
+<script type="text/javascript" id="script">
+function getid(){
+	 w = document.getElementById("mnrot");
+	 a = document.getElementById("rots");
+	 h = document.getElementById("earth");
+	 c = document.getElementById("ven");
+	 b = document.getElementById("mer");
+mars = document.getElementById("mars");
+jupit = document.getElementById("jupiter");
+
+speed = 1000; //8640000
+funcw();
+funch();
+funcc();
+funcb();
+funcma();
+funcju();
+}
+
+function funcw(){
+var i = 0;
+var m = 1;
+setInterval(function(){
+i++
+w.value = i;
+if (i == 30) 
+{
+i = 0;
+m++;
+a.value = m;
+}
+if (m == 12) m = 0;
+}, speed);
+}
+
+function funca(){
+	
+}
+
+function funch(){
+		var i = 0;
+		setInterval(function(){
+		i++
+		h.value = i;
+		if (i == 360) 
+		{
+		i = 1;
+		}
+		}, speed);
+}
+
+function funcc(){
+/*var i = 0;
+		setInterval(function(){
+		i++
+		c.value = i;
+		if (i == 300) 
+		{
+		i = 1;
+		}
+		}, speed);*/
+		
+		
+		var j = 0;
+		setInterval(function(){
+		j++
+		c.value = j;
+		if (j == 360) 
+		{
+		j = 1;
+		}
+		}, speed - (speed * 0.2));
+}
+
+function funcb(){
+	/*var i = 0;
+	setInterval(function(){
+	i++
+	b.value = i;
+	if (i == 90) 
+	{
+	i = 1;
+	}
+	}, speed);*/
+	
+	var j = 0;
+	setInterval(function(){
+	j++
+	b.value = j;
+	if (j == 360) 
+	{
+	j = 1;
+	}
+	}, speed - (speed * 0.752));
+}
+
+function funcma(){
+	
+	var j = 0;
+	setInterval(function(){
+	j++
+	mars.value = j;
+	if (j == 360) 
+	{
+	j = 1;
+	}
+	}, speed - (speed * 0.3));
+}
+
+function funcju(){
+	
+	var j = 0;
+	setInterval(function(){
+	j++
+	jupit.value = j;
+	if (j == 360) 
+	{
+	j = 1;
+	}
+	}, speed - (speed * 0.5));
+}
+
+</script>
+</head><body onload="getid()"><div class="dv">
+<h2>Rotations of planets</h2>
+<h3>Digital A Clock Example</h3>
+<p>1 second = 1 day</p>
+<div>
+Moon's rotation
+</div>
+   <input type="text" id="mnrot">
+  <div>
+  Moon's rotations times
+  </div>
+     <input type="text" value="1" id="rots">       
+     <div> 
+     Mercury
+     </div>
+     <input type="text" id="mer">
+     
+     <div> 
+     Venus
+        </div>
+           <input type="text" id="ven">
+  <div>
+       Earth
+        </div>
+        <input type="text" id="earth">
+
+<div>
+Mars
+  </div>
+        <input type="text" id="mars">
+<div>
+Jupiter
+  </div>
+        <input type="text" id="jupiter">
+
+
+
+</body></html>
