@@ -18,34 +18,34 @@ div {
 }</style>
 <script type="text/javascript" id="script">
 function getid(){
-	w = document.getElementById("mnrot");
-	a = document.getElementById("rots");
-	h = document.getElementById("earth");
-	c = document.getElementById("ven");
-	b = document.getElementById("mer");
+	days = document.getElementById("mnrot");
+	month = document.getElementById("rots");
+	earth = document.getElementById("earth");
+	venu = document.getElementById("ven");
+	merq = document.getElementById("mer");
 	mars = document.getElementById("mars");
 	jupit = document.getElementById("jupiter");
 
 speed = 1000; //8640000
-funcw();
-funch();
-funcc();
-funcb();
-funcma();
-funcju();
+funcMoon();
+funcEarth();
+funcVenus();
+funcMerq();
+funcMars();
+funcJu();
 }
 
-function funcw(){
+function funcMoon(){
 var i = 0;
 var m = 1;
 setInterval(function(){
 i++
-w.value = i;
+days.value = i;
 if (i == 30) 
 {
 i = 0;
 m++;
-a.value = m;
+month.value = m;
 }
 if (m == 12) m = 0;
 }, speed);
@@ -55,11 +55,11 @@ function funca(){
 	
 }
 
-function funch(){
+function funcEarth(){
 	var i = 0;
 	setInterval(function(){
 	i++
-	h.value = i;
+	earth.value = i;
 	if (i == 360) 
 	{
 	i = 1;
@@ -67,7 +67,7 @@ function funch(){
 	}, speed);
 }
 
-function funcc(){
+function funcVenus(){
 /*var i = 0;
 	setInterval(function(){
 	i++
@@ -82,15 +82,15 @@ function funcc(){
 	var j = 0;
 	setInterval(function(){
 	j++
-	c.value = j;
+	venu.value = j;
 	if (j == 360) 
 	{
 	j = 1;
 	}
-	}, speed - (speed * 0.2));
+	}, (speed * 0.3));
 }
 
-function funcb(){
+function funcMerq(){
 	/*var i = 0;
 	setInterval(function(){
 	i++
@@ -104,15 +104,15 @@ function funcb(){
 	var j = 0;
 	setInterval(function(){
 	j++
-	b.value = j;
+	merq.value = j;
 	if (j == 360) 
 	{
 	j = 1;
 	}
-	}, speed - (speed * 0.752));
+	}, (speed * 0.1));
 }
 
-function funcma(){
+function funcMars(){
 	
 	var j = 0;
 	setInterval(function(){
@@ -122,10 +122,10 @@ function funcma(){
 	{
 	j = 1;
 	}
-	}, speed - (speed * 0.3));
+	}, (speed * 2));
 }
 
-function funcju(){
+function funcJu(){
 	
 	var j = 0;
 	setInterval(function(){
@@ -135,7 +135,7 @@ function funcju(){
 	{
 	j = 1;
 	}
-	}, speed - (speed * 0.5));
+	}, (speed * 12));
 }
 
 </script>
