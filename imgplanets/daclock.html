@@ -4,7 +4,7 @@
 height: 200px;
 position: absolute;
 left: 25%;
-top: 25%;
+top: 292px;
 }
 #sun_{
 width: 200px;
@@ -60,7 +60,7 @@ function getid(){
 	mars = document.getElementById("mars");
 	jupit = document.getElementById("jupiter");
 
-speed = 1; //8640000
+speed = 100; //8640000
 funcMoon();
 funcEarth();
 funcVenus();
@@ -104,16 +104,6 @@ function funcEarth(){
 }
 
 function funcVenus(){
-/*var i = 0;
-	setInterval(function(){
-	i++
-	c.value = i;
-	if (i == 300) 
-	{
-	i = 1;
-	}
-	}, speed);*/
-		
 		
 	var j = 0;
 	setInterval(function(){
@@ -129,15 +119,6 @@ function funcVenus(){
 }
 
 function funcMerq(){
-	/*var i = 0;
-	setInterval(function(){
-	i++
-	b.value = i;
-	if (i == 90) 
-	{
-	i = 1;
-	}
-	}, speed);*/
 	
 	var j = 0;
 	setInterval(function(){
@@ -204,9 +185,8 @@ function funcJu(){
 </div>
 
 <div class="dv">
-<h2>Rotations of planets</h2>
-<h3>Digital Astronomical Clock Example</h3>
-<p>1 millisecond = 1 day</p>
+<h2>Digital Astronomical Clock Example</h2>
+<p>100 milliseconds = 1 day</p>
 <div>
 Moon's rotation
 </div>
