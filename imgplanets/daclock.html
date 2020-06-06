@@ -1,4 +1,38 @@
-<html dir="ltr"><head><style type="text/css" id="style">
+<html dir="ltr"><head>
+<style type="text/css" id="style">
+.planets {
+height: 200px;
+position: absolute;
+left: 25%;
+top: 292px;
+}
+#sun_{
+width: 200px;
+z-index: 0;
+}
+#marq_{
+width: 200px;
+z-index: 1;
+}
+#venu_{
+width: 200px;
+z-index: 2;
+}
+#earth_{
+width: 200px;
+z-index: 3;
+}
+#mars_{
+width: 200px;
+z-index: 4;
+}
+#jupit_{
+width: 200px;
+z-index: 5;
+}
+.planets > img {
+width: 100%;
+}
 .dv {
     display: block;
     margin-left: auto;
@@ -26,7 +60,7 @@ function getid(){
 	mars = document.getElementById("mars");
 	jupit = document.getElementById("jupiter");
 
-speed = 1000; //8640000
+speed = 1; //8640000
 funcMoon();
 funcEarth();
 funcVenus();
@@ -60,6 +94,8 @@ function funcEarth(){
 	setInterval(function(){
 	i++
 	earth.value = i;
+	document.getElementById("earth_").style.transform = "rotate(-" + i +"deg)"; 
+	
 	if (i == 360) 
 	{
 	i = 1;
@@ -83,6 +119,8 @@ function funcVenus(){
 	setInterval(function(){
 	j++
 	venu.value = j;
+	document.getElementById("venu_").style.transform = "rotate(-" + j +"deg)"; 
+	
 	if (j == 360) 
 	{
 	j = 1;
@@ -105,6 +143,8 @@ function funcMerq(){
 	setInterval(function(){
 	j++
 	merq.value = j;
+	document.getElementById("marq_").style.transform = "rotate(-" + j +"deg)"; 
+	
 	if (j == 360) 
 	{
 	j = 1;
@@ -118,6 +158,8 @@ function funcMars(){
 	setInterval(function(){
 	j++
 	mars.value = j;
+	document.getElementById("mars_").style.transform = "rotate(-" + j +"deg)"; 
+	
 	if (j == 360) 
 	{
 	j = 1;
@@ -131,6 +173,8 @@ function funcJu(){
 	setInterval(function(){
 	j++
 	jupit.value = j;
+	document.getElementById("jupit_").style.transform = "rotate(-" + j +"deg)"; 
+	
 	if (j == 360) 
 	{
 	j = 1;
@@ -139,10 +183,30 @@ function funcJu(){
 }
 
 </script>
-</head><body onload="getid()"><div class="dv">
+</head><body onload="getid()">
+<div id="sun_" class="planets">
+<img src="sun.gif">
+</div>
+<div id="marq_" class="planets">
+<img src="merq.gif">
+</div>
+<div id="venu_" class="planets">
+<img src="venu.gif">
+</div>
+<div id="earth_" class="planets">
+<img src="earth.gif">
+</div>
+<div id="mars_" class="planets">
+<img src="mars.gif">
+</div>
+<div id="jupit_" class="planets">
+<img src="jupit.gif">
+</div>
+
+<div class="dv">
 <h2>Rotations of planets</h2>
 <h3>Digital Astronomical Clock Example</h3>
-<p>1 second = 1 day</p>
+<p>1 millisecond = 1 day</p>
 <div>
 Moon's rotation
 </div>
@@ -174,8 +238,6 @@ Jupiter
   </div>
         <input type="text" id="jupiter">
 <div>
-<a href="spaceapp.html">Database example</a>
-<a href="../imgplanets/daclock.html">View planets</a>
-
+<a href="../spaceapp/spaceapp.html">Database example</a>
 </div>
 </body></html>
