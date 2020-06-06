@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+.planets {
+height: 200px;
+position: absolute;
+left: 50%;
+top: 0px;
+}
+#sun{
+width: 200px;
+z-index: 0;
+}
+#marq{
+width: 200px;
+z-index: 1;
+}
+#venu{
+width: 200px;
+z-index: 2;
+}
+#earth{
+width: 200px;
+z-index: 3;
+}
+#mars{
+width: 200px;
+z-index: 4;
+}
+#jupit{
+width: 200px;
+z-index: 5;
+}
+.planets > img {
+width: 100%;
+}
+</style>
+<script type="text/javascript">
+function func(){
+
+	var j = 0;
+	setInterval(function(){
+	j++
+	document.getElementById("marq").style.transform = "rotate(-" + j +"deg)"; 
+	document.getElementById("venu").style.transform = "rotate(-" + j +"deg)"; 
+	document.getElementById("earth").style.transform = "rotate(-" + j +"deg)"; 
+	document.getElementById("mars").style.transform = "rotate(-" + j +"deg)"; 
+	document.getElementById("jupit").style.transform = "rotate(-" + j +"deg)"; 
+	
+	if (j == 360) 
+	{
+	j = 1;
+	}
+	}, 50);
+
+}
+</script>
+</head>
+<body onload="func()">
+<div id="sun" class="planets">
+<img src="sun.gif">
+</div>
+<div id="marq" class="planets">
+<img src="merq.gif">
+</div>
+<div id="venu" class="planets">
+<img src="venu.gif">
+</div>
+<div id="earth" class="planets">
+<img src="earth.gif">
+</div>
+<div id="mars" class="planets">
+<img src="mars.gif">
+</div>
+<div id="jupit" class="planets">
+<img src="jupit.gif">
+</div>
+</body>
+</html>
