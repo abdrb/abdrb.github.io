@@ -11,11 +11,17 @@ input {
 	margin: 0;
 }
 
-div {
+div :not(#clock){
 	width: 100%;
 	text-align: left;
 	margin-top: 20px;
-}</style>
+}
+#clock {
+display: inline-block;
+border: 2px solid black;
+background-color: #cccccc;
+{
+</style>
 <script type="text/javascript" id="script">
 function getid(){
 	days = document.getElementById("mnrot");
@@ -25,6 +31,7 @@ function getid(){
 	merq = document.getElementById("mer");
 	mars = document.getElementById("mars");
 	jupit = document.getElementById("jupiter");
+	clock = document.getElementById("clock");
 
 speed = 1000; //8640000
 funcMoon();
@@ -41,7 +48,7 @@ var m = 1;
 setInterval(function(){
 i++
 days.value = i;
-if (i == 29) 
+if (i == 30) 
 {
 i = 0;
 m++;
@@ -60,6 +67,7 @@ function funcEarth(){
 	setInterval(function(){
 	i++
 	earth.value = i;
+	
 	if (i == 360) 
 	{
 	i = 1;
@@ -73,6 +81,7 @@ function funcVenus(){
 	setInterval(function(){
 	j++
 	venu.value = j;
+	
 	if (j == 360) 
 	{
 	j = 1;
@@ -86,6 +95,7 @@ function funcMerq(){
 	setInterval(function(){
 	j++
 	merq.value = j;
+	clock.innerHTML = merq.value +":"+ venu.value +":"+ earth.value +":"+ mars.value +":"+ jupit.value;
 	if (j == 360) 
 	{
 	j = 1;
@@ -99,6 +109,7 @@ function funcMars(){
 	setInterval(function(){
 	j++
 	mars.value = j;
+	
 	if (j == 360) 
 	{
 	j = 1;
@@ -121,9 +132,10 @@ function funcJu(){
 
 </script>
 </head><body onload="getid()"><div class="dv">
-<h2>Rotations of planets</h2>
 <h3>Digital Astronomical Clock Example</h3>
-<p>1 second = 1 Rotation (Degree\Day)</p>
+<div id="clock"></div>
+<h3>Rotations of planets</h3>
+<p>1 second = 1 Degree\ Day</p>
 <div>
 Moon's rotation
 </div>
@@ -135,25 +147,25 @@ Moon's rotation
      <div> 
      Mercury
      </div>
-     <input type="text" id="mer">
+     <input type="text" id="mer" value="0">>
      
      <div> 
      Venus
         </div>
-           <input type="text" id="ven">
+           <input type="text" id="ven" value="0">>
   <div>
        Earth
         </div>
-        <input type="text" id="earth">
+        <input type="text" id="earth" value="0">>
 
 <div>
 Mars
   </div>
-        <input type="text" id="mars">
+        <input type="text" id="mars" value="0">>
 <div>
 Jupiter
   </div>
-        <input type="text" id="jupiter">
+        <input type="text" id="jupiter" value="0">
 <div>
 <a href="../imgplanets/daclock.html">View planets</a>
 <a href="spaceapp.html">Database example</a>
