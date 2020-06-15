@@ -1,0 +1,200 @@
+<html dir="ltr"><head><style type="text/css" id="style">
+
+* {
+  box-sizing:border-box;
+}
+body {
+  margin:20px;
+  background-color: black;
+  color: white;
+}
+input {
+  width:100px;
+  padding:10px;
+  border-radius:15px;
+  border:0;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+  height:10px;
+  margin: 5px;
+}
+#loc > input {
+  width:50px;
+  padding:5px;
+  border-radius:0px;
+  border:0;
+  box-shadow:0px;
+  height:30px;
+  margin: 0px;
+  text-align: center;
+}
+section {
+  witdh: 100%;
+  height: 200px;
+  
+}
+.planets {
+position: absolute;
+}
+#sun_{
+width: 200px;
+z-index: 0;
+}
+#marq_{
+width: 200px;
+z-index: 1;
+}
+#venu_{
+width: 200px;
+z-index: 2;
+}
+#earth_{
+width: 200px;
+z-index: 3;
+}
+#mars_{
+width: 200px;
+z-index: 4;
+}
+#jupit_{
+width: 200px;
+z-index: 5;
+}
+.planets > img {
+width: 100%;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  witdh: 200px;
+  height: 200px;
+}
+#mer {
+background-color: #ff8822;
+}
+#ven {
+background-color: #ffff99;
+}
+#earth {
+background-color: #0044ff;
+}
+#mars {
+background-color: #aa1100;
+}
+#jupiter {
+background-color: #ff9966;
+}
+</style>
+
+</head><body onload="planets()"><div class="space">
+<p>
+Adding new data for today:
+</p>
+<div id="now">
+</div>
+<section>
+<div id="sun_" class="planets">
+<img src="sun.gif">
+</div>
+<div id="marq_" class="planets">
+<img src="merq.gif">
+</div>
+<div id="venu_" class="planets">
+<img src="venu.gif">
+</div>
+<div id="earth_" class="planets">
+<img src="earth.gif">
+</div>
+<div id="mars_" class="planets">
+<img src="mars.gif">
+</div>
+<div id="jupit_" class="planets">
+<img src="jupit.gif">
+</div>
+</section>
+<!--<div>
+Moon's rotation
+</div>-->
+   <input type="hidden" value="5" id="day">
+ <!-- <div>
+  Moon's rotations times
+  </div>-->
+     <input type="hidden" value="1" id="month">
+  <div> 
+   Locations of the planets:
+  </div>
+  <div id="loc">
+        <input type="hidden" value="" id="moon">
+        <input type="text" value="0" id="mer" onkeyup="planets()">
+        <input type="text" value="0" id="ven" onkeyup="planets()">
+        <input type="text" value="0" id="earth" onkeyup="planets()">
+        <input type="text" value="0" id="mars" onkeyup="planets()">
+        <input type="text" value="0" id="jupiter" onkeyup="planets()">
+</div>
+<div>
+Country
+</div>
+        <input type="text" value="" id="country">
+<div>
+City
+  </div>
+        <input type="text" value="" id="city">
+<div>
+The natural phenomenon
+  </div>
+        <input type="text" value="" id="ac">
+<div>
+Temperature
+  </div>
+        <input type="text" value="" id="tem">
+
+<div>
+Humidity
+  </div>
+        <input type="text" value="" id="humi">
+
+<div>
+Rain
+  </div>
+        <input type="text" value="" id="rain">
+
+<script type="text/javascript">
+date = new Date();
+function planets(){
+    earth = document.getElementById("earth");
+	venu = document.getElementById("ven");
+	merq = document.getElementById("mer");
+	mars = document.getElementById("mars");
+	jupit = document.getElementById("jupiter");
+	now = document.getElementById("now");
+	m=Number(date.getMonth())+1;
+    now.innerHTML=date.getDate()+"/"+m+"/"+date.getFullYear();
+
+	earth.value = getDegree(1, 120);
+	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
+
+	venu.value = getDegree(0.0083333333, 120);
+    document.getElementById("venu_").style.transform = "rotate(-" + venu.value +"deg)"; 
+	    
+	merq.value = getDegree(0.0277777778, 321);
+    document.getElementById("marq_").style.transform = "rotate(-" + merq.value +"deg)"; 
+      
+    mars.value = getDegree(0.0001, 17);
+    document.getElementById("mars_").style.transform = "rotate(-" + mars.value +"deg)"; 
+	    
+	jupit.value = getDegree(0.00001, 63);
+    document.getElementById("jupit_").style.transform = "rotate(-" + jupit.value +"deg)"; 
+
+}
+
+function getDegree(n, d){
+date = new Date();
+days = (date.getFullYear()*12*30)+(date.getMonth()*30)+date.getDate()+d;
+deg = (days * n) + days;
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
+}
+</script>
+
+
+</body></html>
