@@ -39,7 +39,7 @@ position: absolute;
 width: 200px;
 z-index: 0;
 }
-#marq_{
+#merc_{
 width: 200px;
 z-index: 1;
 }
@@ -69,7 +69,7 @@ img {
   witdh: 200px;
   height: 200px;
 }
-#mer {
+#merc {
 background-color: #ff8822;
 }
 #ven {
@@ -96,7 +96,7 @@ Adding new data for today:
 <div id="sun_" class="planets">
 <img src="sun.gif">
 </div>
-<div id="marq_" class="planets">
+<div id="merc_" class="planets">
 <img src="merq.gif">
 </div>
 <div id="venu_" class="planets">
@@ -125,7 +125,7 @@ Moon's rotation
   </div>
   <div id="loc">
         <input type="hidden" value="" id="moon">
-        <input type="text" value="0" id="mer" onkeyup="onkey_up()">
+        <input type="text" value="0" id="merc" onkeyup="onkey_up()">
         <input type="text" value="0" id="ven" onkeyup="onkey_up()">
         <input type="text" value="0" id="earth" onkeyup="onkey_up()">
         <input type="text" value="0" id="mars" onkeyup="onkey_up()">
@@ -161,38 +161,40 @@ Rain
 
 <script type="text/javascript">
 date = new Date();
-
+    mm=Number(date.getMonth())+1;
+	dd=Number(date.getDate());
+	yy=Number(date.getFullYear());
+	
     earth = document.getElementById("earth");
 	venu = document.getElementById("ven");
-	merq = document.getElementById("mer");
+	merc = document.getElementById("merc");
 	mars = document.getElementById("mars");
 	jupit = document.getElementById("jupiter");
 	now = document.getElementById("now");
 
 function planets(){
-	m=Number(date.getMonth())+1;
-    now.innerHTML=date.getDate()+"/"+m+"/"+date.getFullYear();
-
-	earth.value = getDegree(0.0002, 259);
+	
+    now.innerHTML=dd+"/"+mm+"/"+yy;
+    
+	earth.value = (mm * 30) + dd + 15;
 	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
-
-	venu.value = getDegree(0.0083333333, 120);
+    
+    merc.value = getDegree(0.01, 268);
+    document.getElementById("merc_").style.transform = "rotate(-" + merc.value +"deg)"; 
+    
+	venu.value = getDegree(0.001, 25);
     document.getElementById("venu_").style.transform = "rotate(-" + venu.value +"deg)"; 
-	    
-	merq.value = getDegree(0.0277777778, 321);
-    document.getElementById("marq_").style.transform = "rotate(-" + merq.value +"deg)"; 
-      
-    mars.value = getDegree(0.0001, 17);
+	      
+    mars.value = getDegree(0.0001, 347);
     document.getElementById("mars_").style.transform = "rotate(-" + mars.value +"deg)"; 
 	    
-	jupit.value = getDegree(0.00001, 63);
+	jupit.value = getDegree(0.00001, 33);
     document.getElementById("jupit_").style.transform = "rotate(-" + jupit.value +"deg)"; 
 
 }
 
 function getDegree(n, d){
-date = new Date();
-days = (date.getFullYear()*12*30)+(date.getMonth()*30)+date.getDate()+d;
+days = (yy*12*30)+(mm*30)+dd+d;
 deg = (days * n) + days;
 while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
@@ -201,7 +203,7 @@ return Number(deg.toFixed(0));
 function onkey_up(){
 	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
     document.getElementById("venu_").style.transform = "rotate(-" + venu.value +"deg)"; 
-    document.getElementById("marq_").style.transform = "rotate(-" + merq.value +"deg)"; 
+    document.getElementById("merc_").style.transform = "rotate(-" + merc.value +"deg)"; 
     document.getElementById("mars_").style.transform = "rotate(-" + mars.value +"deg)"; 
     document.getElementById("jupit_").style.transform = "rotate(-" + jupit.value +"deg)"; 
 
