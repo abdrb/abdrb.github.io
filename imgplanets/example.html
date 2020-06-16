@@ -186,27 +186,33 @@ function planets(){
 	earth.value = (mm * 30) + dd + 15;
 	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
     
-    merc.value = getDegree(0.01, 268);
+    merc.value = getDegreeInner(0.4, 191);
     document.getElementById("merc_").style.transform = "rotate(-" + merc.value +"deg)"; 
     
-	venu.value = getDegree(0.001, 25);
+	venu.value = getDegreeInner(0.3, 256);
     document.getElementById("venu_").style.transform = "rotate(-" + venu.value +"deg)"; 
 	      
-    mars.value = getDegree(0.0001, 347);
+    mars.value = getDegreeOuter(0.2, 1080);
     document.getElementById("mars_").style.transform = "rotate(-" + mars.value +"deg)"; 
 	    
-	jupit.value = getDegree(0.00001, 33);
+	jupit.value = getDegreeOuter(0.1, 2150);
     document.getElementById("jupit_").style.transform = "rotate(-" + jupit.value +"deg)"; 
 
 }
 
-function getDegree(n, d){
+function getDegreeInner(n, d){
 days = (yy*12*30)+(mm*30)+dd+d;
 deg = (days * n) + days;
 while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
 }
 
+function getDegreeOuter(n, d){
+days = (yy*12*30)+(mm*30)+dd+d;
+deg =  (days * n);
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
+}
 function onkey_up(){
 	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
     document.getElementById("venu_").style.transform = "rotate(-" + venu.value +"deg)"; 
