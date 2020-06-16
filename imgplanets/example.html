@@ -125,11 +125,12 @@ Moon's rotation
   </div>
   <div id="loc">
         <input type="hidden" value="" id="moon">
-        <input type="text" value="0" id="mer" onkeyup="planets()">
-        <input type="text" value="0" id="ven" onkeyup="planets()">
-        <input type="text" value="0" id="earth" onkeyup="planets()">
-        <input type="text" value="0" id="mars" onkeyup="planets()">
-        <input type="text" value="0" id="jupiter" onkeyup="planets()">
+        <input type="text" value="0" id="mer" onkeyup="onkey_up()">
+        <input type="text" value="0" id="ven" onkeyup="onkey_up()">
+        <input type="text" value="0" id="earth" onkeyup="onkey_up()">
+        <input type="text" value="0" id="mars" onkeyup="onkey_up()">
+        <input type="text" value="0" id="jupiter" onkeyup="onkey_up()">
+        <button onclick="planets()">Auto</button>
 </div>
 <div>
 Country
@@ -160,17 +161,19 @@ Rain
 
 <script type="text/javascript">
 date = new Date();
-function planets(){
+
     earth = document.getElementById("earth");
 	venu = document.getElementById("ven");
 	merq = document.getElementById("mer");
 	mars = document.getElementById("mars");
 	jupit = document.getElementById("jupiter");
 	now = document.getElementById("now");
+
+function planets(){
 	m=Number(date.getMonth())+1;
     now.innerHTML=date.getDate()+"/"+m+"/"+date.getFullYear();
 
-	earth.value = getDegree(1, 120);
+	earth.value = getDegree(0.0002, 259);
 	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
 
 	venu.value = getDegree(0.0083333333, 120);
@@ -193,6 +196,15 @@ days = (date.getFullYear()*12*30)+(date.getMonth()*30)+date.getDate()+d;
 deg = (days * n) + days;
 while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
+}
+
+function onkey_up(){
+	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
+    document.getElementById("venu_").style.transform = "rotate(-" + venu.value +"deg)"; 
+    document.getElementById("marq_").style.transform = "rotate(-" + merq.value +"deg)"; 
+    document.getElementById("mars_").style.transform = "rotate(-" + mars.value +"deg)"; 
+    document.getElementById("jupit_").style.transform = "rotate(-" + jupit.value +"deg)"; 
+
 }
 </script>
 
