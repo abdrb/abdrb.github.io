@@ -119,10 +119,10 @@ Adding new data for today:
 <img src="jupit.gif">
 </div>
 </section>
-<!--<div>
-Moon's rotation
-</div>-->
-   <input type="hidden" value="5" id="day">
+<div>
+Moon's location
+</div>
+   <input type="text" value="0" id="moon">
  <!-- <div>
   Moon's rotations times
   </div>-->
@@ -131,7 +131,7 @@ Moon's rotation
    Locations of the planets:
   </div>
   <div id="loc">
-        <input type="hidden" value="" id="moon">
+        <input type="hidden" value="" id="moo">
         <input type="text" value="0" id="merc" onkeyup="onkey_up()">
         <input type="text" value="0" id="ven" onkeyup="onkey_up()">
         <input type="text" value="0" id="earth" onkeyup="onkey_up()">
@@ -200,7 +200,8 @@ date = new Date();
 	dd=Number(date.getDate());
 	yy=Number(date.getFullYear());
 	
-    earth = document.getElementById("earth");
+	earth = document.getElementById("earth");
+    moon = document.getElementById("moon");
 	venu = document.getElementById("ven");
 	merc = document.getElementById("merc");
 	mars = document.getElementById("mars");
@@ -211,7 +212,8 @@ function planets(){
 	
     now.innerHTML=dd+"/"+mm+"/"+yy;
     
-	earth.value = (mm * 30) + dd + 15;
+    moon.value = getDegreeOur(160);
+	earth.value = getDegreeOur(15);
 	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
     
     merc.value = getDegreeInner(0.4, 191);
@@ -226,6 +228,11 @@ function planets(){
 	jupit.value = getDegreeOuter(0.1, 2150);
     document.getElementById("jupit_").style.transform = "rotate(-" + jupit.value +"deg)"; 
 
+}
+function getDegreeOur(d){
+deg = (mm * 30) + dd + d;
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
 }
 
 function getDegreeInner(n, d){

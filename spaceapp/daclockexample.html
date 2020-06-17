@@ -24,6 +24,32 @@ font-size: 20px;
 }
 </style>
 <script type="text/javascript" id="script">
+date = new Date();
+mm=Number(date.getMonth())+1;
+dd=Number(date.getDate());
+yy=Number(date.getFullYear());
+speed = 1000;
+
+function getDegreeOur(d){
+deg = (mm * 30) + dd + d;
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
+}
+
+function getDegreeInner(n, d){
+days = (yy*12*30)+(mm*30)+dd+d;
+deg = (days * n) + days;
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
+}
+
+function getDegreeOuter(n, d){
+days = (yy*12*30)+(mm*30)+dd+d;
+deg =  (days * n);
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
+}
+
 function getid(){
 	days = document.getElementById("mnrot");
 	month = document.getElementById("rots");
@@ -34,15 +60,25 @@ function getid(){
 	jupit = document.getElementById("jupiter");
 	clock = document.getElementById("clock");
     moon = document.getElementById("moon");
-    
-speed = 1000; //8640000
-funcMrot();
-funcMoon();
-funcEarth();
-funcVenus();
-funcMerq();
-funcMars();
-funcJu();
+    ea = getDegreeOur(15);
+    mo = getDegreeOur(160);
+    mq = getDegreeInner(0.4, 191);    
+    vn = getDegreeInner(0.3, 256);	      
+    mr = getDegreeOuter(0.2, 1080);	    
+    jp = getDegreeOuter(0.1, 2150);
+    earth.value = ea;
+    moon.value = mo;
+    merq.value = mq;
+    venu.value = vn;
+    mars.value = mr;
+    jupit.value = jp;
+	funcMrot();
+	funcMoon();
+	funcEarth();
+	funcVenus();
+	funcMerq();
+	funcMars();
+	funcJu();
 }
 
 function funcMrot(){
@@ -62,7 +98,7 @@ if (m == 12) m = 0;
 }
 
 function funcMoon(){
-	var j = 0;
+	var j = mo;
 	setInterval(function(){
 	j++
 	moon.value = j;
@@ -75,7 +111,7 @@ function funcMoon(){
 	}
 
 function funcEarth(){
-	var i = 0;
+	var i = ea;
 	setInterval(function(){
 	i++
 	earth.value = i;
@@ -89,7 +125,7 @@ function funcEarth(){
 
 function funcVenus(){
 		
-	var j = 0;
+	var j = vn;
 	setInterval(function(){
 	j++
 	venu.value = j;
@@ -103,7 +139,7 @@ function funcVenus(){
 
 function funcMerq(){
 	
-	var j = 0;
+	var j = mq;
 	setInterval(function(){
 	j++
 	merq.value = j;
@@ -117,7 +153,7 @@ function funcMerq(){
 
 function funcMars(){
 	
-	var j = 0;
+	var j = mr;
 	setInterval(function(){
 	j++
 	mars.value = j;
@@ -131,7 +167,7 @@ function funcMars(){
 
 function funcJu(){
 	
-	var j = 0;
+	var j = jp;
 	setInterval(function(){
 	j++
 	jupit.value = j;
@@ -141,7 +177,6 @@ function funcJu(){
 	}
 	}, (speed * 12));
 }
-
 </script>
 </head><body onload="getid()"><div class="dv">
 <h3>Digital Astronomical Clock Example</h3>
@@ -184,7 +219,8 @@ Jupiter
         <input type="text" id="jupiter" value="360">
 <div>
 <a href="../imgplanets/daclock.html">View planets</a>
-<a href="spaceapp.html">Database example</a>
+<a href="spaceapp.html">Data example</a>
 
 </div>
+
 </body></html>
