@@ -56,6 +56,7 @@ mm=Number(date.getMonth())+1;
 dd=Number(date.getDate());
 yy=Number(date.getFullYear());
 speed = 100;
+jvn = 0;
 
 function getDegreeOur(d){
 deg = (mm * 31) + dd + d;
@@ -92,8 +93,8 @@ function getid(){
     mr = getDegreeOuter(0.2, 1080);	    
     jp = getDegreeOuter(0.1, 2150);
     earth.value = ea;
-    merq.value = mq;
-    venu.value = vn;
+    merq.value = mq; jmq = mq;
+    venu.value = vn; jvn = vn;
     mars.value = mr;
     jupit.value = jp;
 funcMoon();
@@ -133,6 +134,28 @@ function funcEarth(){
 	if(mm==12){mm=1;yy += 1;}
 	}
 	now.innerHTML=dd+"/"+mm+"/"+yy;
+
+	if ((i-jvn) <= 30 && (jvn-i) <= 30)
+	{
+		document.getElementById("earth").style.color = "red";
+		document.getElementById("ven").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("earth").style.color = "black";
+		document.getElementById("ven").style.color = "black";
+	}
+	
+	if ((i-jmq) <= 30 && (jmq-i) <= 30) 
+	{
+		document.getElementById("earth").style.color = "red";
+		document.getElementById("mer").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("mer").style.color = "black";
+	}
+	
 	if (i == 360) 
 	{
 	i = 1;
@@ -141,31 +164,27 @@ function funcEarth(){
 }
 
 function funcVenus(){
-		
-	var j = vn;
 	setInterval(function(){
-	j++
-	venu.value = j;
-	document.getElementById("venu_").style.transform = "rotate(-" + j +"deg)"; 
+	jvn++
+	venu.value = jvn;
+	document.getElementById("venu_").style.transform = "rotate(-" + jvn +"deg)"; 
 	
-	if (j == 360) 
+	if (jvn == 360) 
 	{
-	j = 1;
+	jvn = 1;
 	}
 	}, (speed * 0.3));
 }
 
 function funcMerq(){
-	
-	var j = mq;
 	setInterval(function(){
-	j++
-	merq.value = j;
-	document.getElementById("marq_").style.transform = "rotate(-" + j +"deg)"; 
+	jmq++
+	merq.value = jmq;
+	document.getElementById("marq_").style.transform = "rotate(-" + jmq +"deg)"; 
 	
-	if (j == 360) 
+	if (jmq == 360) 
 	{
-	j = 1;
+	jmq = 1;
 	}
 	}, (speed * 0.1));
 }
