@@ -4,7 +4,7 @@
 height: 200px;
 position: absolute;
 left: 25%;
-top: 200px;
+top: 220px;
 }
 #sun_{
 width: 200px;
@@ -33,11 +33,11 @@ z-index: 5;
 .planets > img {
 width: 100%;
 }
-.dv {
+.section {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 90%;
 }
 
 input {
@@ -114,7 +114,7 @@ funcJu();
 }
 
 function funcMoon(){
-var m = 1;
+var m = 0;
 setInterval(function(){
 jmo++
 moon.value = jmo;
@@ -127,7 +127,7 @@ month.value = m;
 if (jea == jmo)
 	{
 	dv = document.createElement("div")
-	dv.innerHTML = "Earth:"+jea+" = "+"Moon:"+jmo+" , " +dd+"/"+mm+"/"+yy;
+	dv.innerHTML = "Earth:"+jea+"° & "+"Moon:"+jmo+"° [" +dd+"/"+mm+"/"+yy+"]";
 	list.appendChild(dv);
 	}
 	
@@ -141,10 +141,10 @@ function funcEarth(){
 	earth.value = jea;
 	document.getElementById("earth_").style.transform = "rotate(-" + jea +"deg)"; 
 	dd += 1;
-	if(dd==30){
+	if(dd==31){
 	dd=1;
 	mm += 1;
-	if(mm==12){mm=1;yy += 1;}
+	if(mm==13){mm=1;yy += 1;}
 	}
 	now.innerHTML=dd+"/"+mm+"/"+yy;
 	
@@ -183,7 +183,7 @@ function funcVenus(){
 	{
 		document.getElementById("ven").style.color = "black";
 	}
-	}, (speed * 0.3));
+	}, (speed * 0.55));
 }
 
 function funcMerq(){
@@ -206,7 +206,7 @@ function funcMerq(){
 		document.getElementById("mer").style.color = "black";
 	}
 	
-	}, (speed * 0.1));
+	}, (speed * 0.23));
 }
 
 function funcMars(){
@@ -221,7 +221,7 @@ function funcMars(){
 	{
 	j = 1;
 	}
-	}, (speed * 2));
+	}, (speed * 1.7));
 }
 
 function funcJu(){
@@ -260,7 +260,7 @@ function funcJu(){
 <img src="jupit.gif">
 </div>
 
-<div class="dv">
+<div class="section">
 <h2>Digital Astronomical Clock Example</h2>
 <div id="now">
 </div>
@@ -303,5 +303,5 @@ Jupiter
 </div>
 <div id="list">
 
-</div>
+</div></div>
 </body></html>
