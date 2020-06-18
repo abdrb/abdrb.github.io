@@ -4,7 +4,7 @@
 height: 200px;
 position: absolute;
 left: 25%;
-top: 150px;
+top: 200px;
 }
 #sun_{
 width: 200px;
@@ -55,7 +55,7 @@ date = new Date();
 mm=Number(date.getMonth())+1;
 dd=Number(date.getDate());
 yy=Number(date.getFullYear());
-speed = 100;
+speed = 200;
 jvn = 0;
 
 function getDegreeOur(d){
@@ -86,17 +86,25 @@ function getid(){
 	mars = document.getElementById("mars");
 	jupit = document.getElementById("jupiter");
     now = document.getElementById("now");
-    
+    moon = document.getElementById("moon");
+    list = document.getElementById("list");
+    mo = getDegreeOur(154);
     ea = getDegreeOur(15);
     mq = getDegreeInner(0.4, 191);    
     vn = getDegreeInner(0.3, 256);	      
     mr = getDegreeOuter(0.2, 1080);	    
     jp = getDegreeOuter(0.1, 2150);
-    earth.value = ea;
+    moon.value = mo; jmo = mo;
+    earth.value = ea; jea = ea;
     merq.value = mq; jmq = mq;
     venu.value = vn; jvn = vn;
     mars.value = mr;
     jupit.value = jp;
+document.getElementById("marq_").style.transform = "rotate(-" + vn +"deg)"; 
+document.getElementById("venu_").style.transform = "rotate(-" + mq +"deg)"; 
+document.getElementById("earth_").style.transform = "rotate(-" + ea +"deg)"; 
+document.getElementById("mars_").style.transform = "rotate(-" + mr +"deg)"; 
+document.getElementById("jupit_").style.transform = "rotate(-" + jp +"deg)"; 
 funcMoon();
 funcEarth();
 funcVenus();
@@ -106,27 +114,32 @@ funcJu();
 }
 
 function funcMoon(){
-var i = 0;
 var m = 1;
 setInterval(function(){
-i++
-days.value = i;
-if (i == 30) 
+jmo++
+moon.value = jmo;
+if (jmo == 360) 
 {
-i = 0;
+jmo = 1;
 m++;
 month.value = m;
 }
+if (jea == jmo)
+	{
+	dv = document.createElement("div")
+	dv.innerHTML = "Earth:"+jea+" + "+"Moon:"+jmo+" , " +dd+"/"+mm+"/"+yy;
+	list.appendChild(dv);
+	}
+	
 if (m == 12) m = 0;
-}, speed);
+}, speed * 0.07);
 }
 
 function funcEarth(){
-	var i = ea;
 	setInterval(function(){
-	i++
-	earth.value = i;
-	document.getElementById("earth_").style.transform = "rotate(-" + i +"deg)"; 
+	jea++
+	earth.value = jea;
+	document.getElementById("earth_").style.transform = "rotate(-" + jea +"deg)"; 
 	dd += 1;
 	if(dd==30){
 	dd=1;
@@ -134,31 +147,20 @@ function funcEarth(){
 	if(mm==12){mm=1;yy += 1;}
 	}
 	now.innerHTML=dd+"/"+mm+"/"+yy;
-
-	if ((i-jvn) <= 30 && (jvn-i) <= 30)
+	
+	if (jea == 360) 
 	{
-		document.getElementById("earth").style.color = "red";
-		document.getElementById("ven").style.color = "red";
+	jea = 1;
+	}
+	if (jea >= jmo-30 && jea <= jmo+30)
+	{
+	document.getElementById("moon").style.color = "red";
+	document.getElementById("earth").style.color = "red";
 	}
 	else
 	{
-		document.getElementById("earth").style.color = "black";
-		document.getElementById("ven").style.color = "black";
-	}
-	
-	if ((i-jmq) <= 30 && (jmq-i) <= 30) 
-	{
-		document.getElementById("earth").style.color = "red";
-		document.getElementById("mer").style.color = "red";
-	}
-	else
-	{
-		document.getElementById("mer").style.color = "black";
-	}
-	
-	if (i == 360) 
-	{
-	i = 1;
+	document.getElementById("moon").style.color = "black";
+	document.getElementById("earth").style.color = "black";	
 	}
 	}, speed);
 }
@@ -173,6 +175,14 @@ function funcVenus(){
 	{
 	jvn = 1;
 	}
+	if (jea >= jvn-10 && jea <= jvn+10)
+	{
+		document.getElementById("ven").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("ven").style.color = "black";
+	}
 	}, (speed * 0.3));
 }
 
@@ -186,6 +196,16 @@ function funcMerq(){
 	{
 	jmq = 1;
 	}
+	
+	if (jea >= jmq-15 && jea <= jmq+15)
+	{
+		document.getElementById("mer").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("mer").style.color = "black";
+	}
+	
 	}, (speed * 0.1));
 }
 
@@ -245,10 +265,10 @@ function funcJu(){
 <div id="now">
 </div>
 <p>100 milliseconds = 1 Degree</p>
-<!--<div>
-Moon's rotation
-</div>-->
-   <input type="hidden" id="mnrot">
+<div>
+Moon's location
+</div>
+   <input type="text" id="moon">
   <!--<div>
   Moon's rotations times
   </div>-->
@@ -280,5 +300,8 @@ Jupiter
 </div>
 <div>
 <a href="../spaceapp/spaceapp.html">Data example</a>
+</div>
+<div id="list">
+
 </div>
 </body></html>
