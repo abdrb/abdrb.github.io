@@ -4,7 +4,7 @@
 height: 200px;
 position: absolute;
 left: 25%;
-top: 220px;
+top: 240px;
 }
 #sun_{
 width: 200px;
@@ -37,7 +37,7 @@ width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
+    width: 98%;
 }
 
 input {
@@ -59,7 +59,7 @@ speed = 200;
 jvn = 0;
 
 function getDegreeOur(d){
-deg = (mm * 31) + dd + d;
+deg = (mm * 30) + dd + d;
 while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
 }
@@ -88,7 +88,7 @@ function getid(){
     now = document.getElementById("now");
     moon = document.getElementById("moon");
     list = document.getElementById("list");
-    mo = getDegreeOur(154);
+    mo = getDegreeOur(177);
     ea = getDegreeOur(15);
     mq = getDegreeInner(0.4, 191);    
     vn = getDegreeInner(0.3, 256);	      
@@ -117,6 +117,7 @@ function funcMoon(){
 var m = 0;
 setInterval(function(){
 jmo++
+if (dd==31){jmo+=1};
 moon.value = jmo;
 if (jmo == 360) 
 {
@@ -124,15 +125,15 @@ jmo = 1;
 m++;
 month.value = m;
 }
-if (jea == jmo)
-	{
-	dv = document.createElement("div")
+adj = jea - 180;
+if (adj<0){adj*=-1};
+	if (jmo == adj){
+	dv= document.createElement("div")
 	dv.innerHTML = "Earth:"+jea+"° & "+"Moon:"+jmo+"° [" +dd+"/"+mm+"/"+yy+"]";
 	list.appendChild(dv);
 	}
-	
 if (m == 12) m = 0;
-}, speed * 0.07);
+}, speed * 0.072);
 }
 
 function funcEarth(){
@@ -151,16 +152,6 @@ function funcEarth(){
 	if (jea == 360) 
 	{
 	jea = 1;
-	}
-	if (jea >= jmo-30 && jea <= jmo+30)
-	{
-	document.getElementById("moon").style.color = "red";
-	document.getElementById("earth").style.color = "red";
-	}
-	else
-	{
-	document.getElementById("moon").style.color = "black";
-	document.getElementById("earth").style.color = "black";	
 	}
 	}, speed);
 }
