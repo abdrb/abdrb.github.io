@@ -4,7 +4,7 @@
 height: 200px;
 position: absolute;
 left: 25%;
-top: 240px;
+top: 200px;
 }
 #sun_{
 width: 200px;
@@ -59,9 +59,8 @@ speed = 200;
 jvn = 0;
 
 function getDegreeOur(d){
-if (mm%2==0){deg = (mm * 30) + dd + d;}
-else {deg = (mm * 31) + dd + d;}
-while (deg > 360){deg -= 360}
+deg = (mm * 27.322) + dd + d;
+while (deg > 360){deg -= 360;}
 return Number(deg.toFixed(0));
 }
 
@@ -91,7 +90,7 @@ function getid(){
     now = document.getElementById("now");
     moon = document.getElementById("moon");
     list = document.getElementById("list");
-    mo = getDegreeOur(177);
+    mo = getDegreeOur(182);
     ea = getDegreeOur(15);
     mq = getDegreeInner(0.4, 191);    
     vn = getDegreeInner(0.3, 256);	      
@@ -108,7 +107,7 @@ document.getElementById("venu_").style.transform = "rotate(-" + mq +"deg)";
 document.getElementById("earth_").style.transform = "rotate(-" + ea +"deg)"; 
 document.getElementById("mars_").style.transform = "rotate(-" + mr +"deg)"; 
 document.getElementById("jupit_").style.transform = "rotate(-" + jp +"deg)"; 
-funcMoon();
+//funcMoon();
 funcEarth();
 funcVenus();
 funcMerq();
@@ -116,17 +115,11 @@ funcMars();
 funcJu();
 }
 
+/*
 function funcMoon(){
 var m = 0;
 setInterval(function(){
-jmo++
 moon.value = jmo;
-if (jmo == 360) 
-{
-jmo = 1;
-m++;
-month.value = m;
-}
 adj = jea - 180;
 if (adj<0){adj*=-1};
 	if (jmo == adj){
@@ -134,10 +127,17 @@ if (adj<0){adj*=-1};
 	dv.innerHTML = "Earth:"+jea+"° & "+"Moon:"+jmo+"° [" +dd+"/"+mm+"/"+yy+"]";
 	list.appendChild(dv);
 	}
-if (m == 12) m = 0;
-}, speed * 0.0777);
+jmo++;
+if (jmo == 361) 
+{
+jmo = 1;
+m++;
+month.value = m;
 }
-
+if (m == 12) m = 0;
+}, speed * 0.079);
+}
+*/
 function funcEarth(){
 	setInterval(function(){
 	jea++
@@ -258,10 +258,10 @@ function funcJu(){
 <div id="now">
 </div>
 <p>200 milliseconds = 1 Degree</p>
-<div>
+<!--<div>
 Moon's location
-</div>
-   <input type="text" id="moon">
+</div>-->
+   <input type="hidden" id="moon">
   <!--<div>
   Moon's rotations times
   </div>-->
