@@ -37,7 +37,7 @@ width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 98%;
+    width: 90%;
 }
 
 input {
@@ -59,20 +59,23 @@ speed = 200;
 jvn = 0;
 
 function getDegreeOur(d){
-deg = (mm * 30) + dd + d;
+if (mm%2==0){deg = (mm * 30) + dd + d;}
+else {deg = (mm * 31) + dd + d;}
 while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
 }
 
 function getDegreeInner(n, d){
-days = (yy*12*30)+(mm*30)+dd+d;
+if (mm%2==0){days = (yy*12*30)+(mm*30)+dd+d;}
+else {days = (yy*12*31)+(mm*31)+dd+d;}
 deg = (days * n) + days;
 while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
 }
 
 function getDegreeOuter(n, d){
-days = (yy*12*30)+(mm*30)+dd+d;
+if (mm%2==0){days = (yy*12*30)+(mm*30)+dd+d;}
+else {days = (yy*12*31)+(mm*31)+dd+d;}
 deg =  (days * n);
 while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
@@ -117,7 +120,6 @@ function funcMoon(){
 var m = 0;
 setInterval(function(){
 jmo++
-if (dd==31){jmo+=1};
 moon.value = jmo;
 if (jmo == 360) 
 {
@@ -133,7 +135,7 @@ if (adj<0){adj*=-1};
 	list.appendChild(dv);
 	}
 if (m == 12) m = 0;
-}, speed * 0.072);
+}, speed * 0.0777);
 }
 
 function funcEarth(){
