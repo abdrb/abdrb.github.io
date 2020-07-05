@@ -212,7 +212,7 @@ function planets(){
 	
     now.innerHTML=dd+"/"+mm+"/"+yy;
     
-    moon.value = getDegreeOur(160);
+    moon.value = getDegreeMoon(35);
 	earth.value = getDegreeOur(15);
 	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
     
@@ -227,8 +227,14 @@ function planets(){
 	    
 	jupit.value = getDegreeOuter(0.1, 2150);
     document.getElementById("jupit_").style.transform = "rotate(-" + jupit.value +"deg)"; 
-
 }
+
+function getDegreeMoon(d){
+deg=(yy*12*30)+(mm*30)+dd + d;
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
+}
+
 function getDegreeOur(d){
 deg = (mm * 30) + dd + d;
 while (deg > 360){deg -= 360}

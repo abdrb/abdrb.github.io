@@ -58,8 +58,15 @@ yy=Number(date.getFullYear());
 speed = 200;
 jvn = 0;
 
+function getDegreeMoon(d){
+add=(((yy*12*30)+(mm*30)+dd)-727405)
+deg = (add*27) + d;
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
+}
+
 function getDegreeOur(d){
-deg = (mm * 27.322) + dd + d;
+deg = (mm * 30) + dd + d;
 while (deg > 360){deg -= 360;}
 return Number(deg.toFixed(0));
 }
@@ -90,7 +97,7 @@ function getid(){
     now = document.getElementById("now");
     moon = document.getElementById("moon");
     list = document.getElementById("list");
-    mo = getDegreeOur(182);
+    mo = getDegreeMoon(105);
     ea = getDegreeOur(15);
     mq = getDegreeInner(0.4, 191);    
     vn = getDegreeInner(0.3, 256);	      
@@ -117,27 +124,15 @@ funcJu();
 
 /*
 function funcMoon(){
-var m = 0;
 setInterval(function(){
-moon.value = jmo;
-adj = jea - 180;
-if (adj<0){adj*=-1};
-	if (jmo == adj){
-	dv= document.createElement("div")
-	dv.innerHTML = "Earth:"+jea+"° & "+"Moon:"+jmo+"° [" +dd+"/"+mm+"/"+yy+"]";
-	list.appendChild(dv);
-	}
-jmo++;
-if (jmo == 361) 
-{
-jmo = 1;
-m++;
-month.value = m;
-}
-if (m == 12) m = 0;
-}, speed * 0.079);
-}
-*/
+
+
+while (deg > 360){deg -= 360}
+moon.value = Number(deg.toFixed(0));
+}, speed);
+}*/
+
+
 function funcEarth(){
 	setInterval(function(){
 	jea++
