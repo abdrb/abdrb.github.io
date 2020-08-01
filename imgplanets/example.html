@@ -89,6 +89,10 @@ background-color: #ff9966;
 .space{
 width: 350px;
 }
+#section {
+transform: rotate(0deg); 
+
+}
 </style>
 
 </head><body onload="planets()">
@@ -99,7 +103,7 @@ Adding new data for today:
 </p>
 <div id="now">
 </div>
-<section>
+<section id="section">
 <div id="sun_" class="planets">
 <img src="sun.gif">
 </div>
@@ -213,19 +217,19 @@ function planets(){
     now.innerHTML=dd+"/"+mm+"/"+yy;
     
     moon.value = getDegreeMoon(35);
-	earth.value = getDegreeOur(15);
+	earth.value = getDegreeOur(60);
 	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
     
-    merc.value = getDegreeInner(0.4, 191);
+    merc.value = getDegreeInner(0.4, 305);
     document.getElementById("merc_").style.transform = "rotate(-" + merc.value +"deg)"; 
     
-	venu.value = getDegreeInner(0.3, 256);
+	venu.value = getDegreeInner(0.3, 295);
     document.getElementById("venu_").style.transform = "rotate(-" + venu.value +"deg)"; 
 	      
-    mars.value = getDegreeOuter(0.2, 1080);
+    mars.value = getDegreeOuter(0.2, 1430);
     document.getElementById("mars_").style.transform = "rotate(-" + mars.value +"deg)"; 
 	    
-	jupit.value = getDegreeOuter(0.1, 2150);
+	jupit.value = getDegreeOuter(0.1, 2700);
     document.getElementById("jupit_").style.transform = "rotate(-" + jupit.value +"deg)"; 
 }
 
