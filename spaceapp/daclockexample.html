@@ -32,6 +32,12 @@ hh=Number(date.getHours());
 mn=Number(date.getMinutes());
 ss=Number(date.getSeconds());
 
+function getDegreeMoon(d){
+deg=(yy*12*30)+(mm*30)+dd + d;
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
+}
+
 function getDegreeOur(d){
 deg = (mm * 30) + dd + d;
 while (deg > 360){deg -= 360}
@@ -62,30 +68,22 @@ function getid(){
 	jupit = document.getElementById("jupiter");
 	clock = document.getElementById("clock");
     moon = document.getElementById("moon");
-    ea = getDegreeOur(15);
-    mo = getDegreeOur(20);
-    mq = getDegreeInner(0.4, 191);    
-    vn = getDegreeInner(0.3, 256);	      
-    mr = getDegreeOuter(0.2, 1080);	    
-    jp = getDegreeOuter(0.1, 2150);
+    ea = getDegreeOur(60);
+    mo = getDegreeMoon(35);
+    mq = getDegreeInner(0.4, 305);    
+    vn = getDegreeInner(0.3, 295);	      
+    mr = getDegreeOuter(0.2, 1430);    
+    jp = getDegreeOuter(0.1, 2700);
     earth.value = ea;
     moon.value = mo;
     merq.value = mq;
     venu.value = vn;
     mars.value = mr;
     jupit.value = jp;
-	funcMoon();
-	setInterval(funcMerq, 50);
-	setInterval(funcVenus, 100);
-	setInterval(funcEarth,400);
-	setInterval(funcMars,800);
-	setInterval(funcJu,1200);
+	funcClock();
 }
-function funcMoon(){
-	var j = mo;
+function funcClock(){
 	setInterval(function(){
-	j++
-	moon.value = j;
 	da = new Date();
 	mm=da.getMonth()+1;
 	d=da.getDate();
@@ -94,60 +92,9 @@ function funcMoon(){
 	m=da.getMinutes();
 	h=da.getHours();
 	clock.innerHTML = s + ":" + m + ":" + h +":"+ d + ":" + mm + ":" + y +":"+moon.value +":"+ merq.value +":"+ venu.value +":"+ earth.value +":"+ mars.value +":"+ jupit.value;
-	if (j == 360) 
-	{
-	j = 1;
+	}, (1000));
 	}
-	}, (100));
-	}
-var i = 1;
- function funcEarth(){
-	i++
-	earth.value = i;
-	if (i == 360) 
-	{
-	i = 1;
-	}
-}
-var j=1;
- function funcVenus(){
-	j++
-	venu.value = j;
-	if (j == 360) 
-	{
-	j = 1;
-	}
-}
-var k=1;
- function funcMerq(){
-	k++
-	merq.value = k;
-	//clock.innerHTML = merq.value +":"+ venu.value +":"+ earth.value +":"+ mars.value +":"+ jupit.value;
-	if (k == 360) 
-	{
-	k = 1;
-	}
-}
 
-var l=1;
- function funcMars(){
-	l++
-	mars.value = l;
-	if (l == 360) 
-	{
-	l = 1;
-	}
-	
-}
-var m=1;
- function funcJu(){
-	m++
-	jupit.value = m;
-	if (m == 360) 
-	{
-	m = 1;
-	}
-}
 </script>
 </head><body onload="getid()"><div class="dv">
 <h3>Digital Astronomical Clock Example</h3>
@@ -155,7 +102,7 @@ var m=1;
 
 <!--<button onclick="clearInterval(merc)">Stop</button>-->
 <h3>Rotations of the planets (1-360 Degrees)</h3>
-<p>1 second = 1 Degree (Not day)</p>
+<p></p>
 <!--<div>
 Moon's rotation
 </div>-->
