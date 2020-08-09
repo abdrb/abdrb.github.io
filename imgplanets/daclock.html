@@ -55,8 +55,6 @@ date = new Date();
 mm=Number(date.getMonth())+1;
 dd=Number(date.getDate());
 yy=Number(date.getFullYear());
-speed = 200;
-jvn = 0;
 
 function getDegreeMoon(d){
 add=(((yy*12*30)+(mm*30)+dd)-727405)
@@ -107,34 +105,23 @@ function getid(){
     earth.value = ea; jea = ea;
     merq.value = mq; jmq = mq;
     venu.value = vn; jvn = vn;
-    mars.value = mr;
-    jupit.value = jp;
+    mars.value = mr; jmr = mr;
+    jupit.value = jp; jjp = jp;
 document.getElementById("marq_").style.transform = "rotate(-" + vn +"deg)"; 
 document.getElementById("venu_").style.transform = "rotate(-" + mq +"deg)"; 
 document.getElementById("earth_").style.transform = "rotate(-" + ea +"deg)"; 
 document.getElementById("mars_").style.transform = "rotate(-" + mr +"deg)"; 
 document.getElementById("jupit_").style.transform = "rotate(-" + jp +"deg)"; 
-//funcMoon();
-funcEarth();
-funcVenus();
-funcMerq();
-funcMars();
-funcJu();
+
+var speed = 100;
+setInterval(funcEarth,speed);
+setInterval(funcVenus,speed / 1.7);
+setInterval(funcMerq,speed / 5);
+setInterval(funcMars,speed * 1.9);
+setInterval(funcJu,speed * 12);
 }
 
-/*
-function funcMoon(){
-setInterval(function(){
-
-
-while (deg > 360){deg -= 360}
-moon.value = Number(deg.toFixed(0));
-}, speed);
-}*/
-
-
 function funcEarth(){
-	setInterval(function(){
 	jea++
 	earth.value = jea;
 	document.getElementById("earth_").style.transform = "rotate(-" + jea +"deg)"; 
@@ -150,15 +137,12 @@ function funcEarth(){
 	{
 	jea = 1;
 	}
-	}, speed);
 }
 
 function funcVenus(){
-	setInterval(function(){
 	jvn++
 	venu.value = jvn;
-	document.getElementById("venu_").style.transform = "rotate(-" + jvn +"deg)"; 
-	
+	document.getElementById("venu_").style.transform = "rotate(-" + jvn +"deg)"; 	
 	if (jvn == 360) 
 	{
 	jvn = 1;
@@ -171,11 +155,8 @@ function funcVenus(){
 	{
 		document.getElementById("ven").style.color = "black";
 	}
-	}, (speed * 0.55));
 }
-
 function funcMerq(){
-	setInterval(function(){
 	jmq++
 	merq.value = jmq;
 	document.getElementById("marq_").style.transform = "rotate(-" + jmq +"deg)"; 
@@ -193,38 +174,28 @@ function funcMerq(){
 	{
 		document.getElementById("mer").style.color = "black";
 	}
-	
-	}, (speed * 0.23));
 }
 
-function funcMars(){
+function funcMars(){	
+	jmr++
+	mars.value = jmr;
+	document.getElementById("mars_").style.transform = "rotate(-" + jmr +"deg)"; 
 	
-	var j = mr;
-	setInterval(function(){
-	j++
-	mars.value = j;
-	document.getElementById("mars_").style.transform = "rotate(-" + j +"deg)"; 
-	
-	if (j == 360) 
+	if (jmr == 360) 
 	{
-	j = 1;
+	jmr = 1;
 	}
-	}, (speed * 1.7));
 }
 
-function funcJu(){
+function funcJu(){	
+	jjp++
+	jupit.value = jjp;
+	document.getElementById("jupit_").style.transform = "rotate(-" + jjp +"deg)"; 
 	
-	var j = jp;
-	setInterval(function(){
-	j++
-	jupit.value = j;
-	document.getElementById("jupit_").style.transform = "rotate(-" + j +"deg)"; 
-	
-	if (j == 360) 
+	if (jjp == 360) 
 	{
-	j = 1;
+	jjp = 1;
 	}
-	}, (speed * 12));
 }
 
 </script>
@@ -252,7 +223,7 @@ function funcJu(){
 <h2>Digital Astronomical Clock Example</h2>
 <div id="now">
 </div>
-<p>200 milliseconds = 1 Degree</p>
+<p>100 milliseconds = 1 Degree</p>
 <!--<div>
 Moon's location
 </div>-->
