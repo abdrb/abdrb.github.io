@@ -4,7 +4,7 @@
 height: 200px;
 position: absolute;
 left: 25%;
-top: 200px;
+top: 150px;
 }
 #sun_{
 width: 200px;
@@ -113,12 +113,11 @@ document.getElementById("earth_").style.transform = "rotate(-" + ea +"deg)";
 document.getElementById("mars_").style.transform = "rotate(-" + mr +"deg)"; 
 document.getElementById("jupit_").style.transform = "rotate(-" + jp +"deg)"; 
 
-var speed = 100;
-setInterval(funcEarth,speed);
-setInterval(funcVenus,speed / 1.7);
-setInterval(funcMerq,speed / 5);
-setInterval(funcMars,speed * 1.9);
-setInterval(funcJu,speed * 12);
+setInterval(funcEarth,365.26);
+setInterval(funcVenus,224.70);
+setInterval(funcMerq,87.97);
+setInterval(funcMars,686.98);
+setInterval(funcJu,4331.9836);
 }
 
 function funcEarth(){
@@ -223,7 +222,6 @@ function funcJu(){
 <h2>Digital Astronomical Clock Example</h2>
 <div id="now">
 </div>
-<p>100 milliseconds = 1 Degree</p>
 <!--<div>
 Moon's location
 </div>-->
@@ -254,9 +252,6 @@ Mars
 Jupiter
   </div>
         <input type="text" id="jupiter">
-<div>
-<p>It's just an example and needs to be accurate.</p>
-</div>
 <div>
 <a href="../spaceapp/spaceapp.html">Data example</a>
 </div>
