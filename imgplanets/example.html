@@ -217,7 +217,7 @@ function planets(){
     now.innerHTML=dd+"/"+mm+"/"+yy;
     
     moon.value = getDegreeMoon(510);
-	earth.value = getDegreeOur(60);
+	earth.value = getDegreeOur();
 	document.getElementById("earth_").style.transform = "rotate(-" + earth.value +"deg)"; 
     
     merc.value = getDegreeInner(0.4, 305);
@@ -239,8 +239,9 @@ while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
 }
 
-function getDegreeOur(d){
-deg = (mm * 30) + dd + d;
+function getDegreeOur(){
+if ((mm-1) == 0){deg = dd + 90;}
+else{deg = ((mm-1) * 30) + dd + 90;}
 while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
 }
