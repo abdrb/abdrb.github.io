@@ -49,17 +49,78 @@ div {
 	width: 100%;
 	text-align: left;
 	margin-top: 20px;
-}</style>
+}
+
+#now {
+display: none;
+}
+</style>
+
+</head><body onload="getid()">
+<div id="sun_" class="planets">
+<img src="sun.gif">
+</div>
+<div id="marq_" class="planets">
+<img src="merq.gif">
+</div>
+<div id="venu_" class="planets">
+<img src="venu.gif">
+</div>
+<div id="earth_" class="planets">
+<img src="earth.gif">
+</div>
+<div id="mars_" class="planets">
+<img src="mars.gif">
+</div>
+<div id="jupit_" class="planets">
+<img src="jupit.gif">
+</div>
+
+<div class="section">
+<h2>Digital Astronomical Clock Example</h2>
+<div id="now">
+</div>
+<div id="clock"></div>
+<div>
+Moon's location
+</div>
+   <input type="text" id="moon">
+  <!--<div>
+  Moon's rotations times
+  </div>-->
+     <input type="hidden" value="1" id="rots">       
+     <div> 
+     Mercury
+     </div>
+     <input type="text" id="mer">
+     
+     <div> 
+     Venus
+        </div>
+           <input type="text" id="ven">
+  <div>
+       Earth
+        </div>
+        <input type="text" id="earth">
+
+<div>
+Mars
+  </div>
+        <input type="text" id="mars">
+<div>
+Jupiter
+  </div>
+        <input type="text" id="jupiter">
+<div>
+<a href="../spaceapp/spaceapp.html">Data example</a>
+</div>
+<div id="list">
+
+</div></div>
+
 <script type="text/javascript" id="script">
 
 mm=7;dd=27;yy=2020;
-
-function getDegreeMoon(d){
-add=(((yy*12*30)+(mm*30)+dd)-727405)
-deg = (add*27) + d;
-while (deg > 360){deg -= 360}
-return Number(deg.toFixed(0));
-}
 
 function getDegreeEarth(){
 if ((mm-1) == 0){deg = dd + 90;}
@@ -79,7 +140,7 @@ function getid(){
     now = document.getElementById("now");
     moon = document.getElementById("moon");
     list = document.getElementById("list");
-    mo = getDegreeMoon(105);
+    mo = 235;
     ea = getDegreeEarth(59);
     mq = 25;    
     vn = 333;	      
@@ -97,11 +158,60 @@ document.getElementById("earth_").style.transform = "rotate(-" + ea +"deg)";
 document.getElementById("mars_").style.transform = "rotate(-" + mr +"deg)"; 
 document.getElementById("jupit_").style.transform = "rotate(-" + jp +"deg)"; 
 
-eClear=setInterval(funcEarth,365.26/2);
-vClear=setInterval(funcVenus,224.70/2);
-mClear=setInterval(funcMerq,87.97/2);
-sClear=setInterval(funcMars,686.98/2);
-jClear=setInterval(funcJu,4331.9836/2);
+oClear=setInterval(funcMoon,27.32);
+eClear=setInterval(funcEarth,365.26);
+vClear=setInterval(funcVenus,224.70);
+mClear=setInterval(funcMerq,87.97);
+sClear=setInterval(funcMars,686.98);
+jClear=setInterval(funcJu,4331.9836);
+funcClock();
+}
+
+function funcClock(){
+setInterval(function(){
+da = new Date();
+mm=da.getMonth()+1;
+d=da.getDate();
+y=da.getFullYear();
+s=da.getSeconds();
+m=da.getMinutes();
+h=da.getHours();
+clock.innerHTML = s + ":" + m + ":" + h +":"+ d + ":" + mm + ":" + y +":"+moon.value +":"+ merq.value +":"+ venu.value +":"+ earth.value +":"+ mars.value +":"+ jupit.value;
+}, (1000));
+}
+
+function funcMoon(){	
+	date = new Date();
+	m=Number(date.getMonth())+1;
+	d=Number(date.getDate());
+	y=Number(date.getFullYear());
+	if (m==mm && d==dd && y==yy)
+	{
+	clearInterval(oClear);
+	clearInterval(eClear);
+	clearInterval(vClear);
+	clearInterval(mClear);
+	clearInterval(sClear);
+	clearInterval(jClear);
+	}
+	
+	jmo++
+	moon.value = jmo;
+	
+	if (jmo == 360) 
+	{
+	jmo = 1;
+	}
+	
+	if (jea >= jmo-15 && jea <= jmo+15)
+	{
+	document.getElementById("moon").style.color = "red";
+	}
+	else
+	{
+	document.getElementById("moon").style.color = "black";
+	}
+	
 }
 
 function funcEarth(){
@@ -157,19 +267,6 @@ function funcMerq(){
 	{
 		document.getElementById("mer").style.color = "black";
 	}
-	
-	date = new Date();
-	m=Number(date.getMonth())+1;
-	d=Number(date.getDate());
-	y=Number(date.getFullYear());
-	if (m==mm && d==dd && y==yy)
-	{
-	clearInterval(eClear);
-	clearInterval(vClear);
-	clearInterval(mClear);
-	clearInterval(sClear);
-	clearInterval(jClear);
-	}
 }
 
 function funcMars(){	
@@ -195,64 +292,4 @@ function funcJu(){
 }
 
 </script>
-</head><body onload="getid()">
-<div id="sun_" class="planets">
-<img src="sun.gif">
-</div>
-<div id="marq_" class="planets">
-<img src="merq.gif">
-</div>
-<div id="venu_" class="planets">
-<img src="venu.gif">
-</div>
-<div id="earth_" class="planets">
-<img src="earth.gif">
-</div>
-<div id="mars_" class="planets">
-<img src="mars.gif">
-</div>
-<div id="jupit_" class="planets">
-<img src="jupit.gif">
-</div>
-
-<div class="section">
-<h2>Digital Astronomical Clock Example</h2>
-<div id="now">
-</div>
-<!--<div>
-Moon's location
-</div>-->
-   <input type="hidden" id="moon">
-  <!--<div>
-  Moon's rotations times
-  </div>-->
-     <input type="hidden" value="1" id="rots">       
-     <div> 
-     Mercury
-     </div>
-     <input type="text" id="mer">
-     
-     <div> 
-     Venus
-        </div>
-           <input type="text" id="ven">
-  <div>
-       Earth
-        </div>
-        <input type="text" id="earth">
-
-<div>
-Mars
-  </div>
-        <input type="text" id="mars">
-<div>
-Jupiter
-  </div>
-        <input type="text" id="jupiter">
-<div>
-<a href="../spaceapp/spaceapp.html">Data example</a>
-</div>
-<div id="list">
-
-</div></div>
 </body></html>
