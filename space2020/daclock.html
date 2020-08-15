@@ -1,0 +1,295 @@
+<html dir="ltr"><head>
+<style type="text/css" id="style">
+.planets {
+height: 200px;
+position: absolute;
+left: 25%;
+top: 150px;
+}
+#sun_{
+width: 200px;
+z-index: 0;
+}
+#marq_{
+width: 200px;
+z-index: 1;
+}
+#venu_{
+width: 200px;
+z-index: 2;
+}
+#earth_{
+width: 200px;
+z-index: 3;
+}
+#mars_{
+width: 200px;
+z-index: 4;
+}
+#jupit_{
+width: 200px;
+z-index: 5;
+}
+.planets > img {
+width: 100%;
+}
+.section {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+input {
+	width: 10%;
+	margin: 0;
+}
+
+div {
+	width: 100%;
+	text-align: left;
+	margin-top: 20px;
+}
+
+#now {
+display: none;
+}
+</style>
+
+</head><body onload="getid()">
+<div id="sun_" class="planets">
+<img src="imgs/sun.gif">
+</div>
+<div id="marq_" class="planets">
+<img src="imgs/merq.gif">
+</div>
+<div id="venu_" class="planets">
+<img src="imgs/venu.gif">
+</div>
+<div id="earth_" class="planets">
+<img src="imgs/earth.gif">
+</div>
+<div id="mars_" class="planets">
+<img src="imgs/mars.gif">
+</div>
+<div id="jupit_" class="planets">
+<img src="imgs/jupit.gif">
+</div>
+
+<div class="section">
+<h2>Digital Astronomical Clock</h2>
+<div id="now">
+</div>
+<div id="clock"></div>
+<div>
+Moon's location
+</div>
+   <input type="text" id="moon">
+  <!--<div>
+  Moon's rotations times
+  </div>-->
+     <input type="hidden" value="1" id="rots">       
+     <div> 
+     Mercury
+     </div>
+     <input type="text" id="mer">
+     
+     <div> 
+     Venus
+        </div>
+           <input type="text" id="ven">
+  <div>
+       Earth
+        </div>
+        <input type="text" id="earth">
+
+<div>
+Mars
+  </div>
+        <input type="text" id="mars">
+<div>
+Jupiter
+  </div>
+        <input type="text" id="jupiter">
+<div>
+<a href="#">On this day</a>
+</div>
+<div id="list">
+
+</div></div>
+
+<script type="text/javascript" id="script">
+
+mm=7;dd=27;yy=2020;
+
+function getDegreeEarth(){
+if ((mm-1) == 0){deg = dd + 90;}
+else{deg = ((mm-1) * 30) + dd + 90;}
+while (deg > 360){deg -= 360}
+return Number(deg.toFixed(0));
+}
+
+function getid(){
+	days = document.getElementById("mnrot");
+	month = document.getElementById("rots");
+	earth = document.getElementById("earth");
+	venu = document.getElementById("ven");
+	merq = document.getElementById("mer");
+	mars = document.getElementById("mars");
+	jupit = document.getElementById("jupiter");
+    now = document.getElementById("now");
+    moon = document.getElementById("moon");
+    list = document.getElementById("list");
+    mo = 220;
+    ea = getDegreeEarth(59);
+    mq = 25;    
+    vn = 333;	      
+    mr = 340;	    
+    jp = 300;
+    moon.value = mo; jmo = mo;
+    earth.value = ea; jea = ea;
+    merq.value = mq; jmq = mq;
+    venu.value = vn; jvn = vn;
+    mars.value = mr; jmr = mr;
+    jupit.value = jp; jjp = jp;
+document.getElementById("marq_").style.transform = "rotate(-" + vn +"deg)"; 
+document.getElementById("venu_").style.transform = "rotate(-" + mq +"deg)"; 
+document.getElementById("earth_").style.transform = "rotate(-" + ea +"deg)"; 
+document.getElementById("mars_").style.transform = "rotate(-" + mr +"deg)"; 
+document.getElementById("jupit_").style.transform = "rotate(-" + jp +"deg)"; 
+
+oClear=setInterval(funcMoon,27.32);
+eClear=setInterval(funcEarth,365.26);
+vClear=setInterval(funcVenus,224.70);
+mClear=setInterval(funcMerq,87.97);
+sClear=setInterval(funcMars,686.98);
+jClear=setInterval(funcJu,4331.9836);
+funcClock();
+}
+
+function funcClock(){
+setInterval(function(){
+da = new Date();
+mm=da.getMonth()+1;
+d=da.getDate();
+y=da.getFullYear();
+s=da.getSeconds();
+m=da.getMinutes();
+h=da.getHours();
+clock.innerHTML = s + ":" + m + ":" + h +":"+ d + ":" + mm + ":" + y +":"+moon.value +":"+ merq.value +":"+ venu.value +":"+ earth.value +":"+ mars.value +":"+ jupit.value;
+}, (1000));
+}
+
+function funcMoon(){	
+	date = new Date();
+	m=Number(date.getMonth())+1;
+	d=Number(date.getDate());
+	y=Number(date.getFullYear());
+	if (m==mm && d==dd && y==yy)
+	{
+	clearInterval(oClear);
+	clearInterval(eClear);
+	clearInterval(vClear);
+	clearInterval(mClear);
+	clearInterval(sClear);
+	clearInterval(jClear);
+	}
+	
+	jmo++
+	moon.value = jmo;
+	
+	if (jmo == 360) 
+	{
+	jmo = 1;
+	}
+	
+	if (jea >= jmo-15 && jea <= jmo+15)
+	{
+	document.getElementById("moon").style.color = "red";
+	}
+	else
+	{
+	document.getElementById("moon").style.color = "black";
+	}
+	
+}
+
+function funcEarth(){
+	jea++
+	earth.value = jea;
+	document.getElementById("earth_").style.transform = "rotate(-" + jea +"deg)"; 
+	dd += 1;
+	if(dd==31){
+	dd=1;
+	mm += 1;
+	if(mm==13){mm=1;yy += 1;}
+	}
+	now.innerHTML=dd+"/"+mm+"/"+yy;
+	
+	if (jea == 360) 
+	{
+	jea = 1;
+	}
+}
+
+function funcVenus(){
+	jvn++
+	venu.value = jvn;
+	document.getElementById("venu_").style.transform = "rotate(-" + jvn +"deg)"; 	
+	if (jvn == 360) 
+	{
+	jvn = 1;
+	}
+	if (jea >= jvn-10 && jea <= jvn+10)
+	{
+		document.getElementById("ven").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("ven").style.color = "black";
+	}
+}
+function funcMerq(){
+	jmq++
+	merq.value = jmq;
+	document.getElementById("marq_").style.transform = "rotate(-" + jmq +"deg)"; 
+	
+	if (jmq == 360) 
+	{
+	jmq = 1;
+	}
+	
+	if (jea >= jmq-15 && jea <= jmq+15)
+	{
+		document.getElementById("mer").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("mer").style.color = "black";
+	}
+}
+
+function funcMars(){	
+	jmr++
+	mars.value = jmr;
+	document.getElementById("mars_").style.transform = "rotate(-" + jmr +"deg)"; 
+	
+	if (jmr == 360) 
+	{
+	jmr = 1;
+	}
+}
+
+function funcJu(){	
+	jjp++
+	jupit.value = jjp;
+	document.getElementById("jupit_").style.transform = "rotate(-" + jjp +"deg)"; 
+	
+	if (jjp == 360) 
+	{
+	jjp = 1;
+	}
+}
+
+</script>
+</body></html>
