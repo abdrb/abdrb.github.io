@@ -4,7 +4,7 @@
 height: 200px;
 position: absolute;
 left: 25%;
-top: 150px;
+top: 180px;
 }
 #sun_{
 width: 200px;
@@ -53,6 +53,10 @@ div {
 
 #now {
 display: none;
+}
+
+#clock {
+text-align: center;
 }
 </style>
 
@@ -128,7 +132,6 @@ else{deg = ((mm-1) * 30) + dd + 90;}
 while (deg > 360){deg -= 360}
 return Number(deg.toFixed(0));
 }
-
 function getid(){
 	days = document.getElementById("mnrot");
 	month = document.getElementById("rots");
@@ -169,23 +172,32 @@ funcClock();
 
 function funcClock(){
 setInterval(function(){
+t=mm; if(t<10){t="0"+t};
+d=dd; if(d<10){d="0"+d};
+y=yy; if(y<10){y="0"+y};
+
 da = new Date();
-mm=da.getMonth()+1;
-d=da.getDate();
-y=da.getFullYear();
-s=da.getSeconds();
-m=da.getMinutes();
-h=da.getHours();
-clock.innerHTML = s + ":" + m + ":" + h +":"+ d + ":" + mm + ":" + y +":"+moon.value +":"+ merq.value +":"+ venu.value +":"+ earth.value +":"+ mars.value +":"+ jupit.value;
+s=da.getSeconds(); if(s<10){s="0"+s};
+m=da.getMinutes(); if(m<10){m="0"+m};
+h=da.getHours(); if(h<10){h="0"+h};
+
+n=moon.value;  if(n<100){if(n<10){n="00"+n}else{n="0"+n}};
+u=merq.value;  if(u<100){if(u<10){u="00"+u}else{u="0"+u}};
+v=venu.value;  if(v<100){if(v<10){v="00"+v}else{v="0"+v}};
+e=earth.value; if(e<100){if(e<10){e="00"+e}else{e="0"+e}};
+r=mars.value;  if(r<100){if(r<10){r="00"+r}else{r="0"+r}};
+j=jupit.value; if(j<100){if(j<10){j="00"+j}else{j="0"+j}};
+
+clock.innerHTML = h + ":" + m + ":" + s +"<br>"+ d + "/" + t + "/" + y +"<br>"+ n +"°<br>"+ u +"°:"+ v +"°:"+ e +"°:"+ r +"°:"+ j +"°";
 }, (1000));
 }
 
 function funcMoon(){	
 	date = new Date();
-	m=Number(date.getMonth())+1;
-	d=Number(date.getDate());
-	y=Number(date.getFullYear());
-	if (m==mm && d==dd && y==yy)
+	mVal=Number(date.getMonth())+1;
+	dVal=Number(date.getDate());
+	yVal=Number(date.getFullYear());
+	if (mVal==mm && dVal==dd && yVal==yy)
 	{
 	clearInterval(oClear);
 	clearInterval(eClear);
@@ -203,14 +215,14 @@ function funcMoon(){
 	jmo = 1;
 	}
 	
-	if (jea >= jmo-15 && jea <= jmo+15)
+/*	if (jea >= jmo-15 && jea <= jmo+15)
 	{
 	document.getElementById("moon").style.color = "red";
 	}
 	else
 	{
 	document.getElementById("moon").style.color = "black";
-	}
+	}*/
 	
 }
 
