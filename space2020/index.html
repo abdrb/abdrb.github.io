@@ -214,15 +214,16 @@ function funcMoon(){
 	{
 	jmo = 1;
 	}
-	
-/*	if (jea >= jmo-15 && jea <= jmo+15)
+	je=0;
+	if(jea > 180){je=jea-180}else{je=jea+180};
+	if (je >= jmo-15 && je <= jmo+15)
 	{
 	document.getElementById("moon").style.color = "red";
 	}
 	else
 	{
 	document.getElementById("moon").style.color = "black";
-	}*/
+	}
 	
 }
 
