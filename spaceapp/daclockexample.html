@@ -9,7 +9,7 @@ body {
 	position: absolute;
 	border: 0px solid grey;
 	top: 30%;
-	left: 20%;
+	left: 10%;
 	width: 300px;
 	height: 300px;
 }
@@ -40,6 +40,32 @@ body {
     top: 0px;
     left: 156px;
 }
+
+#jan {
+    position: absolute;
+    top: 0px;
+    left: 42%;
+    color: #333333;
+}
+#apr {
+    position: absolute;
+    top: 52%;
+    left: 1%;
+    color: #333333;
+}
+#jul {
+    position: absolute;
+    top: 95%;
+    left: 52%;
+    color: #333333;
+}
+#oct {
+    position: absolute;
+    top: 46%;
+    left: 90%;
+    color: #333333;
+}
+
 #mercuryOrbit {
     position: absolute;
     border: 0.5px solid grey;
@@ -60,6 +86,11 @@ body {
     left: 95%;
 }
 
+.captions{
+    color: white;
+    font-size: 8px;
+}
+
 #venusOrbit {
     position: absolute;
     border: 0.5px solid grey;
@@ -75,7 +106,7 @@ body {
     border-radius: 100%;
     width: 10px;
     height: 10px;
-    top: 48%;
+    top: 49%;
     left: 95%;
 }
 
@@ -88,23 +119,25 @@ body {
     top: 25%;
     left: 25%;
 }
-#moonOrbit {
-    position: absolute;
-    border: 0px solid grey;
-    border-radius: 100%;
-    width: 15px;
-    height: 15px;
-    top: 48%;
-    left: 95%;
-}
+
 #earthShape {
     position: absolute;
     background-color: blue;
     border-radius: 100%;
     width: 12px;
     height: 12px;
-	top: 15%;
-	left: 10%;
+	top: 49%;
+	left: 96%;
+}
+
+#moonOrbit {
+    position: absolute;
+    border: 0px solid grey;
+    border-radius: 100%;
+    width: 10%;
+    height: 10%;
+    top: 48%;
+    left: 95%;
 }
 #moonShape {
     position: absolute;
@@ -112,8 +145,8 @@ body {
     border-radius: 100%;
     width: 3px;
     height: 3px;
-    top: 0px;
-    left: 0px;
+    top: 36%;
+    left: 120%;
 }
 
 #marsOrbit {
@@ -131,7 +164,7 @@ body {
     border-radius: 100%;
     width: 9px;
     height: 9px;
-    top: 50%;
+    top: 50.5%;
     left: 98%;
 }
 
@@ -150,7 +183,7 @@ body {
     border-radius: 100%;
     width: 13px;
     height: 13px;
-    top: 51%;
+    top: 49.5%;
     left: 97%;
 }
 
@@ -173,12 +206,13 @@ input {
 #clock {
 	position: absolute;
 	top: 15%;
-	left: 20%;
+	left: 10%;
 	width: 300px;
 	height: 300px;
 	text-align: center;
 }
 #data {
+display: none;
 position: absolute;
 top: 30%;
 left: 8%;
@@ -241,27 +275,32 @@ Jupiter
 <div id="lineW"></div>
 <div id="lineH"></div>
 <div id="sun"></div>
+<div id="jan">JAN</div>
+<div id="apr">APR</div>
+<div id="jul">JUL</div>
+<div id="oct">OCT</div>
 
 <div id="mercuryOrbit">
-    <div id="mercuryShape"></div>
+    <div id="mercuryShape" class="captions">Mercury</div>
 </div>
 
 <div id="venusOrbit">
-    <div id="venusShape"></div>
+    <div id="venusShape" class="captions">Venus</div>
 </div>
 
-<div id="earthOrbit">
-<div id="moonOrbit">
-        <div id="earthShape"></div>
-        <div id="moonShape"></div>
-</div></div>
+<div id="earthOrbit" class=" captions">
+	<div id="earthShape" class=" captions">Earth</div>
+	<div id="moonOrbit" class=" captions">
+		<div id="moonShape" class="captions"></div>
+	</div>
+</div>
 
 <div id="marsOrbit">
-    <div id="marsShape"></div>
+    <div id="marsShape" class=" captions">Mars</div>
 </div>
 
 <div id="jupiterOrbit">
-    <div id="jupiterShape"></div>
+    <div id="jupiterShape" class=" captions">Jupiter</div>
 </div>
 
 
@@ -272,12 +311,12 @@ Jupiter
 <script type="text/javascript" id="script">
 
 mm=7;dd=27;yy=2020;
-stop=0;
-moStart = 150;
+stop=200;
+moStart = 280;
 eaStart = getDegreeEarth(0);
-mqStart = 25;    
-vnStart = 344;	      
-mrStart = 330;	    
+mqStart = 70;    
+vnStart = 340;	      
+mrStart = 335;	    
 jpStart = 300;
 
 jmo = moStart;
@@ -357,6 +396,12 @@ function funcClock(){
 	}
 	else{
 	clock.innerHTML = h + ":" + m + ":" + s +"<br>"+ dy + "/" + mt + "/" + yr +"<br>"+ n +"°<br>"+ u +"°:"+ v +"°:"+ e +"°:"+ r +"°:"+ j +"°";
+	document.getElementById("mercuryShape").innerHTML = "Mercury";
+	document.getElementById("venusShape").innerHTML = "Venus";
+	document.getElementById("earthShape").innerHTML = "Earth";
+	document.getElementById("marsShape").innerHTML = "Mars";
+	document.getElementById("jupiterShape").innerHTML = "Jupiter";
+	document.getElementById("moonShape").innerHTML = "";
 	}
 	if((stop==1 && Number(da.getDate())>Number(dd)) || (stop==1 && Number(da.getMonth()+1)>Number(mm)) || (stop==1 && Number(da.getFullYear())>Number(yy))){
 	getid();
@@ -387,17 +432,16 @@ function funcMoon(){
 	clearInterval(jClear);
 	stop=1;
 	}
-	
 	jmo++
 	moon.value = jmo;
-	document.getElementById("moonOrbit").style.transform = "rotate(-" + jmo +"deg)"; 
+	document.getElementById("moonShape").innerHTML = jmo;
 	if (jmo == 360) 
 	{
-	jmo = 1;
+	jmo = 0;
 	}
-	je=0;
-	if(jea > 180){je=jea-180}else{je=jea+180};
-	if (je >= jmo-10 && je <= jmo+10)
+	document.getElementById("moonOrbit").style.transform = "rotate(-" + jmo +"deg)"; 
+	document.getElementById("earthCap").style.transform = "rotate(" + jea +"deg)"; 
+	if (jmo >= 175 && jmo <= 195)
 	{
 	document.getElementById("moon").style.color = "red";
 	}
@@ -409,9 +453,12 @@ function funcMoon(){
 }
 
 function funcEarth(){
+	jmo--
 	jea++
 	earth.value = jea;
-	document.getElementById("earthOrbit").style.transform = "rotate(-" + jea +"deg)"; 
+	document.getElementById("earthShape").innerHTML = jea;
+	document.getElementById("earthOrbit").style.transform = "rotate(-" + jea + "deg)"; 
+	document.getElementById("earthShape").style.transform = "rotate(" + jea + "deg)"; 
 	dd += 1;
 	if(dd==32){
 	dd=1;
@@ -429,7 +476,9 @@ function funcEarth(){
 function funcVenus(){
 	jvn++
 	venu.value = jvn;
+	document.getElementById("venusShape").innerHTML = jvn;
 	document.getElementById("venusOrbit").style.transform = "rotate(-" + jvn +"deg)"; 	
+	document.getElementById("venusShape").style.transform = "rotate(" + jvn + "deg)"; 
 	if (jvn == 360) 
 	{
 	jvn = 1;
@@ -446,8 +495,9 @@ function funcVenus(){
 function funcMerq(){
 	jmq++
 	merq.value = jmq;
+	document.getElementById("mercuryShape").innerHTML = jmq;
 	document.getElementById("mercuryOrbit").style.transform = "rotate(-" + jmq +"deg)"; 
-	
+	document.getElementById("mercuryShape").style.transform = "rotate(" + jmq + "deg)"; 
 	if (jmq == 360) 
 	{
 	jmq = 1;
@@ -466,8 +516,9 @@ function funcMerq(){
 function funcMars(){	
 	jmr++
 	mars.value = jmr;
+	document.getElementById("marsShape").innerHTML = jmr;
 	document.getElementById("marsOrbit").style.transform = "rotate(-" + jmr +"deg)"; 
-	
+	document.getElementById("marsShape").style.transform = "rotate(" + jmr + "deg)"; 
 	if (jmr == 360) 
 	{
 	jmr = 1;
@@ -477,8 +528,9 @@ function funcMars(){
 function funcJu(){	
 	jjp++
 	jupit.value = jjp;
+	document.getElementById("jupiterShape").innerHTML = jjp;
 	document.getElementById("jupiterOrbit").style.transform = "rotate(-" + jjp +"deg)"; 
-	
+	document.getElementById("jupiterShape").style.transform = "rotate(" + jjp + "deg)"; 
 	if (jjp == 360) 
 	{
 	jjp = 1;
