@@ -1,19 +1,22 @@
 <html dir="ltr"><head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap" rel="stylesheet">
 <style type="text/css" id="style">
 body {
 	background-color: #000000;
 	color: #ffffff;
+	font-family: 'Dosis', sans-serif;
 }
 
 h3{
+margin-top: 40px;
 text-align: center;
 }
 
 #space{
 	position: absolute;
 	border: 0px solid grey;
-	top: 170px;
+	top: 190px;
 	left: 10%;
 	width: 300px;
 	height: 300px;
@@ -95,6 +98,7 @@ text-align: center;
     color: white;
     font-size: 8px;
 }
+
 
 #venusOrbit {
     position: absolute;
@@ -227,9 +231,6 @@ width: 10%;
 
 </head>
 <body onload="getid()">
-<div>
-<a href="spaceapp.html">back</a>
-</div>
 <section>
 <article>
 <div class="section">
@@ -296,7 +297,7 @@ Jupiter
 <div id="earthOrbit" class=" captions">
 	<div id="earthShape" class=" captions">Earth</div>
 	<div id="moonOrbit" class=" captions">
-		<div id="moonShape" class="captions"></div>
+		<div id="moonShape" class="captions">Moon</div>
 	</div>
 </div>
 
@@ -406,7 +407,7 @@ function funcClock(){
 	document.getElementById("earthShape").innerHTML = "Earth";
 	document.getElementById("marsShape").innerHTML = "Mars";
 	document.getElementById("jupiterShape").innerHTML = "Jupiter";
-	document.getElementById("moonShape").innerHTML = "";
+	document.getElementById("moonShape").innerHTML = "Moon";
 	}
 	if((stop==1 && Number(da.getDate())>Number(dd)) || (stop==1 && Number(da.getMonth()+1)>Number(mm)) || (stop==1 && Number(da.getFullYear())>Number(yy))){
 	getid();
@@ -437,7 +438,7 @@ function funcMoon(){
 	clearInterval(jClear);
 	stop=1;
 	}
-	jmo++
+	jmo++;
 	moon.value = jmo;
 	document.getElementById("moonShape").innerHTML = jmo;
 	if (jmo == 360) 
@@ -445,7 +446,8 @@ function funcMoon(){
 	jmo = 0;
 	}
 	document.getElementById("moonOrbit").style.transform = "rotate(-" + jmo +"deg)"; 
-	document.getElementById("earthCap").style.transform = "rotate(" + jea +"deg)"; 
+	document.getElementById("moonShape").style.transform = "rotate(" + jmo +"deg)"; 	
+
 	if (jmo >= 175 && jmo <= 195)
 	{
 	document.getElementById("moon").style.color = "red";
