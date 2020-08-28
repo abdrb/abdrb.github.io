@@ -7,24 +7,25 @@ body {
 	background-color: #000000;
 	color: #ffffff;
 	font-family: 'Dosis', sans-serif;
+	padding: 5px;
 }
 #pause {
-    position: absolute;
-    top: 95%;
-    left: 44%;
-}
-h3{
-	margin-top: 40px;
+	position: absolute;
+	top: 440px;
+	left: 10px;
+	width: 300px;
+	height: 300px;
 	text-align: center;
 }
 
 #space{
 	position: absolute;
 	border: 0px solid grey;
-	top: 190px;
-	left: 10%;
+	top: 130px;
+	left: 10px;
 	width: 300px;
 	height: 300px;
+	text-align: center;
 }
 #sun {
     position: absolute;
@@ -164,6 +165,7 @@ h3{
 .captions{
     color: white;
     font-size: 8px;
+	text-align: left;
 }
 
 
@@ -263,13 +265,6 @@ h3{
     left: 97%;
 }
 
-.section {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-}
-
 input {
 	width: 100%;
 	margin: 0;
@@ -281,8 +276,16 @@ input {
 
 #clock {
 	position: absolute;
-	top: 80px;
-	left: 10%;
+	top: 50px;
+	left: 10px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#title {
+	position: absolute;
+	top: 5px;
+	left: 10px;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -300,8 +303,7 @@ input {
 <body onload="getid()">
 <section>
 <article>
-<div class="section">
-<h3>Digital Astronomical Clock</h3>
+<h3 id="title">Digital Astronomical Clock</h3>
 <div id="now">
 </div>
 <div id="clock"></div>
@@ -339,7 +341,6 @@ Jupiter
 </div>
 <div id="list">
 
-</div>
 </div>
 </article>
 
@@ -388,8 +389,8 @@ Jupiter
 </div>
 </aside>
 </section>
-<div>
-<button type="button" id="pause" onclick="pauseFunc()"> Continue </button>
+<div id="pause">
+<button type="button" onclick="pauseFunc()"> Continue </button>
 </div>
 <script type="text/javascript" id="script">
 
