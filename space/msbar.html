@@ -425,7 +425,7 @@ function getid(){
 	month = document.getElementById("rots");
 	earth = document.getElementById("earth");
 	venu = document.getElementById("ven");
-	merq = document.getElementById("mer");
+	merc = document.getElementById("mer");
 	mars = document.getElementById("mars");
 	jupit = document.getElementById("jupiter");
     now = document.getElementById("now");
@@ -434,7 +434,7 @@ function getid(){
 
     moon.value = jmo;
     earth.value = jea;
-    merq.value = jmq;
+    merc.value = jmq;
     venu.value = jvn;
     mars.value = jmr;
     jupit.value = jjp;
@@ -448,20 +448,21 @@ function getid(){
 	run();
 	funcClock();
 }
-
+multi=4;
 function run(){
-	oClear=setInterval(funcMoon,27.32);
-	eClear=setInterval(funcEarth,365.26);
-	vClear=setInterval(funcVenus,224.70);
-	mClear=setInterval(funcMerq,87.972);
-	sClear=setInterval(funcMars,686.98);
-	jClear=setInterval(funcJu,4331.9836);
-	amlClear=setInterval(funcAml,530);
+	oClear=setInterval(funcMoon,27.32/multi);
+	eClear=setInterval(funcEarth,365.26/multi);
+	vClear=setInterval(funcVenus,224.70/multi);
+	mClear=setInterval(funcMerc,87.972/multi);
+	sClear=setInterval(funcMars,686.98/multi);
+	jClear=setInterval(funcJu,4331.9836/multi);
+	amlClear=setInterval(funcAml,530/multi);
 	stop=0;
 }
 
 function pauseFunc(){
 if(pause == 0){
+multi=1;
 pause = 1;
 getid();
 }}
@@ -481,7 +482,7 @@ function funcClock(){
 	h=addZero(da.getHours());
 	
 	n=addDZero(moon.value);
-	u=addDZero(merq.value);
+	u=addDZero(merc.value);
 	v=addDZero(venu.value);
 	e=addDZero(earth.value);
 	r=addDZero(mars.value);
@@ -494,7 +495,7 @@ function funcClock(){
 	clock.innerHTML = h + ":" + m + ":" + s +"<br>"+ dy + "/" + mt + "/" + yr +"<br>"+ n +"°<br>"+ u +"°:"+ v +"°:"+ e +"°:"+ r +"°:"+ j +"°";
 	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
 	document.getElementById("venusShape").innerHTML = "<br>Venus<br>" + v + "°";
-	document.getElementById("earthShape").innerHTML = "Earth<br>";
+	document.getElementById("earthShape").innerHTML = "Earth";
 	document.getElementById("marsShape").innerHTML = "<br>Mars<br>" + r + "°";
 	document.getElementById("jupiterShape").innerHTML = "<br>Jupiter<br>" + j + "°";
 	document.getElementById("moonShape").innerHTML = "";
@@ -569,7 +570,7 @@ function funcEarth(){
 	jea++;
 	amlDays++;
 	earth.value = jea;
-	document.getElementById("earthShape").innerHTML ="<br>Earth<br>" + jea + "°";
+	document.getElementById("earthShape").innerHTML ="Earth"; //+ jea + "°";
 	document.getElementById("earthOrbit").style.transform = "rotate(-" + jea + "deg)"; 
 	document.getElementById("earthShape").style.transform = "rotate(" + jea + "deg)"; 
 	
@@ -607,9 +608,9 @@ function funcVenus(){
 		document.getElementById("ven").style.color = "black";
 	}
 }
-function funcMerq(){
+function funcMerc(){
 	jmq++
-	merq.value = jmq;
+	merc.value = jmq;
 	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + jmq + "°";
 	document.getElementById("mercuryOrbit").style.transform = "rotate(-" + jmq +"deg)"; 
 	document.getElementById("mercuryShape").style.transform = "rotate(" + jmq + "deg)"; 
