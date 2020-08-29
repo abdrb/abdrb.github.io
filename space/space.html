@@ -343,6 +343,14 @@ jvn = vnStart;
 jmr = mrStart;
 jjp = jpStart;
 
+blue="<span style='color:royalblue;'>";
+red="<span style='color:red;'>";
+orange="<span style='color:orange;'>";
+grey="<span style='color:grey;'>";
+brown="<span style='color:brown;'>";
+gold="<span style='color:gold;'>";
+end="</span>";
+
 function getDegreeEarth(a){
 	if ((mm-1) == 0){deg = dd + 90+a;}
 	else{deg = ((mm-1) * 30) + dd + 90+a;}
@@ -416,10 +424,10 @@ function funcClock(){
 	j=addDZero(jupit.value);
 	
 	if(stop==0){
-	clock.innerHTML = h + ":" + m + ":" + s +"<br>"+ d + "/" + t + "/" + y +"<br>"+ n +"°<br>"+ u +"°:"+ v +"°:"+ e +"°:"+ r +"°:"+ j +"°";
+	clock.innerHTML = h + ":" + m + ":" + s +"<br>"+ d + "/" + t + "/" + y +"<br>"+ n +"°<br>"+ u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°";
 	}
 	else{
-	clock.innerHTML = h + ":" + m + ":" + s +"<br>"+ dy + "/" + mt + "/" + yr +"<br>"+ n +"°<br>"+ u +"°:"+ v +"°:"+ e +"°:"+ r +"°:"+ j +"°";
+	clock.innerHTML = h + ":" + m + ":" + s +"<br>" + gold + dy + "/" + mt + "/" + yr + end + "<br>"+ n +"°<br>" + brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°";
 	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
 	document.getElementById("venusShape").innerHTML = "<br>Venus<br>" + v + "°";
 	document.getElementById("earthShape").innerHTML = "Earth";
@@ -471,8 +479,8 @@ function funcMoon(){
 	jmo = 0;
 	}
 	document.getElementById("moonOrbit").style.transform = "rotate(-" + jmo +"deg)"; 
+	document.getElementById("moonShape").style.transform = "rotate(-" + jea +"deg)"; 	
 	document.getElementById("moonShape").style.transform = "rotate(" + jmo +"deg)"; 	
-
 	if (jmo >= 175 && jmo <= 195)
 	{
 	document.getElementById("moon").style.color = "red";
