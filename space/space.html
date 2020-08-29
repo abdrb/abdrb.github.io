@@ -9,6 +9,12 @@ body {
 	font-family: 'Dosis', sans-serif;
 	padding: 5px;
 }
+
+#allContents {
+	position: relative;
+	margin: 0 auto;
+	border: 0.5px solid red;
+}
 #pause {
 	position: absolute;
 	top: 450px;
@@ -247,7 +253,7 @@ input {
 
 </head>
 <body onload="getid()">
-<section>
+<section id="allContents">
 <article>
 <h3 id="title">Digital Astronomical Clock</h3>
 <div id="now">
@@ -325,13 +331,14 @@ Jupiter
 
 </div>
 </aside>
-</section>
 <div id="pause">
 <button type="button" onclick="pauseFunc()"> Continue </button>
 	<div id="hlink">
 	<a href="msbar.html">Watch Al-Amal probe</a>
 	</div>
 </div>
+</section>
+
 <script type="text/javascript" id="script">
 
 mm=7;dd=20;yy=2020;
