@@ -424,10 +424,10 @@ function funcClock(){
 	j=addDZero(jupit.value);
 	
 	if(stop==0){
-	clock.innerHTML = h + ":" + m + ":" + s +"<br>"+ d + "/" + t + "/" + y +"<br>"+ n +"°<br>"+ u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°";
+	clock.innerHTML = h + ":" + m + ":" + s +"<br>"+ d + "/" + t + "/" + y +"<br>"+ u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°" + "<br>" + n + "°";
 	}
 	else{
-	clock.innerHTML = h + ":" + m + ":" + s +"<br>" + gold + dy + "/" + mt + "/" + yr + end + "<br>"+ n +"°<br>" + brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°";
+	clock.innerHTML = h + ":" + m + ":" + s +"<br>" + gold + dy + "/" + mt + "/" + yr + end + "<br>" + brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";;
 	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
 	document.getElementById("venusShape").innerHTML = "<br>Venus<br>" + v + "°";
 	document.getElementById("earthShape").innerHTML = "Earth";
