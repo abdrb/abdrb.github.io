@@ -8,7 +8,6 @@
 body {
 	background-color: #000000;
 	color: #ffffff;
-	font-family: 'Tahoma', sans-serif;
 	padding: 5px;
 }
 #space{
@@ -226,10 +225,23 @@ left: 20px;
 #now {
 	display: none;
 }
+#pauseBtn {
+	display: none;
+	width: 30px;
+	height: 30px;
+}
 
-#clock {
+#clockTime {
 	position: absolute;
 	top: 50px;
+	left: 30px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#clock {
+	position: absolute;
+	top: 70px;
 	left: 30px;
 	width: 300px;
 	height: 300px;
@@ -281,6 +293,7 @@ margin: 10px;
 <h3 id="title">الساعة الفلكية الرقمية للمواسم في يافع</h3>
 <div id="now">
 </div>
+<div id="clockTime"></div>
 <div id="clock"></div>
 
 <div id="draw">
@@ -324,7 +337,7 @@ margin: 10px;
 
 </div>
 <div id="pause">
-<button type="button" onclick="pauseFunc()"> مستمر </button>
+<button type="button" id="pauseBtn" onclick="pauseFunc()">>></button>
 	<div id="hlink">
 	<a href="mailto:applichain@gmail.com">Email the Developer</a>
 	</div>
@@ -332,11 +345,11 @@ margin: 10px;
 </body>
 <script type="text/javascript">
 mm=7;dd=20;yy=2020;
-stop=0;
+stopToday=0;
 pause=0;
-moStart = 200;
+moStart = -360;
 eaStart = getDegreeEarth(0);
-mqStart = 330;    
+mqStart = 340;    
 vnStart = 330;	      
 mrStart = 330;	    
 jpStart = 290;
@@ -347,6 +360,16 @@ jmq = mqStart;
 jvn = vnStart;
 jmr = mrStart;
 jjp = jpStart;
+days = document.getElementById("mnrot");
+month = document.getElementById("rots");
+earth = document.getElementById("earth");
+venu = document.getElementById("ven");
+merc = document.getElementById("mer");
+mars = document.getElementById("mars");
+jupit = document.getElementById("jupiter");
+now = document.getElementById("now");
+moon = document.getElementById("moon");
+list = document.getElementById("list");
 
 blue="<span style='color:royalblue;'>";
 red="<span style='color:red;'>";
@@ -356,6 +379,7 @@ brown="<span style='color:brown;'>";
 gold="<span style='color:gold;'>";
 end="</span>";
 pen=document.getElementById("draw");
+pauseClick=document.getElementById("pauseBtn");
 drawDiv="<div "
 drawClose="> "
 drawEnd=" </div> "
@@ -378,7 +402,16 @@ document.getElementById("sub"+i).style.transform = "rotate(-" + k +"deg)";
 k+=10.6;
 i--;
 }
-getid();
+document.getElementById("moonOrbit").style.transform = "rotate(-" + moStart +"deg)"; 
+document.getElementById("mercuryOrbit").style.transform = "rotate(-" + vnStart +"deg)"; 
+document.getElementById("venusOrbit").style.transform = "rotate(-" + mqStart +"deg)"; 
+document.getElementById("earthOrbit").style.transform = "rotate(-" + eaStart +"deg)"; 
+document.getElementById("marsOrbit").style.transform = "rotate(-" + mrStart +"deg)"; 
+document.getElementById("jupiterOrbit").style.transform = "rotate(-" + jpStart +"deg)"; 
+stopClear=setInterval(funcStopToday,1);
+funcClockTime();
+funcClock();
+run();
 }
 
 function getDegreeEarth(a){
@@ -387,98 +420,23 @@ function getDegreeEarth(a){
 	while (deg > 360){deg -= 360}
 	return Number(deg.toFixed(0));
 }
-function getid(){
-	days = document.getElementById("mnrot");
-	month = document.getElementById("rots");
-	earth = document.getElementById("earth");
-	venu = document.getElementById("ven");
-	merc = document.getElementById("mer");
-	mars = document.getElementById("mars");
-	jupit = document.getElementById("jupiter");
-    now = document.getElementById("now");
-    moon = document.getElementById("moon");
-    list = document.getElementById("list");
 
-	document.getElementById("moonOrbit").style.transform = "rotate(-" + moStart +"deg)"; 
-	document.getElementById("mercuryOrbit").style.transform = "rotate(-" + vnStart +"deg)"; 
-	document.getElementById("venusOrbit").style.transform = "rotate(-" + mqStart +"deg)"; 
-	document.getElementById("earthOrbit").style.transform = "rotate(-" + eaStart +"deg)"; 
-	document.getElementById("marsOrbit").style.transform = "rotate(-" + mrStart +"deg)"; 
-	document.getElementById("jupiterOrbit").style.transform = "rotate(-" + jpStart +"deg)"; 
-	run();
-	funcClock();
-}
 multi=4;
 function run(){
-	oClear=setInterval(funcMoon,27.32/multi);
 	eClear=setInterval(funcEarth,365.26/multi);
 	vClear=setInterval(funcVenus,224.70/multi);
 	mClear=setInterval(funcMerc,87.972/multi);
 	sClear=setInterval(funcMars,686.98/multi);
 	jClear=setInterval(funcJu,4331.9836/multi);
-	stop=0;
+	oClear=setInterval(funcMoon,27.32/multi);
 }
 
-function pauseFunc(){
-if(pause == 0){
-multi=1;
-pause = 1;
-getid();
-}}
-
-function funcClock(){
-	setInterval(function(){
-	t=mm; t=addZero(t);
-	d=dd; d=addZero(d);
-	y=yy;
-	
-	da = new Date();
-	mt=addZero(da.getMonth()+1);
-	dy=addZero(da.getDate());
-	yr=da.getFullYear();
-	s=addZero(da.getSeconds());
-	m=addZero(da.getMinutes());
-	h=addZero(da.getHours());
-	
-	n=addDZero(jmo);
-	u=addDZero(jmq);
-	v=addDZero(jvn);
-	e=addDZero(jea);
-	r=addDZero(jmr);
-	j=addDZero(jjp);
-	
-	if(stop==0){
-	clock.innerHTML = h + ":" + m + ":" + s +"<br>"+ d + "/" + t + "/" + y +"<br>"+ u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°" + "<br>" + n + "°";
-	}
-	else{
-	clock.innerHTML = h + ":" + m + ":" + s +"<br>" + gold + dy + "/" + mt + "/" + yr + end + "<br>" + brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";;
-	document.getElementById("mercuryShape").innerHTML = "<br>عطارد<br>" + u + "°";
-	document.getElementById("venusShape").innerHTML = "<br>الزهرة<br>" + v + "°";
-	document.getElementById("earthShape").innerHTML = "الأرض";
-	document.getElementById("marsShape").innerHTML = "<br>المريخ<br>" + r + "°";
-	document.getElementById("jupiterShape").innerHTML = "<br>المشتري<br>" + j + "°";
-	document.getElementById("moonShape").innerHTML = "";
-	}
-	if((stop==1 && Number(da.getDate())>Number(dd)) || (stop==1 && Number(da.getMonth()+1)>Number(mm)) || (stop==1 && Number(da.getFullYear())>Number(yy))){
-	getid();
-	}
-	}, (1000));
-	}
-	function addZero(n){
-	if(n<10){n="0"+n};
-	return n;
-	}
-	function addDZero(n){
-	if(n<100){if(n<10){n="00"+n}else{n="0"+n}};
-	return n;
-}
-
-function funcMoon(){	
+function funcStopToday(){	
 	date = new Date();
 	mVal=Number(date.getMonth())+1;
 	dVal=Number(date.getDate());
 	yVal=Number(date.getFullYear());
-	if ((pause == 0) && mVal==mm && dVal==dd && yVal==yy)
+	if ((stopToday == 0) && mVal==mm && dVal==dd && yVal==yy)
 		{
 		moStart=jmo;
 		eaStart=jea;
@@ -493,8 +451,102 @@ function funcMoon(){
 		clearInterval(sClear);
 		clearInterval(jClear);
 		clearInterval(oClear);
-		stop=1;
+		stopToday=1;
+		pauseClick.style.display = "initial";
+		clearInterval(stopClear);
 		}
+}	
+
+function pauseFunc(){
+mValue=mm;dValue=dd;yValue=yy;
+if(pause == 0){
+multi=1;
+pause=1;
+run();
+pauseClick.innerHTML="||";
+}
+else{
+moStart=jmo;
+eaStart=jea;
+mqStart=jmq;
+vnStart=jvn;
+mrStart=jmr;
+jpStart=jjp;
+mm=mValue;dd=dValue;yy=yValue;
+clearInterval(eClear);
+clearInterval(vClear);
+clearInterval(mClear);
+clearInterval(sClear);
+clearInterval(jClear);
+clearInterval(oClear);
+pause=0;
+pauseClick.innerHTML=">>";
+}
+}
+
+function funcClockTime(){
+	setInterval(function(){
+	s=addZero(da.getSeconds());
+	m=addZero(da.getMinutes());
+	h=addZero(da.getHours());
+	clockTime.innerHTML = h + ":" + m + ":" + s;
+	}, (1000));
+}
+
+function funcClock(){
+	setInterval(function(){
+	t=addZero(mm);
+	d=addZero(dd);
+	y=yy;
+	
+	da = new Date();
+	if(stopToday==0){
+	mt=addZero(da.getMonth()+1);
+	dy=addZero(da.getDate());
+	yr=da.getFullYear();
+	}
+	else{
+	mt=addZero(mm);
+	dy=addZero(dd);
+	yr=yy;
+	}
+
+	n=addDZero(jmo);
+	u=addDZero(jmq);
+	v=addDZero(jvn);
+	e=addDZero(jea);
+	r=addDZero(jmr);
+	j=addDZero(jjp);
+	
+	if(stopToday==0){
+	clock.innerHTML = d + "/" + t + "/" + y +"<br>"+ u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°" + "<br>" + n + "°";
+	}
+	else{
+	clock.innerHTML = gold + dy + "/" + mt + "/" + yr + end + "<br>" + brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";;
+	document.getElementById("mercuryShape").innerHTML = "<br>عطارد<br>" + u + "°";
+	document.getElementById("venusShape").innerHTML = "<br>الزهرة<br>" + v + "°";
+	document.getElementById("earthShape").innerHTML = "الأرض";
+	document.getElementById("marsShape").innerHTML = "<br>المريخ<br>" + r + "°";
+	document.getElementById("jupiterShape").innerHTML = "<br>المشتري<br>" + j + "°";
+	document.getElementById("moonShape").innerHTML = "";
+	}
+	if((multi == 4 && stopToday==1 && Number(da.getDate())>Number(dd)) || (stop==1 && Number(da.getMonth()+1)>Number(mm)) || (stop==1 && Number(da.getFullYear())>Number(yy))){
+	stopToday=0;
+	run();
+	}
+	}, (1));
+	}
+	
+function addZero(n){
+	if(n<10){n="0"+n};
+return n;
+}
+function addDZero(n){
+	if(n<100){if(n<10){n="00"+n}else{n="0"+n}};
+return n;
+}
+	
+function funcMoon(){	
 	jmo++;
 	//document.getElementById("moonShape").innerHTML = jmo;
 	if (jmo == 360) 
