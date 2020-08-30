@@ -347,7 +347,7 @@ margin: 10px;
 mm=7;dd=20;yy=2020;
 stopToday=0;
 pause=0;
-moStart = -360;
+moStart = 0;
 eaStart = getDegreeEarth(0);
 mqStart = 340;    
 vnStart = 330;	      
@@ -453,7 +453,6 @@ function funcStopToday(){
 		clearInterval(oClear);
 		stopToday=1;
 		pauseClick.style.display = "initial";
-		clearInterval(stopClear);
 		}
 }	
 
@@ -530,7 +529,7 @@ function funcClock(){
 	document.getElementById("jupiterShape").innerHTML = "<br>المشتري<br>" + j + "°";
 	document.getElementById("moonShape").innerHTML = "";
 	}
-	if((multi == 4 && stopToday==1 && Number(da.getDate())>Number(dd)) || (stop==1 && Number(da.getMonth()+1)>Number(mm)) || (stop==1 && Number(da.getFullYear())>Number(yy))){
+	if((multi==4 && stopToday==1 && Number(da.getDate())>Number(dd)) || (multi==4 && stopToday==1 && Number(da.getMonth()+1)>Number(mm)) || (multi==4 && stopToday==1 && Number(da.getFullYear())>Number(yy))){
 	stopToday=0;
 	run();
 	}
