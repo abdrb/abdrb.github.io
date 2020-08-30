@@ -53,7 +53,7 @@ body {
     position: absolute;
     top: 0px;
     left: 42%;
-    color: lightblue;
+    color: powderblue;
 }
 #apr {
     position: absolute;
@@ -63,7 +63,7 @@ body {
 }
 #jul {
     position: absolute;
-    top: 95%;
+    top: 94%;
     left: 52%;
     color: firebrick;
 }
@@ -208,15 +208,15 @@ height: 240px;
 }
 .sub{
 position: absolute;
-border-radius: 100%;
+background-color: #212121;
+border-radius: 25%;
 border: 0px solid blue;
-width: 10px;
-height: 10px;
+width: 5px;
+height: 5px;
 top: 0px;
 left: 0px;
 color: white;
 font-size: 8px;
-text-align: left;
 }
 
 #draw{
@@ -230,7 +230,7 @@ left: 20px;
 
 #clock {
 	position: absolute;
-	top: 55px;
+	top: 50px;
 	left: 30px;
 	width: 300px;
 	height: 300px;
@@ -238,7 +238,7 @@ left: 20px;
 }
 #title {
 	position: absolute;
-	top: 5px;
+	top: 0px;
 	left: 30px;
 	width: 300px;
 	height: 300px;
@@ -367,7 +367,12 @@ function funcDraw(){
 
 i=33;k=0;r=0;
 while(k<360){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' " + drawClose + a[i] + drawEnd+ drawEnd;
+if(k>20 && k<200){
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose;'" + drawClose + a[i] + drawEnd+ drawEnd;
+}
+else{
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: lightcyan;'" + drawClose + a[i] + drawEnd+ drawEnd;
+}
 r=k+45;
 document.getElementById("div"+i).style.transform = "rotate(" + r +"deg)";
 document.getElementById("sub"+i).style.transform = "rotate(-" + k +"deg)";
