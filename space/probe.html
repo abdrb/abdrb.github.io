@@ -13,8 +13,8 @@ body {
 #space{
 	position: absolute;
 	border: 0px solid grey;
-	top: 135px;
-	left: 10px;
+	top: 140px;
+	left: 16px;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -293,6 +293,7 @@ left: 120%;
 #triangleB{
 position: absolute;
 width: 0; 
+display: none;
   height: 0; 
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent; 
@@ -304,6 +305,69 @@ width: 0;
 #hlink{
 margin: 10px;
 }
+
+#alamalOrbit {
+    position: absolute;
+    border: 0px solid green;
+    border-radius: 100%;
+    width: 59%;
+    height: 59%;
+    top: 16%;
+    left: 20%;
+
+}
+#alamalShape {
+    position: absolute;
+    background-color: gold;
+    border-radius: 20%;
+    width: 6px;
+    height: 10px;
+    top: 95%;
+    left: 68%;
+}
+#amlLine {
+    position: absolute;
+    background-color: grey;
+    width: 30px;
+    height: 4px;
+	top: 96%;
+	left: 61%;
+}
+#uae {
+	position: absolute;
+	background-color: white;
+	width: 10px;
+	height: 10px;
+	top: 55%;
+	left: 94%;
+	display: none
+}
+#red{
+	position: absolute;
+	background-color: red;
+	width: 33.3%;
+	height: 100%;
+	top: 0%;
+	left: 100%;
+} 
+#green{
+	position: absolute;
+	background-color: green;
+	width: 100%;
+	height: 33.3%;
+	top: 66.6%;
+	left: 0%;
+}
+
+#black{
+	position: absolute;
+	background-color: black;
+	width: 100%;
+	height: 33.3%;
+	top: 0%;
+	left: 0%;
+}
+
 </style>
 </head>
 <body onload="funcDraw()">
@@ -343,12 +407,20 @@ margin: 10px;
 
 <div id="marsOrbit">
     <div id="marsShape" class="captions"><br>Mars</div>
+	<div id="uae">
+	    <div id="red"></div>
+	    <div id="green"></div>
+	    <div id="black"></div>
+	</div>
 </div>
 
 <div id="jupiterOrbit">
     <div id="jupiterShape" class="captions"><br>Jupiter</div>
 </div>
-
+<div id="alamalOrbit">
+    <div id="amlLine"></div>
+    <div id="alamalShape" class="captions"><br>Alamal</div>
+</div>
 </div>
 
 
@@ -358,7 +430,7 @@ margin: 10px;
 </div>
 <div id="links">
 <div><br>
-<a href="probe.html" id="spaceL">مسبار الأمل</a>
+<a href="space.html" id="spaceL">Digital Astronomical Clock</a>
 </div>
 	<div id="hlink">
 	<a href="mailto:applichain@gmail.com">Email the Developer</a>
@@ -375,6 +447,8 @@ mqStart = 340;
 vnStart = 330;	      
 mrStart = 330;	    
 jpStart = 290;
+amlStart = 0;
+amlDays = 0;
 
 jmo = moStart;
 jea = eaStart;
@@ -382,6 +456,8 @@ jmq = mqStart;
 jvn = vnStart;
 jmr = mrStart;
 jjp = jpStart;
+jaml = amlStart;
+
 days = document.getElementById("mnrot");
 month = document.getElementById("rots");
 earth = document.getElementById("earth");
@@ -406,37 +482,22 @@ drawDiv="<div "
 drawClose="> "
 drawEnd=" </div> "
 j=0;
-a = [" Cancer", "January", " Leo",  "February", " Virgo",  "March", " Libra",  "April", " Scorpio",  "May", "Sagittarius", "June", "Capricorn", "July", "Aquarius", "August", "Pisces", "September", " Aries", "October", " Taurus", "November", " Gemini", "December"];
+a = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function funcDraw(){
 
-i=23;k=0;r=0;
+i=11;k=0;r=0;
 while(k<360){
 if(k>20 && k<200){
-if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: #555555;'" + drawClose + a[i] + drawEnd+ drawEnd;
-}else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose;'" + drawClose + a[i] + drawEnd+ drawEnd;
-}
-}
-else{
-if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: #555555;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
 else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: lightcyan;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
-}
-r=k+60;
-
-if(i%2==0){document.getElementById("div"+i).style.display="none";}
-
+r=k+65;
 document.getElementById("div"+i).style.transform = "rotate(" + r +"deg)";
-document.getElementById("sub"+i).style.transform = "rotate(-" + 45 +"deg)";
-if(k>45 && k<250){
-document.getElementById("sub"+i).style.transform = "rotate(-" + 225 +"deg)";
-}
-k+=15;
+document.getElementById("sub"+i).style.transform = "rotate(-" + k +"deg)";
+k+=30.5;
 i--;
 }
 document.getElementById("moonOrbit").style.transform = "rotate(-" + moStart +"deg)"; 
@@ -445,6 +506,7 @@ document.getElementById("venusOrbit").style.transform = "rotate(-" + mqStart +"d
 document.getElementById("earthOrbit").style.transform = "rotate(-" + eaStart +"deg)"; 
 document.getElementById("marsOrbit").style.transform = "rotate(-" + mrStart +"deg)"; 
 document.getElementById("jupiterOrbit").style.transform = "rotate(-" + jpStart +"deg)"; 
+document.getElementById("alamalOrbit").style.transform = "rotate(-" + amlStart +"deg)"; 	
 stopClear=setInterval(funcStopToday,1);
 funcClockTime();
 funcClock();
@@ -466,6 +528,7 @@ function run(){
 	sClear=setInterval(funcMars,686.98/multi);
 	jClear=setInterval(funcJu,4331.9836/multi);
 	oClear=setInterval(funcMoon,27.32);
+	amlClear=setInterval(funcAml,539/multi);
 }
 
 function funcStopToday(){	
@@ -481,6 +544,7 @@ function funcStopToday(){
 		vnStart=jvn;
 		mrStart=jmr;
 		jpStart=jjp;
+		amlStart=jaml;
 		mm=mVal;dd=dVal;yy=yVal;
 		clearInterval(eClear);
 		clearInterval(vClear);
@@ -488,6 +552,7 @@ function funcStopToday(){
 		clearInterval(sClear);
 		clearInterval(jClear);
 		clearInterval(oClear);
+		clearInterval(amlClear);
 		stopToday=1;
 		pauseClick.style.display = "initial";
 		document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
@@ -496,6 +561,16 @@ function funcStopToday(){
 		document.getElementById("marsShape").innerHTML = "<br>Mars<br>" + r + "°";
 		document.getElementById("jupiterShape").innerHTML = "<br>Jupiter<br>" + j + "°";
 		document.getElementById("moonShape").innerHTML = "Moon" ;
+		document.getElementById("alamalShape").innerHTML = "<br>Alamal<br>" + amlDays + "days";
+		}
+	if(amlDays == 210){
+	clearInterval(amlClear);
+	document.getElementById("alamalShape").style.display = "none";
+	document.getElementById("amlLine").style.display = "none";
+	document.getElementById("uae").style.display = "initial";
+	}
+	if(amlDays == 250){
+		document.getElementById("spaceL").click();
 		}
 }	
 
@@ -521,6 +596,7 @@ clearInterval(mClear);
 clearInterval(sClear);
 clearInterval(jClear);
 clearInterval(oClear);
+clearInterval(amlClear);
 pause=0;
 pauseClick.innerHTML="∆";
 document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
@@ -611,6 +687,7 @@ function funcMoon(){
 }
 
 function funcEarth(){
+	amlDays++;
 	jea++;
 	document.getElementById("earthShape").innerHTML = jea + "°";
 	document.getElementById("earthOrbit").style.transform = "rotate(-" + jea + "deg)"; 
@@ -687,6 +764,18 @@ function funcJu(){
 	if (jjp == 360) 
 	{
 	jjp = 0;
+	}
+}
+
+function funcAml(){	
+	jaml++
+	document.getElementById("alamalShape").innerHTML = "<br>Alamal<br>" + amlDays + "days";
+	document.getElementById("alamalOrbit").style.transform = "rotate(-" + jaml +"deg)"; 
+	document.getElementById("alamalShape").style.transform = "rotate(" + jaml + "deg)"; 
+	document.getElementById("amlLine").style.transform = "rotate(" + jaml + "deg)"; 
+	if (jaml == 360) 
+	{
+	jaml = 1;
 	}
 }
 </script>
