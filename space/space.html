@@ -369,12 +369,13 @@ margin: 10px;
 mm=7;dd=20;yy=2020;
 stopToday=0;
 pause=0;
-moStart = 180;
+moStart = 0;
 eaStart = getDegreeEarth(0);
 mqStart = 340;    
 vnStart = 330;	      
 mrStart = 330;	    
 jpStart = 290;
+eaDays = -10;
 
 jmo = moStart;
 jea = eaStart;
@@ -465,7 +466,7 @@ function run(){
 	mClear=setInterval(funcMerc,87.972/multi);
 	sClear=setInterval(funcMars,686.98/multi);
 	jClear=setInterval(funcJu,4331.9836/multi);
-	oClear=setInterval(funcMoon,29.52/multi);
+
 }
 
 function funcStopToday(){	
@@ -487,7 +488,11 @@ function funcStopToday(){
 		clearInterval(mClear);
 		clearInterval(sClear);
 		clearInterval(jClear);
-		clearInterval(oClear);
+		//clearInterval(oClear);
+		document.getElementById("moonShape").innerHTML = eaDays + "°";
+		document.getElementById("moonOrbit").style.transform = "rotate(-" + eaDays +"deg)"; 
+		document.getElementById("moonShape").style.transform = "rotate(" + eaDays +"deg)"; 
+		
 		stopToday=1;
 		pauseClick.style.display = "initial";
 		document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
@@ -495,7 +500,7 @@ function funcStopToday(){
 		document.getElementById("earthShape").innerHTML = "Earth";
 		document.getElementById("marsShape").innerHTML = "<br>Mars<br>" + r + "°";
 		document.getElementById("jupiterShape").innerHTML = "<br>Jupiter<br>" + j + "°";
-		document.getElementById("moonShape").innerHTML = "Moon" ;
+		//document.getElementById("moonShape").innerHTML = "Moon" ;
 		}
 }	
 
@@ -504,6 +509,7 @@ mValue=mm;dValue=dd;yValue=yy;
 if(pause == 0){
 multi=1;
 pause=1;
+oClear=setInterval(funcMoon,29);
 run();
 pauseClick.innerHTML="=";
 }
@@ -590,7 +596,7 @@ return n;
 }
 	
 function funcMoon(){	
-	jmo++;
+	if(stopToday==1){jmo++;}
 	document.getElementById("moonShape").innerHTML = jmo + "°";
 	document.getElementById("moonOrbit").style.transform = "rotate(-" + jmo +"deg)"; 
 	document.getElementById("moonShape").style.transform = "rotate(" + jmo +"deg)"; 
@@ -611,6 +617,10 @@ function funcMoon(){
 }
 
 function funcEarth(){
+	eaDays++;
+	while (eaDays > 360){eaDays -= 360}
+	if(stopToday==0){jmo=eaDays;}
+	
 	jea++;
 	document.getElementById("earthShape").innerHTML = jea + "°";
 	document.getElementById("earthOrbit").style.transform = "rotate(-" + jea + "deg)"; 
