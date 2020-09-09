@@ -313,7 +313,7 @@ margin: 10px;
 <div id="clockTime"></div>
 <div id="clock"></div>
 
-<div id="draw">
+<div id="draw" onclick="javascript:if(speed>1000){speed=1}else{speed+=100};pauseFunc();pauseFunc();">
 
 <div id="space">
 <div id="lineW"></div>
@@ -369,13 +369,14 @@ margin: 10px;
 mm=7;dd=20;yy=2020;
 stopToday=0;
 pause=0;
-moStart = 0;
+stop=0;
+speed=1;
+moStart = 190;
 eaStart = getDegreeEarth(0);
 mqStart = 340;    
 vnStart = 330;	      
 mrStart = 330;	    
 jpStart = 290;
-eaDays = -10;
 
 jmo = moStart;
 jea = eaStart;
@@ -459,14 +460,13 @@ function getDegreeEarth(a){
 	return Number(deg.toFixed(0));
 }
 
-multi=4;
 function run(){
-	eClear=setInterval(funcEarth,365.26/multi);
-	vClear=setInterval(funcVenus,224.70/multi);
-	mClear=setInterval(funcMerc,87.972/multi);
-	sClear=setInterval(funcMars,686.98/multi);
-	jClear=setInterval(funcJu,4331.9836/multi);
-
+	eClear=setInterval(funcEarth,speed);
+	vClear=setInterval(funcVenus,speed);
+	mClear=setInterval(funcMerc,speed);
+	sClear=setInterval(funcMars,speed);
+	jClear=setInterval(funcJu,speed);
+	oClear=setInterval(funcMoon,speed);
 }
 
 function funcStopToday(){	
@@ -488,10 +488,7 @@ function funcStopToday(){
 		clearInterval(mClear);
 		clearInterval(sClear);
 		clearInterval(jClear);
-		//clearInterval(oClear);
-		document.getElementById("moonShape").innerHTML = eaDays + "°";
-		document.getElementById("moonOrbit").style.transform = "rotate(-" + eaDays +"deg)"; 
-		document.getElementById("moonShape").style.transform = "rotate(" + eaDays +"deg)"; 
+		clearInterval(oClear);
 		
 		stopToday=1;
 		pauseClick.style.display = "initial";
@@ -500,16 +497,15 @@ function funcStopToday(){
 		document.getElementById("earthShape").innerHTML = "Earth";
 		document.getElementById("marsShape").innerHTML = "<br>Mars<br>" + r + "°";
 		document.getElementById("jupiterShape").innerHTML = "<br>Jupiter<br>" + j + "°";
-		//document.getElementById("moonShape").innerHTML = "Moon" ;
+		document.getElementById("moonShape").innerHTML = "Moon" ;
 		}
 }	
 
 function pauseFunc(){
 mValue=mm;dValue=dd;yValue=yy;
 if(pause == 0){
-multi=1;
+stop=1;
 pause=1;
-oClear=setInterval(funcMoon,29);
 run();
 pauseClick.innerHTML="=";
 }
@@ -566,12 +562,12 @@ function funcClock(){
 	yr=yy;
 	}
 
-	n=addDZero(jmo);
-	u=addDZero(jmq);
-	v=addDZero(jvn);
-	e=addDZero(jea);
-	r=addDZero(jmr);
-	j=addDZero(jjp);
+	n=addDZero(jmo.toFixed(0));
+	u=addDZero(jmq.toFixed(0));
+	v=addDZero(jvn.toFixed(0));
+	e=addDZero(jea.toFixed(0));
+	r=addDZero(jmr.toFixed(0));
+	j=addDZero(jjp.toFixed(0));
 	
 	if(stopToday==0){
 	clock.innerHTML = d + "/" + t + "/" + y +"<br>"+ u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°" + "<br>" + n + "°";
@@ -579,7 +575,7 @@ function funcClock(){
 	else{
 	clock.innerHTML = gold + dy + "/" + mt + "/" + yr + end + "<br>" + brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";;
 	}
-	if((multi==4 && stopToday==1 && Number(da.getDate())>Number(dd)) || (multi==4 && stopToday==1 && Number(da.getMonth()+1)>Number(mm)) || (multi==4 && stopToday==1 && Number(da.getFullYear())>Number(yy))){
+	if((stop==0 && stopToday==1 && Number(da.getDate())>Number(dd)) || (stop==0 && stopToday==1 && Number(da.getMonth()+1)>Number(mm)) || (stop==0 && stopToday==1 && Number(da.getFullYear())>Number(yy))){
 	stopToday=0;
 	run();
 	}
@@ -594,12 +590,18 @@ function addDZero(n){
 	if(n<100){if(n<10){n="00"+n}else{n="0"+n}};
 return n;
 }
+function leapyear(year) {
+  return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
+}
+
 	
 function funcMoon(){	
-	if(stopToday==1){jmo++;}
-	document.getElementById("moonShape").innerHTML = jmo + "°";
-	document.getElementById("moonOrbit").style.transform = "rotate(-" + jmo +"deg)"; 
-	document.getElementById("moonShape").style.transform = "rotate(" + jmo +"deg)"; 
+	jmo+=360/29.530589; //27.321582
+	while (jmo > 360){jmo -= 360}
+	n=addDZero(jmo.toFixed(0));
+	document.getElementById("moonShape").innerHTML = n + "°";
+	document.getElementById("moonOrbit").style.transform = "rotate(-" + n +"deg)"; 
+	document.getElementById("moonShape").style.transform = "rotate(" + n +"deg)"; 
 	if (jmo == 360) 
 	{
 	jmo = 0;
@@ -616,17 +618,17 @@ function funcMoon(){
 	
 }
 
-function funcEarth(){
-	eaDays++;
-	while (eaDays > 360){eaDays -= 360}
-	if(stopToday==0){jmo=eaDays;}
-	
-	jea++;
-	document.getElementById("earthShape").innerHTML = jea + "°";
-	document.getElementById("earthOrbit").style.transform = "rotate(-" + jea + "deg)"; 
-	document.getElementById("xy").style.transform = "rotate(" + jea + "deg)"; 
+function funcEarth(){	
+	jea+=360/365.256365;
+	while (jea > 360){jea -= 360}
+	e=addDZero(jea.toFixed(0));
+	document.getElementById("earthShape").innerHTML = e + "°";
+	document.getElementById("earthOrbit").style.transform = "rotate(-" + e + "deg)"; 
+	document.getElementById("xy").style.transform = "rotate(" + e + "deg)"; 
+	feb=29;
+	if(leapyear(yy)){feb=30;}
 	dd += 1;
-	if((dd==32 && mm==1) || (dd==32 && mm==3) || (dd==32 && mm==5) || (dd==32 && mm==7) || (dd==32 && mm==8) || (dd==32 && mm==10) || (dd==32 && mm==12) || (dd==29 && mm==2) || (dd==31 && mm==4) || (dd==31 && mm==6) || (dd==31 && mm==9) || (dd==31 && mm==11)){
+	if((dd==32 && mm==1) || (dd==32 && mm==3) || (dd==32 && mm==5) || (dd==32 && mm==7) || (dd==32 && mm==8) || (dd==32 && mm==10) || (dd==32 && mm==12) || (dd==feb && mm==2) || (dd==31 && mm==4) || (dd==31 && mm==6) || (dd==31 && mm==9) || (dd==31 && mm==11)){
 
 	dd=1;
 	mm += 1;
@@ -641,10 +643,12 @@ function funcEarth(){
 }
 
 function funcVenus(){
-	jvn++;
-	document.getElementById("venusShape").innerHTML ="<br>Venus<br>" + jvn + "°";
-	document.getElementById("venusOrbit").style.transform = "rotate(-" + jvn +"deg)"; 	
-	document.getElementById("venusShape").style.transform = "rotate(" + jvn + "deg)"; 
+	jvn+=360/224.7;
+	while (jvn > 360){jvn -= 360}
+	v=addDZero(jvn.toFixed(0));
+	document.getElementById("venusShape").innerHTML ="<br>Venus<br>" + v + "°";
+	document.getElementById("venusOrbit").style.transform = "rotate(-" + v +"deg)"; 	
+	document.getElementById("venusShape").style.transform = "rotate(" + v + "deg)"; 
 	if (jvn == 360) 
 	{
 	jvn = 0;
@@ -659,10 +663,12 @@ function funcVenus(){
 	}
 }
 function funcMerc(){
-	jmq++;
-	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + jmq + "°";
-	document.getElementById("mercuryOrbit").style.transform = "rotate(-" + jmq +"deg)"; 
-	document.getElementById("mercuryShape").style.transform = "rotate(" + jmq + "deg)"; 
+	jmq+=360/87.97;
+	while (jmq > 360){jmq -= 360}
+	u=addDZero(jmq.toFixed(0));
+	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
+	document.getElementById("mercuryOrbit").style.transform = "rotate(-" + u +"deg)"; 
+	document.getElementById("mercuryShape").style.transform = "rotate(" + u + "deg)"; 
 	if (jmq == 360) 
 	{
 	jmq = 0;
@@ -679,10 +685,12 @@ function funcMerc(){
 }
 
 function funcMars(){	
-	jmr++;
-	document.getElementById("marsShape").innerHTML ="<br>Mars<br>" + jmr + "°";
-	document.getElementById("marsOrbit").style.transform = "rotate(-" + jmr +"deg)"; 
-	document.getElementById("marsShape").style.transform = "rotate(" + jmr + "deg)"; 
+	jmr+=360/686.93;
+	while (jmr > 360){jmr -= 360}
+	r=addDZero(jmr.toFixed(0));
+	document.getElementById("marsShape").innerHTML ="<br>Mars<br>" + r + "°";
+	document.getElementById("marsOrbit").style.transform = "rotate(-" + r +"deg)"; 
+	document.getElementById("marsShape").style.transform = "rotate(" + r + "deg)"; 
 	if (jmr == 360) 
 	{
 	jmr = 0;
@@ -690,10 +698,12 @@ function funcMars(){
 }
 
 function funcJu(){	
-	jjp++;
-	document.getElementById("jupiterShape").innerHTML ="<br>Jupiter<br>" + jjp + "°";
-	document.getElementById("jupiterOrbit").style.transform = "rotate(-" + jjp +"deg)"; 
-	document.getElementById("jupiterShape").style.transform = "rotate(" + jjp + "deg)"; 
+	jjp+=360/(11.86*365.256365);
+	while (jjp > 360){jjp -= 360}
+	j=addDZero(jjp.toFixed(0));
+	document.getElementById("jupiterShape").innerHTML ="<br>Jupiter<br>" + j + "°";
+	document.getElementById("jupiterOrbit").style.transform = "rotate(-" + j +"deg)"; 
+	document.getElementById("jupiterShape").style.transform = "rotate(" + j + "deg)"; 
 	if (jjp == 360) 
 	{
 	jjp = 0;
