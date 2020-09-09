@@ -313,7 +313,7 @@ margin: 10px;
 <div id="clockTime"></div>
 <div id="clock"></div>
 
-<div id="draw" onclick="javascript:if(speed>1000){speed=1}else{speed+=100};pauseFunc();pauseFunc();">
+<div id="draw" onclick="javascript:if(speed>1000){speed=1}else{speed+=200};pauseFunc();pauseFunc();">
 
 <div id="space">
 <div id="lineW"></div>
@@ -371,7 +371,7 @@ stopToday=0;
 pause=0;
 stop=0;
 speed=1;
-moStart = 190;
+moStart = 180;
 eaStart = getDegreeEarth(0);
 mqStart = 340;    
 vnStart = 330;	      
@@ -502,6 +502,7 @@ function funcStopToday(){
 }	
 
 function pauseFunc(){
+if(stop==0){speed=100;}
 mValue=mm;dValue=dd;yValue=yy;
 if(pause == 0){
 stop=1;
