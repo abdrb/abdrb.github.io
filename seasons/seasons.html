@@ -236,7 +236,12 @@ left: 30px;
 }
 
 #now {
-	display: none;
+	position: absolute;
+	top: 70px;
+	left: 30px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
 }
 #pauseBtn {
 	display: none;
@@ -255,7 +260,7 @@ left: 30px;
 }
 #clock {
 	position: absolute;
-	top: 70px;
+	top: 90px;
 	left: 30px;
 	width: 300px;
 	height: 300px;
@@ -371,17 +376,17 @@ yNow=Number(date.getFullYear());
 }
 moStep=360/27.321582; // 29.530589; // 27.321582;
 eaStep=360/365.256365;
-mqStep=360/87.97;
+mcStep=360/87.97;
 vnStep=360/224.7;
 mrStep=360/686.93;
 jpStep=(360/(11.86*365.256365));
 
 moStart = 130;//180;
 eaStart = getEarthStartPoint(90);
-mqStart = 360;    
+mcStart = 360;    
 vnStart = 320;	      
 mrStart = 330;	    
-jpStart = 290;
+jpStart = 300;
 
 stopToday=0;
 pause=0;
@@ -391,7 +396,7 @@ countDays = 0;
 
 jmo = moStart;
 jea = eaStart;
-jmq = mqStart;
+jmc = mcStart;
 jvn = vnStart;
 jmr = mrStart;
 jjp = jpStart;
@@ -443,7 +448,7 @@ i--;
 }
 document.getElementById("moonOrbit").style.transform = "rotate(-" + moStart +"deg)"; 
 document.getElementById("mercuryOrbit").style.transform = "rotate(-" + vnStart +"deg)"; 
-document.getElementById("venusOrbit").style.transform = "rotate(-" + mqStart +"deg)"; 
+document.getElementById("venusOrbit").style.transform = "rotate(-" + mcStart +"deg)"; 
 document.getElementById("earthOrbit").style.transform = "rotate(-" + eaStart +"deg)"; 
 document.getElementById("marsOrbit").style.transform = "rotate(-" + mrStart +"deg)"; 
 document.getElementById("jupiterOrbit").style.transform = "rotate(-" + jpStart +"deg)"; 
@@ -454,19 +459,19 @@ run();
 }
 function getDegree(){
 while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
-daysCounter()
+dateCreator()
 countDays++;
 }
 moStart+=moStep*countDays; //27.321582
 eaStart+=eaStep*countDays;
-mqStart+=mqStep*countDays;
+mcStart+=mcStep*countDays;
 vnStart+=vnStep*countDays;
 mrStart+=mrStep*countDays;
 jpStart+=jpStep*countDays;
 
 jmo=moStart;
 jea=eaStart;
-jmq=mqStart;
+jmc=mcStart;
 jvn=vnStart;
 jmr=mrStart;
 jjp=jpStart;
@@ -498,7 +503,7 @@ function funcStopToday(){
 		{
 		moStart=jmo;
 		eaStart=jea;
-		mqStart=jmq;
+		mcStart=jmc;
 		vnStart=jvn;
 		mrStart=jmr;
 		jpStart=jjp;
@@ -534,7 +539,7 @@ pauseClick.innerHTML="=";
 else{
 moStart=jmo;
 eaStart=jea;
-mqStart=jmq;
+mcStart=jmc;
 vnStart=jvn;
 mrStart=jmr;
 jpStart=jjp;
@@ -585,17 +590,19 @@ function funcClock(){
 	}
 
 	n=addDZero(jmo.toFixed(0));
-	u=addDZero(jmq.toFixed(0));
+	u=addDZero(jmc.toFixed(0));
 	v=addDZero(jvn.toFixed(0));
 	e=addDZero(jea.toFixed(0));
 	r=addDZero(jmr.toFixed(0));
 	j=addDZero(jjp.toFixed(0));
 
 	if(stopToday==0){
-	clock.innerHTML = d + "/" + t + "/" + y +"<br>"+ u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°" + "<br>" + n + "°";
+	now.innerHTML = d + "/" + t + "/" + y;
+	clock.innerHTML = u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°" + "<br>" + n + "°";
 	}
 	else{
-	clock.innerHTML = gold + dy + "/" + mt + "/" + yr + end + "<br>" + brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";;
+	now.innerHTML = gold + dy + "/" + mt + "/" + yr + end;
+	clock.innerHTML = brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";	
 	}
 	if((stop==0 && stopToday==1 && Number(da.getDate())>Number(dd)) || (stop==0 && stopToday==1 && Number(da.getMonth()+1)>Number(mm)) || (stop==0 && stopToday==1 && Number(da.getFullYear())>Number(yy))){
 	stopToday=0;
@@ -615,7 +622,7 @@ return n;
 function leapyear(year) {
   return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
 }
-function daysCounter(){
+function dateCreator(){
 	feb=29;
 	if(leapyear(yy)){feb=30;}	
 	dd += 1;
@@ -624,7 +631,6 @@ function daysCounter(){
 	mm += 1;
 	if(mm==13){mm=1;yy += 1;}
 	}
-	now.innerHTML=dd+"/"+mm+"/"+yy;
 }
 
 function funcMoon(){	
@@ -657,7 +663,7 @@ function funcEarth(){
 	document.getElementById("earthShape").innerHTML = e + "°";
 	document.getElementById("earthOrbit").style.transform = "rotate(-" + e + "deg)"; 
 	document.getElementById("xy").style.transform = "rotate(" + e + "deg)";
-	daysCounter()
+	dateCreator()
 	if (jea == 360) 
 	{
 	jea = 0;
@@ -685,18 +691,18 @@ function funcVenus(){
 	}
 }
 function funcMerc(){
-	jmq+=mqStep;
-	while (jmq > 360){jmq -= 360}
-	u=addDZero(jmq.toFixed(0));
+	jmc+=mcStep;
+	while (jmc > 360){jmc -= 360}
+	u=addDZero(jmc.toFixed(0));
 	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
 	document.getElementById("mercuryOrbit").style.transform = "rotate(-" + u +"deg)"; 
 	document.getElementById("mercuryShape").style.transform = "rotate(" + u + "deg)"; 
-	if (jmq == 360) 
+	if (jmc == 360) 
 	{
-	jmq = 0;
+	jmc = 0;
 	}
 	
-	if (jea >= jmq-15 && jea <= jmq+15)
+	if (jea >= jmc-15 && jea <= jmc+15)
 	{
 		document.getElementById("mer").style.color = "red";
 	}

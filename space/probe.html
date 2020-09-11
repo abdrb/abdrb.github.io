@@ -438,6 +438,7 @@ body {
 	<a href="mailto:applichain@gmail.com">Email the Developer</a>
 	</div>
 </div>
+<a href="probe.html" id="probeL"></a>
 </body>
 <script type="text/javascript">
 mm=7;dd=20;yy=2020;
@@ -447,7 +448,7 @@ stop=0;
 speed=1;
 moStart = 180;
 eaStart = getDegreeEarth(0);
-mqStart = 340;    
+mcStart = 340;    
 vnStart = 330;	      
 mrStart = 330;	    
 jpStart = 290;
@@ -456,7 +457,7 @@ amlDays = 0;
 
 jmo = moStart;
 jea = eaStart;
-jmq = mqStart;
+jmc = mcStart;
 jvn = vnStart;
 jmr = mrStart;
 jjp = jpStart;
@@ -506,7 +507,7 @@ i--;
 }
 document.getElementById("moonOrbit").style.transform = "rotate(-" + moStart +"deg)"; 
 document.getElementById("mercuryOrbit").style.transform = "rotate(-" + vnStart +"deg)"; 
-document.getElementById("venusOrbit").style.transform = "rotate(-" + mqStart +"deg)"; 
+document.getElementById("venusOrbit").style.transform = "rotate(-" + mcStart +"deg)"; 
 document.getElementById("earthOrbit").style.transform = "rotate(-" + eaStart +"deg)"; 
 document.getElementById("marsOrbit").style.transform = "rotate(-" + mrStart +"deg)"; 
 document.getElementById("jupiterOrbit").style.transform = "rotate(-" + jpStart +"deg)"; 
@@ -543,7 +544,7 @@ function funcStopToday(){
 		{
 		moStart=jmo;
 		eaStart=jea;
-		mqStart=jmq;
+		mcStart=jmc;
 		vnStart=jvn;
 		mrStart=jmr;
 		jpStart=jjp;
@@ -576,7 +577,7 @@ function funcStopToday(){
 	}
 	
 	if(amlDays == 250){
-		document.getElementById("spaceL").click();
+		document.getElementById("probeL").click();
 		}
 }	
 
@@ -592,7 +593,7 @@ pauseClick.innerHTML="=";
 else{
 moStart=jmo;
 eaStart=jea;
-mqStart=jmq;
+mcStart=jmc;
 vnStart=jvn;
 mrStart=jmr;
 jpStart=jjp;
@@ -644,7 +645,7 @@ function funcClock(){
 	}
 
 	n=addDZero(jmo.toFixed(0));
-	u=addDZero(jmq.toFixed(0));
+	u=addDZero(jmc.toFixed(0));
 	v=addDZero(jvn.toFixed(0));
 	e=addDZero(jea.toFixed(0));
 	r=addDZero(jmr.toFixed(0));
@@ -745,18 +746,18 @@ function funcVenus(){
 	}
 }
 function funcMerc(){
-	jmq+=360/87.97;
-	while (jmq > 360){jmq -= 360}
-	u=addDZero(jmq.toFixed(0));
+	jmc+=360/87.97;
+	while (jmc > 360){jmc -= 360}
+	u=addDZero(jmc.toFixed(0));
 	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
 	document.getElementById("mercuryOrbit").style.transform = "rotate(-" + u +"deg)"; 
 	document.getElementById("mercuryShape").style.transform = "rotate(" + u + "deg)"; 
-	if (jmq == 360) 
+	if (jmc == 360) 
 	{
-	jmq = 0;
+	jmc = 0;
 	}
 	
-	if (jea >= jmq-15 && jea <= jmq+15)
+	if (jea >= jmc-15 && jea <= jmc+15)
 	{
 		document.getElementById("mer").style.color = "red";
 	}
