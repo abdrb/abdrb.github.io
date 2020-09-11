@@ -335,12 +335,13 @@ body {
 	left: 61%;
 }
 #uae {
+	transform: rotate(270deg);
 	position: absolute;
 	background-color: white;
 	width: 10px;
 	height: 10px;
-	top: 55%;
-	left: 94%;
+	top: 53%;
+	left: 102.3%;
 	display: none
 }
 #red{
@@ -556,6 +557,8 @@ function funcStopToday(){
 		clearInterval(oClear);
 		clearInterval(amlClear);
 		stopToday=1;
+		speed=100;
+		stop=0;
 		pauseClick.style.display = "initial";
 		document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
 		document.getElementById("venusShape").innerHTML = "<br>Venus<br>" + v + "°";

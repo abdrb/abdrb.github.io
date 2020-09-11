@@ -359,16 +359,35 @@ margin: 10px;
 </body>
 <script type="text/javascript">
 mm=7;dd=20;yy=2020;
+date = new Date();
+dNow=Number(date.getDate());
+mNow=Number(date.getMonth());
+if(mNow===0){
+mNow=12;
+yNow=Number(date.getFullYear())-1;
+}
+else{
+yNow=Number(date.getFullYear());
+}
+moStep=360/27.321582; // 29.530589; // 27.321582;
+eaStep=360/365.256365;
+mqStep=360/87.97;
+vnStep=360/224.7;
+mrStep=360/686.93;
+jpStep=(360/(11.86*365.256365));
+
+moStart = 130;//180;
+eaStart = getEarthStartPoint(90);
+mqStart = 360;    
+vnStart = 320;	      
+mrStart = 330;	    
+jpStart = 290;
+
 stopToday=0;
 pause=0;
 stop=0;
 speed=1;
-moStart = 180;
-eaStart = getDegreeEarth(0);
-mqStart = 340;    
-vnStart = 330;	      
-mrStart = 330;	    
-jpStart = 290;
+countDays = 0;
 
 jmo = moStart;
 jea = eaStart;
@@ -376,6 +395,7 @@ jmq = mqStart;
 jvn = vnStart;
 jmr = mrStart;
 jjp = jpStart;
+
 days = document.getElementById("mnrot");
 month = document.getElementById("rots");
 earth = document.getElementById("earth");
@@ -403,7 +423,7 @@ j=0;
 a=['حادية','تاسعة','سابعة','بحري سابعة','بحري الصيف','الدلي','المنسرق','المية','التسعين','الثمانين','السبعين','لب','الثرياء','الثور','رسو الصيف','الظلم','عنابر القيظ','عنابر الخريف','المرزم','سهيل','قتور الشناح','القتور','قتور السراب','ثجر','لولين','الثالث','الرابع','الخامس','السادس','السابع','برد الثرياء','السقوط','رسو الشتاء','الرجوع'];
 
 function funcDraw(){
-
+getDegree();
 i=33;k=0;r=0;
 while(k<360){
 if(k>20 && k<200){
@@ -432,10 +452,30 @@ funcClockTime();
 funcClock();
 run();
 }
+function getDegree(){
+while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
+daysCounter()
+countDays++;
+}
+moStart+=moStep*countDays; //27.321582
+eaStart+=eaStep*countDays;
+mqStart+=mqStep*countDays;
+vnStart+=vnStep*countDays;
+mrStart+=mrStep*countDays;
+jpStart+=jpStep*countDays;
 
-function getDegreeEarth(a){
-	if ((mm-1) == 0){deg = dd + 90+a;}
-	else{deg = ((mm-1) * 30) + dd + 90+a;}
+jmo=moStart;
+jea=eaStart;
+jmq=mqStart;
+jvn=vnStart;
+jmr=mrStart;
+jjp=jpStart;
+
+}
+
+function getEarthStartPoint(a){
+	if ((mm-1) == 0){deg = (dd*eaStep) +a;}
+	else{deg = ((mm-1) * (30.42*eaStep)) + (dd*eaStep) +a;}
 	while (deg > 360){deg -= 360}
 	return Number(deg.toFixed(0));
 }
@@ -470,6 +510,8 @@ function funcStopToday(){
 		clearInterval(jClear);
 		clearInterval(oClear);
 		stopToday=1;
+		speed=100;
+		stop=0;
 		pauseClick.style.display = "initial";
 		document.getElementById("mercuryShape").innerHTML = "<br>عطارد<br>" + u + "°";
 		document.getElementById("venusShape").innerHTML = "<br>الزهرة<br>" + v + "°";
@@ -573,9 +615,20 @@ return n;
 function leapyear(year) {
   return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
 }
+function daysCounter(){
+	feb=29;
+	if(leapyear(yy)){feb=30;}	
+	dd += 1;
+	if((dd==32 && mm==1) || (dd==32 && mm==3) || (dd==32 && mm==5) || (dd==32 && mm==7) || (dd==32 && mm==8) || (dd==32 && mm==10) || (dd==32 && mm==12) || (dd==feb && mm==2) || (dd==31 && mm==4) || (dd==31 && mm==6) || (dd==31 && mm==9) || (dd==31 && mm==11)){
+	dd=1;
+	mm += 1;
+	if(mm==13){mm=1;yy += 1;}
+	}
+	now.innerHTML=dd+"/"+mm+"/"+yy;
+}
 
 function funcMoon(){	
-	jmo+=360/29.530589; //27.321582
+	jmo+=moStep; //29.530589; //27.321582;
 	while (jmo > 360){jmo -= 360}
 	n=addDZero(jmo.toFixed(0));
 	document.getElementById("moonShape").innerHTML = n + "°";
@@ -598,23 +651,13 @@ function funcMoon(){
 }
 
 function funcEarth(){
-	jea+=360/365.256365;
+	jea+=eaStep;
 	while (jea > 360){jea -= 360}
 	e=addDZero(jea.toFixed(0));
 	document.getElementById("earthShape").innerHTML = e + "°";
 	document.getElementById("earthOrbit").style.transform = "rotate(-" + e + "deg)"; 
-	document.getElementById("xy").style.transform = "rotate(" + e + "deg)"; 
-	feb=29;
-	if(leapyear(yy)){feb=30;}
-	dd += 1;
-	if((dd==32 && mm==1) || (dd==32 && mm==3) || (dd==32 && mm==5) || (dd==32 && mm==7) || (dd==32 && mm==8) || (dd==32 && mm==10) || (dd==32 && mm==12) || (dd==feb && mm==2) || (dd==31 && mm==4) || (dd==31 && mm==6) || (dd==31 && mm==9) || (dd==31 && mm==11)){
-
-	dd=1;
-	mm += 1;
-	if(mm==13){mm=1;yy += 1;}
-	}
-	now.innerHTML=dd+"/"+mm+"/"+yy;
-	
+	document.getElementById("xy").style.transform = "rotate(" + e + "deg)";
+	daysCounter()
 	if (jea == 360) 
 	{
 	jea = 0;
@@ -622,7 +665,7 @@ function funcEarth(){
 }
 
 function funcVenus(){
-	jvn+=360/224.7;
+	jvn+=vnStep;
 	while (jvn > 360){jvn -= 360}
 	v=addDZero(jvn.toFixed(0));
 	document.getElementById("venusShape").innerHTML ="<br>Venus<br>" + v + "°";
@@ -642,7 +685,7 @@ function funcVenus(){
 	}
 }
 function funcMerc(){
-	jmq+=360/87.97;
+	jmq+=mqStep;
 	while (jmq > 360){jmq -= 360}
 	u=addDZero(jmq.toFixed(0));
 	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
@@ -664,7 +707,7 @@ function funcMerc(){
 }
 
 function funcMars(){	
-	jmr+=360/686.93;
+	jmr+=mrStep;
 	while (jmr > 360){jmr -= 360}
 	r=addDZero(jmr.toFixed(0));
 	document.getElementById("marsShape").innerHTML ="<br>Mars<br>" + r + "°";
@@ -677,7 +720,7 @@ function funcMars(){
 }
 
 function funcJu(){	
-	jjp+=360/(11.86*365.256365);
+	jjp+=jpStep;
 	while (jjp > 360){jjp -= 360}
 	j=addDZero(jjp.toFixed(0));
 	document.getElementById("jupiterShape").innerHTML ="<br>Jupiter<br>" + j + "°";

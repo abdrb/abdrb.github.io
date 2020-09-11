@@ -489,8 +489,9 @@ function funcStopToday(){
 		clearInterval(sClear);
 		clearInterval(jClear);
 		clearInterval(oClear);
-		
 		stopToday=1;
+		speed=100;
+		stop=0;
 		pauseClick.style.display = "initial";
 		document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
 		document.getElementById("venusShape").innerHTML = "<br>Venus<br>" + v + "°";
