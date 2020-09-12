@@ -446,12 +446,19 @@ stopToday=0;
 pause=0;
 stop=0;
 speed=1;
-moStart = 180;
-eaStart = getDegreeEarth(0);
-mcStart = 340;    
-vnStart = 330;	      
+moStep=360/27.321582; // 29.530589; // 27.321582;
+eaStep=360/365.256365;
+mcStep=360/87.97;
+vnStep=360/224.7;
+mrStep=360/686.93;
+jpStep=(360/(11.86*365.256365));
+
+moStart = 130;//180;
+eaStart = getEarthStartPoint(90);
+mcStart = 360;    
+vnStart = 320;	      
 mrStart = 330;	    
-jpStart = 290;
+jpStart = 300;
 amlStart = 0;
 amlDays = 0;
 
@@ -518,9 +525,9 @@ funcClock();
 run();
 }
 
-function getDegreeEarth(a){
-	if ((mm-1) == 0){deg = dd + 90+a;}
-	else{deg = ((mm-1) * 30) + dd + 90+a;}
+function getEarthStartPoint(a){
+	if ((mm-1) == 0){deg = (dd*eaStep) +a;}
+	else{deg = ((mm-1) * (30.42*eaStep)) + (dd*eaStep) +a;}
 	while (deg > 360){deg -= 360}
 	return Number(deg.toFixed(0));
 }
@@ -678,7 +685,7 @@ function leapyear(year) {
 
 
 function funcMoon(){	
-	jmo+=360/29.530589; //27.321582
+	jmo+=moStep; //29.530589; //27.321582
 	while (jmo > 360){jmo -= 360}
 	n=addDZero(jmo.toFixed(0));
 	document.getElementById("moonShape").innerHTML = n + "°";
@@ -702,7 +709,7 @@ function funcMoon(){
 
 function funcEarth(){
 	amlDays++;
-	jea+=360/365.256365;
+	jea+=eaStep;
 	while (jea > 360){jea -= 360}
 	e=addDZero(jea.toFixed(0));
 	document.getElementById("earthShape").innerHTML = e + "°";
@@ -726,7 +733,7 @@ function funcEarth(){
 }
 
 function funcVenus(){
-	jvn+=360/224.7;
+	jvn+=vnStep;
 	while (jvn > 360){jvn -= 360}
 	v=addDZero(jvn.toFixed(0));
 	document.getElementById("venusShape").innerHTML ="<br>Venus<br>" + v + "°";
@@ -746,7 +753,7 @@ function funcVenus(){
 	}
 }
 function funcMerc(){
-	jmc+=360/87.97;
+	jmc+=mcStep;
 	while (jmc > 360){jmc -= 360}
 	u=addDZero(jmc.toFixed(0));
 	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
@@ -768,7 +775,7 @@ function funcMerc(){
 }
 
 function funcMars(){	
-	jmr+=360/686.93;
+	jmr+=mrStep;
 	while (jmr > 360){jmr -= 360}
 	r=addDZero(jmr.toFixed(0));
 	document.getElementById("marsShape").innerHTML ="<br>Mars<br>" + r + "°";
@@ -781,7 +788,7 @@ function funcMars(){
 }
 
 function funcJu(){	
-	jjp+=360/(11.86*365.256365);
+	jjp+=jpStep;
 	while (jjp > 360){jjp -= 360}
 	j=addDZero(jjp.toFixed(0));
 	document.getElementById("jupiterShape").innerHTML ="<br>Jupiter<br>" + j + "°";
