@@ -231,7 +231,12 @@ left: 20px;
 }
 
 #now {
-	display: none;
+	position: absolute;
+	top: 70px;
+	left: 30px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
 }
 #pauseBtn {
 	display: none;
@@ -250,7 +255,7 @@ left: 20px;
 }
 #clock {
 	position: absolute;
-	top: 70px;
+	top: 90px;
 	left: 40px;
 	width: 300px;
 	height: 300px;
@@ -367,23 +372,36 @@ margin: 10px;
 </body>
 <script type="text/javascript">
 mm=7;dd=20;yy=2020;
+date = new Date();
+dNow=Number(date.getDate());
+mNow=Number(date.getMonth());
+if(mNow===0){
+mNow=12;
+yNow=Number(date.getFullYear())-1;
+}
+else{
+yNow=Number(date.getFullYear());
+}
+moStep=360/27.321582; // 29.530589; // 27.321582;
+eaStep=360/365.256365;
+mcStep=360/87.97;
+vnStep=360/224.7;
+mrStep=360/686.93;
+jpStep=(360/(11.86*365.256365));
+
+moStart = 130;
+eaStart = getEarthStartPoint(90);
+mcStart = 360;    
+vnStart = 320;	      
+mrStart = 330;	    
+jpStart = 300;
+
 stopToday=0;
 pause=0;
 stop=0;
 speed=1;
-moStart = 180;
-eaStart = getDegreeEarth(0);
-mcStart = 340;    
-vnStart = 330;	      
-mrStart = 330;	    
-jpStart = 290;
+countDays = 0;
 
-jmo = moStart;
-jea = eaStart;
-jmc = mcStart;
-jvn = vnStart;
-jmr = mrStart;
-jjp = jpStart;
 days = document.getElementById("mnrot");
 month = document.getElementById("rots");
 earth = document.getElementById("earth");
@@ -411,7 +429,7 @@ j=0;
 a = [" Cancer", "January", " Leo",  "February", " Virgo",  "March", " Libra",  "April", " Scorpio",  "May", "Sagittarius", "June", "Capricorn", "July", "Aquarius", "August", "Pisces", "September", " Aries", "October", " Taurus", "November", " Gemini", "December"];
 
 function funcDraw(){
-
+getDegree()
 i=23;k=0;r=0;
 while(k<360){
 if(k>20 && k<200){
@@ -431,7 +449,7 @@ pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDi
 }
 r=k+60;
 
-if(i%2==0){document.getElementById("div"+i).style.display="none";}
+if(i%2==0){document.getElementById("div"+i).style.display= "initial" ;}
 
 document.getElementById("div"+i).style.transform = "rotate(" + r +"deg)";
 document.getElementById("sub"+i).style.transform = "rotate(-" + 45 +"deg)";
@@ -453,9 +471,30 @@ funcClock();
 run();
 }
 
-function getDegreeEarth(a){
-	if ((mm-1) == 0){deg = dd + 90+a;}
-	else{deg = ((mm-1) * 30) + dd + 90+a;}
+function getDegree(){
+while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
+dateCreator()
+countDays++;
+}
+moStart+=moStep*countDays; //27.321582
+eaStart=getEarthStartPoint(90);
+mcStart+=mcStep*countDays;
+vnStart+=vnStep*countDays;
+mrStart+=mrStep*countDays;
+jpStart+=jpStep*countDays;
+
+jmo=moStart;
+jea=eaStart;
+jmc=mcStart;
+jvn=vnStart;
+jmr=mrStart;
+jjp=jpStart;
+
+}
+
+function getEarthStartPoint(a){
+	if ((mm-1) == 0){deg = (dd*eaStep) +a;}
+	else{deg = ((mm-1) * (30.42*eaStep)) + (dd*eaStep) +a;}
 	while (deg > 360){deg -= 360}
 	return Number(deg.toFixed(0));
 }
@@ -572,10 +611,12 @@ function funcClock(){
 	j=addDZero(jjp.toFixed(0));
 	
 	if(stopToday==0){
-	clock.innerHTML = d + "/" + t + "/" + y +"<br>"+ u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°" + "<br>" + n + "°";
+	now.innerHTML = d + "/" + t + "/" + y;
+	clock.innerHTML = u +"°:"+ v +"°:" + e +"°:"+ r +"°:"+ j +"°" + "<br>" + n + "°";
 	}
 	else{
-	clock.innerHTML = gold + dy + "/" + mt + "/" + yr + end + "<br>" + brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";;
+	now.innerHTML = gold + dy + "/" + mt + "/" + yr + end;
+	clock.innerHTML = brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";	
 	}
 	if((stop==0 && stopToday==1 && Number(da.getDate())>Number(dd)) || (stop==0 && stopToday==1 && Number(da.getMonth()+1)>Number(mm)) || (stop==0 && stopToday==1 && Number(da.getFullYear())>Number(yy))){
 	stopToday=0;
@@ -595,10 +636,20 @@ return n;
 function leapyear(year) {
   return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
 }
+function dateCreator(){
+	feb=29;
+	if(leapyear(yy)){feb=30;}	
+	dd += 1;
+	if((dd==32 && mm==1) || (dd==32 && mm==3) || (dd==32 && mm==5) || (dd==32 && mm==7) || (dd==32 && mm==8) || (dd==32 && mm==10) || (dd==32 && mm==12) || (dd==feb && mm==2) || (dd==31 && mm==4) || (dd==31 && mm==6) || (dd==31 && mm==9) || (dd==31 && mm==11)){
+	dd=1;
+	mm += 1;
+	if(mm==13){mm=1;yy += 1;}
+	}
+}
 
 	
 function funcMoon(){	
-	jmo+=360/29.530589; //27.321582
+	jmo+=moStep; //29.530589; //27.321582
 	while (jmo > 360){jmo -= 360}
 	n=addDZero(jmo.toFixed(0));
 	document.getElementById("moonShape").innerHTML = n + "°";
@@ -621,23 +672,13 @@ function funcMoon(){
 }
 
 function funcEarth(){	
-	jea+=360/365.256365;
+	jea+=eaStep;
 	while (jea > 360){jea -= 360}
 	e=addDZero(jea.toFixed(0));
 	document.getElementById("earthShape").innerHTML = e + "°";
 	document.getElementById("earthOrbit").style.transform = "rotate(-" + e + "deg)"; 
 	document.getElementById("xy").style.transform = "rotate(" + e + "deg)"; 
-	feb=29;
-	if(leapyear(yy)){feb=30;}
-	dd += 1;
-	if((dd==32 && mm==1) || (dd==32 && mm==3) || (dd==32 && mm==5) || (dd==32 && mm==7) || (dd==32 && mm==8) || (dd==32 && mm==10) || (dd==32 && mm==12) || (dd==feb && mm==2) || (dd==31 && mm==4) || (dd==31 && mm==6) || (dd==31 && mm==9) || (dd==31 && mm==11)){
-
-	dd=1;
-	mm += 1;
-	if(mm==13){mm=1;yy += 1;}
-	}
-	now.innerHTML=dd+"/"+mm+"/"+yy;
-	
+	dateCreator()
 	if (jea == 360) 
 	{
 	jea = 0;
@@ -645,7 +686,7 @@ function funcEarth(){
 }
 
 function funcVenus(){
-	jvn+=360/224.7;
+	jvn+=vnStep;
 	while (jvn > 360){jvn -= 360}
 	v=addDZero(jvn.toFixed(0));
 	document.getElementById("venusShape").innerHTML ="<br>Venus<br>" + v + "°";
@@ -665,7 +706,7 @@ function funcVenus(){
 	}
 }
 function funcMerc(){
-	jmc+=360/87.97;
+	jmc+=mcStep;
 	while (jmc > 360){jmc -= 360}
 	u=addDZero(jmc.toFixed(0));
 	document.getElementById("mercuryShape").innerHTML = "<br>Mercury<br>" + u + "°";
@@ -687,7 +728,7 @@ function funcMerc(){
 }
 
 function funcMars(){	
-	jmr+=360/686.93;
+	jmr+=mrStep;
 	while (jmr > 360){jmr -= 360}
 	r=addDZero(jmr.toFixed(0));
 	document.getElementById("marsShape").innerHTML ="<br>Mars<br>" + r + "°";
@@ -700,7 +741,7 @@ function funcMars(){
 }
 
 function funcJu(){	
-	jjp+=360/(11.86*365.256365);
+	jjp+=jpStep;
 	while (jjp > 360){jjp -= 360}
 	j=addDZero(jjp.toFixed(0));
 	document.getElementById("jupiterShape").innerHTML ="<br>Jupiter<br>" + j + "°";
