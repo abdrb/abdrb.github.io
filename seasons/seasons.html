@@ -370,30 +370,37 @@ margin: 10px;
 </div>
 </body>
 <script type="text/javascript">
-mm=7;dd=20;yy=2020;
+mm=1;dd=1;yy=1;
 date = new Date();
-dNow=Number(date.getDate());
-mNow=Number(date.getMonth());
+dDate=Number(date.getDate());
+mMonth=Number(date.getMonth());
+yYear=Number(date.getFullYear());
+
+//dDate=1; mMonth=2; yYear=2040;
+
+dNow=dDate;
+mNow=mMonth;
 if(mNow===0){
 mNow=12;
-yNow=Number(date.getFullYear())-14
+yNow=yYear-1;
 }
 else{
-yNow=Number(date.getFullYear());
+yNow=yYear;
 }
-moStep=360/27.321582; // 29.530589; // 27.321582;
+
+moStep=360/ 29.530589; // 29.530589; // 27.321582;
 eaStep=360/365.256365;
 mcStep=360/87.97;
 vnStep=360/224.7;
 mrStep=360/686.93;
 jpStep=(360/(11.86*365.256365));
 
-moStart = 130;
+moStart = 100;
 eaStart = getEarthStartPoint(90);
-mcStart = 360;    
-vnStart = 320;	      
-mrStart = 330;	    
-jpStart = 300;
+mcStart = 18;    
+vnStart = 66;	      
+mrStart = 42;	    
+jpStart = 200;
 
 stopToday=0;
 pause=0;
@@ -467,7 +474,7 @@ jjp=jpStart;
 }
 
 function getEarthStartPoint(a){
-	if ((mm-1) == 0){deg = (dd*eaStep) +a;}
+	if ((mm-1) === 0){deg = (dd*eaStep) +a;}
 	else{deg = ((mm-1) * (30.42*eaStep)) + (dd*eaStep) +a;}
 	while (deg > 360){deg -= 360}
 	return Number(deg.toFixed(0));
@@ -483,11 +490,10 @@ function run(){
 }
 
 function funcStopToday(){	
-	date = new Date();
-	mVal=Number(date.getMonth())+1;
-	dVal=Number(date.getDate());
-	yVal=Number(date.getFullYear());
-	if ((stopToday == 0) && mVal==mm && dVal==dd && yVal==yy)
+	mToday=mMonth+1;
+	dToday=dDate;
+	yToday=yYear;
+	if ((stopToday === 0) && mToday===mm && dToday===dd && yToday===yy)
 		{
 		stopFunc();
 		stopToday=1;
@@ -513,12 +519,11 @@ mercuryShape.innerHTML = "<br>عطارد<br>" + u + "°";
 venusShape.innerHTML = "<br>الزهرة<br>" + v + "°";
 marsShape.innerHTML = "<br>المريخ<br>" + r + "°";
 jupiterShape.innerHTML = "<br>المشتري<br>" + j + "°";
-funcHour();
 }
 
 function pauseFunc(){
-if(continual==0){speed=100;}
-if(pause == 0){
+if(continual===0){speed=100;}
+if(pause === 0){
 continual=1;
 pause=1;
 run();
@@ -531,6 +536,7 @@ pauseClick.innerHTML="∆";
 }
 }
 
+hh=12;
 function funcClockTime(){
 	setInterval(function(){
 	da = new Date();
@@ -538,6 +544,11 @@ function funcClockTime(){
 	m=addZero(da.getMinutes());
 	h=addZero(da.getHours());
 	clockTime.innerHTML = h + ":" + m + ":" + s;
+	if(h!==hh){
+	funcHour();
+	hh=h;
+	}
+	nextDay();
 	}, (1000));
 }
 
@@ -555,15 +566,21 @@ function funcClock(){
 	j=addDZero(jjp.toFixed(0));
 
 	now.innerHTML = gold + d + "/" + m + "/" + y + end;
-	clock.innerHTML = brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";	
+	clock.innerHTML = brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";
+	}, (1));
+	}
 
-	if((continual==0 && stopToday==1 && Number(da.getDate())>Number(dd)) || (continual==0 && stopToday==1 && Number(da.getMonth()+1)>Number(mm)) || (continual==0 && stopToday==1 && Number(da.getFullYear())>Number(yy))){
+function nextDay(){
+	da = new Date();
+	dDa=Number(da.getDate());
+	mDa=Number(da.getMonth()+1);
+	yDa=Number(da.getFullYear());
+	if((continual===0 && stopToday===1 && dDa>dd) || (continual===0 && stopToday===1 && mDa>mm) || (continual===0 && stopToday===1 && yDa>yy)){
 	stopToday=0;
 	run();
 	}
-	}, (1));
-	}
-	
+}
+
 function addZero(n){
 	if(n<10){n="0"+n};
 return n;
@@ -579,7 +596,7 @@ function dateCreator(){
 	feb=29;
 	if(leapyear(yy)){feb=30;}	
 	dd += 1;
-	if((dd==32 && mm==1) || (dd==32 && mm==3) || (dd==32 && mm==5) || (dd==32 && mm==7) || (dd==32 && mm==8) || (dd==32 && mm==10) || (dd==32 && mm==12) || (dd==feb && mm==2) || (dd==31 && mm==4) || (dd==31 && mm==6) || (dd==31 && mm==9) || (dd==31 && mm==11)){
+	if((dd===32 && mm===1) || (dd===32 && mm===3) || (dd===32 && mm===5) || (dd===32 && mm===7) || (dd===32 && mm===8) || (dd===32 && mm===10) || (dd===32 && mm===12) || (dd===feb && mm===2) || (dd===31 && mm===4) || (dd===31 && mm===6) || (dd===31 && mm===9) || (dd===31 && mm===11)){
 	dd=1;
 	mm += 1;
 	if(mm==13){mm=1;yy += 1;}
@@ -591,10 +608,7 @@ function funcMoon(){
 	while (jmo > 360){jmo -= 360}
 	n=addDZero(jmo.toFixed(0));
 	moonOrbit.style.transform = "rotate(-" + n +"deg)"; 
-	if (jmo == 360) 
-	{
-	jmo = 0;
-	}
+	if (jmo === 360) {jmo = 0;}
 }
 
 function funcHour(){
@@ -602,7 +616,7 @@ function funcHour(){
 	i=(15*d.getHours())+180;
 	while (i > 360){i -= 360}
 	earthShape.style.transform = "rotate(-" + i + "deg)"; 
-	if (i == 360) {i = 0;}
+	if (i === 360) {i = 0;}
 }
 
 
@@ -612,10 +626,7 @@ function funcEarth(){
 	e=addDZero(jea.toFixed(0));
 	earthOrbit.style.transform = "rotate(-" + e + "deg)"; 
 	dateCreator();
-	if (jea == 360) 
-	{
-	jea = 0;
-	}
+	if (jea === 360) {jea = 0;}
 }
 
 function funcVenus(){
@@ -625,10 +636,7 @@ function funcVenus(){
 	venusShape.innerHTML ="<br>Venus<br>" + v + "°";
 	venusOrbit.style.transform = "rotate(-" + v +"deg)"; 	
 	venusShape.style.transform = "rotate(" + v + "deg)"; 
-	if (jvn == 360) 
-	{
-	jvn = 0;
-	}
+	if (jvn === 360) {jvn = 0;}
 }
 function funcMerc(){
 	jmc+=mcStep;
@@ -637,10 +645,7 @@ function funcMerc(){
 	mercuryShape.innerHTML = "<br>Mercury<br>" + u + "°";
 	mercuryOrbit.style.transform = "rotate(-" + u +"deg)"; 
 	mercuryShape.style.transform = "rotate(" + u + "deg)"; 
-	if (jmc == 360) 
-	{
-	jmc = 0;
-	}
+	if (jmc === 360) {jmc = 0;}
 }
 
 function funcMars(){	
@@ -650,10 +655,7 @@ function funcMars(){
 	marsShape.innerHTML ="<br>Mars<br>" + r + "°";
 	marsOrbit.style.transform = "rotate(-" + r +"deg)"; 
 	marsShape.style.transform = "rotate(" + r + "deg)"; 
-	if (jmr == 360) 
-	{
-	jmr = 0;
-	}
+	if (jmr === 360) {jmr = 0;}
 }
 
 function funcJu(){	
@@ -663,10 +665,7 @@ function funcJu(){
 	jupiterShape.innerHTML ="<br>Jupiter<br>" + j + "°";
 	jupiterOrbit.style.transform = "rotate(-" + j +"deg)"; 
 	jupiterShape.style.transform = "rotate(" + j + "deg)"; 
-	if (jjp == 360) 
-	{
-	jjp = 0;
-	}
+	if (jjp === 360) {jjp = 0;}
 }
 </script>
 </html>
