@@ -158,7 +158,7 @@ body {
 }
 #moonShape {
     position: absolute;
-    background-color: #ffffff;
+    background-color: #bbbbbb;
     border-radius: 100%;
     width: 3px;
     height: 3px;
@@ -205,7 +205,14 @@ body {
     top: 49.5%;
     left: 97%;
 }
-
+#location {
+    position: absolute;
+    background-color: red;
+    width: 1.5px;
+    height: 1.5px;
+    top: 6px;
+    left: 0.5px;
+}
 .main{
 position: absolute;
 border-radius: 100%;
@@ -335,7 +342,7 @@ margin: 10px;
 </div>
 
 <div id="earthOrbit" class="captions">
-	<div id="xy"><div id="earthShape" class="captions"><br>الأرض</div>
+	<div id="xy"><div id="earthShape" class="captions"><div id="location"></div></div>
 	<div id="moonOrbit" class="captions">
 		<div id="moonShape" class="captions"></div>
 	</div></div>
@@ -504,10 +511,9 @@ clearInterval(jClear);
 clearInterval(oClear);
 mercuryShape.innerHTML = "<br>عطارد<br>" + u + "°";
 venusShape.innerHTML = "<br>الزهرة<br>" + v + "°";
-earthShape.innerHTML = "<br>الأرض<br>" + e + "°";
 marsShape.innerHTML = "<br>المريخ<br>" + r + "°";
 jupiterShape.innerHTML = "<br>المشتري<br>" + j + "°";
-moonShape.innerHTML = "القمر" ;
+funcHour();
 }
 
 function pauseFunc(){
@@ -584,23 +590,28 @@ function funcMoon(){
 	jmo+=moStep; //29.530589; //27.321582;
 	while (jmo > 360){jmo -= 360}
 	n=addDZero(jmo.toFixed(0));
-	moonShape.innerHTML = n + "°";
 	moonOrbit.style.transform = "rotate(-" + n +"deg)"; 
-	moonShape.style.transform = "rotate(" + n +"deg)"; 
 	if (jmo == 360) 
 	{
 	jmo = 0;
 	}
 }
 
+function funcHour(){
+	d = new Date();
+	i=(15*d.getHours())+180;
+	while (i > 360){i -= 360}
+	earthShape.style.transform = "rotate(-" + i + "deg)"; 
+	if (i == 360) {i = 0;}
+}
+
+
 function funcEarth(){
 	jea+=eaStep;
 	while (jea > 360){jea -= 360}
 	e=addDZero(jea.toFixed(0));
-	earthShape.innerHTML ="<br>Earth<br>" + e + "°";
 	earthOrbit.style.transform = "rotate(-" + e + "deg)"; 
-	document.getElementById("xy").style.transform = "rotate(" + e + "deg)";
-	dateCreator()
+	dateCreator();
 	if (jea == 360) 
 	{
 	jea = 0;
