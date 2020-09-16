@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+    <!--<link rel="stylesheet" type="text/css" href="../css/astrostyle.css">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
 <title>Digital Astronomical Clock</title>
@@ -13,7 +14,7 @@ body {
 #space{
 	position: absolute;
 	border: 0px solid grey;
-	top: 135px;
+	top: 140px;
 	left: 10px;
 	width: 300px;
 	height: 300px;
@@ -301,17 +302,17 @@ height: 0;
 border-top: 0.5px solid transparent;
 border-bottom: 0.5px solid transparent;
 border-left: 60px solid blue;
-top: 54%;
+top: 53.5%;
 left: 110%;	
 }
 #triangleB{
 position: absolute;
 width: 0; 
   height: 0; 
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right:10px solid #333333; 
-  top: 53%;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent; 
+  border-right:10px solid #222222; 
+  top: 50%;
   left: -47%;	
 }
 
@@ -386,7 +387,7 @@ dDate=Number(date.getDate());
 mMonth=Number(date.getMonth());
 yYear=Number(date.getFullYear());
 
-//dDate=1; mMonth=1; yYear=2000;
+//dDate=25; mMonth=5; yYear=1982;
 
 dNow=dDate;
 mNow=mMonth;
@@ -439,25 +440,35 @@ i=23;k=0;r=0;
 while(k<360){
 if(k>20 && k<200){
 if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: #555555;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: #222222;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
 }
 else{
 if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: #333333;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: #222222;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
 else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: lightcyan;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
 }
-r=k+50;
-
-if(i%2==0){document.getElementById("div"+i).style.display= "initial" ;}
-
+r=k+60;
+z=k+51;
+if(i%2==0){
+document.getElementById("div"+i).style.display= "initial" ;
+document.getElementById("div"+i).style.transform = "rotate(" + z +"deg)";
+}
+else{
 document.getElementById("div"+i).style.transform = "rotate(" + r +"deg)";
+document.getElementById("div"+i).style.width = "230px";
+document.getElementById("div"+i).style.height = "230px";
+document.getElementById("div"+i).style.top = "176px";
+document.getElementById("div"+i).style.left = "45px";
+
+}
 document.getElementById("sub"+i).style.transform = "rotate(-" + 45 +"deg)";
+
 if(k>60 && k<250){
 document.getElementById("sub"+i).style.transform = "rotate(-" + 225 +"deg)";
 }

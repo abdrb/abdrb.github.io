@@ -1,0 +1,313 @@
+body {
+	background-color: #000000;
+	color: #ffffff;
+	padding: 5px;
+}
+#space{
+	position: absolute;
+	border: 0px solid grey;
+	top: 135px;
+	left: 10px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#sun {
+    position: absolute;
+    background-color: yellow;
+    border-radius: 100%;
+    border: solid 1px red;
+    box-shadow: 0px 0px 10px red;
+    width: 12px;
+    height: 12px;
+    top: 150px;
+    left: 150px;
+}
+#lineW {
+    position: absolute;
+    background-color: grey;
+    width: 100%;
+    height: 0.5px;
+    top: 156px;
+    left: 0px;
+}
+#lineH {
+    position: absolute;
+    background-color: grey;
+    width: 0.5px;
+    height: 100%;
+    top: 0px;
+    left: 156px;
+}
+
+#jan {
+    position: absolute;
+    top: 12px;
+    left: 40%;
+    color: powderblue;
+}
+#apr {
+    position: absolute;
+    top: 52%;
+    left: 1%;
+    color: yellowgreen;
+}
+#jul {
+    position: absolute;
+    top: 90%;
+    left: 48%;
+    color: firebrick;
+}
+#oct {
+    position: absolute;
+    top: 46%;
+    left: 80%;
+    color: peru;
+}
+
+#mercuryOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 20%;
+    height: 20%;
+    top: 41%;
+    left: 41%;
+
+}
+#mercuryShape {
+    position: absolute;
+    background-color: brown;
+    border-radius: 100%;
+    width: 8px;
+    height: 8px;
+    top: 48%;
+    left: 95%;
+}
+
+.captions{
+    color: white;
+    font-size: 8px;
+	text-align: left;
+}
+
+
+#venusOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 35%;
+    height: 35%;
+    top: 33%;
+    left: 33%;
+}
+#venusShape {
+    position: absolute;
+    background-color: orange;
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    top: 49%;
+    left: 95%;
+}
+
+#earthOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+}
+
+#earthShape {
+    position: absolute;
+    background-color: blue;
+    border-radius: 100%;
+    width: 12px;
+    height: 12px;
+	top: 17%;
+	left: 20%;
+}
+
+#moonOrbit {
+    position: absolute;
+    border: 0px solid red;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    top: 0%;
+    left: 0%;
+}
+#xy {
+    position: absolute;
+    border: 0px solid grey;
+    width: 22px;
+    height: 22px;
+    top: 47%;
+    left: 93%;
+}
+#moonShape {
+    position: absolute;
+    background-color: white;
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    top: 46%;
+    left: 100%;
+}
+
+#marsOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+}
+#marsShape {
+    position: absolute;
+    background-color: red;
+    border-radius: 100%;
+    width: 9px;
+    height: 9px; 
+    top: 50.5%;
+    left: 98%;
+}
+
+#jupiterOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+}
+#jupiterShape {
+    position: absolute;
+    background-color: grey;
+    border-radius: 100%;
+    width: 13px;
+    height: 13px;
+    top: 49.5%;
+    left: 97%;
+}
+
+#location {
+    position: absolute;
+    background-color: red;
+    width: 1.5px;
+    height: 1.5px;
+    top: 6px;
+    left: 0.5px;
+}
+
+.main{
+position: absolute;
+border-radius: 100%;
+border: 0px solid gray;
+top: 168px;
+left: 39px;
+width: 240px;
+height: 240px;
+}
+.sub{
+position: absolute;
+background-color: #212121;
+border-radius: 25%;
+border: 0px solid blue;
+width: 0px;
+height: 0px;
+top: 0px;
+left: 0px;
+color: white;
+font-size: 8px;
+}
+
+#draw{
+position: absolute;
+left: 20px;
+}
+
+#now {
+	position: absolute;
+	top: 70px;
+	left: 30px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#pauseBtn {
+	display: none;
+	width: 30px;
+	height: 30px;
+	transform: rotate(90deg);
+}
+
+#clockTime {
+	position: absolute;
+	top: 50px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#clock {
+	position: absolute;
+	top: 90px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#title {
+	position: absolute;
+	top: 0px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#pause {
+	position: absolute;
+	top: 500px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#links {
+	position: absolute;
+	top: 520px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#triangle {
+position: absolute;
+width: 0; 
+height: 0; 
+border-top: 0.5px solid transparent;
+border-bottom: 0.5px solid transparent;
+border-left: 60px solid blue;
+top: 54%;
+left: 110%;	
+}
+#triangleB{
+position: absolute;
+width: 0; 
+  height: 0; 
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent; 
+  border-right:10px solid #333333; 
+  top: 53%;
+  left: -47%;	
+}
+
+#hlink{
+margin: 10px;
+}
