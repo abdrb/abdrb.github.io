@@ -78,10 +78,11 @@ body {
     border: 2px dotted gold;
     width: 5px;
     height: 0px;
-    top: 7%;
-    left: 80%;
+    top: 6%;
+    left: 84%;
     color: lightyellow;
     font-size: 6px;
+    transform: rotate(35deg);
 }
 #mercuryOrbit {
     position: absolute;
@@ -236,7 +237,6 @@ height: 240px;
 position: absolute;
 background-color: #212121;
 border-radius: 25%;
-border: 0.8px solid yellow;
 width: 0px;
 height: 0px;
 top: 0px;
@@ -319,11 +319,12 @@ left: 110%;
 position: absolute;
 width: 0; 
   height: 0; 
-  border-top: 3px solid transparent;
-  border-bottom: 3px solid transparent; 
-  border-right:10px solid #666666; 
-  top: 50%;
-  left: -47%;	
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent; 
+  border-right: 35px solid #666666; 
+  top: 110%;
+  left: -44%;	
+  transform: rotate(-38deg);
 }
 
 #hlink{
@@ -398,7 +399,7 @@ dDate=Number(date.getDate());
 mMonth=Number(date.getMonth());
 yYear=Number(date.getFullYear());
 
-//dDate=25; mMonth=5; yYear=1982;
+dDate=22; mMonth=10; yYear=2020;
 
 dNow=dDate;
 mNow=mMonth;
@@ -451,21 +452,21 @@ i=23;k=0;r=0;
 while(k<360){
 if(k>20 && k<200){
 if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 0.8px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
 }
 else{
 if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 0.8px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
 else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: lightcyan;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
 }
 r=k+60;
-z=k+51;
+z=k+30;
 if(i%2==0){
 document.getElementById("div"+i).style.display= "initial" ;
 document.getElementById("div"+i).style.transform = "rotate(" + z +"deg)";
@@ -480,7 +481,7 @@ document.getElementById("div"+i).style.left = "45px";
 }
 document.getElementById("sub"+i).style.transform = "rotate(-" + 45 +"deg)";
 
-if(k>60 && k<250){
+if(k>80 && k<270){
 document.getElementById("sub"+i).style.transform = "rotate(-" + 225 +"deg)";
 }
 k+=15;
