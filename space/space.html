@@ -452,18 +452,22 @@ i=23;k=0;r=0;
 while(k<360){
 if(k>20 && k<200){
 if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 0.8px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
 }
 else{
 if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 0.8px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
 else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: lightcyan;'" + drawClose + a[i] + drawEnd+ drawEnd;
 }
+}
+
+if((k>0 && k<90) && i%2===0 || (k>270 && k<360) && i%2===0){
+document.getElementById("sub"+i).style.direction = "rtl";
 }
 r=k+60;
 z=k+30;
