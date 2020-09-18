@@ -379,7 +379,7 @@ body {
 <div id="clockTime"></div>
 <div id="clock"></div>
 
-<div id="draw" onclick="javascript:if(speed>1000){speed=1}else{speed+=200};pauseFunc();pauseFunc();">
+<div id="draw" onclick="javascript:if(speed>1000){speed=1}else{speed+=500};pauseFunc();pauseFunc();">
 
 <div id="space">
 <div id="lineW"></div>
@@ -445,15 +445,15 @@ mm=7;dd=20;yy=2020;
 stopToday=0;
 pause=0;
 stop=0;
-speed=1;
-moStep=360/27.321582; // 29.530589; // 27.321582;
+speed=50;
+moStep=360/29.530589; // 29.530589; // 27.321582;
 eaStep=360/365.256365;
 mcStep=360/87.97;
 vnStep=360/224.7;
 mrStep=360/686.93;
 jpStep=(360/(11.86*365.256365));
 
-moStart = 130;
+moStart = 190;
 eaStart = getEarthStartPoint(90);
 mcStart = 360;    
 vnStart = 320;	      
@@ -668,7 +668,7 @@ function funcClock(){
 	stopToday=0;
 	run();
 	}
-	}, (1));
+	}, (40));
 	}
 	
 function addZero(n){
@@ -695,16 +695,6 @@ function funcMoon(){
 	{
 	jmo = 0;
 	}
-	
-	if (jmo >= 175 && jmo <= 195)
-	{
-	document.getElementById("moon").style.color = "red";
-	}
-	else
-	{
-	document.getElementById("moon").style.color = "black";
-	}
-	
 }
 
 function funcEarth(){

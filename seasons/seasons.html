@@ -322,7 +322,7 @@ margin: 10px;
 <div id="clockTime"></div>
 <div id="clock"></div>
 
-<div id="draw" onclick="javascript:if(speed>1000){speed=1}else{speed+=200};pauseFunc();pauseFunc();">
+<div id="draw" onclick="javascript:if(speed>1000){speed=1}else{speed+=500};pauseFunc();pauseFunc();">
 
 <div id="space">
 <div id="lineW"></div>
@@ -405,7 +405,7 @@ jpStart = 200;
 stopToday=0;
 pause=0;
 continual=0;
-speed=1;
+speed=100;
 countDays = 0;
 
 blue="<span style='color:royalblue;'>";
@@ -568,7 +568,7 @@ function funcClock(){
 
 	now.innerHTML = gold + d + "/" + m + "/" + y + end;
 	clock.innerHTML = brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";
-	}, (1));
+	}, (90));
 	}
 
 function nextDay(){
