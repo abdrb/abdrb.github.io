@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html dir="rtl">
  <head>
+ <title>حاسبة منظومة الطاقة الشمسية</title>
  	<meta name="viewport" content="width=device-width, initial-scale=1">
  <style type="text/css">
 body {
@@ -34,63 +35,67 @@ div {
    <div>
      اللوح الشمسي (وات) 
    </div> 
-   <input value="0" type="text" id="panel" onkeyup="funcPanel()"> 
+   <input value="0" type="text" id="panel" onkeyup="funcPanel()" onclick="javascript:panel.value=''"> 
    <br> 
    <div>
     قوة الشاحن (أمبير) 
    </div> 
-   <input value="0" type="text" id="charge" onkeyup="funcCharge()"> 
+   <input value="0" type="text" id="charge" onkeyup="funcCharge()" onclick="javascript:charge.value=''"> 
    <br> 
    <div>
      مدة الشحن (ساعات) 
    </div> 
-   <input value="8" type="text" id="daytime" onkeyup="funcDaytime()"> 
+   <input value="8" type="text" id="daytime" onkeyup="funcDaytime()" onclick="javascript:daytime.value=''"> 
    <br> 
    <div>
   الاستهلاك المناسب في الساعة (أمبير) 
    </div> 
-   <input value="0" type="text" id="perhour" onkeyup="funcPerhour()"> 
+   <input value="0" type="text" id="perhour" onkeyup="funcPerhour()" onclick="javascript:perhour.value=''"> 
    <br> 
    <div>
      قوة البطارية (أمبير) 
    </div> 
-   <input value="0" type="text" id="battery" onkeyup="funcBattery()"> 
+   <input value="0" type="text" id="battery" onkeyup="funcBattery()" onclick="javascript:battery.value=''"> 
    <br> 
   </div> 
  </body>
  <script type="text/javascript">
 
+daytime_ = 8;
+
 function funcPanel(){
-	charge.value = (Number(panel.value) / 12).toFixed(0);
-	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(0);
-	perhour.value = (Number(battery.value) / (24)).toFixed(0);
+	charge.value = (Number(panel.value) / 12).toFixed(1);
+	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(1);
+	perhour.value = (Number(battery.value) / (24)).toFixed(1);
 }
 
 function funcCharge(){
-	panel.value  = Number(charge.value) * 12;
-	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(0);
-	perhour.value = (Number(battery.value) / (24)).toFixed(0);
+	panel.value  = (Number(charge.value) * 12).toFixed(1);
+	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(1);
+	perhour.value = (Number(battery.value) / (24)).toFixed(1);
 }
 
 function funcDaytime(){
-	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(0);
-	perhour.value = (Number(battery.value) / (24)).toFixed(0);
-	panel.value  = Number(charge.value) * 12;
+	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(1);
+	perhour.value = (Number(battery.value) / (24)).toFixed(1);
+	panel.value  > 0 ? charge.value=(Number(panel.value) / 12).toFixed(1) : panel.value=(Number(charge.value) * 12).toFixed(1);
+	daytime_ = Number(daytime.value);
+	funcPerhour();
 }
 
 function funcPerhour(){
-	battery.value = Number(perhour.value) * 24;
+	battery.value = (Number(perhour.value) * (24)).toFixed(1);
 	funcBattery();
 }
 
 function funcBattery(){
-	panel.value = Number(battery.value) + (Number(battery.value) * 0.5);
-	charge.value = Number(panel.value) / 12;
-	daytime.value = Number(battery.value) === "" ? 8 : Number(battery.value) / Number(charge.value);
-	perhour.value = (Number(battery.value) / (24)). toFixed(0);
+	panel.value = (Number(battery.value) + (Number(battery.value) * 0.5)).toFixed(1);
+	charge.value = (Number(panel.value) / 12).toFixed(1);
+	//daytime.value = Number(battery.value) === "" ? daytime_ : (Number(battery.value) / Number(charge.value)).toFixed(1);
+	perhour.value = (Number(battery.value) / (24)).toFixed(1);
 	}
  
-function zTen(n){
+function toUnder(n){
 	i=n.toFixed(0);
 	while (i > 0){
 	i-=10;
@@ -103,7 +108,7 @@ function zTen(n){
 	}
 }
 	
-function oTen(n){
+function toUp(n){
 	i=n.toFixed(0);
 	while (i > 0){
 	i-=10;
