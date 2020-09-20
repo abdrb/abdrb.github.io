@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html dir="rtl">
+ <head>
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ <style type="text/css">
+body {
+background-color: #111122;
+color: white;
+}
+
+.dv {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+input {
+	width: 100%;
+	margin: 0;
+}
+
+div {
+	width: 100%;
+	//display: inline-block; 
+	text-align: right;
+	margin-top: 20px;
+}
+ </style>
+ </head> 
+ <body> 
+ <h2>حاسبة منظومة الطاقة الشمسية</h2>
+  <div class="dv"> 
+   <div>
+     اللوح الشمسي (وات) 
+   </div> 
+   <input value="0" type="text" id="panel" onkeyup="funcPanel()"> 
+   <br> 
+   <div>
+    قوة الشاحن (أمبير) 
+   </div> 
+   <input value="0" type="text" id="charge" onkeyup="funcCharge()"> 
+   <br> 
+   <div>
+     مدة الشحن (ساعات) 
+   </div> 
+   <input value="8" type="text" id="daytime" onkeyup="funcDaytime()"> 
+   <br> 
+   <div>
+  الاستهلاك المناسب في الساعة (أمبير) 
+   </div> 
+   <input value="0" type="text" id="perhour" onkeyup="funcPerhour()"> 
+   <br> 
+   <div>
+     قوة البطارية (أمبير) 
+   </div> 
+   <input value="0" type="text" id="battery" onkeyup="funcBattery()"> 
+   <br> 
+  </div> 
+ </body>
+ <script type="text/javascript">
+
+function funcPanel(){
+	charge.value = (Number(panel.value) / 12).toFixed(0);
+	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(0);
+	perhour.value = (Number(battery.value) / (24)).toFixed(0);
+}
+
+function funcCharge(){
+	panel.value  = Number(charge.value) * 12;
+	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(0);
+	perhour.value = (Number(battery.value) / (24)).toFixed(0);
+}
+
+function funcDaytime(){
+	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(0);
+	perhour.value = (Number(battery.value) / (24)).toFixed(0);
+	panel.value  = Number(charge.value) * 12;
+}
+
+function funcPerhour(){
+	battery.value = Number(perhour.value) * 24;
+	funcBattery();
+}
+
+function funcBattery(){
+	panel.value = Number(battery.value) + (Number(battery.value) * 0.5);
+	charge.value = Number(panel.value) / 12;
+	daytime.value = Number(battery.value) === "" ? 8 : Number(battery.value) / Number(charge.value);
+	perhour.value = (Number(battery.value) / (24)). toFixed(0);
+	}
+ 
+function zTen(n){
+	i=n.toFixed(0);
+	while (i > 0){
+	i-=10;
+	}
+	if((i*-1)<5){
+	return ((i*-1)+n).toFixed(0);
+	}
+	else{
+	return (n-(10-(i*-1))).toFixed(0);
+	}
+}
+	
+function oTen(n){
+	i=n.toFixed(0);
+	while (i > 0){
+	i-=10;
+	}
+	return ((i*-1)+n).toFixed(0);
+}
+ </script>
+</html>
