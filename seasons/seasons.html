@@ -213,6 +213,15 @@ body {
     top: 6px;
     left: 0.5px;
 }
+#sight {
+    position: absolute;
+    background-color: #333333;
+    width: 0.5px;
+    height: 200px;
+    top: -100px;
+    left: 0.5px;
+}
+
 .main{
 position: absolute;
 border-radius: 100%;
@@ -342,7 +351,7 @@ margin: 10px;
 </div>
 
 <div id="earthOrbit" class="captions">
-	<div id="xy"><div id="earthShape" class="captions"><div id="location"></div></div>
+	<div id="xy"><div id="earthShape" class="captions"><div id="location"><div id="sight"></div></div></div>
 	<div id="moonOrbit" class="captions">
 		<div id="moonShape" class="captions"></div>
 	</div></div>
@@ -399,7 +408,7 @@ moStart = 75;
 eaStart = getEarthStartPoint(90);
 mcStart = 18;    
 vnStart = 66;	      
-mrStart = 42;	    
+mrStart = 38;	    
 jpStart = 200;
 
 stopToday=0;
