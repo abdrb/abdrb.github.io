@@ -67,6 +67,7 @@ function funcPanel(){
 	charge.value = (Number(panel.value) / 12).toFixed(1);
 	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(1);
 	perhour.value = (Number(battery.value) / (24)).toFixed(1);
+	//daytime.value !== 8 ? charge.value=(Number(battery.value) / Number(perhour.value)).toFixed(1):pass;
 }
 
 function funcCharge(){
@@ -93,6 +94,7 @@ function funcBattery(){
 	charge.value = (Number(panel.value) / 12).toFixed(1);
 	//daytime.value = Number(battery.value) === "" ? daytime_ : (Number(battery.value) / Number(charge.value)).toFixed(1);
 	perhour.value = (Number(battery.value) / (24)).toFixed(1);
+	//daytime.value !== 8 ? charge.value=(Number(battery.value) / Number(perhour.value)).toFixed(1):pass;
 	}
  
 function toUnder(n){

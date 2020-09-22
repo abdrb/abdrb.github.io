@@ -78,11 +78,12 @@ body {
     border: 2px dotted gold;
     width: 5px;
     height: 0px;
-    top: 6%;
-    left: 84%;
+    top: 0%;
+    left: 103%;
     color: lightyellow;
     font-size: 6px;
-    transform: rotate(35deg);
+    transform: rotate(0deg);
+    direction: rtl;
 }
 #mercuryOrbit {
     position: absolute;
@@ -548,10 +549,12 @@ function run(){
 	oClear=setInterval(funcMoon,speed);
 }
 
+start=0;
 function funcStopToday(){	
 	mToday=mMonth+1;
 	dToday=dDate;
 	yToday=yYear;
+	if(start===0){funcRotate();start=1;}
 	if ((stopToday === 0) && mToday===mm && dToday===dd && yToday===yy)
 		{
 		stopFunc();
@@ -560,7 +563,8 @@ function funcStopToday(){
 		continual=0;
 		pauseClick.style.display = "initial";
 		}
-}	
+}
+
 function stopFunc(){
 moStart=jmo;
 eaStart=jea;
@@ -595,7 +599,7 @@ pauseClick.innerHTML="∆";
 }
 }
 
-hh=12;
+mi=60;
 function funcClockTime(){
 	setInterval(function(){
 	da = new Date();
@@ -603,10 +607,7 @@ function funcClockTime(){
 	m=addZero(da.getMinutes());
 	h=addZero(da.getHours());
 	clockTime.innerHTML = h + ":" + m + ":" + s;
-	if(h!==hh){
-	funcHour();
-	hh=h;
-	}
+	if(m!==mi){funcRotate();mi=m;}
 	nextDay();
 	}, (1000));
 }
@@ -630,11 +631,11 @@ function funcClock(){
 	}
 
 function nextDay(){
-	da = new Date();
-	dDa=Number(da.getDate());
-	mDa=Number(da.getMonth()+1);
-	yDa=Number(da.getFullYear());
-	if((continual===0 && stopToday===1 && dDa>dd) || (continual===0 && stopToday===1 && mDa>mm) || (continual===0 && stopToday===1 && yDa>yy)){
+	date = new Date();
+	dDate=Number(date.getDate());
+	mMonth=Number(date.getMonth());
+	yYear=Number(date.getFullYear());
+	if((continual===0 && stopToday===1 && dDate>dd) || (continual===0 && stopToday===1 && 1+mMonth>mm) || (continual===0 && stopToday===1 && yYear>yy)){
 	stopToday=0;
 	run();
 	}
@@ -670,9 +671,12 @@ function funcMoon(){
 	if (jmo === 360) {jmo = 0;}
 }
 
-function funcHour(){
+function funcRotate(){
 	d = new Date();
-	i=(15*d.getHours())+180;
+	mi=Number(d.getMinutes());
+	j=15*mi/60;
+	
+	i=(15*Number(d.getHours()))+180+j;
 	while (i > 360){i -= 360}
 	earthShape.style.transform = "rotate(-" + i + "deg)"; 
 	if (i === 360) {i = 0;}
