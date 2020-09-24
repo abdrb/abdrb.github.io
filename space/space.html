@@ -232,32 +232,33 @@ body {
     height: 200px;
     top: -100px;
     left: 0.5px;
+    display: none;
 }
 
 .main{
-position: absolute;
-border-radius: 100%;
-border: 0px solid gray;
-top: 168px;
-left: 39px;
-width: 240px;
-height: 240px;
+	position: absolute;
+	border-radius: 100%;
+	border: 0px solid gray;
+	top: 168px;
+	left: 39px;
+	width: 240px;
+	height: 240px;
 }
 .sub{
-position: absolute;
-background-color: #212121;
-border-radius: 25%;
-width: 0px;
-height: 0px;
-top: 0px;
-left: 0px;
-color: white;
-font-size: 8px;
+	position: absolute;
+	background-color: #212121;
+	border-radius: 25%;
+	width: 0px;
+	height: 0px;
+	top: 0px;
+	left: 0px;
+	color: white;
+	font-size: 8px;
 }
 
 #draw{
-position: absolute;
-left: 20px;
+	position: absolute;
+	left: 20px;
 }
 
 #now {
@@ -316,29 +317,29 @@ left: 20px;
 	text-align: center;
 }
 #triangle {
-position: absolute;
-width: 0; 
-height: 0; 
-border-top: 0.5px solid transparent;
-border-bottom: 0.5px solid transparent;
-border-left: 60px solid blue;
-top: 53.5%;
-left: 110%;	
+	position: absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 0.5px solid transparent;
+	border-bottom: 0.5px solid transparent;
+	border-left: 60px solid blue;
+	top: 53.5%;
+	left: 110%;	
 }
 #triangleB{
-position: absolute;
-width: 0; 
-  height: 0; 
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent; 
-  border-right: 35px solid #666666; 
-  top: 110%;
-  left: -44%;	
-  transform: rotate(-38deg);
+	position: absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent; 
+	border-right: 35px solid #666666; 
+	top: 110%;
+	left: -44%;	
+	transform: rotate(-38deg);
 }
 
 #hlink{
-margin: 10px;
+	margin: 10px;
 }
 </style>
 </head>
@@ -562,6 +563,7 @@ function funcStopToday(){
 		speed=100;
 		continual=0;
 		pauseClick.style.display = "initial";
+		document.getElementById("sight").style.display = "initial";
 		}
 }
 
@@ -591,11 +593,13 @@ continual=1;
 pause=1;
 run();
 pauseClick.innerHTML="=";
+document.getElementById("sight").style.display = "none";
 }
 else{
 stopFunc();
 pause=0;
 pauseClick.innerHTML="∆";
+document.getElementById("sight").style.display = "initial";
 }
 }
 

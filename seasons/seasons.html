@@ -233,6 +233,7 @@ body {
     height: 200px;
     top: -100px;
     left: 1px;
+    display: none;
 }
 
 .main{
@@ -518,6 +519,7 @@ function funcStopToday(){
 		speed=100;
 		continual=0;
 		pauseClick.style.display = "initial";
+		document.getElementById("sight").style.display = "initial";		
 		}
 }
 
@@ -547,11 +549,13 @@ continual=1;
 pause=1;
 run();
 pauseClick.innerHTML="=";
+document.getElementById("sight").style.display = "none";
 }
 else{
 stopFunc();
 pause=0;
 pauseClick.innerHTML="∆";
+document.getElementById("sight").style.display = "initial";
 }
 }
 
