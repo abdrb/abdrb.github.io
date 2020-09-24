@@ -14,7 +14,7 @@ body {
 	position: absolute;
 	border: 0px solid grey;
 	top: 140px;
-	left: 0px;
+	left: 3px;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -240,17 +240,17 @@ position: absolute;
 border-radius: 100%;
 border: 0px solid gray;
 top: 168px;
-left: 39px;
+left: 41.5px;
 width: 240px;
 height: 240px;
 }
 .sub{
 position: absolute;
-background-color: #212121;
+background-color: #000000;
 border-radius: 25%;
 border: 0px solid blue;
-width: 5px;
-height: 5px;
+width: 1px;
+height: 1px;
 top: 0px;
 left: 0px;
 color: white;
@@ -444,25 +444,17 @@ drawDiv="<div "
 drawClose="> "
 drawEnd=" </div> "
 j=0;
-a=['حادية','تاسعة','سابعة','بحري سابعة','بحري الصيف','الدلي','المنسرق','المية','التسعين','الثمانين','السبعين','لب','الثرياء','الثور','رسو الصيف','الظلم','عنابر القيظ','عنابر الخريف','المرزم','سهيل','قتور الشناح','القتور','قتور السراب','ثجر','لولين','الثالث','الرابع','الخامس','السادس','السابع','برد الثرياء','السقوط','رسو الشتاء','الرجوع'];
-
+a=['حادية','تاسعة','سابعة','بحيري','الصيف','الدلي المنسرق','المية','التسعين','الثمانين','السبعين','لب','الثرياء','الثور','رسو الصيف','الظلم القيظ','الخريف','المرزم','سهيل','الشناع','القتور','قتور السراب','ثجر','لولين','الثالث','الرابع','الخامس','السادس','السابع','برد الثرياء','السقوط','رسو الشتاء الرجوع'];
+b=[18,26,28,26,5,5,20,10,10,10,10,6,6,6,12,12,6,12,12,5,6,8,12,4,11,10,5,6,9,6,38];
 function funcDraw(){
 getDegree();
-i=33;k=0;r=0;
+i=30;k=0;r=0;
 while(k<360){
-if(k>20 && k<200){
-//if(k>30 && k<40){
-//pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose; border: 2px dotted gold'" + drawClose + a[i] + drawEnd+ drawEnd;
-//}else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose;'" + drawClose + a[i] + drawEnd+ drawEnd;
-}//}
-else{
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: lightcyan;'" + drawClose + a[i] + drawEnd+ drawEnd;
-}
-r=k+45;
+r=k+64;
 document.getElementById("div"+i).style.transform = "rotate(" + r +"deg)";
 document.getElementById("sub"+i).style.transform = "rotate(-" + r +"deg)";
-k+=10.6;
+k+=Number(b[i]);
 i--;
 }
 moonOrbit.style.transform = "rotate(-" + moStart +"deg)"; 
