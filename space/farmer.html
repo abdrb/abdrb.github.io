@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <!--<link rel="stylesheet" type="text/css" href="../css/astrostyle.css">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
-<title>Digital Astronomical Clock</title>
+<title>الساعة الفلكية الرقمية للمواسم الزراعية</title>
 <style type="text/css">
 body {
 	background-color: #000000;
@@ -15,7 +14,7 @@ body {
 	position: absolute;
 	border: 0px solid grey;
 	top: 140px;
-	left: 10px;
+	left: 4px;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -50,8 +49,8 @@ body {
 
 #jan {
     position: absolute;
-    top: 12px;
-    left: 35%;
+    top: 0px;
+    left: 42%;
     color: powderblue;
 }
 #apr {
@@ -62,14 +61,14 @@ body {
 }
 #jul {
     position: absolute;
-    top: 90%;
-    left: 54%;
+    top: 94%;
+    left: 52%;
     color: firebrick;
 }
 #oct {
     position: absolute;
-    top: 46%;
-    left: 80%;
+    top: 44%;
+    left: 90%;
     color: peru;
 }
 #ple {
@@ -109,6 +108,7 @@ body {
     color: white;
     font-size: 8px;
 	text-align: left;
+	line-height: 9px;
 }
 
 
@@ -170,12 +170,14 @@ body {
 }
 #moonShape {
     position: absolute;
-    background-color: white;
+    background-color: #bbbbbb;
     border-radius: 100%;
     width: 3px;
     height: 3px;
     top: 46%;
     left: 100%;
+    font-size: 6px;
+    color: white;
 }
 
 #marsOrbit {
@@ -192,7 +194,7 @@ body {
     background-color: red;
     border-radius: 100%;
     width: 9px;
-    height: 9px; 
+    height: 9px;
     top: 50.5%;
     left: 98%;
 }
@@ -215,23 +217,22 @@ body {
     top: 49.5%;
     left: 97%;
 }
-
 #location {
     position: absolute;
     background-color: red;
-    width: 1.5px;
-    height: 1.5px;
+    width: 4px;
+    height: 1px;
     top: 6px;
-    left: 0.5px;
+    left: -2px;
 }
-
 #sight {
     position: absolute;
-    background-color: #333333;
-    width: 0.5px;
+    background-color: #222222;
+	border: 0.5px dotted #444444;
+    width: 0px;
     height: 200px;
     top: -100px;
-    left: 0.5px;
+    left: 1px;
     display: none;
 }
 
@@ -240,25 +241,28 @@ body {
 	border-radius: 100%;
 	border: 0px solid gray;
 	top: 168px;
-	left: 39px;
+	left: 43px;
 	width: 240px;
 	height: 240px;
 }
 .sub{
 	position: absolute;
-	background-color: #212121;
+	background-color: #000000;
 	border-radius: 25%;
-	width: 0px;
-	height: 0px;
+	border: 0px solid blue;
+	width: 1px;
+	height: 1px;
 	top: 0px;
 	left: 0px;
 	color: white;
 	font-size: 8px;
+	line-height: 8px;
+	direction: rtl;
 }
 
 #draw{
 	position: absolute;
-	left: 20px;
+	left: 30px;
 }
 
 #now {
@@ -279,7 +283,7 @@ body {
 #clockTime {
 	position: absolute;
 	top: 50px;
-	left: 40px;
+	left: 30px;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -287,7 +291,7 @@ body {
 #clock {
 	position: absolute;
 	top: 90px;
-	left: 40px;
+	left: 30px;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -295,7 +299,7 @@ body {
 #title {
 	position: absolute;
 	top: 0px;
-	left: 40px;
+	left: 30px;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -303,15 +307,7 @@ body {
 #pause {
 	position: absolute;
 	top: 500px;
-	left: 40px;
-	width: 300px;
-	height: 300px;
-	text-align: center;
-}
-#links {
-	position: absolute;
-	top: 520px;
-	left: 40px;
+	left: 30px;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -320,22 +316,21 @@ body {
 	position: absolute;
 	width: 0; 
 	height: 0; 
-	border-top: 0.5px solid transparent;
-	border-bottom: 0.5px solid transparent;
-	border-left: 60px solid blue;
-	top: 53.5%;
-	left: 110%;	
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 30px solid blue;
+	top: 50%;
+	left: 120%;	
 }
 #triangleB{
 	position: absolute;
 	width: 0; 
 	height: 0; 
-	border-top: 1px solid transparent;
-	border-bottom: 1px solid transparent; 
-	border-right: 35px solid #666666; 
-	top: 110%;
-	left: -44%;	
-	transform: rotate(-38deg);
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent; 
+	border-right:10px solid #333333; 
+	top: 50%;
+	left: -47%;	
 }
 
 #hlink{
@@ -344,7 +339,7 @@ body {
 </style>
 </head>
 <body onload="funcDraw()">
-<h3 id="title">Digital Astronomical Clock</h3>
+<h3 id="title">الساعة الفلكية الرقمية للمواسم الزراعية</h3>
 <div id="now">
 </div>
 <div id="clockTime"></div>
@@ -356,18 +351,18 @@ body {
 <div id="lineW"></div>
 <div id="lineH"></div>
 <div id="sun"></div>
-<div id="jan">Winter</div>
-<div id="apr">Spring</div>
-<div id="jul">Summer</div>
-<div id="oct">Autumn</div>
-<div id="ple">Pleiades</div>
+<div id="jan">يناير</div>
+<div id="apr">ابريل</div>
+<div id="jul">يوليو</div>
+<div id="oct">أكتوبر</div>
+<div id="ple">الثرياء</div>
 
 <div id="mercuryOrbit">
-    <div id="mercuryShape" class="captions"><br>Mercury</div>
+    <div id="mercuryShape" class="captions"><br>عطارد</div>
 </div>
 
 <div id="venusOrbit">
-    <div id="venusShape" class="captions"><br>Venus</div>
+    <div id="venusShape" class="captions"><br>الزهرة</div>
 </div>
 
 <div id="earthOrbit" class="captions">
@@ -380,11 +375,11 @@ body {
 </div>
 
 <div id="marsOrbit">
-    <div id="marsShape" class="captions"><br>Mars</div>
+    <div id="marsShape" class="captions"><br>المريخ</div>
 </div>
 
 <div id="jupiterOrbit">
-    <div id="jupiterShape" class="captions"><br>Jupiter</div>
+    <div id="jupiterShape" class="captions"><br>المشتري</div>
 </div>
 
 </div>
@@ -393,14 +388,8 @@ body {
 </div>
 <div id="pause">
 <button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
-</div>
-<div id="list</"></div>
-<div id="links">
-<div><br>
-<a href="farmer.html" id="spaceL">المواسم الزراعية</a><br>
-<a href="probe.html" id="spaceL">مسبار الأمل</a>
-</div>
 	<div id="hlink">
+	<a href="space.html" id="spaceL">Digital Astronomical Clock</a><br>
 	<a href="mailto:applichain@gmail.com">Email the Developer</a>
 	</div>
 </div>
@@ -412,7 +401,7 @@ dDate=Number(date.getDate());
 mMonth=Number(date.getMonth());
 yYear=Number(date.getFullYear());
 
-//dDate=22; mMonth=10; yYear=2020;
+//dDate=1; mMonth=1; yYear=2000;
 
 dNow=dDate;
 mNow=mMonth;
@@ -457,51 +446,17 @@ drawDiv="<div "
 drawClose="> "
 drawEnd=" </div> "
 j=0;
-a = [" Cancer", "January", " Leo",  "February", " Virgo",  "March", " Libra",  "April", " Scorpio",  "May", "Sagittarius", "June", "Capricorn", "July", "Aquarius", "August", "Pisces", "September", " Aries", "October", " Taurus", "November", " Gemini", "December"];
-
+a=['حادية','تاسعة','سابعة','بحيري','الصيف','الدلي المنسرق','المية','التسعين','الثمانين','السبعين بداية القيظ','لب','الثرياء','الثور','رسو الصيف','الظلم عنابر القيظ','<br>عنابر الخريف','المرزم','سهيل','<br>الشناع','القتور «العلان»','السراب','ثجر','لولين','الثالث','الرابع','الخامس','السادس','السابع','برد الثرياء','السقوط','رسو الشتاء الرجوع'];
+b=[18,26,28,26,5,5,20,10,10,10,10,6,6,6,12,12,6,12,12,5,6,8,12,4,11,10,5,6,9,6,38];
 function funcDraw(){
-getDegree()
-i=23;k=0;r=0;
+getDegree();
+i=30;k=0;r=0;
 while(k<360){
-if(k>20 && k<200){
-if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
-}else{
 pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose;'" + drawClose + a[i] + drawEnd+ drawEnd;
-}
-}
-else{
-if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
-}
-else{
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: lightcyan;'" + drawClose + a[i] + drawEnd+ drawEnd;
-}
-}
-
-if((k>0 && k<90) && i%2===0 || (k>270 && k<360) && i%2===0){
-document.getElementById("sub"+i).style.direction = "rtl";
-}
-r=k+60;
-z=k+30;
-if(i%2==0){
-document.getElementById("div"+i).style.display= "initial" ;
-document.getElementById("div"+i).style.transform = "rotate(" + z +"deg)";
-}
-else{
+r=k+64;
 document.getElementById("div"+i).style.transform = "rotate(" + r +"deg)";
-document.getElementById("div"+i).style.width = "230px";
-document.getElementById("div"+i).style.height = "230px";
-document.getElementById("div"+i).style.top = "176px";
-document.getElementById("div"+i).style.left = "45px";
-
-}
-document.getElementById("sub"+i).style.transform = "rotate(-" + 45 +"deg)";
-
-if(k>80 && k<270){
-document.getElementById("sub"+i).style.transform = "rotate(-" + 225 +"deg)";
-}
-k+=15;
+document.getElementById("sub"+i).style.transform = "rotate(-" + r +"deg)";
+k+=Number(b[i]);
 i--;
 }
 moonOrbit.style.transform = "rotate(-" + moStart +"deg)"; 
@@ -518,7 +473,7 @@ run();
 
 function getDegree(){
 while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
-dateCreator()
+dateCreator();
 countDays++;
 }
 moStart+=moStep*countDays; //27.321582
@@ -565,7 +520,7 @@ function funcStopToday(){
 		speed=100;
 		continual=0;
 		pauseClick.style.display = "initial";
-		document.getElementById("sight").style.display = "initial";
+		document.getElementById("sight").style.display = "initial";		
 		}
 }
 
@@ -582,10 +537,10 @@ clearInterval(mClear);
 clearInterval(sClear);
 clearInterval(jClear);
 clearInterval(oClear);
-mercuryShape.innerHTML = "<br>Mercury<br>" + u + "°";
-venusShape.innerHTML = "<br>Venus<br>" + v + "°";
-marsShape.innerHTML = "<br>Mars<br>" + r + "°";
-jupiterShape.innerHTML = "<br>Jupiter<br>" + j + "°";
+mercuryShape.innerHTML = "<br>عطارد<br>" + u + "°";
+venusShape.innerHTML = "<br>الزهرة<br>" + v + "°";
+marsShape.innerHTML = "<br>المريخ<br>" + r + "°";
+jupiterShape.innerHTML = "<br>المشتري<br>" + j + "°";
 }
 
 function pauseFunc(){
@@ -687,7 +642,6 @@ function funcRotate(){
 	earthShape.style.transform = "rotate(-" + i + "deg)"; 
 	if (i === 360) {i = 0;}
 }
-
 
 function funcEarth(){
 	jea+=eaStep;
