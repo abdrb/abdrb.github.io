@@ -394,7 +394,7 @@ body {
 <div id="pause">
 <button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
 </div>
-<div id="list</"></div>
+<div id="list"></div>
 <div id="links">
 <div><br>
 <a href="farmer.html" id="spaceL">المواسم الزراعية</a><br>
@@ -406,7 +406,7 @@ body {
 </div>
 </body>
 <script type="text/javascript">
-mm=1;dd=1;yy=1;
+mm=7;dd=20;yy=2020;
 date = new Date();
 dDate=Number(date.getDate());
 mMonth=Number(date.getMonth());
@@ -431,12 +431,19 @@ vnStep=360/224.7;
 mrStep=360/686.93;
 jpStep=(360/(11.86*365.256365));
 
+moStart = 195;
+eaStart = getEarthStartPoint(90);
+mcStart = 368;    
+vnStart = 322;	      
+mrStart = 326;	    
+jpStart = 300;
+/* 1/1/1
 moStart = 75;
 eaStart = getEarthStartPoint(90);
 mcStart = 18;    
 vnStart = 66;	      
 mrStart = 38;	    
-jpStart = 200;
+jpStart = 200;*/
 
 stopToday=0;
 pause=0;

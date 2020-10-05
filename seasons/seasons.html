@@ -388,28 +388,22 @@ body {
 </div>
 <div id="pause">
 <button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
+	<div id="list"></div>
 	<div id="hlink">
 	<a href="mailto:applichain@gmail.com">Email the Developer</a>
 	</div>
 </div>
 </body>
 <script type="text/javascript">
-mm=1;dd=1;yy=1;
+mm=7;dd=20;yy=2020;
+auto=true;
+dDate=1;mMonth=1;yYear=2030;
+
+function gettingDate(){
 date = new Date();
 dDate=Number(date.getDate());
 mMonth=Number(date.getMonth());
 yYear=Number(date.getFullYear());
-
-//dDate=1; mMonth=1; yYear=2000;
-
-dNow=dDate;
-mNow=mMonth;
-if(mNow===0){
-mNow=12;
-yNow=yYear-1;
-}
-else{
-yNow=yYear;
 }
 
 moStep=360/ 29.530589; // 29.530589; // 27.321582;
@@ -419,12 +413,19 @@ vnStep=360/224.7;
 mrStep=360/686.93;
 jpStep=(360/(11.86*365.256365));
 
+moStart = 195;
+eaStart = getEarthStartPoint(90);
+mcStart = 368;    
+vnStart = 322;	      
+mrStart = 326;	    
+jpStart = 300;
+/* 1/1/1
 moStart = 75;
 eaStart = getEarthStartPoint(90);
 mcStart = 18;    
 vnStart = 66;	      
 mrStart = 38;	    
-jpStart = 200;
+jpStart = 200;*/
 
 stopToday=0;
 pause=0;
@@ -448,6 +449,7 @@ j=0;
 a=['حادية','تاسعة','سابعة','بحيري','الصيف','الدلي المنسرق','المية','التسعين','الثمانين','السبعين بداية القيظ','لب','الثرياء','الثور','رسو الصيف','الظلم عنابر القيظ','<br>عنابر الخريف','المرزم','سهيل','<br>الشناع','القتور «العلان»','السراب','ثجر','لولين','الثالث','الرابع','الخامس','السادس','السابع','برد الثرياء','السقوط','رسو الشتاء الرجوع'];
 b=[18,26,28,26,5,5,20,10,10,10,10,6,6,6,12,12,6,12,12,5,6,8,12,4,11,10,5,6,9,6,38];
 function funcDraw(){
+if(auto){gettingDate();}
 getDegree();
 i=30;k=0;r=0;
 while(k<360){
@@ -471,6 +473,15 @@ run();
 }
 
 function getDegree(){
+dNow=dDate;
+mNow=mMonth;
+if(mNow===0){
+mNow=12;
+yNow=yYear-1;
+}
+else{
+yNow=yYear;
+}
 while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
 dateCreator();
 countDays++;
@@ -591,10 +602,7 @@ function funcClock(){
 	}
 
 function nextDay(){
-	date = new Date();
-	dDate=Number(date.getDate());
-	mMonth=Number(date.getMonth());
-	yYear=Number(date.getFullYear());
+	if(auto){gettingDate();}
 	if((continual===0 && stopToday===1 && dDate>dd) || (continual===0 && stopToday===1 && 1+mMonth>mm) || (continual===0 && stopToday===1 && yYear>yy)){
 	stopToday=0;
 	run();
@@ -635,7 +643,6 @@ function funcRotate(){
 	d = new Date();
 	mi=Number(d.getMinutes());
 	j=15*mi/60;
-	
 	i=(15*Number(d.getHours()))+180+j;
 	while (i > 360){i -= 360}
 	earthShape.style.transform = "rotate(-" + i + "deg)"; 
@@ -649,6 +656,20 @@ function funcEarth(){
 	earthOrbit.style.transform = "rotate(-" + e + "deg)"; 
 	dateCreator();
 	if (jea === 360) {jea = 0;}
+	
+	if(jea>=0){list.innerHTML="الثالث، الرابع، الخامس تشتهر بشدّة هبوب الرياح وهي فترة التلقيح ونضج الثمار";}
+	if(jea>=10){list.innerHTML="نجوم الشتاء وهي: السادس، ثويمنة: فيهن يتم حصد المحصول أي الصراب";}
+	if(jea>=42){list.innerHTML="السقوط: تشتهر بالبرد القارص";}
+	if(jea>=90){list.innerHTML="حادية: فيها يتم عمل الطين بواسطة الظمد للأحتفاظ بمياه التربة للموسم القادم";}
+	if(jea>=115){list.innerHTML="تاسعة: قد تسقط فيه الأمطار الغزيرة";}
+	if(jea>=145){list.innerHTML="سابعة: وتشتهر بحرارة شمسها وجني محصول البن وهي آخر نجوم الشتاء";}
+	if(jea>=165){list.innerHTML="نجوم الصيف مدتها شهرين وهي: الدلي، البحيري، المنسرق فيها غالبا يتم سقوط الأمطار بعدها يتم تجهيز الأرض للزراعة وانتظار موعد بذر الحبوب";}
+	if(jea>=200){list.innerHTML="المئة 'المية'، التسعين، الثمانين: يتم فيها بذر حبوب الكوري والمنزلة وبعدهن بفترة قليلة يتم بذر حبوب الذرة الحمراء";}
+	if(jea>=230){list.innerHTML="نجوم القيظ مدتها شهرين وهي: السبعين، الثرياء، الثور، الظلم الأول، الظلم الثاني، عنابر القيظ تشتهر بندرة سقوط الأمطار وإذا سقط فيها أمطار يتم زراعة الدخن";}
+	if(jea>=280){list.innerHTML="نجوم الخريف مدتها شهر واحد وهي: عنابر الخريف المرزم سهيل تشتهر بسقوط الأمطار الغزيرة ونزول السيول الجارفة";}
+	if(jea>=310){list.innerHTML="نجوم العلاّن مدته شهرين وهي: القتور، ثجر: هي آخر فرصة لسقوط الأمطار";}
+	if(jea>=346){list.innerHTML="الثالث، الرابع، الخامس تشتهر بشدّة هبوب الرياح وهي فترة التلقيح ونضج الثمار";}
+	//if(jea>=320){list.innerHTML="";}
 }
 
 function funcVenus(){
