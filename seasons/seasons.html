@@ -304,7 +304,7 @@ body {
 	height: 300px;
 	text-align: center;
 }
-#pause {
+#footer {
 	position: absolute;
 	top: 500px;
 	left: 30px;
@@ -386,7 +386,7 @@ body {
 
 
 </div>
-<div id="pause">
+<div id="footer">
 <button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
 	<div id="list"></div>
 	<div id="hlink">
@@ -395,9 +395,9 @@ body {
 </div>
 </body>
 <script type="text/javascript">
-mm=7;dd=20;yy=2020;
+mm=1;dd=1;yy=1;
 auto=true;
-dDate=1;mMonth=1;yYear=2030;
+dDate=22;mMonth=1;yYear=2021;
 
 function gettingDate(){
 date = new Date();
@@ -412,20 +412,20 @@ mcStep=360/87.97;
 vnStep=360/224.7;
 mrStep=360/686.93;
 jpStep=(360/(11.86*365.256365));
-
+/*
 moStart = 195;
 eaStart = getEarthStartPoint(90);
 mcStart = 368;    
 vnStart = 322;	      
 mrStart = 326;	    
 jpStart = 300;
-/* 1/1/1
+*/// 1/1/1
 moStart = 75;
 eaStart = getEarthStartPoint(90);
 mcStart = 18;    
 vnStart = 66;	      
 mrStart = 38;	    
-jpStart = 200;*/
+jpStart = 200;
 
 stopToday=0;
 pause=0;

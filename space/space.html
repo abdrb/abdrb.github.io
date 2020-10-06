@@ -407,21 +407,15 @@ body {
 </body>
 <script type="text/javascript">
 mm=7;dd=20;yy=2020;
+//mm=1;dd=1;yy=1;
+auto=true;
+dDate=22;mMonth=1;yYear=2025;
+
+function gettingDate(){
 date = new Date();
 dDate=Number(date.getDate());
 mMonth=Number(date.getMonth());
 yYear=Number(date.getFullYear());
-
-//dDate=22; mMonth=10; yYear=2020;
-
-dNow=dDate;
-mNow=mMonth;
-if(mNow===0){
-mNow=12;
-yNow=yYear-1;
-}
-else{
-yNow=yYear;
 }
 
 moStep=360/ 29.530589; // 29.530589; // 27.321582;
@@ -467,6 +461,7 @@ j=0;
 a = [" Cancer", "January", " Leo",  "February", " Virgo",  "March", " Libra",  "April", " Scorpio",  "May", "Sagittarius", "June", "Capricorn", "July", "Aquarius", "August", "Pisces", "September", " Aries", "October", " Taurus", "November", " Gemini", "December"];
 
 function funcDraw(){
+if(auto){gettingDate();}
 getDegree()
 i=23;k=0;r=0;
 while(k<360){
@@ -524,8 +519,17 @@ run();
 }
 
 function getDegree(){
+dNow=dDate;
+mNow=mMonth;
+if(mNow===0){
+mNow=12;
+yNow=yYear-1;
+}
+else{
+yNow=yYear;
+}
 while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
-dateCreator()
+dateCreator();
 countDays++;
 }
 moStart+=moStep*countDays; //27.321582
@@ -644,10 +648,7 @@ function funcClock(){
 	}
 
 function nextDay(){
-	date = new Date();
-	dDate=Number(date.getDate());
-	mMonth=Number(date.getMonth());
-	yYear=Number(date.getFullYear());
+	if(auto){gettingDate();}
 	if((continual===0 && stopToday===1 && dDate>dd) || (continual===0 && stopToday===1 && 1+mMonth>mm) || (continual===0 && stopToday===1 && yYear>yy)){
 	stopToday=0;
 	run();
