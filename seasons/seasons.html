@@ -395,7 +395,7 @@ body {
 </div>
 </body>
 <script type="text/javascript">
-mm=1;dd=1;yy=1;
+dd=20; mm=7; yy=2020;
 auto=true;
 dDate=22;mMonth=1;yYear=2021;
 
@@ -412,20 +412,24 @@ mcStep=360/87.97;
 vnStep=360/224.7;
 mrStep=360/686.93;
 jpStep=(360/(11.86*365.256365));
-/*
+
+if((dd+"/"+mm+"/"+yy) === (20+"/"+7+"/"+2020)){
 moStart = 195;
 eaStart = getEarthStartPoint(90);
 mcStart = 368;    
 vnStart = 322;	      
 mrStart = 326;	    
 jpStart = 300;
-*/// 1/1/1
+}
+
+if((dd+"/"+mm+"/"+yy) === (1+"/"+1+"/"+1)){
 moStart = 75;
 eaStart = getEarthStartPoint(90);
 mcStart = 18;    
 vnStart = 66;	      
 mrStart = 38;	    
 jpStart = 200;
+}
 
 stopToday=0;
 pause=0;
