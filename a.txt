@@ -1,4 +1,0 @@
-To coordinate and guide Information Technology maintenance
-and support activities to enable the effective delivery of
-IT services.
-atom://settings-view/show-package?package=open-in-browser
