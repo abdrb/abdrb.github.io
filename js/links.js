@@ -4,5 +4,5 @@ document.getElementById("links").innerHTML += "<li><a href='" + website + "index
 document.getElementById("links").innerHTML += "<li><a href='" + website + "services.html'>Expert</a></li>";
 document.getElementById("links").innerHTML += "<li><a href='" + website + "about.html'>Effect</a></li>";
 document.getElementById("links").innerHTML += "<li><a href='" + website + "projects.html'>Apps</a></li>";
-document.getElementById("links").innerHTML += "<li><a href='" + website + "feedback/feedback.html'>Feedback</a></li>";
+document.getElementById("links").innerHTML += "<li><a href='" + website + "feedback.html'>Feedback</a></li>";
 } 
