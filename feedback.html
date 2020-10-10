@@ -8,7 +8,7 @@
       <script src="https://abdrb.github.io/js/links.js" type="text/javascript"></script>
       <title></title>
    </head>
-   <body onload="funclinks()">
+   <body onload="funclinks();javascript:document.getElementById('emaillink').click();window.history.back();">
       <navbar class="header">
          <input class="menu-btn" type="checkbox" id="menu-btn" />
          <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
@@ -20,6 +20,9 @@
            Feedback<div class="golden_line"></div>
          </header>
 	<section>
+	<div>
+		<a href="mailto:applichain@gmail.com" id="emaillink"></a>
+	</div>
 	<form action="mailto:applichain@gmail.com.com" method="get" enctype="text/plain">
       <div>
         <label for="name">Name:
@@ -34,7 +37,7 @@
       <div>
         <label>Comments:</label>
         <br />
-        <textarea name="comments" rows="4" cols="24">Send your comments to us.</textarea>
+        <textarea name="comments" rows="4" cols="24"></textarea>
       </div>
       <div>
         <input type="submit" name="submit" value="Send" />
