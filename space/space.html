@@ -266,7 +266,7 @@ body {
 	top: 70px;
 	left: 30px;
 	width: 300px;
-	height: 300px;
+	height: 5px;
 	text-align: center;
 }
 #pauseBtn {
@@ -274,6 +274,12 @@ body {
 	width: 30px;
 	height: 30px;
 	transform: rotate(90deg);
+}
+#endDate {
+	display: none;
+	width: 110px;
+	height: 27px;
+	text-align: center;
 }
 
 #clockTime {
@@ -392,6 +398,7 @@ body {
 
 </div>
 <div id="pause">
+<input onchange="datePicker()" type="date" id="endDate">
 <button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
 </div>
 <div id="list"></div>
@@ -407,15 +414,53 @@ body {
 <script type="text/javascript">
 dd=1;mm=1;yy=2020;
 auto=true;
-dDate=22;mMonth=1;yYear=2022;
-
-function gettingDate(){
-date = new Date();
+var date = new Date();
 dDate=Number(date.getDate());
 mMonth=Number(date.getMonth());
 yYear=Number(date.getFullYear());
-}
 
+function gettingDate(){
+	date = new Date();
+	dDate=Number(date.getDate());
+	mMonth=Number(date.getMonth());
+	yYear=Number(date.getFullYear());
+}
+function datePicker(){
+    dd=1;mm=1;yy=1;
+	auto=false;
+	speed=100;
+	moStart = 75;
+	eaStart = getEarthStartPoint(90);
+	mcStart = 18;    
+	vnStart = 66;	      
+	mrStart = 38;	    
+	jpStart = 200;
+	stopToday=0;
+	pause=0;
+	continual=0;
+	countDays = 0;
+if(endDate.value!==""){
+    var d = new Date(endDate.value);
+    dDate = Number (d.getDate());
+    mMonth = Number (d.getMonth());
+    yYear = Number (d.getFullYear());
+
+    getDegree();
+    funcClockTime();
+    funcClock();
+    run();
+  }
+  else {
+	date = new Date();
+	dDa=Number(date.getDate());
+	mMo=Number(date.getMonth());
+	yYe=Number(date.getFullYear());
+	mMo=addZero(1+mMo);
+	dDa=addZero(dDa);
+	endDate.value=yYe+"-"+mMo+"-"+dDa;
+	datePicker();
+  }
+}
 moStep=360/ 29.530589; // 29.530589; // 27.321582;
 eaStep=360/365.256365;
 mcStep=360/87.97;
@@ -473,7 +518,7 @@ a = [" Cancer", "January", " Leo",  "February", " Virgo",  "March", " Libra",  "
 
 function funcDraw(){
 if(auto){gettingDate();}
-getDegree()
+getDegree();
 i=23;k=0;r=0;
 while(k<360){
 if(k>20 && k<200){
@@ -539,9 +584,9 @@ yNow=yYear-1;
 else{
 yNow=yYear;
 }
+
 while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
 dateCreator();
-countDays++;
 }
 moStart+=moStep*countDays; //27.321582
 eaStart=getEarthStartPoint(90);
@@ -586,8 +631,10 @@ function funcStopToday(){
 		stopToday=1;
 		speed=100;
 		continual=0;
+		endDate.style.display = "initial";
 		pauseClick.style.display = "initial";
 		document.getElementById("sight").style.display = "initial";
+		if(auto){endDate.value=yy+"-"+mm+"-"+dd;}
 		}
 }
 
@@ -613,6 +660,7 @@ jupiterShape.innerHTML = "<br>Jupiter<br>" + j + "°";
 function pauseFunc(){
 if(continual===0){speed=100;}
 if(pause === 0){
+endDate.style.display= "none";
 continual=1;
 pause=1;
 run();
@@ -620,6 +668,7 @@ pauseClick.innerHTML="=";
 document.getElementById("sight").style.display = "none";
 }
 else{
+endDate.style.display = "initial";
 stopFunc();
 pause=0;
 pauseClick.innerHTML="∆";
@@ -652,7 +701,7 @@ function funcClock(){
 	e=addDZero(jea.toFixed(0));
 	r=addDZero(jmr.toFixed(0));
 	j=addDZero(jjp.toFixed(0));
-
+	
 	now.innerHTML = gold + d + "/" + m + "/" + y + end;
 	clock.innerHTML = brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";
 	}, (90));
@@ -675,17 +724,20 @@ function addDZero(n){
 return n;
 }
 function leapyear(year) {
-  return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
+	return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
 }
+
 function dateCreator(){
 	feb=29;
-	if(leapyear(yy)){feb=30;}	
-	dd += 1;
+	if(leapyear(yy)){feb=30;}
 	if((dd===32 && mm===1) || (dd===32 && mm===3) || (dd===32 && mm===5) || (dd===32 && mm===7) || (dd===32 && mm===8) || (dd===32 && mm===10) || (dd===32 && mm===12) || (dd===feb && mm===2) || (dd===31 && mm===4) || (dd===31 && mm===6) || (dd===31 && mm===9) || (dd===31 && mm===11)){
-	dd=1;
-	mm += 1;
-	if(mm==13){mm=1;yy += 1;}
+	dd=0;
+	countDays-=1;
+	mm+=1;
+	if(mm===13){mm=1;yy+=1;}
 	}
+	dd+=1;
+	countDays+=1;
 }
 
 function funcMoon(){	
