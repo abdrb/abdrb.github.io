@@ -280,6 +280,13 @@ body {
 	transform: rotate(90deg);
 }
 
+#endDate {
+	display: none;
+	width: 110px;
+	height: 27px;
+	text-align: center;
+}
+
 #clockTime {
 	position: absolute;
 	top: 50px;
@@ -387,6 +394,7 @@ body {
 
 </div>
 <div id="footer">
+<input onchange="datePicker()" type="date" id="endDate">
 <button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
 	<div id="list"></div>
 	<div id="hlink">
@@ -395,15 +403,55 @@ body {
 </div>
 </body>
 <script type="text/javascript">
-dd=20; mm=7; yy=2020;
-auto=false;
-dDate=31;mMonth=7;yYear=2021;
+dd=1; mm=1; yy=2020;
+auto=true;
+var date = new Date();
+dDate=Number(date.getDate());
+mMonth=Number(date.getMonth());
+yYear=Number(date.getFullYear());
 
 function gettingDate(){
 date = new Date();
 dDate=Number(date.getDate());
 mMonth=Number(date.getMonth());
 yYear=Number(date.getFullYear());
+}
+
+function datePicker(){
+    dd=1;mm=1;yy=1;
+	auto=false;
+	speed=100;
+	moStart = 75;
+	eaStart = getEarthStartPoint(90);
+	mcStart = 18;    
+	vnStart = 66;	      
+	mrStart = 38;	    
+	jpStart = 200;
+	stopToday=0;
+	pause=0;
+	continual=0;
+	countDays = 0;
+	sight.style.display = "none";
+if(endDate.value!==""){
+    var d = new Date(endDate.value);
+    dDate = Number (d.getDate());
+    mMonth = Number (d.getMonth());
+    yYear = Number (d.getFullYear());
+    getDegree();
+    funcClockTime();
+    funcClock();
+    run();
+  }
+  else {
+	date = new Date();
+	dDa=Number(date.getDate());
+	mMo=Number(date.getMonth());
+	yYe=Number(date.getFullYear());
+	mMo=addZero(1+mMo);
+	dDa=addZero(dDa);
+	endDate.value=yYe+"-"+mMo+"-"+dDa;
+	datePicker();
+  }
 }
 
 moStep=360/ 29.530589; // 29.530589; // 27.321582;
@@ -420,6 +468,15 @@ mcStart = 368;
 vnStart = 322;	      
 mrStart = 326;	    
 jpStart = 300;
+}
+
+if((dd+"/"+mm+"/"+yy) === (1+"/"+1+"/"+2020)){
+moStart = 265;
+eaStart = getEarthStartPoint(90);
+mcStart = 261;    
+vnStart = 359;	      
+mrStart = 220;	    
+jpStart = 284;
 }
 
 if((dd+"/"+mm+"/"+yy) === (1+"/"+1+"/"+1)){
@@ -452,6 +509,7 @@ drawEnd=" </div> "
 j=0;
 a=['حادية','تاسعة','سابعة','بحيري','الصيف','الدلي المنسرق','المية','التسعين','الثمانين','السبعين بداية القيظ','لب','الثرياء','الثور','رسو الصيف','الظلم عنابر القيظ','<br>عنابر الخريف','المرزم','سهيل','<br>الشناع','القتور «العلان»','السراب','ثجر','لولين','الثالث','الرابع','الخامس','السادس','السابع','برد الثرياء','السقوط','رسو الشتاء الرجوع'];
 b=[18,26,28,26,5,5,20,10,10,10,10,6,6,6,12,12,6,12,12,5,6,8,12,4,11,10,5,6,9,6,38];
+
 function funcDraw(){
 if(auto){gettingDate();}
 getDegree();
@@ -488,7 +546,6 @@ yNow=yYear;
 }
 while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
 dateCreator();
-countDays++;
 }
 moStart+=moStep*countDays; //27.321582
 eaStart=getEarthStartPoint(90);
@@ -533,8 +590,10 @@ function funcStopToday(){
 		stopToday=1;
 		speed=100;
 		continual=0;
+		endDate.style.display = "initial";
 		pauseClick.style.display = "initial";
 		document.getElementById("sight").style.display = "initial";		
+		if(auto){endDate.value=yy+"-"+mm+"-"+dd;}		
 		}
 }
 
@@ -560,6 +619,7 @@ jupiterShape.innerHTML = "<br>المشتري<br>" + j + "°";
 function pauseFunc(){
 if(continual===0){speed=100;}
 if(pause === 0){
+endDate.style.display = "none";
 continual=1;
 pause=1;
 run();
@@ -567,6 +627,7 @@ pauseClick.innerHTML="=";
 document.getElementById("sight").style.display = "none";
 }
 else{
+endDate.style.display = "initial";
 stopFunc();
 pause=0;
 pauseClick.innerHTML="∆";
@@ -624,15 +685,18 @@ return n;
 function leapyear(year) {
   return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
 }
+
 function dateCreator(){
 	feb=29;
-	if(leapyear(yy)){feb=30;}	
-	dd += 1;
+	if(leapyear(yy)){feb=30;}
 	if((dd===32 && mm===1) || (dd===32 && mm===3) || (dd===32 && mm===5) || (dd===32 && mm===7) || (dd===32 && mm===8) || (dd===32 && mm===10) || (dd===32 && mm===12) || (dd===feb && mm===2) || (dd===31 && mm===4) || (dd===31 && mm===6) || (dd===31 && mm===9) || (dd===31 && mm===11)){
-	dd=1;
-	mm += 1;
-	if(mm==13){mm=1;yy += 1;}
+	dd=0;
+	countDays-=1;
+	mm+=1;
+	if(mm===13){mm=1;yy+=1;}
 	}
+	dd+=1;
+	countDays+=1;
 }
 
 function funcMoon(){	

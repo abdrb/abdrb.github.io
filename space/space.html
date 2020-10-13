@@ -306,7 +306,7 @@ body {
 	height: 300px;
 	text-align: center;
 }
-#pause {
+#footer {
 	position: absolute;
 	top: 500px;
 	left: 40px;
@@ -397,7 +397,7 @@ body {
 
 
 </div>
-<div id="pause">
+<div id="footer">
 <input onchange="datePicker()" type="date" id="endDate">
 <button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
 </div>
@@ -425,6 +425,7 @@ function gettingDate(){
 	mMonth=Number(date.getMonth());
 	yYear=Number(date.getFullYear());
 }
+
 function datePicker(){
     dd=1;mm=1;yy=1;
 	auto=false;
@@ -439,12 +440,12 @@ function datePicker(){
 	pause=0;
 	continual=0;
 	countDays = 0;
+	sight.style.display = "none";
 if(endDate.value!==""){
     var d = new Date(endDate.value);
     dDate = Number (d.getDate());
     mMonth = Number (d.getMonth());
     yYear = Number (d.getFullYear());
-
     getDegree();
     funcClockTime();
     funcClock();
@@ -758,7 +759,6 @@ function funcRotate(){
 	earthShape.style.transform = "rotate(-" + i + "deg)"; 
 	if (i === 360) {i = 0;}
 }
-
 
 function funcEarth(){
 	jea+=eaStep;
