@@ -1,4 +1,4 @@
-﻿navbar {
+navbar {
   position: fixed;
   width: 100%;
   z-index: 3;
@@ -18,6 +18,22 @@ navbar li a {
   padding: 20px 20px;
   border-right: 1px solid #f4f4f4;
   text-decoration: none;
+}
+
+a:link {
+  color: teal;
+}
+
+a:visited {
+  color: tan;
+}
+
+a:hover {
+  color: aqua;
+}
+
+a:active {
+  color: lime;
 }
 
 navbar li a:hover,
@@ -87,7 +103,7 @@ navbar .menu-btn {
 }
 
 navbar .menu-btn:checked ~ .menu {
-  max-height: 340px;
+  max-height: 100%;
 }
 
 navbar .menu-btn:checked ~ .menu-icon .navicon {

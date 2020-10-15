@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+      <script src="js/links.js" type="text/javascript"></script>
+      <script src="js/cssg.js" type="text/javascript"></script>
+      <link rel="stylesheet" type="text/css" href="css/cssg.css">
+      <link rel="stylesheet" type="text/css" href="css/menu.css">
+      <link rel="stylesheet" type="text/css" media="screen and (max-width: 767px)" href="css/smallscreen.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 768px)" href="css/widescreen.css">
+      <title></title>
+   </head>
+   <body onload="funclinks()">
+      <navbar>
+         <input class="menu-btn" type="checkbox" id="menu-btn" />
+         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+         <ul class="menu" id="links">
+         </ul>
+      </navbar>
+      
+         <header>
+             Front End Apps<div class="golden_line"></div>
+         </header>
+<center>
+<div> <h4>CSS Style Generator</h4></div>
+
+<select id="type" onchange="func()">
+<option>class</option>
+<option>id</option>
+<option>other</option>
+</select>
+<div id="slct">Name</div> 
+<input type="text" id="tag">
+<div class="inld">Property and value</div>
+<div style="width: 210px;">
+<input list="lst" id="att" class="inl">
+  <datalist id="lst">
+    <option value="color">
+    </option><option value="width">
+    </option><option value="height">
+    </option><option value="padding">
+    </option><option value="margin">
+  </option></datalist>
+  
+<input type="text" id="val" class="inl">
+</div>
+<div id="newA" style="width: 210px;"></div>
+<button onclick="clr()" class="addN">x</button>
+<button onclick="add()" class="addN">+</button>
+
+<textarea id="cssBox"></textarea>
+<button onclick="myFunction()">Build code</button>
+
+</div>
+<input type="hidden" id="hN" value="0">
+			 </div>
+			 </center> 
+         <footer>Copyright © 2019</footer>
+   </body>
+</html>
+    
