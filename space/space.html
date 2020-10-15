@@ -347,6 +347,17 @@ body {
 #hlink{
 	margin: 10px;
 }
+
+#list {
+	position: absolute;
+	top: 580px;
+	text-align: center;
+}
+table, td{
+	border: 0.5px solid gray;
+	font-size: 12px;
+}
+
 </style>
 </head>
 <body onload="funcDraw()">
@@ -416,13 +427,16 @@ dd=1;mm=1;yy=2020;
 auto=true;
 var date = new Date();
 dDate=Number(date.getDate());
-mMonth=Number(date.getMonth());
+mMonth=Number(date.getMonth())+1;
 yYear=Number(date.getFullYear());
+pickdd=dDate;
+pickmm=mMonth;
+pickyy=yYear;
 
 function gettingDate(){
 	date = new Date();
 	dDate=Number(date.getDate());
-	mMonth=Number(date.getMonth());
+	mMonth=Number(date.getMonth())+1;
 	yYear=Number(date.getFullYear());
 }
 
@@ -439,13 +453,16 @@ function datePicker(){
 	stopToday=0;
 	pause=0;
 	continual=0;
-	countDays = 0;
+	countDays = 0; DaysBdates=0;
 	sight.style.display = "none";
+	list.innerHTML="";
+	tbData="";
 if(endDate.value!==""){
     var d = new Date(endDate.value);
     dDate = Number (d.getDate());
-    mMonth = Number (d.getMonth());
+    mMonth = Number (d.getMonth())+1;
     yYear = Number (d.getFullYear());
+	pickdd=dDate; pickmm=mMonth;
     getDegree();
     funcClockTime();
     funcClock();
@@ -454,9 +471,10 @@ if(endDate.value!==""){
   else {
 	date = new Date();
 	dDa=Number(date.getDate());
-	mMo=Number(date.getMonth());
+	mMo=Number(date.getMonth())+1;
 	yYe=Number(date.getFullYear());
-	mMo=addZero(1+mMo);
+	pickdd=dDa; pickmm=mMo;
+	mMo=addZero(mMo);
 	dDa=addZero(dDa);
 	endDate.value=yYe+"-"+mMo+"-"+dDa;
 	datePicker();
@@ -500,7 +518,7 @@ stopToday=0;
 pause=0;
 continual=0;
 speed=100;
-countDays = 0;
+countDays = 0; DaysBdates=0;
 
 blue="<span style='color:royalblue;'>";
 red="<span style='color:red;'>";
@@ -575,9 +593,73 @@ funcClock();
 run();
 }
 
-function getDegree(){
+dataList=[];
+tbData=""; dataObj={"Date":0,"Mercury":0};
+td_ = "<td>"; _td = "</td>";
+tr_ = "<tr>"; _tr = "</tr>";
+tb_="<table><tr><td>Date</td><td>Mercury</td><td>Venus</td><td>Earth</td><td>Mars</td><td>Jupiter</td><td>Moon</td></tr>";
+function listPlanetPoint(){
+	if(ddc===pickdd && mmc===pickmm){
+	getPlanetPoints();
+	//if((ddc+"/"+mmc+"/"+yyc) !== (dDate+"/"+mMonth+"/"+yYear))
+	//	{
+		//dataObj.Date=dd+"/"+mm+"/"+yy;
+		//dataObj.Mercury=mcPoint;
+		tbData +=tr_ + td_ +ddc+"/"+mmc+"/"+yyc+ _td + td_ +mcPoint+ _td + td_ + vnPoint+ _td + td_ +eaPoint+ _td + td_ +mrPoint+ _td + td_ +jpPoint+ _td + td_ +moPoint+ _td + _tr;
+	//	}
+	}
+//	if((dd===pickdd && mm===pickmm) && (moPoint>=259 && moPoint<=261)){
+//	getPlanetPoints();
+//	dataList[countDays-1]=moPoint;}
+}
+moPoint=0;eaPoint=0;mcPoint=0;vnPoint=0;mrPoint=0;jpPoint=0;
+function getPlanetPoints(){
+moStart = 75;
+eaStart = getEarthStartPoint(90);
+mcStart = 18;    
+vnStart = 66;	      
+mrStart = 38;	    
+jpStart = 200;
+moPoint =(moStep*countDays) + moStart; 
+//eaPoint =getEarthStartPoint(90);
+mcPoint =(mcStep*countDays) + mcStart;
+vnPoint =(vnStep*countDays) + vnStart;
+mrPoint =(mrStep*countDays) + mrStart;
+jpPoint =(jpStep*countDays) + jpStart;
+moPoint=below360(moPoint);
+//eaPoint=below360(eaPoint);
+mcPoint=below360(mcPoint);
+vnPoint=below360(vnPoint);
+mrPoint=below360(mrPoint);
+jpPoint=below360(jpPoint);
+moPoint =moPoint.toFixed(0);
+eaPoint =getEarthStartPoint(90);
+mcPoint =mcPoint.toFixed(0);
+vnPoint =vnPoint.toFixed(0);
+mrPoint =mrPoint.toFixed(0);
+jpPoint =jpPoint.toFixed(0);
+}
+ddc=1;mmc=1;yyc=1;
+function getDegreeForTable(){
 dNow=dDate;
 mNow=mMonth;
+yNow=yYear;
+ddc=1;mmc=1;yyc=1;
+countDays=0;
+while((ddc+"/"+mmc+"/"+yyc) !== (dNow+"/"+mNow+"/"+yNow)){
+daysCounter();
+}
+getPlanetPoints();
+}
+
+function below360(point){
+while (point > 360){point -= 360}
+return point;
+}
+
+function getDegree(){
+dNow=dDate;
+mNow=mMonth-1;
 if(mNow===0){
 mNow=12;
 yNow=yYear-1;
@@ -589,13 +671,16 @@ yNow=yYear;
 while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
 dateCreator();
 }
-moStart+=moStep*countDays; //27.321582
-eaStart=getEarthStartPoint(90);
-mcStart+=mcStep*countDays;
-vnStart+=vnStep*countDays;
-mrStart+=mrStep*countDays;
-jpStart+=jpStep*countDays;
+getPlanetStartDegree();
+}
 
+function getPlanetStartDegree(){
+moStart+=moStep*DaysBdates; //27.321582
+eaStart=getEarthStartPoint(90);
+mcStart+=mcStep*DaysBdates;
+vnStart+=vnStep*DaysBdates;
+mrStart+=mrStep*DaysBdates;
+jpStart+=jpStep*DaysBdates;
 jmo=moStart;
 jea=eaStart;
 jmc=mcStart;
@@ -607,7 +692,7 @@ jjp=jpStart;
 function getEarthStartPoint(a){
 	if ((mm-1) === 0){deg = (dd*eaStep) +a;}
 	else{deg = ((mm-1) * (30.42*eaStep)) + (dd*eaStep) +a;}
-	while (deg > 360){deg -= 360}
+	deg=below360(deg);
 	return Number(deg.toFixed(0));
 }
 
@@ -622,7 +707,7 @@ function run(){
 
 start=0;
 function funcStopToday(){	
-	mToday=mMonth+1;
+	mToday=mMonth;
 	dToday=dDate;
 	yToday=yYear;
 	if(start===0){funcRotate();start=1;}
@@ -636,6 +721,9 @@ function funcStopToday(){
 		pauseClick.style.display = "initial";
 		document.getElementById("sight").style.display = "initial";
 		if(auto){endDate.value=yy+"-"+mm+"-"+dd;}
+		getDegreeForTable();
+		//if(auto){tbData +=tr_ + td_ +ddc+"/"+mmc+"/"+yyc+ _td + td_ +jmc.toFixed(0)+ _td + td_ + jvn.toFixed(0)+ _td + td_ +jea.toFixed(0)+ _td + td_ +jmr.toFixed(0)+ _td + td_ +jjp.toFixed(0)+ _td + td_ +jmo.toFixed(0)+ _td + _tr;}
+		list.innerHTML+=tb_ + tbData + "</table>";
 		}
 }
 
@@ -695,13 +783,12 @@ function funcClock(){
 	m=addZero(mm);
 	d=addZero(dd);
 	y=yy;
-
-	n=addDZero(jmo.toFixed(0));
-	u=addDZero(jmc.toFixed(0));
-	v=addDZero(jvn.toFixed(0));
-	e=addDZero(jea.toFixed(0));
-	r=addDZero(jmr.toFixed(0));
-	j=addDZero(jjp.toFixed(0));
+	jmo=below360(jmo);n=addDZero(jmo.toFixed(0));
+	jmc=below360(jmc);u=addDZero(jmc.toFixed(0));
+	jvn=below360(jvn);v=addDZero(jvn.toFixed(0));
+	jea=below360(jea);e=addDZero(jea.toFixed(0));
+	jmr=below360(jmr);r=addDZero(jmr.toFixed(0));
+	jjp=below360(jjp);j=addDZero(jjp.toFixed(0));
 	
 	now.innerHTML = gold + d + "/" + m + "/" + y + end;
 	clock.innerHTML = brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";
@@ -710,7 +797,7 @@ function funcClock(){
 
 function nextDay(){
 	if(auto){gettingDate();}
-	if((continual===0 && stopToday===1 && dDate>dd) || (continual===0 && stopToday===1 && 1+mMonth>mm) || (continual===0 && stopToday===1 && yYear>yy)){
+	if((continual===0 && stopToday===1 && dDate>dd) || (continual===0 && stopToday===1 && mMonth>mm) || (continual===0 && stopToday===1 && yYear>yy)){
 	stopToday=0;
 	run();
 	}
@@ -733,17 +820,30 @@ function dateCreator(){
 	if(leapyear(yy)){feb=30;}
 	if((dd===32 && mm===1) || (dd===32 && mm===3) || (dd===32 && mm===5) || (dd===32 && mm===7) || (dd===32 && mm===8) || (dd===32 && mm===10) || (dd===32 && mm===12) || (dd===feb && mm===2) || (dd===31 && mm===4) || (dd===31 && mm===6) || (dd===31 && mm===9) || (dd===31 && mm===11)){
 	dd=0;
-	countDays-=1;
+	DaysBdates-=1;
 	mm+=1;
 	if(mm===13){mm=1;yy+=1;}
 	}
 	dd+=1;
+	DaysBdates+=1;
+}
+function daysCounter(){
+	feb=29;
+	if(leapyear(yyc)){feb=30;}
+	if((ddc===32 && mmc===1) || (ddc===32 && mmc===3) || (ddc===32 && mmc===5) || (ddc===32 && mmc===7) || (ddc===32 && mmc===8) || (ddc===32 && mmc===10) || (ddc===32 && mmc===12) || (ddc===feb && mmc===2) || (ddc===31 && mmc===4) || (ddc===31 && mmc===6) || (ddc===31 && mmc===9) || (ddc===31 && mmc===11)){
+	ddc=0;
+	countDays-=1;
+	mmc+=1;
+	if(mmc===13){mmc=1;yyc+=1;}
+	}
+	ddc+=1;
 	countDays+=1;
+	listPlanetPoint();
 }
 
 function funcMoon(){	
 	jmo+=moStep; //29.530589; //27.321582;
-	while (jmo > 360){jmo -= 360}
+	jmo=below360(jmo);
 	n=addDZero(jmo.toFixed(0));
 	moonOrbit.style.transform = "rotate(-" + n +"deg)"; 
 	if (jmo === 360) {jmo = 0;}
@@ -755,14 +855,14 @@ function funcRotate(){
 	j=15*mi/60;
 	
 	i=(15*Number(d.getHours()))+180+j;
-	while (i > 360){i -= 360}
+	i=below360(i);
 	earthShape.style.transform = "rotate(-" + i + "deg)"; 
 	if (i === 360) {i = 0;}
 }
 
 function funcEarth(){
 	jea+=eaStep;
-	while (jea > 360){jea -= 360}
+	jea=below360(jea);
 	e=addDZero(jea.toFixed(0));
 	earthOrbit.style.transform = "rotate(-" + e + "deg)"; 
 	dateCreator();
@@ -771,7 +871,7 @@ function funcEarth(){
 
 function funcVenus(){
 	jvn+=vnStep;
-	while (jvn > 360){jvn -= 360}
+	jvn=below360(jvn);
 	v=addDZero(jvn.toFixed(0));
 	venusShape.innerHTML ="<br>Venus<br>" + v + "°";
 	venusOrbit.style.transform = "rotate(-" + v +"deg)"; 	
@@ -780,7 +880,7 @@ function funcVenus(){
 }
 function funcMerc(){
 	jmc+=mcStep;
-	while (jmc > 360){jmc -= 360}
+	jmc=below360(jmc);
 	u=addDZero(jmc.toFixed(0));
 	mercuryShape.innerHTML = "<br>Mercury<br>" + u + "°";
 	mercuryOrbit.style.transform = "rotate(-" + u +"deg)"; 
@@ -790,7 +890,7 @@ function funcMerc(){
 
 function funcMars(){	
 	jmr+=mrStep;
-	while (jmr > 360){jmr -= 360}
+	jmr=below360(jmr);
 	r=addDZero(jmr.toFixed(0));
 	marsShape.innerHTML ="<br>Mars<br>" + r + "°";
 	marsOrbit.style.transform = "rotate(-" + r +"deg)"; 
@@ -800,7 +900,7 @@ function funcMars(){
 
 function funcJu(){	
 	jjp+=jpStep;
-	while (jjp > 360){jjp -= 360}
+	jjp=below360(jjp);
 	j=addDZero(jjp.toFixed(0));
 	jupiterShape.innerHTML ="<br>Jupiter<br>" + j + "°";
 	jupiterOrbit.style.transform = "rotate(-" + j +"deg)"; 
