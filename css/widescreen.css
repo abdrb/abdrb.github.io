@@ -1,4 +1,4 @@
-﻿body {
+body {
 	background: #15B9BD;
 	box-sizing: border-box;
 	margin: 0;
@@ -29,7 +29,7 @@ article {
 section {
 	position: relative;
 	text-align: left;
-	color: #585858;
+	color: darkcyan;
 	padding: 30px;
 	margin: 10px;
 	display: inline-block;
