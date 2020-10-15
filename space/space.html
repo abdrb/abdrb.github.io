@@ -594,19 +594,14 @@ run();
 }
 
 dataList=[];
-tbData=""; dataObj={"Date":0,"Mercury":0};
+tbData="";
 td_ = "<td>"; _td = "</td>";
 tr_ = "<tr>"; _tr = "</tr>";
 tb_="<table><tr><td>Date</td><td>Mercury</td><td>Venus</td><td>Earth</td><td>Mars</td><td>Jupiter</td><td>Moon</td></tr>";
 function listPlanetPoint(){
 	if(ddc===pickdd && mmc===pickmm){
 	getPlanetPoints();
-	//if((ddc+"/"+mmc+"/"+yyc) !== (dDate+"/"+mMonth+"/"+yYear))
-	//	{
-		//dataObj.Date=dd+"/"+mm+"/"+yy;
-		//dataObj.Mercury=mcPoint;
-		tbData +=tr_ + td_ +ddc+"/"+mmc+"/"+yyc+ _td + td_ +mcPoint+ _td + td_ + vnPoint+ _td + td_ +eaPoint+ _td + td_ +mrPoint+ _td + td_ +jpPoint+ _td + td_ +moPoint+ _td + _tr;
-	//	}
+	tbData +=tr_ + td_ +ddc+"/"+mmc+"/"+yyc+ _td + td_ +mcPoint+ _td + td_ + vnPoint+ _td + td_ +eaPoint+ _td + td_ +mrPoint+ _td + td_ +jpPoint+ _td + td_ +moPoint+ _td + _tr;
 	}
 //	if((dd===pickdd && mm===pickmm) && (moPoint>=259 && moPoint<=261)){
 //	getPlanetPoints();
@@ -621,13 +616,13 @@ vnStart = 66;
 mrStart = 38;	    
 jpStart = 200;
 moPoint =(moStep*countDays) + moStart; 
-//eaPoint =getEarthStartPoint(90);
+eaPoint =getEarthStartPoint(90);
 mcPoint =(mcStep*countDays) + mcStart;
 vnPoint =(vnStep*countDays) + vnStart;
 mrPoint =(mrStep*countDays) + mrStart;
 jpPoint =(jpStep*countDays) + jpStart;
 moPoint=below360(moPoint);
-//eaPoint=below360(eaPoint);
+eaPoint=below360(eaPoint);
 mcPoint=below360(mcPoint);
 vnPoint=below360(vnPoint);
 mrPoint=below360(mrPoint);
