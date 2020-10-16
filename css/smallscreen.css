@@ -52,8 +52,8 @@ section {
 footer {
 	text-align: center;
 	background-color: #4DBDBD;
-	margin: 20px;
-	width: 100%;
+	margin-top: 20px;
+	width: calc(100% - 2px);
 	height: 100%;
   
 }
