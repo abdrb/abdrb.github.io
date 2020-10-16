@@ -357,6 +357,16 @@ td{
 	border-bottom: 1px solid #333;
 	font-size: 14px;
 }
+#listopt{
+	position: absolute;
+	display: none;
+	height: 18px;
+	width: 18px;
+	top: 580px;
+	left: 15px;
+	background-color: #000;
+	color: #fff;
+}
 
 </style>
 </head>
@@ -412,7 +422,8 @@ td{
 <input onchange="datePicker()" type="date" id="endDate">
 <button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
 </div>
-<div id="list"></div>
+<div id="list">
+</div>
 <div id="links">
 <div><br>
 <a href="#" id="spaceL"></a>
@@ -420,6 +431,10 @@ td{
 	<div id="hlink">
 	<a href="mailto:applichain@gmail.com">Email the Developer</a>
 	</div>
+</div>
+<div>
+<select id="listopt" onchange="datePicker()">
+</select>
 </div>
 </body>
 <script type="text/javascript">
@@ -441,6 +456,7 @@ function gettingDate(){
 }
 
 function datePicker(){
+document.getElementById("pauseBtn").disabled = true; 
     dd=1;mm=1;yy=1;
 	auto=false;
 	speed=100;
@@ -455,6 +471,7 @@ function datePicker(){
 	continual=0;
 	countDays = 0; DaysBdates=0;
 	sight.style.display = "none";
+	listopt.style.display = "initial";
 	list.innerHTML="";
 	tbData="";
 if(endDate.value!==""){
@@ -597,11 +614,11 @@ run();
 
 ////////////data/////////
 td_ = "<td>"; _td = "</td>";
-tr_ = "<tr>"; _tr = "</tr>";
+tr_ = "<tr>"; _tr = "</tr>";lst="";
 tb_="<table><tr><td>Date</td><td>Mercury</td><td>Venus</td><td>Earth</td><td>Mars</td><td>Jupiter</td><td>Moon</td></tr>";
 function insertDataToTable(){
 ix=ix-1;
-while(ix>=0){
+while(yya[ix]>=Number(listopt.value)){
 tbData +=tr_ + td_ +dda[ix]+"/"+mma[ix]+"/"+yya[ix]+ _td + td_ +mcPointa[ix]+ _td + td_ + vnPointa[ix]+ _td + td_ +eaPointa[ix]+ _td + td_ +mrPointa[ix]+ _td + td_ +jpPointa[ix]+ _td + td_ +moPointa[ix]+ _td + _tr;
 ix-=1;
 }
@@ -759,12 +776,22 @@ function funcStopToday(){
 		stopToday=1;
 		speed=100;
 		continual=0;
-		endDate.style.display = "initial";
 		pauseClick.style.display = "initial";
 		document.getElementById("sight").style.display = "initial";
 		if(auto){endDate.value=yy+"-"+mm+"-"+dd;}
 		if(auto){tbData +=tr_ + td_ +dd+"/"+mm+"/"+yy+ _td + td_ +jmc.toFixed(0)+ _td + td_ + jvn.toFixed(0)+ _td + td_ +jea.toFixed(0)+ _td + td_ +jmr.toFixed(0)+ _td + td_ +jjp.toFixed(0)+ _td + td_ +jmo.toFixed(0)+ _td + _tr;list.innerHTML+=tb_ + tbData + "</table>";}
+		if(auto){listOptions();listopt.value=yYear;};
+		document.getElementById("pauseBtn").disabled = false; 		
 		}
+}
+
+op=yYear;
+function listOptions(){
+while(op>0){
+lst+="<option>"+op+"</option>";
+op-=1
+}
+listopt.innerHTML=lst;
 }
 
 function stopFunc(){
@@ -787,6 +814,7 @@ jupiterShape.innerHTML = "<br>Jupiter<br>" + j + "°";
 }
 
 function pauseFunc(){
+endDate.style.display = "initial";
 if(continual===0){speed=100;}
 if(pause === 0){
 endDate.style.display= "none";
