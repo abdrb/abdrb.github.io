@@ -480,7 +480,7 @@ if(endDate.value!==""){
     dDate = Number (d.getDate());
     mMonth = Number (d.getMonth())+1;
     yYear = Number (d.getFullYear());
-	pickdd=dDate; pickmm=mMonth;
+	pickdd=dDate; pickmm=mMonth; pickyy=yYear;
     getDegree();
     funcClockTime();
     funcClock();
@@ -493,7 +493,7 @@ if(endDate.value!==""){
 	dDa=Number(date.getDate());
 	mMo=Number(date.getMonth())+1;
 	yYe=Number(date.getFullYear());
-	pickdd=dDa; pickmm=mMo;
+	pickdd=dDa; pickmm=mMo; pickyy=yYe;
 	mMo=addZero(mMo);
 	dDa=addZero(dDa);
 	endDate.value=yYe+"-"+mMo+"-"+dDa;
@@ -619,6 +619,7 @@ tr_ = "<tr>"; _tr = "</tr>";lst="";
 tb_="<table><tr><td>Date</td><td>Mercury</td><td>Venus</td><td>Earth</td><td>Mars</td><td>Jupiter</td><td>Moon</td></tr>";
 function insertDataToTable(){
 ix=ix-1;
+if(pickyy<Number(listopt.value)){listopt.value=pickyy;}
 while(yya[ix]>=Number(listopt.value)){
 tbData +=tr_ + td_ +dda[ix]+"/"+mma[ix]+"/"+yya[ix]+ _td + td_ +mcPointa[ix]+ _td + td_ + vnPointa[ix]+ _td + td_ +eaPointa[ix]+ _td + td_ +mrPointa[ix]+ _td + td_ +jpPointa[ix]+ _td + td_ +moPointa[ix]+ _td + _tr;
 ix-=1;
