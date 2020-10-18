@@ -4,17 +4,24 @@
     <!--<link rel="stylesheet" type="text/css" href="../css/astrostyle.css">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+<script src="../js/links.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../css/menu.css">
+<link rel="stylesheet" type="text/css" media="screen and (max-width: 767px)" href="../css/smallscreen.css">
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 768px)" href="../css/widescreen.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Digital Astronomical Clock</title>
 <style type="text/css">
 body {
 	background-color: #000000;
 	color: #ffffff;
-	padding: 5px;
+	padding: 0px;
 }
 #space{
 	position: absolute;
 	border: 0px solid grey;
-	top: 140px;
+	top: 145px;
 	left: 10px;
 	width: 300px;
 	height: 300px;
@@ -256,8 +263,9 @@ body {
 	font-size: 8px;
 }
 
-#draw{
+#scope{
 	position: absolute;
+	top: 20px;
 	left: 20px;
 }
 
@@ -314,7 +322,7 @@ body {
 	height: 300px;
 	text-align: center;
 }
-#links {
+#linksbar {
 	position: absolute;
 	top: 520px;
 	left: 40px;
@@ -363,7 +371,7 @@ td{
 	height: 18px;
 	width: 18px;
 	top: 580px;
-	left: 15px;
+	left: 5px;
 	background-color: #000;
 	color: #fff;
 }
@@ -382,72 +390,62 @@ td{
 	top: 580px;
 	left: 400px;
 	display: initial;
+	width: 550px;
 }
-#draw {
-	position: absolute;
-	border: 0px solid grey;
+#scope {
 	top: 10px;
 	left: 500px;
-	width: 300px;
-	height: 300px;
-	text-align: center;
 }
 
 #title {
-	position: absolute;
 	top: 120px;
 	left: 60px;
-	width: 300px;
-	height: 300px;
-	text-align: center;
+
 }
 
 #clockTime {
-	position: absolute;
 	top: 200px;
 	left: 60px;
-	width: 300px;
-	height: 300px;
-	text-align: center;
 }
 
 #now {
-	position: absolute;
 	top: 250px;
 	left: 60px;
-	width: 300px;
-	height: 5px;
-	text-align: center;
 }
 
 #clock {
-	position: absolute;
 	top: 300px;
 	left: 60px;
-	width: 300px;
-	height: 300px;
-	text-align: center;
 }
 
 #controlbar {
-	position: absolute;
 	top: 400px;
 	left: 60px;
-	width: 300px;
-	height: 300px;
-	text-align: center;
+}
+
+#linksbar {
+	top: 450px;
+	left: 60px;
 }
 }
 </style>
 </head>
-<body onload="funcDraw()">
+<body onload="funcDraw();funclinks()">
+
+   <navbar>
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+      <ul class="menu" id="links">
+      </ul>
+   </navbar>
+ 
 <h3 id="title">Digital Astronomical Clock</h3>
 <div id="now">
 </div>
 <div id="clockTime"></div>
 <div id="clock"></div>
 
-<div id="draw" onclick="javascript:if(stopToday===1){if(speed>1000){speed=1}else{speed+=500};pauseFunc();pauseFunc();}">
+<div id="scope" onclick="javascript:if(stopToday===1){if(speed>1000){speed=1}else{speed+=500};pauseFunc();pauseFunc();}">
 
 <div id="space">
 <div id="lineW"></div>
@@ -492,12 +490,21 @@ td{
 </div>
 <div id="list">
 </div>
-<div id="links">
+<div id="linksbar">
 <div><br>
 <a href="#" id="spaceL"></a>
 </div>
 	<div id="hlink">
-	<a href="mailto:applichain@gmail.com">Email the Developer</a>
+<a href="#" ><i class="fa fa-codepen"></i></a>
+<a href="#" ><i class="fa fa-github"></i></a>
+<a href="#" ><i class="fa fa-linkedin-square"></i></a>
+<a href="#" ><i class="fa fa-facebook-square"></i></a>
+<a href="#" ><i class="fa fa-twitter"></i></a>
+<a href="#" ><i class="fa fa-youtube"></i></a>
+<a href="#" ><i class="fa fa-whatsapp"></i></a>
+<a href="#" ><i class="fa fa-instagram"></i></a>
+<a href="feedback.html" ><i class="fa fa-envelope"></i></a>
+
 	</div>
 </div>
 <div>
@@ -616,7 +623,7 @@ grey="<span style='color:grey;'>";
 brown="<span style='color:brown;'>";
 gold="<span style='color:gold;'>";
 end="</span>";
-pen=document.getElementById("draw");
+pen=document.getElementById("scope");
 pauseClick=document.getElementById("pauseBtn");
 drawDiv="<div "
 drawClose="> "
