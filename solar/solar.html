@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html>
  <head>
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
  <script src="../js/links.js" type="text/javascript"></script>
 
  <link rel="stylesheet" type="text/css" href="../css/menu.css">
@@ -19,7 +19,7 @@ padding: 5px;
 text-align: right;
 }
 
-#dv {
+.dv {
 font-size: 12px;
 text-align: right;
 direction: rtl;
@@ -31,21 +31,25 @@ text-align: right;
 padding: 10px;
 }
 
-input {
+.dv input {
 height; 20px;
 margin: 5px;
 }
 
+navbar{
+text-align: left;
+direction: ltr;
+}
  </style>
  </head> 
- <body dir="rtl"> 
- <navbar>
-    <input class="menu-btn" type="checkbox" id="menu-btn" />
-    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-    <ul class="menu" id="links">
-    </ul>
- </navbar>
-
+ <body dir="rtl" onload="funclinks()"> 
+<navbar>
+   <input class="menu-btn" type="checkbox" id="menu-btn" />
+   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+   <ul class="menu" id="links">
+   </ul>
+</navbar>
+ 
 <header>
  <h3>حاسبة منظومة الطاقة الشمسية</h3>
 </header>
@@ -90,7 +94,7 @@ margin: 5px;
   <a href="feedback.html" ><i class="fa fa-envelope"></i></a>
   
   </footer>
- </body>
+
  <script type="text/javascript">
 
 daytime_ = 8;
@@ -150,4 +154,5 @@ function toUp(n){
 	return ((i*-1)+n).toFixed(0);
 }
  </script>
+ </body>
 </html>
