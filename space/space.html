@@ -306,7 +306,7 @@ body {
 	height: 300px;
 	text-align: center;
 }
-#footer {
+#controlbar {
 	position: absolute;
 	top: 500px;
 	left: 40px;
@@ -368,6 +368,76 @@ td{
 	color: #fff;
 }
 
+#chartContainer {
+	position: absolute;
+	top: 122px;
+	left: 360px;
+	display: none;
+}
+
+@media (min-width: 768px) {
+
+#chartContainer {
+	position: absolute;
+	top: 580px;
+	left: 400px;
+	display: initial;
+}
+#draw {
+	position: absolute;
+	border: 0px solid grey;
+	top: 10px;
+	left: 500px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+
+#title {
+	position: absolute;
+	top: 120px;
+	left: 60px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+
+#clockTime {
+	position: absolute;
+	top: 200px;
+	left: 60px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+
+#now {
+	position: absolute;
+	top: 250px;
+	left: 60px;
+	width: 300px;
+	height: 5px;
+	text-align: center;
+}
+
+#clock {
+	position: absolute;
+	top: 300px;
+	left: 60px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+
+#controlbar {
+	position: absolute;
+	top: 400px;
+	left: 60px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+}
 </style>
 </head>
 <body onload="funcDraw()">
@@ -413,12 +483,10 @@ td{
 <div id="jupiterOrbit">
     <div id="jupiterShape" class="captions"><br>Jupiter</div>
 </div>
-
+</div>
 </div>
 
-
-</div>
-<div id="footer">
+<div id="controlbar">
 <input onchange="datePicker()" type="date" id="endDate">
 <button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
 </div>
@@ -436,7 +504,6 @@ td{
 <select id="listopt" onchange="datePicker()">
 </select>
 </div>
-</body>
 <script type="text/javascript">
 dd=1;mm=1;yy=2020;
 auto=true;
@@ -447,7 +514,7 @@ yYear=Number(date.getFullYear());
 pickdd=dDate;
 pickmm=mMonth;
 pickyy=yYear;
-
+mth=['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 function gettingDate(){
 	date = new Date();
 	dDate=Number(date.getDate());
@@ -456,7 +523,10 @@ function gettingDate(){
 }
 
 function datePicker(){
-document.getElementById("pauseBtn").disabled = true; 
+	pauseBtn.disabled = true; 
+	endDate.disabled = true;
+	listopt.disabled = true;
+	chartContainer.style.display="initial";
     dd=1;mm=1;yy=1;
 	auto=false;
 	speed=100;
@@ -479,7 +549,7 @@ if(endDate.value!==""){
     dDate = Number (d.getDate());
     mMonth = Number (d.getMonth())+1;
     yYear = Number (d.getFullYear());
-	pickdd=dDate; pickmm=mMonth;
+	pickdd=dDate; pickmm=mMonth; pickyy=yYear;
     getDegree();
     funcClockTime();
     funcClock();
@@ -492,7 +562,7 @@ if(endDate.value!==""){
 	dDa=Number(date.getDate());
 	mMo=Number(date.getMonth())+1;
 	yYe=Number(date.getFullYear());
-	pickdd=dDa; pickmm=mMo;
+	pickdd=dDa; pickmm=mMo; pickyy=yYe;
 	mMo=addZero(mMo);
 	dDa=addZero(dDa);
 	endDate.value=yYe+"-"+mMo+"-"+dDa;
@@ -613,16 +683,31 @@ run();
 }
 
 ////////////data/////////
+var mercData=[];
+var venuData=[];
+var eartData=[];
+var marsData=[];
+var jupiData=[];
+var moonData=[];
 td_ = "<td>"; _td = "</td>";
 tr_ = "<tr>"; _tr = "</tr>";lst="";
 tb_="<table><tr><td>Date</td><td>Mercury</td><td>Venus</td><td>Earth</td><td>Mars</td><td>Jupiter</td><td>Moon</td></tr>";
 function insertDataToTable(){
-ix=ix-1;
+ix=ix-1; jx=0;
+if(pickyy<=Number(listopt.value)){listopt.value=pickyy-9}
 while(yya[ix]>=Number(listopt.value)){
 tbData +=tr_ + td_ +dda[ix]+"/"+mma[ix]+"/"+yya[ix]+ _td + td_ +mcPointa[ix]+ _td + td_ + vnPointa[ix]+ _td + td_ +eaPointa[ix]+ _td + td_ +mrPointa[ix]+ _td + td_ +jpPointa[ix]+ _td + td_ +moPointa[ix]+ _td + _tr;
+mercData[jx]={"label":yya[ix],"y": Number(mcPointa[ix])};
+venuData[jx]={"label":yya[ix],"y": Number(vnPointa[ix])};
+eartData[jx]={"label":yya[ix],"y": Number(eaPointa[ix])};
+marsData[jx]={"label":yya[ix],"y": Number(mrPointa[ix])};
+jupiData[jx]={"label":yya[ix],"y": Number(jpPointa[ix])};
+moonData[jx]={"label":yya[ix],"y": Number(moPointa[ix])};
 ix-=1;
+jx+=1;
 }
 list.innerHTML+=tb_ + tbData + "</table>";
+drawchart();
 }
 
 ddc=1;mmc=1;yyc=1;
@@ -780,8 +865,10 @@ function funcStopToday(){
 		document.getElementById("sight").style.display = "initial";
 		if(auto){endDate.value=yy+"-"+mm+"-"+dd;}
 		if(auto){tbData +=tr_ + td_ +dd+"/"+mm+"/"+yy+ _td + td_ +jmc.toFixed(0)+ _td + td_ + jvn.toFixed(0)+ _td + td_ +jea.toFixed(0)+ _td + td_ +jmr.toFixed(0)+ _td + td_ +jjp.toFixed(0)+ _td + td_ +jmo.toFixed(0)+ _td + _tr;list.innerHTML+=tb_ + tbData + "</table>";}
-		if(auto){listOptions();listopt.value=yYear;};
-		document.getElementById("pauseBtn").disabled = false; 		
+		if(auto){listOptions();listopt.value=yYear-9;};
+		pauseBtn.disabled = false; 		
+		endDate.disabled = false;
+		listopt.disabled = false;
 		}
 }
 
@@ -962,5 +1049,101 @@ function funcJu(){
 	jupiterShape.style.transform = "rotate(" + j + "deg)"; 
 	if (jjp === 360) {jjp = 0;}
 }
+
+
+
+function drawchart() {
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme:"light2",
+	animationEnabled: true,
+	title:{
+		text: "Planets locations in " + pickdd + " " + mth[pickmm-1] + " " + listopt.value + "-" + pickyy
+	},
+	axisY :{
+		includeZero: false,
+		title: "Angle degrees",
+		suffix: "°"
+	},
+	toolTip: {
+		shared: "true"
+	},
+	legend:{
+		cursor:"pointer",
+		itemclick : toggleDataSeries
+	},
+	data: [{
+		type: "spline",
+		visible: true,
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Mercury",
+		dataPoints: mercData,
+		color: "saddlebrown"
+	},
+	{
+		type: "spline", 
+		showInLegend: true,
+		visible: true,
+		yValueFormatString: "###°",
+		name: "Venus",
+		dataPoints: venuData,
+		color: "gold"
+	},
+	{
+		type: "spline",
+		visible: true,
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Earth",
+		dataPoints: eartData,
+		color: "blue"
+	},
+	{
+		type: "spline", 
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Mars",
+		dataPoints: marsData,
+		color: "red"
+	},
+	{
+		type: "spline", 
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Jupiter",
+		dataPoints: jupiData,
+		color: "gray"
+	},
+	{
+		type: "spline", 
+		visible: false,
+		showInLegend: false,
+		yValueFormatString: "###°",
+		name: "Saturn",
+		color: "yellow",
+//		dataPoints: [{label: "", y: 0}]
+	},
+	{
+		type: "spline", 
+		visible: false,
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Moon",
+		color: "black",
+		dataPoints: moonData
+	}]
+});
+chart.render();
+function toggleDataSeries(e) {
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
+		e.dataSeries.visible = false;
+	} else {
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}}
 </script>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<script src="js/canvasjs.min.js"></script>
+</body>
 </html>
