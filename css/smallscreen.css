@@ -9,7 +9,7 @@ body {
 }
 
 .golden_line {
-	background-color: #e1c653;
+	background-color: cyan;
 	width: 60px;
 	height: 5px;
 }
@@ -23,6 +23,7 @@ body {
 header {
 	text-align: left;
 	margin-top: 60px;
+	margin-left: 20px;
 	padding: 20px;
 	display: inline-block;
 	width: 100%;
