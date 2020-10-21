@@ -1,14 +1,4 @@
 var website = "https://abdrb.github.io/";
-var loca = window.location.pathname;
-var wpath = loca.substring(0, loca.lastIndexOf("/"));
-var dName = wpath.substring(wpath.lastIndexOf("/")+1);
-
-if(window.location!=="https://abdrb.github.io"){
-var website = "";
-if(dName!=="abdrb.io" && dName!==""){
-var website = "../";
-}
-}
 var link = "";
 var social="";
 
