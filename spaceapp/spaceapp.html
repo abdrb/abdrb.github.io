@@ -34,7 +34,7 @@ img {
 }
 </style>
 
-</head><body onload="getid()">
+</head><body onload="getid()"; onload="weather();">
 <div class="space">
 <h2>
 <a href="daclockexample.html">DACLOCK</a> and the relationship of seasons (locations of planets) with life and organisms (plants, insects and etc..)
@@ -120,4 +120,13 @@ Rain
 <a href="../imgplanets/example.html">Add new data (Example form)</a>
 </div>
 </div>
+<script type="text/javascript">
+function weather(){
+if('geolocation' in navigator){  
+    navigator.geolocation.getCurrentPosition(setPosition, showError);  
+}else{  
+    city.value = "<p>Browser doesn't Support Geolocation</p>";  
+}  
+}
+</script>
 </body></html>
