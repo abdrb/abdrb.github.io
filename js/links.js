@@ -1,7 +1,9 @@
-var website = "https://abdrb.github.io/";
-var link = "";
-var social="";
-
+var website = "";
+var link = ""; var social="";
+var loca = window.location.pathname;
+var wpath = loca.substring(0, loca.lastIndexOf("/"));
+var dName = wpath.substring(wpath.lastIndexOf(".")+1);
+if(dName!=="io"){var website = "../";}
 function funclinks(){
 link += "<li><a href='" + website + "index.html'>Home</a></li>";
 //link += "<li><a href='" + website + "services.html'>Expert</a></li>";
