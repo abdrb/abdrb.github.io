@@ -235,7 +235,7 @@ body {
 #sight {
     position: absolute;
     background-color: #333333;
-    width: 0.5px;
+    width: 0.1px;
     height: 200px;
     top: -100px;
     left: 0.5px;
@@ -734,6 +734,9 @@ function listPlanetPoint(){
 //looping by daysCounter
 	if(ddc===pickdd && mmc===pickmm){
 	getPlanetPoints();
+	moPoint=Number(moPoint)+180;
+		if(moPoint>360){moPoint=Number(moPoint)-360;}
+	
 	dda[ix]=ddc;mma[ix]=mmc;yya[ix]=yyc;
 	moPointa[ix]=moPoint;
 	eaPointa[ix]=eaPoint;
@@ -773,6 +776,7 @@ mcPoint =mcPoint.toFixed(0);
 vnPoint =vnPoint.toFixed(0);
 mrPoint =mrPoint.toFixed(0);
 jpPoint =jpPoint.toFixed(0);
+moPoint=Number(moPoint)+Number(eaPoint);if(moPoint>=360){moPoint=Number(moPoint)-360;}
 }
 function daysCounter(){
 	feb=29;
@@ -863,7 +867,8 @@ function funcStopToday(){
 		pauseClick.style.display = "initial";
 		document.getElementById("sight").style.display = "initial";
 		if(auto){endDate.value=yy+"-"+mm+"-"+dd;}
-		if(auto){tbData +=tr_ + td_ +dd+"/"+mm+"/"+yy+ _td + td_ +jmc.toFixed(0)+ _td + td_ + jvn.toFixed(0)+ _td + td_ +jea.toFixed(0)+ _td + td_ +jmr.toFixed(0)+ _td + td_ +jjp.toFixed(0)+ _td + td_ +jmo.toFixed(0)+ _td + _tr;list.innerHTML+=tb_ + tbData + "</table>";}
+			n=Number(jmo)+Number(jea);if(n>=360){n=Number(n)-360;}
+		if(auto){tbData +=tr_ + td_ +dd+"/"+mm+"/"+yy+ _td + td_ +jmc.toFixed(0)+ _td + td_ + jvn.toFixed(0)+ _td + td_ +jea.toFixed(0)+ _td + td_ +jmr.toFixed(0)+ _td + td_ +jjp.toFixed(0)+ _td + td_ +n.toFixed(0)+ _td + _tr;list.innerHTML+=tb_ + tbData + "</table>";}
 		if(auto){listOptions();listopt.value=yYear-9;};
 		pauseBtn.disabled = false; 		
 		endDate.disabled = false;
@@ -943,7 +948,7 @@ function funcClock(){
 	jea=below360(jea);e=addDZero(jea.toFixed(0));
 	jmr=below360(jmr);r=addDZero(jmr.toFixed(0));
 	jjp=below360(jjp);j=addDZero(jjp.toFixed(0));
-	
+	n=Number(n)+Number(e);if(n>=360){n=Number(n)-360;}
 	now.innerHTML = gold + d + "/" + m + "/" + y + end;
 	clock.innerHTML = brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";
 	}, (90));
@@ -1119,8 +1124,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		showInLegend: false,
 		yValueFormatString: "###°",
 		name: "Saturn",
-		color: "yellow",
-//		dataPoints: [{label: "", y: 0}]
+		color: "green",
+		//dataPoints: [{label:2020, y: 360}]
 	},
 	{
 		type: "spline", 

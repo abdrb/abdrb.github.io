@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <!--<link rel="stylesheet" type="text/css" href="../css/astrostyle.css">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+<script src="../js/links.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../css/menu.css">
+<link rel="stylesheet" type="text/css" media="screen and (max-width: 767px)" href="../css/smallscreen.css">
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 768px)" href="../css/widescreen.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Digital Astronomical Clock</title>
+<style type="text/css">
+body {
+	background-color: #000000;
+	color: #ffffff;
+	padding: 0px;
+}
+#space{
+	position: absolute;
+	border: 0px solid grey;
+	top: 145px;
+	left: 10px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#sun {
+    position: absolute;
+    background-color: yellow;
+    border-radius: 100%;
+    border: solid 1px red;
+    box-shadow: 0px 0px 10px red;
+    width: 12px;
+    height: 12px;
+    top: 150px;
+    left: 150px;
+}
+#lineW {
+    position: absolute;
+    background-color: grey;
+    width: 100%;
+    height: 0.5px;
+    top: 156px;
+    left: 0px;
+}
+#lineH {
+    position: absolute;
+    background-color: grey;
+    width: 0.5px;
+    height: 100%;
+    top: 0px;
+    left: 156px;
+}
+
+#jan {
+    position: absolute;
+    top: 12px;
+    left: 35%;
+    color: powderblue;
+}
+#apr {
+    position: absolute;
+    top: 52%;
+    left: 1%;
+    color: yellowgreen;
+}
+#jul {
+    position: absolute;
+    top: 90%;
+    left: 54%;
+    color: firebrick;
+}
+#oct {
+    position: absolute;
+    top: 46%;
+    left: 80%;
+    color: peru;
+}
+#ple {
+    position: absolute;
+    border-radius: 100%;
+    border: 2px dotted gold;
+    width: 5px;
+    height: 0px;
+    top: 0%;
+    left: 103%;
+    color: lightyellow;
+    font-size: 6px;
+    transform: rotate(0deg);
+    direction: rtl;
+}
+#mercuryOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 20%;
+    height: 20%;
+    top: 41%;
+    left: 41%;
+
+}
+#mercuryShape {
+    position: absolute;
+    background-color: brown;
+    border-radius: 100%;
+    width: 8px;
+    height: 8px;
+    top: 48%;
+    left: 95%;
+}
+
+.captions{
+    color: white;
+    font-size: 8px;
+	text-align: left;
+}
+
+
+#venusOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 35%;
+    height: 35%;
+    top: 33%;
+    left: 33%;
+}
+#venusShape {
+    position: absolute;
+    background-color: orange;
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    top: 49%;
+    left: 95%;
+}
+
+#earthOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+}
+
+#earthShape {
+    position: absolute;
+    background-color: blue;
+    border-radius: 100%;
+    width: 12px;
+    height: 12px;
+	top: 17%;
+	left: 20%;
+}
+
+#moonOrbit {
+    position: absolute;
+    border: 0px solid red;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    top: 0%;
+    left: 0%;
+}
+#xy {
+    position: absolute;
+    border: 0px solid grey;
+    width: 22px;
+    height: 22px;
+    top: 47%;
+    left: 93%;
+}
+#moonShape {
+    position: absolute;
+    background-color: white;
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    top: 46%;
+    left: 100%;
+}
+
+#marsOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+}
+#marsShape {
+    position: absolute;
+    background-color: red;
+    border-radius: 100%;
+    width: 9px;
+    height: 9px; 
+    top: 50.5%;
+    left: 98%;
+}
+
+#jupiterOrbit {
+    position: absolute;
+    border: 0.5px solid grey;
+    border-radius: 100%;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+}
+#jupiterShape {
+    position: absolute;
+    background-color: grey;
+    border-radius: 100%;
+    width: 13px;
+    height: 13px;
+    top: 49.5%;
+    left: 97%;
+}
+
+#location {
+    position: absolute;
+    background-color: red;
+    width: 1.5px;
+    height: 1.5px;
+    top: 6px;
+    left: 0.5px;
+}
+
+#sight {
+    position: absolute;
+    background-color: #333333;
+    width: 0.5px;
+    height: 200px;
+    top: -100px;
+    left: 0.5px;
+    display: none;
+}
+
+.main{
+	position: absolute;
+	border-radius: 100%;
+	border: 0px solid gray;
+	top: 168px;
+	left: 39px;
+	width: 240px;
+	height: 240px;
+}
+.sub{
+	position: absolute;
+	background-color: #212121;
+	border-radius: 25%;
+	width: 0px;
+	height: 0px;
+	top: 0px;
+	left: 0px;
+	color: white;
+	font-size: 8px;
+}
+
+#scope{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+#now {
+	position: absolute;
+	top: 70px;
+	left: 30px;
+	width: 300px;
+	height: 5px;
+	text-align: center;
+}
+#pauseBtn {
+	display: none;
+	width: 30px;
+	height: 30px;
+	transform: rotate(90deg);
+}
+#endDate {
+	display: none;
+	width: 110px;
+	height: 27px;
+	text-align: center;
+}
+
+#clockTime {
+	position: absolute;
+	top: 50px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#clock {
+	position: absolute;
+	top: 90px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#title {
+	position: absolute;
+	top: 0px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#controlbar {
+	position: absolute;
+	top: 500px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#linksbar {
+	position: absolute;
+	top: 520px;
+	left: 40px;
+	width: 300px;
+	height: 300px;
+	text-align: center;
+}
+#triangle {
+	position: absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 0.5px solid transparent;
+	border-bottom: 0.5px solid transparent;
+	border-left: 60px solid blue;
+	top: 53.5%;
+	left: 110%;	
+}
+#triangleB{
+	position: absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent; 
+	border-right: 35px solid #666666; 
+	top: 110%;
+	left: -44%;	
+	transform: rotate(-38deg);
+}
+
+#hlink{
+	margin: 10px;
+}
+
+#list {
+	position: absolute;
+	top: 580px;
+	text-align: center;
+}
+td{
+	border-bottom: 1px solid #333;
+	font-size: 14px;
+}
+#listopt{
+	position: absolute;
+	display: none;
+	height: 18px;
+	width: 18px;
+	top: 580px;
+	left: 5px;
+	background-color: #000;
+	color: #fff;
+}
+
+#chartContainer {
+	position: absolute;
+	top: 122px;
+	left: 360px;
+	display: none;
+}
+
+@media (min-width: 768px) {
+
+#chartContainer {
+	position: absolute;
+	top: 580px;
+	left: 400px;
+	display: initial;
+	width: 550px;
+}
+#scope {
+	top: 10px;
+	left: 500px;
+}
+
+#title {
+	top: 120px;
+	left: 60px;
+
+}
+
+#clockTime {
+	top: 200px;
+	left: 60px;
+}
+
+#now {
+	top: 250px;
+	left: 60px;
+}
+
+#clock {
+	top: 300px;
+	left: 60px;
+}
+
+#controlbar {
+	top: 400px;
+	left: 60px;
+}
+
+#linksbar {
+	top: 450px;
+	left: 60px;
+}
+}
+</style>
+</head>
+<body onload="funcDraw();funclinks()">
+
+   <navbar>
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+      <ul class="menu" id="links">
+      </ul>
+   </navbar>
+ 
+<h3 id="title">Digital Astronomical Clock</h3>
+<div id="now">
+</div>
+<div id="clockTime"></div>
+<div id="clock"></div>
+
+<div id="scope" onclick="javascript:if(stopToday===1){if(speed>1000){speed=1}else{speed+=500};pauseFunc();pauseFunc();}">
+
+<div id="space">
+<div id="lineW"></div>
+<div id="lineH"></div>
+<div id="sun"></div>
+<div id="jan">Winter</div>
+<div id="apr">Spring</div>
+<div id="jul">Summer</div>
+<div id="oct">Autumn</div>
+<div id="ple">Pleiades</div>
+
+<div id="mercuryOrbit">
+    <div id="mercuryShape" class="captions"><br>Mercury</div>
+</div>
+
+<div id="venusOrbit">
+    <div id="venusShape" class="captions"><br>Venus</div>
+</div>
+
+<div id="earthOrbit" class="captions">
+	<div id="xy"><div id="earthShape" class="captions"><div id="location"><div id="sight"></div></div></div>
+	<div id="moonOrbit" class="captions">
+		<div id="moonShape" class="captions"></div>
+	</div></div>
+	<div id="triangle"></div>
+	<div id="triangleB"></div>
+</div>
+
+<div id="marsOrbit">
+    <div id="marsShape" class="captions"><br>Mars</div>
+</div>
+
+<div id="jupiterOrbit">
+    <div id="jupiterShape" class="captions"><br>Jupiter</div>
+</div>
+</div>
+</div>
+
+<div id="controlbar">
+<input onchange="datePicker()" type="date" id="endDate">
+<button type="button" id="pauseBtn" onclick="pauseFunc()">∆</button>
+</div>
+<div id="list">
+</div>
+<div id="linksbar">
+<div><br>
+<a href="#" id="spaceL"></a>
+</div>
+	<div id="hlink">
+	<div id="sociallinks">
+	</div>
+	</div>
+</div>
+<div>
+<select id="listopt" onchange="datePicker()">
+</select>
+</div>
+<script type="text/javascript">
+dd=1;mm=1;yy=2020;
+auto=true;
+var date = new Date();
+dDate=Number(date.getDate());
+mMonth=Number(date.getMonth())+1;
+yYear=Number(date.getFullYear());
+pickdd=dDate;
+pickmm=mMonth;
+pickyy=yYear;
+mth=['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+function gettingDate(){
+	date = new Date();
+	dDate=Number(date.getDate());
+	mMonth=Number(date.getMonth())+1;
+	yYear=Number(date.getFullYear());
+}
+
+function datePicker(){
+	pauseBtn.disabled = true; 
+	endDate.disabled = true;
+	listopt.disabled = true;
+	chartContainer.style.display="initial";
+    dd=1;mm=1;yy=1;
+	auto=false;
+	speed=100;
+	moStart = 75;
+	eaStart = getEarthStartDegree(90);
+	mcStart = 18;    
+	vnStart = 66;	      
+	mrStart = 38;	    
+	jpStart = 200;
+	stopToday=0;
+	pause=0;
+	continual=0;
+	countDays = 0; DaysBdates=0;
+	sight.style.display = "none";
+	listopt.style.display = "initial";
+	list.innerHTML="";
+	tbData="";
+if(endDate.value!==""){
+    var d = new Date(endDate.value);
+    dDate = Number (d.getDate());
+    mMonth = Number (d.getMonth())+1;
+    yYear = Number (d.getFullYear());
+	pickdd=dDate; pickmm=mMonth; pickyy=yYear;
+    getDegree();
+    funcClockTime();
+    funcClock();
+    run();
+	getDegreeForData();
+	insertDataToTable();
+  }
+  else {
+	date = new Date();
+	dDa=Number(date.getDate());
+	mMo=Number(date.getMonth())+1;
+	yYe=Number(date.getFullYear());
+	pickdd=dDa; pickmm=mMo; pickyy=yYe;
+	mMo=addZero(mMo);
+	dDa=addZero(dDa);
+	endDate.value=yYe+"-"+mMo+"-"+dDa;
+	datePicker();
+  }
+}
+moStep=360/ 29.530589; // 29.530589; // 27.321582;
+eaStep=360/365.256365;
+mcStep=360/87.97;
+vnStep=360/224.7;
+mrStep=360/686.93;
+jpStep=(360/(11.86*365.256365));
+
+if((dd+"/"+mm+"/"+yy) === (20+"/"+7+"/"+2020)){
+moStart = 195;
+eaStart = getEarthStartDegree(90);
+mcStart = 368;    
+vnStart = 322;	      
+mrStart = 326;	    
+jpStart = 300;
+}
+
+if((dd+"/"+mm+"/"+yy) === (1+"/"+1+"/"+2020)){
+moStart = 265;
+eaStart = getEarthStartDegree(90);
+mcStart = 261;    
+vnStart = 359;	      
+mrStart = 220;	    
+jpStart = 284;
+}
+
+if((dd+"/"+mm+"/"+yy) === (1+"/"+1+"/"+1)){
+moStart = 75;
+eaStart = getEarthStartDegree(90);
+mcStart = 18;    
+vnStart = 66;	      
+mrStart = 38;	    
+jpStart = 200;
+}
+
+stopToday=0;
+pause=0;
+continual=0;
+speed=100;
+countDays = 0; DaysBdates=0;
+
+blue="<span style='color:royalblue;'>";
+red="<span style='color:red;'>";
+orange="<span style='color:orange;'>";
+grey="<span style='color:grey;'>";
+brown="<span style='color:brown;'>";
+gold="<span style='color:gold;'>";
+end="</span>";
+pen=document.getElementById("scope");
+pauseClick=document.getElementById("pauseBtn");
+drawDiv="<div "
+drawClose="> "
+drawEnd=" </div> "
+j=0;
+a = [" Cancer", "January", " Leo",  "February", " Virgo",  "March", " Libra",  "April", " Scorpio",  "May", "Sagittarius", "June", "Capricorn", "July", "Aquarius", "August", "Pisces", "September", " Aries", "October", " Taurus", "November", " Gemini", "December"];
+
+function funcDraw(){
+if(auto){gettingDate();}
+getDegree();
+i=23;k=0;r=0;
+while(k<360){
+if(k>20 && k<200){
+if(i%2==0){
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
+}else{
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose;'" + drawClose + a[i] + drawEnd+ drawEnd;
+}
+}
+else{
+if(i%2==0){
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
+}
+else{
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: lightcyan;'" + drawClose + a[i] + drawEnd+ drawEnd;
+}
+}
+
+if((k>0 && k<90) && i%2===0 || (k>270 && k<360) && i%2===0){
+document.getElementById("sub"+i).style.direction = "rtl";
+}
+r=k+60;
+z=k+30;
+if(i%2==0){
+document.getElementById("div"+i).style.display= "initial" ;
+document.getElementById("div"+i).style.transform = "rotate(" + z +"deg)";
+}
+else{
+document.getElementById("div"+i).style.transform = "rotate(" + r +"deg)";
+document.getElementById("div"+i).style.width = "230px";
+document.getElementById("div"+i).style.height = "230px";
+document.getElementById("div"+i).style.top = "176px";
+document.getElementById("div"+i).style.left = "45px";
+
+}
+document.getElementById("sub"+i).style.transform = "rotate(-" + 45 +"deg)";
+
+if(k>80 && k<270){
+document.getElementById("sub"+i).style.transform = "rotate(-" + 225 +"deg)";
+}
+k+=15;
+i--;
+}
+moonOrbit.style.transform = "rotate(-" + moStart +"deg)"; 
+mercuryOrbit.style.transform = "rotate(-" + mcStart +"deg)"; 
+venusOrbit.style.transform = "rotate(-" + vnStart +"deg)"; 
+earthOrbit.style.transform = "rotate(-" + eaStart +"deg)"; 
+marsOrbit.style.transform = "rotate(-" + mrStart +"deg)"; 
+jupiterOrbit.style.transform = "rotate(-" + jpStart +"deg)"; 
+stopClear=setInterval(funcStopToday,1);
+funcClockTime();
+funcClock();
+run();
+}
+
+////////////data/////////
+var mercData=[];
+var venuData=[];
+var eartData=[];
+var marsData=[];
+var jupiData=[];
+var moonData=[];
+td_ = "<td>"; _td = "</td>";
+tr_ = "<tr>"; _tr = "</tr>";lst="";
+tb_="<table><tr><td>Date</td><td>Mercury</td><td>Venus</td><td>Earth</td><td>Mars</td><td>Jupiter</td><td>Moon</td></tr>";
+function insertDataToTable(){
+ix=ix-1; jx=0;
+if(pickyy<Number(listopt.value)){listopt.value=pickyy;}
+while(yya[ix]>=Number(listopt.value)){
+tbData +=tr_ + td_ +dda[ix]+"/"+mma[ix]+"/"+yya[ix]+ _td + td_ +mcPointa[ix]+ _td + td_ + vnPointa[ix]+ _td + td_ +eaPointa[ix]+ _td + td_ +mrPointa[ix]+ _td + td_ +jpPointa[ix]+ _td + td_ +moPointa[ix]+ _td + _tr;
+mercData[jx]={"label":yya[ix],"y": Number(mcPointa[ix])};
+venuData[jx]={"label":yya[ix],"y": Number(vnPointa[ix])};
+eartData[jx]={"label":yya[ix],"y": Number(eaPointa[ix])};
+marsData[jx]={"label":yya[ix],"y": Number(mrPointa[ix])};
+jupiData[jx]={"label":yya[ix],"y": Number(jpPointa[ix])};
+moonData[jx]={"label":yya[ix],"y": Number(moPointa[ix])};
+ix-=1;
+jx+=1;
+}
+list.innerHTML+=tb_ + tbData + "</table>";
+drawchart();
+}
+
+ddc=1;mmc=1;yyc=1;
+function getDegreeForData(){
+dNow=dDate;
+mNow=mMonth;
+yNow=yYear;
+ddc=1;mmc=1;yyc=1;
+countDays=0;
+while((ddc+"/"+mmc+"/"+yyc) !== (dNow+"/"+mNow+"/"+yNow)){
+daysCounter();
+}
+//getPlanetPoints(); // for last one
+}
+ix=0;
+dda=[];mma=[];yya=[];
+moPointa=[];
+eaPointa=[];
+mcPointa=[];
+vnPointa=[];
+mrPointa=[];
+jpPointa=[];
+tbData="";
+function listPlanetPoint(){ 
+//looping by daysCounter
+	if(ddc===pickdd && mmc===pickmm){
+	getPlanetPoints();
+	dda[ix]=ddc;mma[ix]=mmc;yya[ix]=yyc;
+	moPointa[ix]=moPoint;
+	eaPointa[ix]=eaPoint;
+	mcPointa[ix]=mcPoint;
+	vnPointa[ix]=vnPoint;
+	mrPointa[ix]=mrPoint;
+	jpPointa[ix]=jpPoint;
+	ix+=1;
+	}
+//	if((dd===pickdd && mm===pickmm) && (moPoint>=259 && moPoint<=261)){
+//	getPlanetPoints();
+//	dataList[countDays-1]=moPoint;}
+}
+moPoint=0;eaPoint=0;mcPoint=0;vnPoint=0;mrPoint=0;jpPoint=0;
+function getPlanetPoints(){
+moStart = 75;
+//eaStart = getEarthStartPoint(90);
+mcStart = 18;    
+vnStart = 66;	      
+mrStart = 38;	    
+jpStart = 200;
+moPoint =(moStep*countDays) + moStart; 
+eaPoint =getEarthStartPoint(90);
+mcPoint =(mcStep*countDays) + mcStart;
+vnPoint =(vnStep*countDays) + vnStart;
+mrPoint =(mrStep*countDays) + mrStart;
+jpPoint =(jpStep*countDays) + jpStart;
+moPoint=below360(moPoint);
+eaPoint=below360(eaPoint);
+mcPoint=below360(mcPoint);
+vnPoint=below360(vnPoint);
+mrPoint=below360(mrPoint);
+jpPoint=below360(jpPoint);
+moPoint =moPoint.toFixed(0);
+eaPoint =eaPoint.toFixed(0);
+mcPoint =mcPoint.toFixed(0);
+vnPoint =vnPoint.toFixed(0);
+mrPoint =mrPoint.toFixed(0);
+jpPoint =jpPoint.toFixed(0);
+}
+function daysCounter(){
+	feb=29;
+	if(leapyear(yyc)){feb=30;}
+	if((ddc===32 && mmc===1) || (ddc===32 && mmc===3) || (ddc===32 && mmc===5) || (ddc===32 && mmc===7) || (ddc===32 && mmc===8) || (ddc===32 && mmc===10) || (ddc===32 && mmc===12) || (ddc===feb && mmc===2) || (ddc===31 && mmc===4) || (ddc===31 && mmc===6) || (ddc===31 && mmc===9) || (ddc===31 && mmc===11)){
+	ddc=0;
+	countDays-=1;
+	mmc+=1;
+	if(mmc===13){mmc=1;yyc+=1;}
+	}
+	ddc+=1;
+	countDays+=1;
+	listPlanetPoint();
+}
+function getEarthStartPoint(a){
+	if ((mmc-1) === 0){deg = (ddc*eaStep) +a;}
+	else{deg = ((mmc-1) * (30.42*eaStep)) + (ddc*eaStep) +a;}
+	deg=below360(deg);
+	return Number(deg.toFixed(0));
+}
+//////////endData/////////
+
+function below360(point){
+while (point > 360){point -= 360}
+return point;
+}
+
+function getDegree(){
+dNow=dDate;
+mNow=mMonth-1;
+if(mNow===0){
+mNow=12;
+yNow=yYear-1;
+}
+else{
+yNow=yYear;
+}
+
+while((dd+"/"+mm+"/"+yy) !== (dNow+"/"+mNow+"/"+yNow)){
+dateCreator();
+}
+getPlanetStartDegree();
+}
+
+function getPlanetStartDegree(){
+moStart+=moStep*DaysBdates; //27.321582
+eaStart=getEarthStartDegree(90);
+mcStart+=mcStep*DaysBdates;
+vnStart+=vnStep*DaysBdates;
+mrStart+=mrStep*DaysBdates;
+jpStart+=jpStep*DaysBdates;
+jmo=moStart;
+jea=eaStart;
+jmc=mcStart;
+jvn=vnStart;
+jmr=mrStart;
+jjp=jpStart;
+}
+
+function getEarthStartDegree(a){
+	if ((mm-1) === 0){deg = (dd*eaStep) +a;}
+	else{deg = ((mm-1) * (30.42*eaStep)) + (dd*eaStep) +a;}
+	deg=below360(deg);
+	return Number(deg.toFixed(0));
+}
+
+function run(){
+	eClear=setInterval(funcEarth,speed);
+	vClear=setInterval(funcVenus,speed);
+	mClear=setInterval(funcMerc,speed);
+	sClear=setInterval(funcMars,speed);
+	jClear=setInterval(funcJu,speed);
+	oClear=setInterval(funcMoon,speed);
+}
+
+start=0;
+function funcStopToday(){	
+	mToday=mMonth;
+	dToday=dDate;
+	yToday=yYear;
+	if(start===0){funcRotate();start=1;}
+	if ((stopToday === 0) && mToday===mm && dToday===dd && yToday===yy)
+		{
+		stopFunc();
+		stopToday=1;
+		speed=100;
+		continual=0;
+		pauseClick.style.display = "initial";
+		document.getElementById("sight").style.display = "initial";
+		if(auto){endDate.value=yy+"-"+mm+"-"+dd;}
+		if(auto){tbData +=tr_ + td_ +dd+"/"+mm+"/"+yy+ _td + td_ +jmc.toFixed(0)+ _td + td_ + jvn.toFixed(0)+ _td + td_ +jea.toFixed(0)+ _td + td_ +jmr.toFixed(0)+ _td + td_ +jjp.toFixed(0)+ _td + td_ +jmo.toFixed(0)+ _td + _tr;list.innerHTML+=tb_ + tbData + "</table>";}
+		if(auto){listOptions();listopt.value=yYear-9;};
+		pauseBtn.disabled = false; 		
+		endDate.disabled = false;
+		listopt.disabled = false;
+		}
+}
+
+op=yYear;
+function listOptions(){
+while(op>0){
+lst+="<option>"+op+"</option>";
+op-=1
+}
+listopt.innerHTML=lst;
+}
+
+function stopFunc(){
+moStart=jmo;
+eaStart=jea;
+mcStart=jmc;
+vnStart=jvn;
+mrStart=jmr;
+jpStart=jjp;
+clearInterval(eClear);
+clearInterval(vClear);
+clearInterval(mClear);
+clearInterval(sClear);
+clearInterval(jClear);
+clearInterval(oClear);
+mercuryShape.innerHTML = "<br>Mercury<br>" + u + "°";
+venusShape.innerHTML = "<br>Venus<br>" + v + "°";
+marsShape.innerHTML = "<br>Mars<br>" + r + "°";
+jupiterShape.innerHTML = "<br>Jupiter<br>" + j + "°";
+}
+
+function pauseFunc(){
+endDate.style.display = "initial";
+if(continual===0){speed=100;}
+if(pause === 0){
+endDate.style.display= "none";
+continual=1;
+pause=1;
+run();
+pauseClick.innerHTML="=";
+document.getElementById("sight").style.display = "none";
+}
+else{
+endDate.style.display = "initial";
+stopFunc();
+pause=0;
+pauseClick.innerHTML="∆";
+document.getElementById("sight").style.display = "initial";
+}
+}
+
+mi=60;
+function funcClockTime(){
+	setInterval(function(){
+	da = new Date();
+	s=addZero(da.getSeconds());
+	m=addZero(da.getMinutes());
+	h=addZero(da.getHours());
+	clockTime.innerHTML = h + ":" + m + ":" + s;
+	if(m!==mi){funcRotate();mi=m;}
+	nextDay();
+	}, (1000));
+}
+
+function funcClock(){
+	setInterval(function(){
+	m=addZero(mm);
+	d=addZero(dd);
+	y=yy;
+	jmo=below360(jmo);n=addDZero(jmo.toFixed(0));
+	jmc=below360(jmc);u=addDZero(jmc.toFixed(0));
+	jvn=below360(jvn);v=addDZero(jvn.toFixed(0));
+	jea=below360(jea);e=addDZero(jea.toFixed(0));
+	jmr=below360(jmr);r=addDZero(jmr.toFixed(0));
+	jjp=below360(jjp);j=addDZero(jjp.toFixed(0));
+	
+	now.innerHTML = gold + d + "/" + m + "/" + y + end;
+	clock.innerHTML = brown + u + end + "°:" + orange + v + end + "°:" + blue + e + end + "°:" + red + r + end + "°:" + grey + j + end + "°" + "<br>" + n + "°";
+	}, (90));
+	}
+
+function nextDay(){
+	if(auto){gettingDate();}
+	if((continual===0 && stopToday===1 && dDate>dd) || (continual===0 && stopToday===1 && mMonth>mm) || (continual===0 && stopToday===1 && yYear>yy)){
+	stopToday=0;
+	run();
+	}
+}
+
+function addZero(n){
+	if(n<10){n="0"+n};
+return n;
+}
+function addDZero(n){
+	if(n<100){if(n<10){n="00"+n}else{n="0"+n}};
+return n;
+}
+function leapyear(year) {
+	return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
+}
+
+function dateCreator(){
+	feb=29;
+	if(leapyear(yy)){feb=30;}
+	if((dd===32 && mm===1) || (dd===32 && mm===3) || (dd===32 && mm===5) || (dd===32 && mm===7) || (dd===32 && mm===8) || (dd===32 && mm===10) || (dd===32 && mm===12) || (dd===feb && mm===2) || (dd===31 && mm===4) || (dd===31 && mm===6) || (dd===31 && mm===9) || (dd===31 && mm===11)){
+	dd=0;
+	DaysBdates-=1;
+	mm+=1;
+	if(mm===13){mm=1;yy+=1;}
+	}
+	dd+=1;
+	DaysBdates+=1;
+}
+
+function funcMoon(){	
+	jmo+=moStep; //29.530589; //27.321582;
+	jmo=below360(jmo);
+	n=addDZero(jmo.toFixed(0));
+	moonOrbit.style.transform = "rotate(-" + n +"deg)"; 
+	if (jmo === 360) {jmo = 0;}
+}
+
+function funcRotate(){
+	d = new Date();
+	mi=Number(d.getMinutes());
+	j=15*mi/60;
+	
+	i=(15*Number(d.getHours()))+180+j;
+	i=below360(i);
+	earthShape.style.transform = "rotate(-" + i + "deg)"; 
+	if (i === 360) {i = 0;}
+}
+
+function funcEarth(){
+	jea+=eaStep;
+	jea=below360(jea);
+	e=addDZero(jea.toFixed(0));
+	earthOrbit.style.transform = "rotate(-" + e + "deg)"; 
+	dateCreator();
+	if (jea === 360) {jea = 0;}
+}
+
+function funcVenus(){
+	jvn+=vnStep;
+	jvn=below360(jvn);
+	v=addDZero(jvn.toFixed(0));
+	venusShape.innerHTML ="<br>Venus<br>" + v + "°";
+	venusOrbit.style.transform = "rotate(-" + v +"deg)"; 	
+	venusShape.style.transform = "rotate(" + v + "deg)"; 
+	if (jvn === 360) {jvn = 0;}
+}
+function funcMerc(){
+	jmc+=mcStep;
+	jmc=below360(jmc);
+	u=addDZero(jmc.toFixed(0));
+	mercuryShape.innerHTML = "<br>Mercury<br>" + u + "°";
+	mercuryOrbit.style.transform = "rotate(-" + u +"deg)"; 
+	mercuryShape.style.transform = "rotate(" + u + "deg)"; 
+	if (jmc === 360) {jmc = 0;}
+}
+
+function funcMars(){	
+	jmr+=mrStep;
+	jmr=below360(jmr);
+	r=addDZero(jmr.toFixed(0));
+	marsShape.innerHTML ="<br>Mars<br>" + r + "°";
+	marsOrbit.style.transform = "rotate(-" + r +"deg)"; 
+	marsShape.style.transform = "rotate(" + r + "deg)"; 
+	if (jmr === 360) {jmr = 0;}
+}
+
+function funcJu(){	
+	jjp+=jpStep;
+	jjp=below360(jjp);
+	j=addDZero(jjp.toFixed(0));
+	jupiterShape.innerHTML ="<br>Jupiter<br>" + j + "°";
+	jupiterOrbit.style.transform = "rotate(-" + j +"deg)"; 
+	jupiterShape.style.transform = "rotate(" + j + "deg)"; 
+	if (jjp === 360) {jjp = 0;}
+}
+
+
+
+function drawchart() {
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme:"light2",
+	animationEnabled: true,
+	title:{
+		text: "Planets locations in " + pickdd + " " + mth[pickmm-1] + " " + listopt.value + "-" + pickyy
+	},
+	axisY :{
+		includeZero: false,
+		title: "Angle degrees",
+		suffix: "°"
+	},
+	toolTip: {
+		shared: "true"
+	},
+	legend:{
+		cursor:"pointer",
+		itemclick : toggleDataSeries
+	},
+	data: [{
+		type: "spline",
+		visible: true,
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Mercury",
+		dataPoints: mercData,
+		color: "saddlebrown"
+	},
+	{
+		type: "spline", 
+		showInLegend: true,
+		visible: true,
+		yValueFormatString: "###°",
+		name: "Venus",
+		dataPoints: venuData,
+		color: "gold"
+	},
+	{
+		type: "spline",
+		visible: true,
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Earth",
+		dataPoints: eartData,
+		color: "blue"
+	},
+	{
+		type: "spline", 
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Mars",
+		dataPoints: marsData,
+		color: "red"
+	},
+	{
+		type: "spline", 
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Jupiter",
+		dataPoints: jupiData,
+		color: "gray"
+	},
+	{
+		type: "spline", 
+		visible: true,
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Temperature",
+		color: "green",
+		dataPoints: [{label:2020, y: 360},
+		{label:2019 , y: 356.4}, // 356.4=0.99*360
+		{label:2018 , y: 342 },
+		{label:2017 , y: 327.6 },
+		{label:2016 , y: 313.2 },
+		{label:2015 , y: 298.8 },
+		{label:2014 , y: 284.4 },
+		{label:2013 , y: 266.4 },
+		{label:2012 , y: 252 },
+		{label:2011 , y: 241.2 },
+		{label:2010 , y: 234 },
+		{label:2009 , y: 234 },
+		{label:2008 , y: 234 },
+		{label:2007 , y: 230.4 },
+		{label:2006 , y: 226.8 },
+		{label:2005 , y: 223.2 },
+		{label:2004 , y: 219.6 },
+		{label:2003 , y: 212.4 },
+		{label:2002 , y: 198 },
+		{label:2001 , y: 190.8 },
+		{label:2000 , y: 180 }]
+	},
+	{
+		type: "spline", 
+		visible: false,
+		showInLegend: true,
+		yValueFormatString: "###°",
+		name: "Moon",
+		color: "black",
+		dataPoints: moonData
+	}]
+});
+chart.render();
+function toggleDataSeries(e) {
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
+		e.dataSeries.visible = false;
+	} else {
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}}
+</script>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<script src="../js/canvasjs.min.js"></script>
+</body>
+</html>
