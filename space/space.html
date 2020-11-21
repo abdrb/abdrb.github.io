@@ -504,6 +504,7 @@ td{
 </select>
 </div>
 <script type="text/javascript">
+moonInit=0;
 dd=1;mm=1;yy=2020;
 auto=true;
 var date = new Date();
@@ -693,9 +694,27 @@ tr_ = "<tr>"; _tr = "</tr>";lst="";
 tb_="<table><tr><td>Date</td><td>Mercury</td><td>Venus</td><td>Earth</td><td>Mars</td><td>Jupiter</td><td>Moon</td></tr>";
 function insertDataToTable(){
 ix=ix-1; jx=0;
+moonv = "";
+moonInit=Number(moPoint)+Number(eaPoint);if(moonInit>=360){moonInit=Number(moonInit)-360;}
+mn=moonInit.toFixed(0);
+zn=20; zx=20;
+moonv=""; marsv=""; venusv=""; mercv=""; jupiv="";
+minm=Number(mn)-zn;maxm=Number(mn)+zx;
+minmr=Number(mrPoint)-zn;maxmr=Number(mrPoint)+zx;
+minvn=Number(vnPoint)-zn;maxvn=Number(vnPoint)+zx;
+minmc=Number(mcPoint)-zn;maxmc=Number(mcPoint)+zx;
+minjp=Number(jpPoint)-zn;maxjp=Number(jpPoint)+zx;
+
 if(pickyy<Number(listopt.value)){listopt.value=pickyy;}
 while(yya[ix]>=Number(listopt.value)){
-tbData +=tr_ + td_ +dda[ix]+"/"+mma[ix]+"/"+yya[ix]+ _td + td_ +mcPointa[ix]+ _td + td_ + vnPointa[ix]+ _td + td_ +eaPointa[ix]+ _td + td_ +mrPointa[ix]+ _td + td_ +jpPointa[ix]+ _td + td_ +moPointa[ix]+ _td + _tr;
+if(moPointa[ix]>minm && moPointa[ix]<maxm){moonv=red+moPointa[ix]+end;}else{moonv=moPointa[ix];}
+if(mrPointa[ix]>minmr && mrPointa[ix]<maxmr){marsv=red+mrPointa[ix]+end;}else{marsv=mrPointa[ix];}
+if(vnPointa[ix]>minvn && vnPointa[ix]<maxvn){venusv=red+vnPointa[ix]+end;}else{venusv=vnPointa[ix];}
+if(mcPointa[ix]>minmc && mcPointa[ix]<maxmc){mercv=red+mcPointa[ix]+end;}else{mercv=mcPointa[ix];}
+if(jpPointa[ix]>minjp && jpPointa[ix]<maxjp){jupiv=red+jpPointa[ix]+end;}else{jupiv=jpPointa[ix];}
+
+tbData +=tr_ + td_ +dda[ix]+"/"+mma[ix]+"/"+yya[ix]+ _td + td_ +mercv+ _td + td_ +venusv+ _td + td_ +eaPointa[ix]+ _td + td_ +marsv+ _td + td_ +jupiv+ _td + td_ +moonv+ _td + _tr;
+
 mercData[jx]={"label":yya[ix],"y": Number(mcPointa[ix])};
 venuData[jx]={"label":yya[ix],"y": Number(vnPointa[ix])};
 eartData[jx]={"label":yya[ix],"y": Number(eaPointa[ix])};
@@ -709,12 +728,12 @@ list.innerHTML+=tb_ + tbData + "</table>";
 drawchart();
 }
 
-ddc=1;mmc=1;yyc=1;
+ddc=0;mmc=1;yyc=1;
 function getDegreeForData(){
 dNow=dDate;
 mNow=mMonth;
 yNow=yYear;
-ddc=1;mmc=1;yyc=1;
+ddc=0;mmc=1;yyc=1;
 countDays=0;
 while((ddc+"/"+mmc+"/"+yyc) !== (dNow+"/"+mNow+"/"+yNow)){
 daysCounter();
@@ -734,11 +753,9 @@ function listPlanetPoint(){
 //looping by daysCounter
 	if(ddc===pickdd && mmc===pickmm){
 	getPlanetPoints();
-	moPoint=Number(moPoint)+180;
-		if(moPoint>360){moPoint=Number(moPoint)-360;}
-	
+	moPo=Number(moPoint)+Number(eaPoint);if(moPo>=360){moPo=Number(moPo)-360;}
 	dda[ix]=ddc;mma[ix]=mmc;yya[ix]=yyc;
-	moPointa[ix]=moPoint;
+	moPointa[ix]=moPo;
 	eaPointa[ix]=eaPoint;
 	mcPointa[ix]=mcPoint;
 	vnPointa[ix]=vnPoint;
@@ -776,7 +793,7 @@ mcPoint =mcPoint.toFixed(0);
 vnPoint =vnPoint.toFixed(0);
 mrPoint =mrPoint.toFixed(0);
 jpPoint =jpPoint.toFixed(0);
-moPoint=Number(moPoint)+Number(eaPoint);if(moPoint>=360){moPoint=Number(moPoint)-360;}
+//moPoint=Number(moPoint)+Number(eaPoint);if(moPoint>=360){moPoint=Number(moPoint)-360;}
 }
 function daysCounter(){
 	feb=29;
@@ -867,7 +884,8 @@ function funcStopToday(){
 		pauseClick.style.display = "initial";
 		document.getElementById("sight").style.display = "initial";
 		if(auto){endDate.value=yy+"-"+mm+"-"+dd;}
-			n=Number(jmo)+Number(jea);if(n>=360){n=Number(n)-360;}
+		moonInit=Number(jmo)+Number(jea);if(moonInit>=360){moonInit=Number(moonInit)-360;}
+		n=moonInit;
 		if(auto){tbData +=tr_ + td_ +dd+"/"+mm+"/"+yy+ _td + td_ +jmc.toFixed(0)+ _td + td_ + jvn.toFixed(0)+ _td + td_ +jea.toFixed(0)+ _td + td_ +jmr.toFixed(0)+ _td + td_ +jjp.toFixed(0)+ _td + td_ +n.toFixed(0)+ _td + _tr;list.innerHTML+=tb_ + tbData + "</table>";}
 		if(auto){listOptions();listopt.value=yYear-9;};
 		pauseBtn.disabled = false; 		
