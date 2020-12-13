@@ -347,9 +347,9 @@ body {
 	border-top: 1px solid transparent;
 	border-bottom: 1px solid transparent; 
 	border-right: 35px solid #666666; 
-	top: 110%;
-	left: -44%;	
-	transform: rotate(-38deg);
+	top: 64%;
+	left: -62%;
+	transform: rotate(-5deg);
 }
 
 #hlink{
@@ -364,6 +364,7 @@ body {
 td{
 	border-bottom: 1px solid #333;
 	font-size: 14px;
+	color: white;
 }
 #listopt{
 	position: absolute;
@@ -611,6 +612,7 @@ countDays = 0; DaysBdates=0;
 
 blue="<span style='color:royalblue;'>";
 red="<span style='color:red;'>";
+unique="<span style='color:cyan;'>";
 orange="<span style='color:orange;'>";
 grey="<span style='color:grey;'>";
 brown="<span style='color:brown;'>";
@@ -648,8 +650,8 @@ pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDi
 if((k>0 && k<90) && i%2===0 || (k>270 && k<360) && i%2===0){
 document.getElementById("sub"+i).style.direction = "rtl";
 }
-r=k+60;
-z=k+30;
+r=k+55;
+z=k+60;
 if(i%2==0){
 document.getElementById("div"+i).style.display= "initial" ;
 document.getElementById("div"+i).style.transform = "rotate(" + z +"deg)";
@@ -707,11 +709,11 @@ minjp=Number(jpPoint)-zn;maxjp=Number(jpPoint)+zx;
 
 if(pickyy<Number(listopt.value)){listopt.value=pickyy;}
 while(yya[ix]>=Number(listopt.value)){
-if(moPointa[ix]>minm && moPointa[ix]<maxm){moonv=red+moPointa[ix]+end;}else{moonv=moPointa[ix];}
-if(mrPointa[ix]>minmr && mrPointa[ix]<maxmr){marsv=red+mrPointa[ix]+end;}else{marsv=mrPointa[ix];}
-if(vnPointa[ix]>minvn && vnPointa[ix]<maxvn){venusv=red+vnPointa[ix]+end;}else{venusv=vnPointa[ix];}
-if(mcPointa[ix]>minmc && mcPointa[ix]<maxmc){mercv=red+mcPointa[ix]+end;}else{mercv=mcPointa[ix];}
-if(jpPointa[ix]>minjp && jpPointa[ix]<maxjp){jupiv=red+jpPointa[ix]+end;}else{jupiv=jpPointa[ix];}
+if(moPointa[ix]>minm && moPointa[ix]<maxm){moonv=unique+moPointa[ix]+end;}else{moonv=moPointa[ix];}
+if(mrPointa[ix]>minmr && mrPointa[ix]<maxmr){marsv=unique+mrPointa[ix]+end;}else{marsv=mrPointa[ix];}
+if(vnPointa[ix]>minvn && vnPointa[ix]<maxvn){venusv=unique+vnPointa[ix]+end;}else{venusv=vnPointa[ix];}
+if(mcPointa[ix]>minmc && mcPointa[ix]<maxmc){mercv=unique+mcPointa[ix]+end;}else{mercv=mcPointa[ix];}
+if(jpPointa[ix]>minjp && jpPointa[ix]<maxjp){jupiv=unique+jpPointa[ix]+end;}else{jupiv=jpPointa[ix];}
 
 tbData +=tr_ + td_ +dda[ix]+"/"+mma[ix]+"/"+yya[ix]+ _td + td_ +mercv+ _td + td_ +venusv+ _td + td_ +eaPointa[ix]+ _td + td_ +marsv+ _td + td_ +jupiv+ _td + td_ +moonv+ _td + _tr;
 
@@ -796,9 +798,9 @@ jpPoint =jpPoint.toFixed(0);
 //moPoint=Number(moPoint)+Number(eaPoint);if(moPoint>=360){moPoint=Number(moPoint)-360;}
 }
 function daysCounter(){
-	feb=29;
-	if(leapyear(yyc)){feb=30;}
-	if((ddc===32 && mmc===1) || (ddc===32 && mmc===3) || (ddc===32 && mmc===5) || (ddc===32 && mmc===7) || (ddc===32 && mmc===8) || (ddc===32 && mmc===10) || (ddc===32 && mmc===12) || (ddc===feb && mmc===2) || (ddc===31 && mmc===4) || (ddc===31 && mmc===6) || (ddc===31 && mmc===9) || (ddc===31 && mmc===11)){
+	feb=28;
+	if(leapyear(yyc)){feb=29;}
+	if((ddc===31 && mmc===1) || (ddc===31 && mmc===3) || (ddc===31 && mmc===5) || (ddc===31 && mmc===7) || (ddc===31 && mmc===8) || (ddc===31 && mmc===10) || (ddc===31 && mmc===12) || (ddc===feb && mmc===2) || (ddc===30 && mmc===4) || (ddc===30 && mmc===6) || (ddc===30 && mmc===9) || (ddc===30 && mmc===11)){
 	ddc=0;
 	countDays-=1;
 	mmc+=1;
@@ -993,9 +995,9 @@ function leapyear(year) {
 }
 
 function dateCreator(){
-	feb=29;
-	if(leapyear(yy)){feb=30;}
-	if((dd===32 && mm===1) || (dd===32 && mm===3) || (dd===32 && mm===5) || (dd===32 && mm===7) || (dd===32 && mm===8) || (dd===32 && mm===10) || (dd===32 && mm===12) || (dd===feb && mm===2) || (dd===31 && mm===4) || (dd===31 && mm===6) || (dd===31 && mm===9) || (dd===31 && mm===11)){
+	feb=28;xo=31;xz=30;
+	if(leapyear(yy)){feb=29;}
+	if((dd===xo && mm===1) || (dd===xo && mm===3) || (dd===xo && mm===5) || (dd===xo && mm===7) || (dd===xo && mm===8) || (dd===xo && mm===10) || (dd===xo && mm===12) || (dd===feb && mm===2) || (dd===xz && mm===4) || (dd===xz && mm===6) || (dd===xz && mm===9) || (dd===xz && mm===11)){
 	dd=0;
 	DaysBdates-=1;
 	mm+=1;
