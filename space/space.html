@@ -338,7 +338,8 @@ body {
 	border-bottom: 0.5px solid transparent;
 	border-left: 60px solid blue;
 	top: 53.5%;
-	left: 110%;	
+	left: 110%;
+	display: none;
 }
 #triangleB{
 	position: absolute;
@@ -346,10 +347,10 @@ body {
 	height: 0; 
 	border-top: 1px solid transparent;
 	border-bottom: 1px solid transparent; 
-	border-right: 35px solid #666666; 
-	top: 64%;
-	left: -62%;
-	transform: rotate(-5deg);
+	border-right: 60px solid white; 
+	top: 59%;
+	left: -54%;
+	transform: rotate(-3deg);
 }
 
 #hlink{
@@ -505,6 +506,7 @@ td{
 </select>
 </div>
 <script type="text/javascript">
+moonStartaAt = 230;
 moonInit=0;
 dd=1;mm=1;yy=2020;
 auto=true;
@@ -531,7 +533,7 @@ function datePicker(){
     dd=1;mm=1;yy=1;
 	auto=false;
 	speed=100;
-	moStart = 75;
+	moStart = moonStartaAt;
 	eaStart = getEarthStartDegree(90);
 	mcStart = 18;    
 	vnStart = 66;	      
@@ -596,7 +598,7 @@ jpStart = 284;
 }
 
 if((dd+"/"+mm+"/"+yy) === (1+"/"+1+"/"+1)){
-moStart = 75;
+moStart = moonStartaAt;
 eaStart = getEarthStartDegree(90);
 mcStart = 18;    
 vnStart = 66;	      
@@ -650,7 +652,7 @@ pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDi
 if((k>0 && k<90) && i%2===0 || (k>270 && k<360) && i%2===0){
 document.getElementById("sub"+i).style.direction = "rtl";
 }
-r=k+55;
+r=k+250;
 z=k+60;
 if(i%2==0){
 document.getElementById("div"+i).style.display= "initial" ;
@@ -664,10 +666,10 @@ document.getElementById("div"+i).style.top = "176px";
 document.getElementById("div"+i).style.left = "45px";
 
 }
-document.getElementById("sub"+i).style.transform = "rotate(-" + 45 +"deg)";
+document.getElementById("sub"+i).style.transform = "rotate(-" + 240 +"deg)";
 
-if(k>80 && k<270){
-document.getElementById("sub"+i).style.transform = "rotate(-" + 225 +"deg)";
+if((k>240 && k<360)||(k>=0 && k<90)){
+document.getElementById("sub"+i).style.transform = "rotate(-" + 240 +"deg)";
 }
 k+=15;
 i--;
@@ -771,7 +773,7 @@ function listPlanetPoint(){
 }
 moPoint=0;eaPoint=0;mcPoint=0;vnPoint=0;mrPoint=0;jpPoint=0;
 function getPlanetPoints(){
-moStart = 75;
+moStart = moonStartaAt;
 //eaStart = getEarthStartPoint(90);
 mcStart = 18;    
 vnStart = 66;	      
@@ -847,7 +849,7 @@ mcStart+=mcStep*DaysBdates;
 vnStart+=vnStep*DaysBdates;
 mrStart+=mrStep*DaysBdates;
 jpStart+=jpStep*DaysBdates;
-jmo=moStart;
+jmo=moonStartaAt;
 jea=eaStart;
 jmc=mcStart;
 jvn=vnStart;
@@ -1011,7 +1013,7 @@ function funcMoon(){
 	jmo+=moStep; //29.530589; //27.321582;
 	jmo=below360(jmo);
 	n=addDZero(jmo.toFixed(0));
-	moonOrbit.style.transform = "rotate(-" + n +"deg)"; 
+	moonOrbit.style.transform = "rotate(-" + jmo +"deg)"; 
 	if (jmo === 360) {jmo = 0;}
 }
 
