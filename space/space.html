@@ -506,7 +506,6 @@ td{
 </select>
 </div>
 <script type="text/javascript">
-moonStartaAt = 230;
 moonInit=0;
 dd=1;mm=1;yy=2020;
 auto=true;
@@ -533,7 +532,7 @@ function datePicker(){
     dd=1;mm=1;yy=1;
 	auto=false;
 	speed=100;
-	moStart = moonStartaAt;
+	moStart = 45;
 	eaStart = getEarthStartDegree(90);
 	mcStart = 18;    
 	vnStart = 66;	      
@@ -579,32 +578,12 @@ vnStep=360/224.7;
 mrStep=360/686.93;
 jpStep=(360/(11.86*365.256365));
 
-if((dd+"/"+mm+"/"+yy) === (20+"/"+7+"/"+2020)){
-moStart = 195;
-eaStart = getEarthStartDegree(90);
-mcStart = 368;    
-vnStart = 322;	      
-mrStart = 326;	    
-jpStart = 300;
-}
-
-if((dd+"/"+mm+"/"+yy) === (1+"/"+1+"/"+2020)){
-moStart = 265;
-eaStart = getEarthStartDegree(90);
-mcStart = 261;    
-vnStart = 359;	      
-mrStart = 220;	    
-jpStart = 284;
-}
-
-if((dd+"/"+mm+"/"+yy) === (1+"/"+1+"/"+1)){
-moStart = moonStartaAt;
+moStart = 45;
 eaStart = getEarthStartDegree(90);
 mcStart = 18;    
 vnStart = 66;	      
 mrStart = 38;	    
 jpStart = 200;
-}
 
 stopToday=0;
 pause=0;
@@ -626,7 +605,12 @@ drawDiv="<div "
 drawClose="> "
 drawEnd=" </div> "
 j=0;
-a = [" Cancer", "January", " Leo",  "February", " Virgo",  "March", " Libra",  "April", " Scorpio",  "May", "Sagittarius", "June", "Capricorn", "July", "Aquarius", "August", "Pisces", "September", " Aries", "October", " Taurus", "November", " Gemini", "December"];
+a = ["Capricorn", "January", "Aquarius",  
+"February", "Pisces",  "March", "Aries", 
+"April", "Taurus",  "May", "Gemini", "June", 
+"Cancer", "July", "Leo", "August", 
+"Virgo", "September", "Libra", "October", 
+"Scorpio", "November", "Sagittarius", "December"];
 
 function funcDraw(){
 if(auto){gettingDate();}
@@ -635,25 +619,27 @@ i=23;k=0;r=0;
 while(k<360){
 if(k>20 && k<200){
 if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: gray; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
+document.getElementById("sub"+i).style.transform = "rotate(-" + 240 +"deg)";
 }else{
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: mistyrose;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: white;'" + drawClose + a[i] + drawEnd+ drawEnd;
+document.getElementById("sub"+i).style.transform = "rotate(-" + 210 +"deg)";
 }
 }
 else{
 if(i%2==0){
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: #666666; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='font-size: 8px; color: gray; border: 1px dotted yellow;'" + drawClose + a[i] + drawEnd+ drawEnd;
+document.getElementById("sub"+i).style.transform = "rotate(-" + 200 +"deg)";
+//document.getElementById("sub"+i).style.direction = "rtl";
 }
 else{
-pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: lightcyan;'" + drawClose + a[i] + drawEnd+ drawEnd;
+pen.innerHTML += drawDiv +" class='main' id='div" + i + "'" + drawClose + drawDiv + " class='sub' id='sub" +i +"' style='color: white;'" + drawClose + a[i] + drawEnd+ drawEnd;
+document.getElementById("sub"+i).style.transform = "rotate(-" + 200 +"deg)";
 }
 }
 
-if((k>0 && k<90) && i%2===0 || (k>270 && k<360) && i%2===0){
-document.getElementById("sub"+i).style.direction = "rtl";
-}
-r=k+250;
-z=k+60;
+r=k+238;
+z=k+242;
 if(i%2==0){
 document.getElementById("div"+i).style.display= "initial" ;
 document.getElementById("div"+i).style.transform = "rotate(" + z +"deg)";
@@ -666,10 +652,10 @@ document.getElementById("div"+i).style.top = "176px";
 document.getElementById("div"+i).style.left = "45px";
 
 }
-document.getElementById("sub"+i).style.transform = "rotate(-" + 240 +"deg)";
 
-if((k>240 && k<360)||(k>=0 && k<90)){
-document.getElementById("sub"+i).style.transform = "rotate(-" + 240 +"deg)";
+if(k>88 && k<240){
+document.getElementById("sub"+i).style.transform = "rotate(-" + 24 +"deg)";
+//document.getElementById("sub"+i).style.color="cyan";
 }
 k+=15;
 i--;
@@ -773,7 +759,7 @@ function listPlanetPoint(){
 }
 moPoint=0;eaPoint=0;mcPoint=0;vnPoint=0;mrPoint=0;jpPoint=0;
 function getPlanetPoints(){
-moStart = moonStartaAt;
+moStart = 45;
 //eaStart = getEarthStartPoint(90);
 mcStart = 18;    
 vnStart = 66;	      
@@ -849,7 +835,7 @@ mcStart+=mcStep*DaysBdates;
 vnStart+=vnStep*DaysBdates;
 mrStart+=mrStep*DaysBdates;
 jpStart+=jpStep*DaysBdates;
-jmo=moonStartaAt;
+jmo=moStart;
 jea=eaStart;
 jmc=mcStart;
 jvn=vnStart;

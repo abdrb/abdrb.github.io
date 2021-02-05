@@ -453,7 +453,7 @@ vnStep=360/224.7;
 mrStep=360/686.93;
 jpStep=(360/(11.86*365.256365));
 
-moStart = 190;
+moStart = -30;
 eaStart = getEarthStartPoint(90);
 mcStart = 360;    
 vnStart = 320;	      
@@ -576,11 +576,15 @@ function funcStopToday(){
 		document.getElementById("alamalShape").innerHTML = "<br>Alamal<br>" + amlDays + "days";
 		document.getElementById("moonShape").innerHTML = "Moon" ;
 		}
-	if(amlDays == 196 && yy===2021){
+	if(amlDays == 204 && yy===2021){
 	clearInterval(amlClear);
 	document.getElementById("alamalShape").style.display = "none";
 	document.getElementById("amlLine").style.display = "none";
 	document.getElementById("uae").style.display = "initial";
+	}
+	
+	if(amlDays >= 200 && yy===2021){
+	document.getElementById("marsShape").innerHTML = "Mars";
 	}
 	
 	if(amlDays == 250){
