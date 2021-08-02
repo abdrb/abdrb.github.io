@@ -119,7 +119,7 @@ function funcPerhour(){
 }
 
 function funcBattery(){
-	panel.value = (Number(battery.value) + (Number(battery.value) * 0.5)).toFixed(1);
+	panel.value = (Number(battery.value) * 0.5) + Number(battery.value);
 	charge.value = (Number(panel.value) / 12).toFixed(1);
 	//daytime.value = Number(battery.value) === "" ? daytime_ : (Number(battery.value) / Number(charge.value)).toFixed(1);
 	perhour.value = (Number(battery.value) / (24)).toFixed(1);
