@@ -8,7 +8,7 @@ link += "<li><a href='" + website + "index.html'>Home</a></li>";
 //link += "<li><a href='" + website + "services.html'>Services</a></li>";
 //link += "<li><a href='" + website + "about.html'>About</a></li>";
 link += "<li><a href='" + website + "typing.html'>Learn Typing</a></li>";
-link += "<li><a href='" + website + "space/space.html'>Space App</a></li>";
+//link += "<li><a href='" + website + "space/space.html'>Space App</a></li>";
 link += "<li><a href='" + website + "space/farmer.html'>Farmer App</a></li>";
 //link += "<li><a href='" + website + "space/probe.html'>Hope Probe</a></li>";
 link += "<li><a href='" + website + "solar/solar.html'>Solar|W.A. Calc</a></li>";
