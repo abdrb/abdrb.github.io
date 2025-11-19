@@ -88,37 +88,32 @@ direction: ltr;
   </div>
 </footer>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
-// ثوابت النظام
 const systemVoltage = 12;
 const efficiency = 0.8;
 
-// ============ حساب عند إدخال قدرة اللوح ============
+// ====== عند إدخال قدرة اللوح ======
 function funcPanel() {
     const panelVal = Number(panel.value);
     const sunHours = Number(daytime.value);
     const loadA = Number(perhour.value);
 
-    // حساب طاقة اللوح خلال ساعات الشمس
     const panelWh = panelVal * sunHours;
-
-    // حساب استهلاك الأحمال أثناء الشحن
     const loadWh = loadA * systemVoltage * sunHours;
-
-    // الطاقة المتبقية للبطارية
     const availableWh = panelWh - loadWh;
 
     if (availableWh > 0) {
-        const batteryAh = (availableWh * efficiency) / systemVoltage;
+        const batteryVal = (availableWh * efficiency) / systemVoltage;
         const chargeVal = panelVal / systemVoltage;
 
         charge.value = chargeVal.toFixed(1);
-        battery.value = batteryAh.toFixed(1);
+        battery.value = batteryVal.toFixed(1);
+        perhour.value = (batteryVal / 2).toFixed(1);   //  تمّت إضافة الحساب
     }
 }
 
-// ============ حساب عند إدخال أمبير الشاحن ============
+// ====== عند إدخال أمبير الشاحن ======
 function funcCharge() {
     const chargeA = Number(charge.value);
     const sunHours = Number(daytime.value);
@@ -130,17 +125,17 @@ function funcCharge() {
     const availableWh = panelWh - loadWh;
 
     if (availableWh > 0) {
-        const batteryAh = (availableWh * efficiency) / systemVoltage;
+        const batteryVal = (availableWh * efficiency) / systemVoltage;
 
         panel.value = panelVal.toFixed(1);
-        battery.value = batteryAh.toFixed(1);
+        battery.value = batteryVal.toFixed(1);
+        perhour.value = (batteryVal / 2).toFixed(1);   //  تمّت إضافة الحساب
     }
 }
 
-// ============ حساب عند تغيير ساعات الشمس ============
+// ====== عند تغيير ساعات الشمس ======
 function funcDaytime() {
     const panelVal = Number(panel.value);
-    const chargeA = Number(charge.value);
     const sunHours = Number(daytime.value);
     const loadA = Number(perhour.value);
 
@@ -150,17 +145,18 @@ function funcDaytime() {
         const availableWh = panelWh - loadWh;
 
         if (availableWh > 0) {
-            const batteryAh = (availableWh * efficiency) / systemVoltage;
-            battery.value = batteryAh.toFixed(1);
+            const batteryVal = (availableWh * efficiency) / systemVoltage;
+            battery.value = batteryVal.toFixed(1);
+            perhour.value = (batteryVal / 2).toFixed(1);   //  تمّت إضافة الحساب
         }
     }
 
-    if (chargeA > 0) {
-        panel.value = (chargeA * systemVoltage).toFixed(1);
+    if (charge.value > 0) {
+        charge.value = (panelVal / systemVoltage).toFixed(1);
     }
 }
 
-// ============ حساب عند إدخال الاستهلاك في الساعة ============
+// ====== عند إدخال الاستهلاك في الساعة ======
 function funcPerhour() {
     const loadA = Number(perhour.value);
     const panelVal = Number(panel.value);
@@ -172,47 +168,30 @@ function funcPerhour() {
         const availableWh = panelWh - loadWh;
 
         if (availableWh > 0) {
-            battery.value = ((availableWh * efficiency) / systemVoltage).toFixed(1);
+            const batteryVal = (availableWh * efficiency) / systemVoltage;
+            battery.value = batteryVal.toFixed(1);
         }
     }
 }
 
-// ============ حساب عند إدخال سعة البطارية ============
+// ====== عند إدخال سعة البطارية ======
 function funcBattery() {
-    const batteryAh = Number(battery.value);
+    const batteryVal = Number(battery.value);
     const sunHours = Number(daytime.value);
     const loadA = Number(perhour.value);
 
-    // الطاقة المطلوبة لشحن البطارية بالكامل
-    const batteryWh = batteryAh * systemVoltage;
+    const batteryWh = batteryVal * systemVoltage;
     const requiredWh = batteryWh / efficiency;
-
-    // الطاقة المستهلكة أثناء الشحن
     const loadWh = loadA * systemVoltage * sunHours;
 
-    // إجمالي الطاقة المطلوبة من الألواح
     const totalNeededWh = requiredWh + loadWh;
 
-    // قدرة اللوح المطلوبة
     const panelVal = totalNeededWh / sunHours;
-
     const chargeVal = panelVal / systemVoltage;
 
     panel.value = panelVal.toFixed(1);
     charge.value = chargeVal.toFixed(1);
-}
-
-// ============ دوال التقريب (كما هي) ============
-function toUnder(n) {
-    const rounded = Math.round(n);
-    const remainder = rounded % 10;
-    return remainder < 5 ? (rounded - remainder).toFixed(0) : (rounded - remainder + 10).toFixed(0);
-}
-
-function toUp(n) {
-    const rounded = Math.round(n);
-    const remainder = rounded % 10;
-    return (rounded - remainder + 10).toFixed(0);
+    perhour.value = (batteryVal / 2).toFixed(1);   //  تمّت إضافة الحساب
 }
 
 </script>
