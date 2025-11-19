@@ -88,65 +88,82 @@ direction: ltr;
   </div>
 </footer>
 
- <script type="text/javascript">
+<script type="text/javascript">
 
-daytime_ = 8;
+let daytime_ = 8;
 
-function funcPanel(){
-	charge.value = (Number(panel.value) / 12).toFixed(1);
-	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(1);
-	perhour.value = (Number(battery.value) / (24)).toFixed(1);
-	//daytime.value !== 8 ? charge.value=(Number(battery.value) / Number(perhour.value)).toFixed(1):pass;
+function funcPanel() {
+	const panelVal = Number(panel.value);
+	const chargeVal = panelVal / 12;
+	const batteryVal = chargeVal * Number(daytime.value);
+	const perHourVal = batteryVal / 24;
+
+	charge.value = chargeVal.toFixed(1);
+	battery.value = batteryVal.toFixed(1);
+	perhour.value = perHourVal.toFixed(1);
 }
 
-function funcCharge(){
-	panel.value  = (Number(charge.value) * 12).toFixed(1);
-	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(1);
-	perhour.value = (Number(battery.value) / (24)).toFixed(1);
+function funcCharge() {
+	const chargeVal = Number(charge.value);
+	const panelVal = chargeVal * 12;
+	const batteryVal = chargeVal * Number(daytime.value);
+	const perHourVal = batteryVal / 24;
+
+	panel.value = panelVal.toFixed(1);
+	battery.value = batteryVal.toFixed(1);
+	perhour.value = perHourVal.toFixed(1);
 }
 
-function funcDaytime(){
-	battery.value = (Number(charge.value) * Number(daytime.value)).toFixed(1);
-	perhour.value = (Number(battery.value) / (24)).toFixed(1);
-	panel.value  > 0 ? charge.value=(Number(panel.value) / 12).toFixed(1) : panel.value=(Number(charge.value) * 12).toFixed(1);
-	daytime_ = Number(daytime.value);
-	funcPerhour();
+function funcDaytime() {
+	const chargeVal = Number(charge.value);
+	const daytimeVal = Number(daytime.value);
+	const batteryVal = chargeVal * daytimeVal;
+	const perHourVal = batteryVal / 24;
+
+	battery.value = batteryVal.toFixed(1);
+	perhour.value = perHourVal.toFixed(1);
+
+	if (panel.value > 0) {
+		charge.value = (Number(panel.value) / 12).toFixed(1);
+	} else {
+		panel.value = (chargeVal * 12).toFixed(1);
+	}
+
+	daytime_ = daytimeVal;
 }
 
-function funcPerhour(){
-	battery.value = (Number(perhour.value) * (24)).toFixed(1);
+function funcPerhour() {
+	const perHourVal = Number(perhour.value);
+	const batteryVal = perHourVal * 24;
+
+	battery.value = batteryVal.toFixed(1);
 	funcBattery();
 }
 
-function funcBattery(){
-	panel.value = (Number(battery.value) * 0.5) + Number(battery.value);
-	charge.value = (Number(panel.value) / 12).toFixed(1);
-	//daytime.value = Number(battery.value) === "" ? daytime_ : (Number(battery.value) / Number(charge.value)).toFixed(1);
-	perhour.value = (Number(battery.value) / (24)).toFixed(1);
-	//daytime.value !== 8 ? charge.value=(Number(battery.value) / Number(perhour.value)).toFixed(1):pass;
-	}
- 
-function toUnder(n){
-	i=n.toFixed(0);
-	while (i > 0){
-	i-=10;
-	}
-	if((i*-1)<5){
-	return ((i*-1)+n).toFixed(0);
-	}
-	else{
-	return (n-(10-(i*-1))).toFixed(0);
-	}
+function funcBattery() {
+	const batteryVal = Number(battery.value);
+	const panelVal = batteryVal * 1.5; // 1.5 = 100% + 50% احتياطي
+	const chargeVal = panelVal / 12;
+	const perHourVal = batteryVal / 24;
+
+	panel.value = panelVal.toFixed(1);
+	charge.value = chargeVal.toFixed(1);
+	perhour.value = perHourVal.toFixed(1);
 }
-	
-function toUp(n){
-	i=n.toFixed(0);
-	while (i > 0){
-	i-=10;
-	}
-	return ((i*-1)+n).toFixed(0);
+
+function toUnder(n) {
+	const rounded = Math.round(n);
+	const remainder = rounded % 10;
+	return remainder < 5 ? (rounded - remainder).toFixed(0) : (rounded - remainder + 10).toFixed(0);
 }
- </script>
+
+function toUp(n) {
+	const rounded = Math.round(n);
+	const remainder = rounded % 10;
+	return (rounded - remainder + 10).toFixed(0);
+}
+
+</script>
  
   <script src="../js/links.js" type="text/javascript"></script>
  </body>
