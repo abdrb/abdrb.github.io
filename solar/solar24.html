@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <link rel="stylesheet" type="text/css" href="../css/menu.css">
+ <link rel="stylesheet" type="text/css" media="screen and (max-width: 767px)" href="../css/smallscreen.css">
+ <link rel="stylesheet" type="text/css" media="screen and (min-width: 768px)" href="../css/widescreen.css">
+ 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+ <title>حاسبة منظومة الطاقة الشمسية</title>
+ <style type="text/css">
+body{
+margin: 0px 20px 0px 0p;
+}
+h3 {
+color: darkcyan;
+margin: 5px;
+text-align: right;
+}
+
+.dv {
+font-size: 12px;
+text-align: right;
+direction: rtl;
+}
+
+section{
+direction: rtl;
+text-align: right;
+padding: 20px;
+}
+
+.dv input {
+height; 20px;
+margin: 5px;
+}
+
+navbar{
+text-align: left;
+direction: ltr;
+}
+ </style>
+ </head> 
+ <body onload="funclinks();"> 
+<navbar>
+   <input class="menu-btn" type="checkbox" id="menu-btn" />
+   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+   <ul class="menu" id="links">
+   </ul>
+</navbar>
+ 
+<header>
+ <h3>حاسبة منظومة الطاقة الشمسية</h3>
+</header>
+  <section>
+  <div class="dv"> 
+   <div>
+     اللوح الشمسي (وات) 
+   </div> 
+   <input value="0" type="text" id="panel" onkeyup="funcPanel()" onclick="javascript:panel.value=''"> 
+   <br> 
+   <div>
+    قوة الشاحن (أمبير) 
+   </div> 
+   <input value="0" type="text" id="charge" onkeyup="funcCharge()" onclick="javascript:charge.value=''"> 
+   <br> 
+   <div>
+     مدة الشحن (ساعات) 
+   </div> 
+   <input value="8" type="text" id="daytime" onkeyup="funcDaytime()" onclick="javascript:daytime.value=''"> 
+   <br> 
+   <div>
+  الاستهلاك المناسب في الساعة (أمبير) 
+   </div> 
+   <input value="0" type="text" id="perhour" onkeyup="funcPerhour()" onclick="javascript:perhour.value=''"> 
+   <br> 
+   <div>
+     قوة البطارية (أمبير) 
+   </div> 
+   <input value="0" type="text" id="battery" onkeyup="funcBattery()" onclick="javascript:battery.value=''"> 
+   <br> 
+  </div> 
+  </section>
+<footer>
+  <div id="sociallinks">
+  </div>
+</footer>
+
+<script type="text/javascript">
+
+let daytime_ = 8;
+const systemVoltage = 12;
+const efficiency = 0.8;
+
+// ====== دالة عند تغيير اللوح ======
+function funcPanel() {
+    const panelVal = Number(panel.value);
+    const chargeVal = panelVal / systemVoltage;
+    const daytimeVal = Number(daytime.value);
+    const batteryVal = chargeVal * daytimeVal;
+
+    const nightHours = 24 - daytimeVal;
+    const perHourVal = nightHours > 0 ? batteryVal / nightHours : 0;
+
+    charge.value = chargeVal.toFixed(1);
+    battery.value = batteryVal.toFixed(1);
+    perhour.value = perHourVal.toFixed(1);
+}
+
+// ====== دالة عند تغيير الشاحن ======
+function funcCharge() {
+    const chargeVal = Number(charge.value);
+    const panelVal = chargeVal * systemVoltage;
+    const daytimeVal = Number(daytime.value);
+    const batteryVal = chargeVal * daytimeVal;
+
+    const nightHours = 24 - daytimeVal;
+    const perHourVal = nightHours > 0 ? batteryVal / nightHours : 0;
+
+    panel.value = panelVal.toFixed(1);
+    battery.value = batteryVal.toFixed(1);
+    perhour.value = perHourVal.toFixed(1);
+}
+
+// ====== دالة عند تغيير ساعات الشمس ======
+function funcDaytime() {
+    const chargeVal = Number(charge.value);
+    const daytimeVal = Number(daytime.value);
+
+    const batteryVal = chargeVal * daytimeVal;
+
+    const nightHours = 24 - daytimeVal;
+    const perHourVal = nightHours > 0 ? batteryVal / nightHours : 0;
+
+    battery.value = batteryVal.toFixed(1);
+    perhour.value = perHourVal.toFixed(1);
+
+    if (panel.value > 0) {
+        charge.value = (Number(panel.value) / systemVoltage).toFixed(1);
+    } else {
+        panel.value = (chargeVal * systemVoltage).toFixed(1);
+    }
+
+    daytime_ = daytimeVal;
+}
+
+// ====== دالة عند تغيير الاستهلاك ======
+function funcPerhour() {
+    const daytimeVal = Number(daytime.value);
+    const nightHours = 24 - daytimeVal;
+
+    const perHourVal = Number(perhour.value);
+    const batteryVal = nightHours > 0 ? perHourVal * nightHours : 0;
+
+    battery.value = batteryVal.toFixed(1);
+    funcBattery();
+}
+
+// ====== دالة عند تغيير البطارية ======
+function funcBattery() {
+    const batteryVal = Number(battery.value);
+
+    // نحسب قدرة اللوح المطلوبة بناءً على البطارية وكفاءة 80%
+    const batteryWh = batteryVal * systemVoltage;
+    const requiredWh = batteryWh / efficiency;
+    const daytimeVal = Number(daytime.value);
+
+    const panelVal = requiredWh / daytimeVal;
+    const chargeVal = panelVal / systemVoltage;
+
+    const nightHours = 24 - daytimeVal;
+    const perHourVal = nightHours > 0 ? batteryVal / nightHours : 0;
+
+    panel.value = panelVal.toFixed(1);
+    charge.value = chargeVal.toFixed(1);
+    perhour.value = perHourVal.toFixed(1);
+}
+
+// ==== دوال التقريب كما هي ====
+function toUnder(n) {
+	const rounded = Math.round(n);
+	const remainder = rounded % 10;
+	return remainder < 5 ? (rounded - remainder).toFixed(0) : (rounded - remainder + 10).toFixed(0);
+}
+
+function toUp(n) {
+	const rounded = Math.round(n);
+	const remainder = rounded % 10;
+	return (rounded - remainder + 10).toFixed(0);
+}
+
+</script>
+ 
+  <script src="../js/links.js" type="text/javascript"></script>
+ </body>
+</html>
