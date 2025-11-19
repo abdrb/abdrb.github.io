@@ -88,110 +88,107 @@ direction: ltr;
   </div>
 </footer>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
+let daytime_ = 8;
 const systemVoltage = 12;
 const efficiency = 0.8;
 
-// ====== عند إدخال قدرة اللوح ======
+// ====== دالة عند تغيير اللوح ======
 function funcPanel() {
     const panelVal = Number(panel.value);
-    const sunHours = Number(daytime.value);
-    const loadA = Number(perhour.value);
+    const chargeVal = panelVal / systemVoltage;
+    const daytimeVal = Number(daytime.value);
+    const batteryVal = chargeVal * daytimeVal;
 
-    const panelWh = panelVal * sunHours;
-    const loadWh = loadA * systemVoltage * sunHours;
-    const availableWh = panelWh - loadWh;
+    const nightHours = 24 - daytimeVal;
+    const perHourVal = nightHours > 0 ? batteryVal / nightHours : 0;
 
-    if (availableWh > 0) {
-        const batteryVal = (availableWh * efficiency) / systemVoltage;
-        const chargeVal = panelVal / systemVoltage;
-
-        charge.value = chargeVal.toFixed(1);
-        battery.value = batteryVal.toFixed(1);
-        perhour.value = (batteryVal / 2).toFixed(1);   //  تمّت إضافة الحساب
-    }
+    charge.value = chargeVal.toFixed(1);
+    battery.value = batteryVal.toFixed(1);
+    perhour.value = perHourVal.toFixed(1);
 }
 
-// ====== عند إدخال أمبير الشاحن ======
+// ====== دالة عند تغيير الشاحن ======
 function funcCharge() {
-    const chargeA = Number(charge.value);
-    const sunHours = Number(daytime.value);
-    const loadA = Number(perhour.value);
+    const chargeVal = Number(charge.value);
+    const panelVal = chargeVal * systemVoltage;
+    const daytimeVal = Number(daytime.value);
+    const batteryVal = chargeVal * daytimeVal;
 
-    const panelVal = chargeA * systemVoltage;
-    const panelWh = panelVal * sunHours;
-    const loadWh = loadA * systemVoltage * sunHours;
-    const availableWh = panelWh - loadWh;
+    const nightHours = 24 - daytimeVal;
+    const perHourVal = nightHours > 0 ? batteryVal / nightHours : 0;
 
-    if (availableWh > 0) {
-        const batteryVal = (availableWh * efficiency) / systemVoltage;
-
-        panel.value = panelVal.toFixed(1);
-        battery.value = batteryVal.toFixed(1);
-        perhour.value = (batteryVal / 2).toFixed(1);   //  تمّت إضافة الحساب
-    }
+    panel.value = panelVal.toFixed(1);
+    battery.value = batteryVal.toFixed(1);
+    perhour.value = perHourVal.toFixed(1);
 }
 
-// ====== عند تغيير ساعات الشمس ======
+// ====== دالة عند تغيير ساعات الشمس ======
 function funcDaytime() {
-    const panelVal = Number(panel.value);
-    const sunHours = Number(daytime.value);
-    const loadA = Number(perhour.value);
+    const chargeVal = Number(charge.value);
+    const daytimeVal = Number(daytime.value);
 
-    if (panelVal > 0) {
-        const panelWh = panelVal * sunHours;
-        const loadWh = loadA * systemVoltage * sunHours;
-        const availableWh = panelWh - loadWh;
+    const batteryVal = chargeVal * daytimeVal;
 
-        if (availableWh > 0) {
-            const batteryVal = (availableWh * efficiency) / systemVoltage;
-            battery.value = batteryVal.toFixed(1);
-            perhour.value = (batteryVal / 2).toFixed(1);   //  تمّت إضافة الحساب
-        }
+    const nightHours = 24 - daytimeVal;
+    const perHourVal = nightHours > 0 ? batteryVal / nightHours : 0;
+
+    battery.value = batteryVal.toFixed(1);
+    perhour.value = perHourVal.toFixed(1);
+
+    if (panel.value > 0) {
+        charge.value = (Number(panel.value) / systemVoltage).toFixed(1);
+    } else {
+        panel.value = (chargeVal * systemVoltage).toFixed(1);
     }
 
-    if (charge.value > 0) {
-        charge.value = (panelVal / systemVoltage).toFixed(1);
-    }
+    daytime_ = daytimeVal;
 }
 
-// ====== عند إدخال الاستهلاك في الساعة ======
+// ====== دالة عند تغيير الاستهلاك ======
 function funcPerhour() {
-    const loadA = Number(perhour.value);
-    const panelVal = Number(panel.value);
-    const sunHours = Number(daytime.value);
+    const daytimeVal = Number(daytime.value);
+    const nightHours = 24 - daytimeVal;
 
-    if (panelVal > 0) {
-        const panelWh = panelVal * sunHours;
-        const loadWh = loadA * systemVoltage * sunHours;
-        const availableWh = panelWh - loadWh;
+    const perHourVal = Number(perhour.value);
+    const batteryVal = nightHours > 0 ? perHourVal * nightHours : 0;
 
-        if (availableWh > 0) {
-            const batteryVal = (availableWh * efficiency) / systemVoltage;
-            battery.value = batteryVal.toFixed(1);
-        }
-    }
+    battery.value = batteryVal.toFixed(1);
+    funcBattery();
 }
 
-// ====== عند إدخال سعة البطارية ======
+// ====== دالة عند تغيير البطارية ======
 function funcBattery() {
     const batteryVal = Number(battery.value);
-    const sunHours = Number(daytime.value);
-    const loadA = Number(perhour.value);
 
+    // نحسب قدرة اللوح المطلوبة بناءً على البطارية وكفاءة 80%
     const batteryWh = batteryVal * systemVoltage;
     const requiredWh = batteryWh / efficiency;
-    const loadWh = loadA * systemVoltage * sunHours;
+    const daytimeVal = Number(daytime.value);
 
-    const totalNeededWh = requiredWh + loadWh;
-
-    const panelVal = totalNeededWh / sunHours;
+    const panelVal = requiredWh / daytimeVal;
     const chargeVal = panelVal / systemVoltage;
+
+    const nightHours = 24 - daytimeVal;
+    const perHourVal = nightHours > 0 ? batteryVal / nightHours : 0;
 
     panel.value = panelVal.toFixed(1);
     charge.value = chargeVal.toFixed(1);
-    perhour.value = (batteryVal / 2).toFixed(1);   //  تمّت إضافة الحساب
+    perhour.value = perHourVal.toFixed(1);
+}
+
+// ==== دوال التقريب كما هي ====
+function toUnder(n) {
+	const rounded = Math.round(n);
+	const remainder = rounded % 10;
+	return remainder < 5 ? (rounded - remainder).toFixed(0) : (rounded - remainder + 10).toFixed(0);
+}
+
+function toUp(n) {
+	const rounded = Math.round(n);
+	const remainder = rounded % 10;
+	return (rounded - remainder + 10).toFixed(0);
 }
 
 </script>
